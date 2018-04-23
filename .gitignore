@@ -1,0 +1,6 @@
+.vs/
+packages/
+FormValidators/obj/
+FormValidators/bin/
+FormValidators.Tests/obj/
+FormValidators.Tests/bin/

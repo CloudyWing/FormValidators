@@ -4,9 +4,11 @@
 
 ## 專案說明
 
-Class Library使用Standard 2.0開發
-FormValidators為主專案
-FormValidatorsTests為測試專案
+Class Library：使用Standard 2.0開發。
+
+FormValidators：主專案。
+
+FormValidators.Tests：測試專案。
 
 ## 範例
 

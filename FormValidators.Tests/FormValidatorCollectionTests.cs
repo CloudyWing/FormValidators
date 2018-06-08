@@ -12,9 +12,9 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void Validate_AllTrue_IsTrue() {
             FormValidatorCollection fvc = new FormValidatorCollection {
-                new RequiredValidator("First", "HasValue"),
-                new RequiredValidator("Second", "HasValue"),
-                new RequiredValidator("Third", "HasValue")
+                new TrueAssertValidator(true, ""),
+                new TrueAssertValidator(true, ""),
+                new TrueAssertValidator(true, "")
             };
 
             Assert.IsTrue(fvc.Validate());
@@ -23,9 +23,9 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void Validate_AnyFalse_IsFalse() {
             FormValidatorCollection fvc = new FormValidatorCollection {
-                new RequiredValidator("First", "HasValue"),
-                new RequiredValidator("Second", ""),
-                new RequiredValidator("Third", "HasValue")
+                new TrueAssertValidator(true, ""),
+                new TrueAssertValidator(false, ""),
+                new TrueAssertValidator(true, "")
             };
 
             Assert.IsFalse(fvc.Validate());
@@ -34,9 +34,9 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void Validate_AllFalse_IsFalse() {
             FormValidatorCollection fvc = new FormValidatorCollection {
-                new RequiredValidator("First", ""),
-                new RequiredValidator("Second", ""),
-                new RequiredValidator("Third", "")
+                new TrueAssertValidator(false, ""),
+                new TrueAssertValidator(false, ""),
+                new TrueAssertValidator(false, "")
             };
 
             Assert.IsFalse(fvc.Validate());
@@ -44,9 +44,9 @@ namespace CloudyWing.FormValidators.Tests {
         
         [Test]
         public void ErrorMessage_ErrorMessage_AreEqual() {
-            IFormValidatable validate1 = new RequiredValidator("First", "");
-            IFormValidatable validate2 = new RequiredValidator("Second", "HasValue");
-            IFormValidatable validate3 = new RequiredValidator("Third", "");
+            IFormValidatable validate1 = new TrueAssertValidator(false, "1");
+            IFormValidatable validate2 = new TrueAssertValidator(true, "2");
+            IFormValidatable validate3 = new TrueAssertValidator(false, "3");
             FormValidatorCollection fvc = new FormValidatorCollection {
                 validate1, validate2, validate3
             };
@@ -57,9 +57,9 @@ namespace CloudyWing.FormValidators.Tests {
         
         [Test]
         public void ErrorMessage_ErrorMessageWithBR_AreEqual() {
-            IFormValidatable validate1 = new RequiredValidator("First", "");
-            IFormValidatable validate2 = new RequiredValidator("Second", "HasValue");
-            IFormValidatable validate3 = new RequiredValidator("Third", "");
+            IFormValidatable validate1 = new TrueAssertValidator(false, "1");
+            IFormValidatable validate2 = new TrueAssertValidator(true, "2");
+            IFormValidatable validate3 = new TrueAssertValidator(false, "3");
             FormValidatorCollection fvc = new FormValidatorCollection {
                 validate1, validate2, validate3
             };
@@ -70,9 +70,9 @@ namespace CloudyWing.FormValidators.Tests {
         
         [Test]
         public void ErrorMessage_ErrorMessageWithLF_AreEqual() {
-            IFormValidatable validate1 = new RequiredValidator("First", "");
-            IFormValidatable validate2 = new RequiredValidator("Second", "HasValue");
-            IFormValidatable validate3 = new RequiredValidator("Third", "");
+            IFormValidatable validate1 = new TrueAssertValidator(false, "1");
+            IFormValidatable validate2 = new TrueAssertValidator(true, "2");
+            IFormValidatable validate3 = new TrueAssertValidator(false, "3");
             FormValidatorCollection fvc = new FormValidatorCollection {
                 validate1, validate2, validate3
             };
@@ -83,9 +83,9 @@ namespace CloudyWing.FormValidators.Tests {
         
         [Test]
         public void ErrorMessage_ErrorMessageWithNewLine_AreEqual() {
-            IFormValidatable validate1 = new RequiredValidator("First", "");
-            IFormValidatable validate2 = new RequiredValidator("Second", "HasValue");
-            IFormValidatable validate3 = new RequiredValidator("Third", "");
+            IFormValidatable validate1 = new TrueAssertValidator(false, "1");
+            IFormValidatable validate2 = new TrueAssertValidator(true, "2");
+            IFormValidatable validate3 = new TrueAssertValidator(false, "3");
             FormValidatorCollection fvc = new FormValidatorCollection {
                 validate1, validate2, validate3
             };

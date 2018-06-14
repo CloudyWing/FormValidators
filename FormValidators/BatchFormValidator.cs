@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace CloudyWing.FormValidators {
 
-    public class FormValidatorCollection : Collection<IFormValidatable>, IFormValidatable {
+    public class BatchFormValidator : Collection<IFormValidatable>, IFormValidatable {
 
         private IList<string> errorMessages = new List<string>();
         private bool isValid;
@@ -39,6 +39,6 @@ namespace CloudyWing.FormValidators {
             return isValid;
         }
 
-        public string GetErrorMessage(string separator) => string.Join(separator, errorMessages);
+        private string GetErrorMessage(string separator) => string.Join(separator, errorMessages);
     }
 }

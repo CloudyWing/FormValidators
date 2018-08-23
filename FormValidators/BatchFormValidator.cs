@@ -4,11 +4,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace CloudyWing.FormValidators {
-
     public class BatchFormValidator : Collection<IFormValidatable>, IFormValidatable {
+        public BatchFormValidator(bool isStoppedIfFail = false) {
+            IsStoppedIfFail = isStoppedIfFail;
+        }
 
         private IList<string> errorMessages = new List<string>();
-        private bool isValid;
 
         /// <summary>
         /// Gets the error message, use separator br.
@@ -18,13 +19,15 @@ namespace CloudyWing.FormValidators {
         /// </value>
         public string ErrorMessage => ErrorMessageWithBR;
 
-        public bool IsValid => isValid;
-
         public string ErrorMessageWithBR => GetErrorMessage("<br />");
 
         public string ErrorMessageWithNewLine => GetErrorMessage(Environment.NewLine);
 
         public string ErrorMessageWithLF => GetErrorMessage("\n");
+
+        public bool IsValid { get; private set; } = false;
+
+        public bool IsStoppedIfFail { get; private set; }
 
         public bool Validate() {
             errorMessages.Clear();
@@ -32,11 +35,14 @@ namespace CloudyWing.FormValidators {
             foreach (IFormValidatable item in Items) {
                 if (!item.Validate()) {
                     errorMessages.Add(item.ErrorMessage);
+                    if (IsStoppedIfFail) {
+                        break;
+                    }
                 }
             }
-            isValid = !errorMessages.Any();
+            IsValid = !errorMessages.Any();
 
-            return isValid;
+            return IsValid;
         }
 
         private string GetErrorMessage(string separator) => string.Join(separator, errorMessages);

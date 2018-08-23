@@ -37,7 +37,7 @@ if (!batchs.Validate()) {
 作法二：取得第一個錯誤訊息
 ```
 // 建立容器，並將Validator加入批次裡
-BatchStopIfErrorValidator batchs = new BatchStopIfErrorValidator();
+BatchFormValidator batchs = new BatchFormValidator(true);
 // TrueAssert遇到true，驗證成功
 batchs.Add(new TrueAssertValidator(true, "錯誤訊息一"));
 // TrueAssert遇到false，驗證失敗
@@ -51,7 +51,7 @@ if (!batchs.Validate()) {
 可將兩者搭配使用
 ```
 BatchFormValidator batchs = new BatchFormValidator {
-    new BatchStopIfErrorValidator {
+    new BatchFormValidator(true) {
         new TrueAssertValidator(true, "錯誤訊息一"),
         new TrueAssertValidator(false, "錯誤訊息二"),
         new TrueAssertValidator(false, "錯誤訊息三")

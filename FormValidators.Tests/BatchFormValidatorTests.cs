@@ -65,7 +65,7 @@ namespace CloudyWing.FormValidators.Tests {
             };
             batchs.Validate();
 
-            Assert.AreEqual(batchs.ErrorMessageWithBR, $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
+            Assert.AreEqual(batchs.ErrorMessageWithBreak, $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
         }
 
         [Test]

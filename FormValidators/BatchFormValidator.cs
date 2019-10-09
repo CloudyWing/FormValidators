@@ -17,9 +17,9 @@ namespace CloudyWing.FormValidators {
         /// <value>
         /// The error message.
         /// </value>
-        public string ErrorMessage => ErrorMessageWithBR;
+        public string ErrorMessage => ErrorMessageWithBreak;
 
-        public string ErrorMessageWithBR => GetErrorMessage("<br />");
+        public string ErrorMessageWithBreak => GetErrorMessage("<br />");
 
         public string ErrorMessageWithNewLine => GetErrorMessage(Environment.NewLine);
 

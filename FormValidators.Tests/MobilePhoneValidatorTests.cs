@@ -1,14 +1,12 @@
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
-
     [TestFixture]
     public class MobilePhoneValidatorTests {
-
         [SetUp]
         public void Setup() {
         }
-        
+
         [TestCase(null, true)]
         [TestCase("", true)]
         [TestCase(" ", true)]
@@ -25,8 +23,10 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void ErrorMessage_BaseFormat_AreEqual() {
             string column = "測試欄位";
+
             MobilePhoneValidator validator = new MobilePhoneValidator(column, "error");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.DefaultErrorMessageFormat, column),
                 validator.ErrorMessage
@@ -36,8 +36,10 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
             string column = "測試欄位";
+
             MobilePhoneValidator validator = new MobilePhoneValidator(column, "error", "{0}MobilePhone");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.CustomErrorMessageFormat, column),
                 validator.ErrorMessage

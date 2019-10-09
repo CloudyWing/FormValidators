@@ -1,14 +1,12 @@
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
-
     [TestFixture]
     public class CompareValidatorTests {
-
         [SetUp]
         public void Setup() {
         }
-        
+
         [TestCase(null, "", true)]
         [TestCase("", "", true)]
         [TestCase(" ", "", true)]

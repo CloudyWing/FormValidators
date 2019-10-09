@@ -1,10 +1,8 @@
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
-
     [TestFixture]
     public class RequiredValidatorTests {
-
         [SetUp]
         public void Setup() {
         }
@@ -22,8 +20,10 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void ErrorMessage_BaseFormat_AreEqual() {
             string column = "測試欄位";
+
             RequiredValidator validator = new RequiredValidator(column, null);
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.DefaultErrorMessageFormat, column),
                 validator.ErrorMessage
@@ -33,8 +33,10 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
             string column = "測試欄位";
+
             RequiredValidator validator = new RequiredValidator(column, null, "{0}Required");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.CustomErrorMessageFormat, column),
                 validator.ErrorMessage

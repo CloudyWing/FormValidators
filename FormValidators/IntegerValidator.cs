@@ -1,7 +1,5 @@
 ﻿namespace CloudyWing.FormValidators {
-
-    public class IntegerValidator : FormValidatorBase {
-
+    public sealed class IntegerValidator : FormValidatorBase {
         private string realErrorMessage;
 
         public IntegerValidator(
@@ -18,11 +16,11 @@
         public IntegerValidator(string column, string value, string customMessageFormat)
             : this(column, value, null, null, customMessageFormat) { }
 
-        public int? MinValue { get; protected set; }
+        public int? MinValue { get; }
 
-        public int? MaxValue { get; protected set; }
+        public int? MaxValue { get; }
 
-        public string CustomRangeMessageFormat { get; protected set; }
+        public string CustomRangeMessageFormat { get; }
 
         public override string DefaultErrorMessageFormat => "「{0}」必須為整數。";
 
@@ -34,12 +32,12 @@
 
         protected override bool ValidateValue() {
             InitErrorMessage();
+
             if (string.IsNullOrWhiteSpace(Value)) {
                 return true;
             }
 
-            int value;
-            if (int.TryParse(Value, out value)) {
+            if (int.TryParse(Value, out int value)) {
                 if (MinValue.HasValue && MaxValue.HasValue) {
                     return ValidateRange(value);
 
@@ -52,7 +50,9 @@
 
                 return true;
             }
+
             CreateFormatErrorMessage();
+
             return false;
         }
 
@@ -60,9 +60,11 @@
             if (value >= MinValue && value <= MaxValue) {
                 return true;
             }
-            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat) ?
-                string.Format(RangeErrorMessageFormat, Column, MinValue, MaxValue) :
-                string.Format(CustomRangeMessageFormat, Column, MinValue, MaxValue);
+
+            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat)
+                ? string.Format(RangeErrorMessageFormat, Column, MinValue, MaxValue)
+                : string.Format(CustomRangeMessageFormat, Column, MinValue, MaxValue);
+
             return false;
         }
 
@@ -70,9 +72,11 @@
             if (value >= MinValue) {
                 return true;
             }
-            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat) ?
-                string.Format(MinValueErrorMessageFormat, Column, MinValue) :
-                string.Format(CustomRangeMessageFormat, Column, MinValue);
+
+            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat)
+                ? string.Format(MinValueErrorMessageFormat, Column, MinValue)
+                : string.Format(CustomRangeMessageFormat, Column, MinValue);
+
             return false;
         }
 
@@ -80,9 +84,11 @@
             if (value <= MaxValue) {
                 return true;
             }
-            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat) ?
-                string.Format(MaxValueErrorMessageFormat, Column, MaxValue) :
-                string.Format(CustomRangeMessageFormat, Column, MaxValue);
+
+            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat)
+                ? string.Format(MaxValueErrorMessageFormat, Column, MaxValue)
+                : string.Format(CustomRangeMessageFormat, Column, MaxValue);
+
             return false;
         }
 
@@ -91,9 +97,9 @@
         }
 
         private void CreateFormatErrorMessage() {
-            realErrorMessage = string.IsNullOrWhiteSpace(CustomErrorMessageFormat) ?
-                string.Format(DefaultErrorMessageFormat, Column) :
-                string.Format(CustomErrorMessageFormat, Column);
+            realErrorMessage = string.IsNullOrWhiteSpace(CustomErrorMessageFormat)
+                ? string.Format(DefaultErrorMessageFormat, Column)
+                : string.Format(CustomErrorMessageFormat, Column);
         }
 
         protected override string CreateErrorMessage() {

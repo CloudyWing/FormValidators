@@ -1,7 +1,5 @@
 ﻿namespace CloudyWing.FormValidators {
-
-    public class RequiredValidator : FormValidatorBase {
-
+    public sealed class RequiredValidator : FormValidatorBase {
         public RequiredValidator(string column, string value, string customMessageFormat = null)
             : base(column, value, customMessageFormat) { }
 

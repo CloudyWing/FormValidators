@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 
 namespace CloudyWing.FormValidators {
-    public class IdCardValidator : FormValidatorBase {
+    public sealed class IdCardValidator : FormValidatorBase {
         public IdCardValidator(string column, string value,
             IdCardTypes idCardType = IdCardTypes.All, string customMessageFormat = null)
             : base(column, value, customMessageFormat) {

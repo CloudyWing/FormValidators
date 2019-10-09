@@ -2,10 +2,8 @@
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
-
     [TestFixture]
     public class FormValidatorCollectionTests {
-
         [SetUp]
         public void SetUp() { }
 
@@ -47,6 +45,7 @@ namespace CloudyWing.FormValidators.Tests {
             IFormValidatable validate1 = new TrueAssertValidator(false, "1");
             IFormValidatable validate2 = new TrueAssertValidator(true, "2");
             IFormValidatable validate3 = new TrueAssertValidator(false, "3");
+
             BatchFormValidator batchs = new BatchFormValidator {
                 validate1, validate2, validate3
             };
@@ -60,6 +59,7 @@ namespace CloudyWing.FormValidators.Tests {
             IFormValidatable validate1 = new TrueAssertValidator(false, "1");
             IFormValidatable validate2 = new TrueAssertValidator(true, "2");
             IFormValidatable validate3 = new TrueAssertValidator(false, "3");
+
             BatchFormValidator batchs = new BatchFormValidator {
                 validate1, validate2, validate3
             };
@@ -73,6 +73,7 @@ namespace CloudyWing.FormValidators.Tests {
             IFormValidatable validate1 = new TrueAssertValidator(false, "1");
             IFormValidatable validate2 = new TrueAssertValidator(true, "2");
             IFormValidatable validate3 = new TrueAssertValidator(false, "3");
+
             BatchFormValidator batchs = new BatchFormValidator {
                 validate1, validate2, validate3
             };
@@ -86,6 +87,7 @@ namespace CloudyWing.FormValidators.Tests {
             IFormValidatable validate1 = new TrueAssertValidator(false, "1");
             IFormValidatable validate2 = new TrueAssertValidator(true, "2");
             IFormValidatable validate3 = new TrueAssertValidator(false, "3");
+
             BatchFormValidator batchs = new BatchFormValidator {
                 validate1, validate2, validate3
             };

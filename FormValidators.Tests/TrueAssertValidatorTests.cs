@@ -1,10 +1,8 @@
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
-
     [TestFixture]
     public class TrueAssertValidatorTests {
-
         [SetUp]
         public void Setup() {
         }
@@ -14,6 +12,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_ReturnValue_IsTrue(bool value) {
             TrueAssertValidator validator = new TrueAssertValidator(value, "");
             bool actual = validator.Validate() == value;
+
             Assert.IsTrue(actual);
         }
 
@@ -22,6 +21,7 @@ namespace CloudyWing.FormValidators.Tests {
             string expected = "´ú¸ÕTrueAssert";
             TrueAssertValidator validator = new TrueAssertValidator(false, expected);
             validator.Validate();
+
             Assert.AreEqual(validator.ErrorMessage, expected);
         }
     }

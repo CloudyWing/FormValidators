@@ -1,7 +1,5 @@
 ﻿namespace CloudyWing.FormValidators {
-
-    public class EmailValidator : RegexValidator {
-
+    public sealed class EmailValidator : RegexValidator {
         public EmailValidator(string column, string value, string customMessageFormat = null)
             : base(column, value, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", customMessageFormat) {
         }

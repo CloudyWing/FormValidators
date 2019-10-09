@@ -1,10 +1,8 @@
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
-
     [TestFixture]
-    public class IdentityNumberValidatorTests {
-
+    public class IdCardValidatorTests {
         [SetUp]
         public void Setup() {
         }
@@ -22,8 +20,10 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("A111111111", false)] // 格式錯誤
         public void ValidateNational_ReturnValue_AreEqual(string id, bool expected) {
             string column = "測試欄位";
-            IdentityNumberValidator validator = new IdentityNumberValidator(column, id, IdCardTypes.National);
+
+            IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.National);
             bool actual = validator.Validate();
+
             Assert.AreEqual(actual, expected);
         }
 
@@ -40,8 +40,10 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("A111111111", false)] // 格式錯誤
         public void ValidateResident_ReturnValue_AreEqual(string id, bool expected) {
             string column = "測試欄位";
-            IdentityNumberValidator validator = new IdentityNumberValidator(column, id, IdCardTypes.Resident);
+
+            IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Resident);
             bool actual = validator.Validate();
+
             Assert.AreEqual(actual, expected);
         }
 
@@ -58,8 +60,10 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("A111111111", false)] // 格式錯誤
         public void ValidateAlienResident_ReturnValue_AreEqual(string id, bool expected) {
             string column = "測試欄位";
-            IdentityNumberValidator validator = new IdentityNumberValidator(column, id, IdCardTypes.AlienResident);
+
+            IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.AlienResident);
             bool actual = validator.Validate();
+
             Assert.AreEqual(actual, expected);
         }
 
@@ -76,8 +80,10 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("A111111111", false)] // 格式錯誤
         public void ValidateHomeless_ReturnValue_AreEqual(string id, bool expected) {
             string column = "測試欄位";
-            IdentityNumberValidator validator = new IdentityNumberValidator(column, id, IdCardTypes.Homeless);
+
+            IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Homeless);
             bool actual = validator.Validate();
+
             Assert.AreEqual(actual, expected);
         }
 
@@ -86,8 +92,10 @@ namespace CloudyWing.FormValidators.Tests {
             string column = "測試欄位";
             string format = "{0}IdentityNumber";
             string expected = string.Format(format, column);
-            IdentityNumberValidator validator = new IdentityNumberValidator(column, "123", IdCardTypes.All, format);
+
+            IdCardValidator validator = new IdCardValidator(column, "123", IdCardTypes.All, format);
             validator.Validate();
+
             Assert.AreEqual(validator.ErrorMessage, expected);
         }
     }

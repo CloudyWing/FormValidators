@@ -1,10 +1,8 @@
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Tests {
-
+namespace CloudyWing.FormValidators.Core.Tests {
     [TestFixture]
     public class FormValidatorBaseTests {
-
         [SetUp]
         public void Setup() {
         }
@@ -17,6 +15,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void IsValid_Value_AreEqual(string value, bool isValid) {
             FormValidatorBase validator = new RequiredValidator("", value);
             validator.Validate();
+
             Assert.AreEqual(validator.IsValid, isValid);
         }
     }

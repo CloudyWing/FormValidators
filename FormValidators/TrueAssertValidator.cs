@@ -1,20 +1,18 @@
 ﻿namespace CloudyWing.FormValidators {
-
     public class TrueAssertValidator : IFormValidatable {
+        private readonly string errorMessage;
 
-        private string errorMessageFormat = "";
-
-        public TrueAssertValidator(bool isTrue, string errorMessageFormat) {
+        public TrueAssertValidator(bool isTrue, string errorMessage) {
             IsValid = isTrue;
-            this.errorMessageFormat = errorMessageFormat;
+            this.errorMessage = errorMessage;
         }
 
         public string ErrorMessage { get; private set; }
 
-        public bool IsValid { get; private set; }
+        public bool IsValid { get; }
 
         public bool Validate() {
-            ErrorMessage = IsValid ? "" : errorMessageFormat;
+            ErrorMessage = IsValid ? "" : errorMessage;
             return IsValid;
         }
     }

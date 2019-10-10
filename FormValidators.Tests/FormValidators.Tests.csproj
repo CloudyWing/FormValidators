@@ -12,6 +12,8 @@
     <AssemblyName>CloudyWing.FormValidators.Tests</AssemblyName>
 
     <RootNamespace>CloudyWing.FormValidators.Tests</RootNamespace>
+
+    <FileVersion>1.0.19283.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

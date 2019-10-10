@@ -4,11 +4,10 @@ namespace CloudyWing.FormValidators.Tests {
 
     [TestFixture]
     public class RegexValidatorTests {
-
         [SetUp]
         public void Setup() {
         }
-        
+
         [TestCase(null, "", true)]
         [TestCase("", "", true)]
         [TestCase(" ", "", true)]
@@ -20,10 +19,12 @@ namespace CloudyWing.FormValidators.Tests {
         }
 
         [Test]
-        public void ErrorMessage_BaseFormat_AreEqual() {
+        public void ErrorMessage_BasicFormat_AreEqual() {
             string column = "測試欄位";
+
             RegexValidator validator = new RegexValidator(column, "123456", @"\D+");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.DefaultErrorMessageFormat, column),
                 validator.ErrorMessage
@@ -33,8 +34,10 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
             string column = "測試欄位";
+
             RegexValidator validator = new RegexValidator(column, "123456", @"\D+", "{0}Regex");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.CustomErrorMessageFormat, column),
                 validator.ErrorMessage

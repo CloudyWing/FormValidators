@@ -1,13 +1,13 @@
 ﻿namespace CloudyWing.FormValidators {
+    using Core;
 
     public class CompareValidator : FormValidatorBase {
-
         public CompareValidator(string column, string value, string validationValue, string customMessageFormat = null)
             : base(column, value, customMessageFormat) {
             ValidationValue = validationValue;
         }
 
-        public string ValidationValue { get; protected set; }
+        public string ValidationValue { get; }
 
         public override string DefaultErrorMessageFormat => "「{0}」兩次輸入不一致。";
 

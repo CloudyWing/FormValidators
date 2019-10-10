@@ -1,7 +1,5 @@
 ﻿namespace CloudyWing.FormValidators {
-
-    public class MobilePhoneValidator : RegexValidator {
-
+    public sealed class MobilePhoneValidator : RegexValidator {
         public MobilePhoneValidator(string column, string value, string customMessageFormat = null)
             : base(column, value, @"^[0][9][0-9]{8}$", customMessageFormat) {
         }

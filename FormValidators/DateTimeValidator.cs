@@ -1,9 +1,9 @@
 ﻿using System;
 
 namespace CloudyWing.FormValidators {
+    using Core;
 
-    public class DateTimeValidator : FormValidatorBase {
-
+    public sealed class DateTimeValidator : FormValidatorBase {
         private string realErrorMessage;
 
         public DateTimeValidator(
@@ -20,11 +20,11 @@ namespace CloudyWing.FormValidators {
         public DateTimeValidator(string column, string value, string customMessageFormat)
             : this(column, value, null, null, customMessageFormat) { }
 
-        public DateTime? MinDateTime { get; protected set; }
+        public DateTime? MinDateTime { get; }
 
-        public DateTime? MaxDateValue { get; protected set; }
+        public DateTime? MaxDateValue { get; }
 
-        public string CustomRangeMessageFormat { get; protected set; }
+        public string CustomRangeMessageFormat { get; }
 
         public override string DefaultErrorMessageFormat => "「{0}」必須為正確日期格式。";
 
@@ -36,12 +36,12 @@ namespace CloudyWing.FormValidators {
 
         protected override bool ValidateValue() {
             InitErrorMessage();
+
             if (string.IsNullOrWhiteSpace(Value)) {
                 return true;
             }
 
-            DateTime value;
-            if (DateTime.TryParse(Value, out value)) {
+            if (DateTime.TryParse(Value, out DateTime value)) {
                 if (MinDateTime.HasValue && MaxDateValue.HasValue) {
                     return ValidateRange(value);
 
@@ -54,7 +54,9 @@ namespace CloudyWing.FormValidators {
 
                 return true;
             }
+
             CreateFormatErrorMessage();
+
             return false;
         }
 
@@ -62,9 +64,11 @@ namespace CloudyWing.FormValidators {
             if (value >= MinDateTime && value <= MaxDateValue) {
                 return true;
             }
-            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat) ?
-                string.Format(RangeErrorMessageFormat, Column, MinDateTime, MaxDateValue) :
-                string.Format(CustomRangeMessageFormat, Column, MinDateTime, MaxDateValue);
+
+            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat)
+                ? string.Format(RangeErrorMessageFormat, Column, MinDateTime, MaxDateValue)
+                : string.Format(CustomRangeMessageFormat, Column, MinDateTime, MaxDateValue);
+
             return false;
         }
 
@@ -72,9 +76,11 @@ namespace CloudyWing.FormValidators {
             if (value >= MinDateTime) {
                 return true;
             }
-            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat) ?
-                string.Format(MinValueErrorMessageFormat, Column, MinDateTime) :
-                string.Format(CustomRangeMessageFormat, Column, MinDateTime);
+
+            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat)
+                ? string.Format(MinValueErrorMessageFormat, Column, MinDateTime)
+                : string.Format(CustomRangeMessageFormat, Column, MinDateTime);
+
             return false;
         }
 
@@ -82,9 +88,11 @@ namespace CloudyWing.FormValidators {
             if (value <= MaxDateValue) {
                 return true;
             }
-            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat) ?
-                string.Format(MaxValueErrorMessageFormat, Column, MaxDateValue) :
-                string.Format(CustomRangeMessageFormat, Column, MaxDateValue);
+
+            realErrorMessage = string.IsNullOrWhiteSpace(CustomRangeMessageFormat)
+                ? string.Format(MaxValueErrorMessageFormat, Column, MaxDateValue)
+                : string.Format(CustomRangeMessageFormat, Column, MaxDateValue);
+
             return false;
         }
 
@@ -93,9 +101,9 @@ namespace CloudyWing.FormValidators {
         }
 
         private void CreateFormatErrorMessage() {
-            realErrorMessage = string.IsNullOrWhiteSpace(CustomErrorMessageFormat) ?
-                string.Format(DefaultErrorMessageFormat, Column) :
-                string.Format(CustomErrorMessageFormat, Column);
+            realErrorMessage = string.IsNullOrWhiteSpace(CustomErrorMessageFormat)
+                ? string.Format(DefaultErrorMessageFormat, Column)
+                : string.Format(CustomErrorMessageFormat, Column);
         }
 
         protected override string CreateErrorMessage() {

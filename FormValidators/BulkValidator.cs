@@ -4,12 +4,19 @@ using System.Collections.ObjectModel;
 using System.Linq;
 
 namespace CloudyWing.FormValidators {
-    public class BatchFormValidator : Collection<IFormValidatable>, IFormValidatable {
-        public BatchFormValidator(bool isStoppedIfFail = false) {
+    using Core;
+
+    public class BulkValidator : Collection<IFormValidatable>, IFormValidatable {
+        private readonly IList<string> errorMessages = new List<string>();
+
+        public BulkValidator(bool isStoppedIfFail = false) {
             IsStoppedIfFail = isStoppedIfFail;
         }
 
-        private IList<string> errorMessages = new List<string>();
+        public BulkValidator(Action<ValidatorConfiguration> configure, bool isStoppedIfFail = false) {
+            IsStoppedIfFail = isStoppedIfFail;
+            configure(new ValidatorConfiguration(this));
+        }
 
         /// <summary>
         /// Gets the error message, use separator br.
@@ -17,9 +24,9 @@ namespace CloudyWing.FormValidators {
         /// <value>
         /// The error message.
         /// </value>
-        public string ErrorMessage => ErrorMessageWithBR;
+        public string ErrorMessage => ErrorMessageWithBreak;
 
-        public string ErrorMessageWithBR => GetErrorMessage("<br />");
+        public string ErrorMessageWithBreak => GetErrorMessage("<br />");
 
         public string ErrorMessageWithNewLine => GetErrorMessage(Environment.NewLine);
 
@@ -27,7 +34,7 @@ namespace CloudyWing.FormValidators {
 
         public bool IsValid { get; private set; } = false;
 
-        public bool IsStoppedIfFail { get; private set; }
+        public bool IsStoppedIfFail { get; }
 
         public bool Validate() {
             errorMessages.Clear();

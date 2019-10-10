@@ -2,14 +2,12 @@ using System;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
-
     [TestFixture]
     public class DateTimeValidatorTests {
-
         [SetUp]
         public void Setup() {
         }
-        
+
         [TestCase(null, true)]
         [TestCase("", true)]
         [TestCase(" ", true)]
@@ -24,7 +22,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = new DateTimeValidator("", value);
             Assert.AreEqual(validator.Validate(), isValid);
         }
-        
+
         [TestCase("1912/3/2", true)]
         [TestCase("1912/3/3", true)]
         [TestCase("1912/3/1", false)]
@@ -32,7 +30,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = DateTimeValidator.CreateMinDateTime("", value, new DateTime(1912, 3, 2));
             Assert.AreEqual(validator.Validate(), isValid);
         }
-        
+
         [TestCase("1912/3/1", true)]
         [TestCase("1912/3/2", true)]
         [TestCase("1912/3/3", false)]
@@ -40,7 +38,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = DateTimeValidator.CreateMaxDateTime("", value, new DateTime(1912, 3, 2));
             Assert.AreEqual(validator.Validate(), isValid);
         }
-        
+
         [TestCase("1912/3/2", true)]
         [TestCase("1912/3/3", true)]
         [TestCase("1912/3/4", true)]
@@ -52,10 +50,12 @@ namespace CloudyWing.FormValidators.Tests {
         }
 
         [Test]
-        public void ErrorMessage_BaseFormat_AreEqual() {
+        public void ErrorMessage_BasicFormat_AreEqual() {
             string column = "測試欄位";
+
             DateTimeValidator validator = new DateTimeValidator(column, "error");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.DefaultErrorMessageFormat, column),
                 validator.ErrorMessage
@@ -65,8 +65,10 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
             string column = "測試欄位";
+
             DateTimeValidator validator = new DateTimeValidator(column, "error", "{0}DateTime");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.CustomErrorMessageFormat, column),
                 validator.ErrorMessage
@@ -77,8 +79,10 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_MinFormat_AreEqual() {
             string column = "測試欄位";
             DateTime minDateTime = new DateTime(1912, 3, 5);
+
             DateTimeValidator validator = DateTimeValidator.CreateMinDateTime(column, "1912/03/04", minDateTime);
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.MinValueErrorMessageFormat, column, minDateTime),
                 validator.ErrorMessage
@@ -89,8 +93,10 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_MinCustomFormat_AreEqual() {
             string column = "測試欄位";
             DateTime minDateTime = new DateTime(1912, 3, 5);
+
             DateTimeValidator validator = DateTimeValidator.CreateMinDateTime(column, "1912/03/04", minDateTime, customRangeMessageFormat: "{0}_{1}DateTime");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.CustomRangeMessageFormat, column, minDateTime),
                 validator.ErrorMessage
@@ -101,8 +107,10 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_MaxFormat_AreEqual() {
             string column = "測試欄位";
             DateTime maxDateTime = new DateTime(1912, 3, 3);
+
             DateTimeValidator validator = DateTimeValidator.CreateMaxDateTime(column, "1912/03/04", maxDateTime);
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.MaxValueErrorMessageFormat, column, maxDateTime),
                 validator.ErrorMessage
@@ -113,8 +121,10 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_MaxCustomFormat_AreEqual() {
             string column = "測試欄位";
             DateTime maxDateTime = new DateTime(1912, 3, 3);
+
             DateTimeValidator validator = DateTimeValidator.CreateMaxDateTime(column, "1912/03/04", maxDateTime, customRangeMessageFormat: "{0}_{1}DateTime");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.CustomRangeMessageFormat, column, maxDateTime),
                 validator.ErrorMessage
@@ -126,8 +136,10 @@ namespace CloudyWing.FormValidators.Tests {
             string column = "測試欄位";
             DateTime minDateTime = new DateTime(1912, 3, 5);
             DateTime maxDateTime = new DateTime(1912, 3, 3);
+
             DateTimeValidator validator = new DateTimeValidator(column, "1912/03/04", minDateTime, maxDateTime);
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.RangeErrorMessageFormat, column, minDateTime, maxDateTime),
                 validator.ErrorMessage
@@ -139,8 +151,10 @@ namespace CloudyWing.FormValidators.Tests {
             string column = "測試欄位";
             DateTime minDateTime = new DateTime(1912, 3, 5);
             DateTime maxDateTime = new DateTime(1912, 3, 3);
+
             DateTimeValidator validator = new DateTimeValidator(column, "1912/03/04", minDateTime, maxDateTime, customRangeMessageFormat: "{0}_{1}_{2}DateTime");
             validator.Validate();
+
             Assert.AreEqual(
                 string.Format(validator.CustomRangeMessageFormat, column, minDateTime, maxDateTime),
                 validator.ErrorMessage

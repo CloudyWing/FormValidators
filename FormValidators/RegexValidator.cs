@@ -1,15 +1,15 @@
 ﻿using System.Text.RegularExpressions;
 
 namespace CloudyWing.FormValidators {
+    using Core;
 
     public class RegexValidator : FormValidatorBase {
-
         public RegexValidator(string column, string value, string pattern, string customMessageFormat = null)
             : base(column, value, customMessageFormat) {
             Pattern = pattern;
         }
 
-        public string Pattern { get; private set; }
+        public string Pattern { get; }
 
         public override string DefaultErrorMessageFormat => "「{0}」格式錯誤。";
 

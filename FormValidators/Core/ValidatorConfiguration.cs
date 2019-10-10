@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace CloudyWing.FormValidators.Core {
     public class ValidatorConfiguration {
-        private readonly BatchFormValidator validators;
+        private readonly BulkValidator validators;
         private readonly ValidationProvider provider = new ValidationProvider();
 
-        public ValidatorConfiguration(BatchFormValidator validators) {
+        public ValidatorConfiguration(BulkValidator validators) {
             this.validators = validators;
         }
 

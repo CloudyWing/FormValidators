@@ -3,41 +3,41 @@ using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
-    public class FormValidatorCollectionTests {
+    public class BulkValidatorTests {
         [SetUp]
         public void SetUp() { }
 
         [Test]
         public void Validate_AllTrue_IsTrue() {
-            BatchFormValidator batchs = new BatchFormValidator {
+            BulkValidator validators = new BulkValidator {
                 new TrueAssertValidator(true, ""),
                 new TrueAssertValidator(true, ""),
                 new TrueAssertValidator(true, "")
             };
 
-            Assert.IsTrue(batchs.Validate());
+            Assert.IsTrue(validators.Validate());
         }
 
         [Test]
         public void Validate_AnyFalse_IsFalse() {
-            BatchFormValidator batchs = new BatchFormValidator {
+            BulkValidator validators = new BulkValidator {
                 new TrueAssertValidator(true, ""),
                 new TrueAssertValidator(false, ""),
                 new TrueAssertValidator(true, "")
             };
 
-            Assert.IsFalse(batchs.Validate());
+            Assert.IsFalse(validators.Validate());
         }
 
         [Test]
         public void Validate_AllFalse_IsFalse() {
-            BatchFormValidator batchs = new BatchFormValidator {
+            BulkValidator validators = new BulkValidator {
                 new TrueAssertValidator(false, ""),
                 new TrueAssertValidator(false, ""),
                 new TrueAssertValidator(false, "")
             };
 
-            Assert.IsFalse(batchs.Validate());
+            Assert.IsFalse(validators.Validate());
         }
 
         [Test]
@@ -46,12 +46,12 @@ namespace CloudyWing.FormValidators.Tests {
             IFormValidatable validate2 = new TrueAssertValidator(true, "2");
             IFormValidatable validate3 = new TrueAssertValidator(false, "3");
 
-            BatchFormValidator batchs = new BatchFormValidator {
+            BulkValidator validators = new BulkValidator {
                 validate1, validate2, validate3
             };
-            batchs.Validate();
+            validators.Validate();
 
-            Assert.AreEqual(batchs.ErrorMessage, $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
+            Assert.AreEqual(validators.ErrorMessage, $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
         }
 
         [Test]
@@ -60,12 +60,12 @@ namespace CloudyWing.FormValidators.Tests {
             IFormValidatable validate2 = new TrueAssertValidator(true, "2");
             IFormValidatable validate3 = new TrueAssertValidator(false, "3");
 
-            BatchFormValidator batchs = new BatchFormValidator {
+            BulkValidator validators = new BulkValidator {
                 validate1, validate2, validate3
             };
-            batchs.Validate();
+            validators.Validate();
 
-            Assert.AreEqual(batchs.ErrorMessageWithBreak, $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
+            Assert.AreEqual(validators.ErrorMessageWithBreak, $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
         }
 
         [Test]
@@ -74,12 +74,12 @@ namespace CloudyWing.FormValidators.Tests {
             IFormValidatable validate2 = new TrueAssertValidator(true, "2");
             IFormValidatable validate3 = new TrueAssertValidator(false, "3");
 
-            BatchFormValidator batchs = new BatchFormValidator {
+            BulkValidator validators = new BulkValidator {
                 validate1, validate2, validate3
             };
-            batchs.Validate();
+            validators.Validate();
 
-            Assert.AreEqual(batchs.ErrorMessageWithLF, $"{validate1.ErrorMessage}\n{validate3.ErrorMessage}");
+            Assert.AreEqual(validators.ErrorMessageWithLF, $"{validate1.ErrorMessage}\n{validate3.ErrorMessage}");
         }
 
         [Test]
@@ -88,45 +88,45 @@ namespace CloudyWing.FormValidators.Tests {
             IFormValidatable validate2 = new TrueAssertValidator(true, "2");
             IFormValidatable validate3 = new TrueAssertValidator(false, "3");
 
-            BatchFormValidator batchs = new BatchFormValidator {
+            BulkValidator validators = new BulkValidator {
                 validate1, validate2, validate3
             };
-            batchs.Validate();
+            validators.Validate();
 
-            Assert.AreEqual(batchs.ErrorMessageWithNewLine, $"{validate1.ErrorMessage}{Environment.NewLine}{validate3.ErrorMessage}");
+            Assert.AreEqual(validators.ErrorMessageWithNewLine, $"{validate1.ErrorMessage}{Environment.NewLine}{validate3.ErrorMessage}");
         }
 
         [Test]
         public void ValidateStoppedIfFail_AllTrue_IsTrue() {
-            BatchFormValidator batchs = new BatchFormValidator(true) {
+            BulkValidator validators = new BulkValidator(true) {
                 new TrueAssertValidator(true, ""),
                 new TrueAssertValidator(true, ""),
                 new TrueAssertValidator(true, "")
             };
 
-            Assert.IsTrue(batchs.Validate());
+            Assert.IsTrue(validators.Validate());
         }
 
         [Test]
         public void ValidateStoppedIfFail_AnyFalse_IsFalse() {
-            BatchFormValidator batchs = new BatchFormValidator(true) {
+            BulkValidator validators = new BulkValidator(true) {
                 new TrueAssertValidator(true, ""),
                 new TrueAssertValidator(false, ""),
                 new TrueAssertValidator(true, "")
             };
 
-            Assert.IsFalse(batchs.Validate());
+            Assert.IsFalse(validators.Validate());
         }
 
         [Test]
         public void ValidateStoppedIfFail_AllFalse_IsFalse() {
-            BatchFormValidator batchs = new BatchFormValidator(true) {
+            BulkValidator validators = new BulkValidator(true) {
                 new TrueAssertValidator(false, ""),
                 new TrueAssertValidator(false, ""),
                 new TrueAssertValidator(false, "")
             };
 
-            Assert.IsFalse(batchs.Validate());
+            Assert.IsFalse(validators.Validate());
         }
 
         [Test]
@@ -134,12 +134,12 @@ namespace CloudyWing.FormValidators.Tests {
             IFormValidatable validate1 = new TrueAssertValidator(false, "1");
             IFormValidatable validate2 = new TrueAssertValidator(true, "2");
             IFormValidatable validate3 = new TrueAssertValidator(false, "3");
-            BatchFormValidator batchs = new BatchFormValidator(true) {
+            BulkValidator validators = new BulkValidator(true) {
                 validate1, validate2, validate3
             };
-            batchs.Validate();
+            validators.Validate();
 
-            Assert.AreEqual(batchs.ErrorMessage, validate1.ErrorMessage);
+            Assert.AreEqual(validators.ErrorMessage, validate1.ErrorMessage);
         }
     }
 }

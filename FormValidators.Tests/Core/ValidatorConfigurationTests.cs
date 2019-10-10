@@ -5,18 +5,18 @@ using NUnit.Framework;
 namespace CloudyWing.FormValidators.Core.Tests {
     [TestFixture()]
     public class ValidatorConfigurationTests {
-        private BatchFormValidator validators;
+        private BulkValidator validators;
         private ValidatorConfiguration config;
 
         [SetUp]
         public void SetUp() {
-            validators = new BatchFormValidator();
+            validators = new BulkValidator();
             config = new ValidatorConfiguration(validators);
         }
 
         [Test()]
         public void Add_Bulk_Result() {
-            BatchFormValidator expected = new BatchFormValidator() {
+            BulkValidator expected = new BulkValidator() {
                 new RequiredValidator("Column1", "Value1"),
                 new DateTimeValidator("Column1", "Value1"),
                 new RequiredValidator("Column2", "Value2"),
@@ -64,7 +64,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
         [Test()]
         public void Add_TrueAssert_Result() {
             const string message = "TestTrueAssert";
-            BatchFormValidator expected = new BatchFormValidator() {
+            BulkValidator expected = new BulkValidator() {
                 new TrueAssertValidator(false, message)
             };
 
@@ -78,7 +78,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
         [Test()]
         public void Add_FalseAssert_Result() {
             const string message = "TestFalseAssert";
-            BatchFormValidator expected = new BatchFormValidator() {
+            BulkValidator expected = new BulkValidator() {
                 new FalseAssertValidator(false, message)
             };
 

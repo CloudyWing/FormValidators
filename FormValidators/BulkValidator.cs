@@ -6,14 +6,14 @@ using System.Linq;
 namespace CloudyWing.FormValidators {
     using Core;
 
-    public class BatchFormValidator : Collection<IFormValidatable>, IFormValidatable {
+    public class BulkValidator : Collection<IFormValidatable>, IFormValidatable {
         private readonly IList<string> errorMessages = new List<string>();
 
-        public BatchFormValidator(bool isStoppedIfFail = false) {
+        public BulkValidator(bool isStoppedIfFail = false) {
             IsStoppedIfFail = isStoppedIfFail;
         }
 
-        public BatchFormValidator(Action<ValidatorConfiguration> configure, bool isStoppedIfFail = false) {
+        public BulkValidator(Action<ValidatorConfiguration> configure, bool isStoppedIfFail = false) {
             IsStoppedIfFail = isStoppedIfFail;
             configure(new ValidatorConfiguration(this));
         }

@@ -19,7 +19,7 @@ namespace CloudyWing.FormValidators.Tests {
         }
 
         [Test]
-        public void ErrorMessage_BaseFormat_AreEqual() {
+        public void ErrorMessage_BasicFormat_AreEqual() {
             string column = "´ú¸ÕÄæ¦ì";
 
             RegexValidator validator = new RegexValidator(column, "123456", @"\D+");

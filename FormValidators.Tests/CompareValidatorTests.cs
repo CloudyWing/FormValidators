@@ -18,7 +18,7 @@ namespace CloudyWing.FormValidators.Tests {
         }
 
         [Test]
-        public void ErrorMessage_BaseFormat_AreEqual() {
+        public void ErrorMessage_BasicFormat_AreEqual() {
             string column = "´ú¸ÕÄæ¦ì";
             CompareValidator validator = new CompareValidator(column, "123", "456");
             validator.Validate();

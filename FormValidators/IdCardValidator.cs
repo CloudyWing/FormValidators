@@ -1,6 +1,8 @@
 ﻿using System.Text.RegularExpressions;
 
 namespace CloudyWing.FormValidators {
+    using Core;
+
     public sealed class IdCardValidator : FormValidatorBase {
         public IdCardValidator(string column, string value,
             IdCardTypes idCardType = IdCardTypes.All, string customMessageFormat = null)

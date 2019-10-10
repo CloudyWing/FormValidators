@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Tests {
+namespace CloudyWing.FormValidators.Core.Tests {
     [TestFixture]
     public class FormValidatorBaseTests {
         [SetUp]

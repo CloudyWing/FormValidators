@@ -1,4 +1,6 @@
 ﻿namespace CloudyWing.FormValidators {
+    using Core;
+
     public sealed class IntegerValidator : FormValidatorBase {
         private string realErrorMessage;
 

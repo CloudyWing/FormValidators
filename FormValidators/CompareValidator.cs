@@ -1,4 +1,6 @@
 ﻿namespace CloudyWing.FormValidators {
+    using Core;
+
     public class CompareValidator : FormValidatorBase {
         public CompareValidator(string column, string value, string validationValue, string customMessageFormat = null)
             : base(column, value, customMessageFormat) {

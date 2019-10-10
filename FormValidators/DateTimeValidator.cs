@@ -1,6 +1,8 @@
 ﻿using System;
 
 namespace CloudyWing.FormValidators {
+    using Core;
+
     public sealed class DateTimeValidator : FormValidatorBase {
         private string realErrorMessage;
 

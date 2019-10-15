@@ -6,7 +6,7 @@
     <RootNamespace>CloudyWing.FormValidators</RootNamespace>
     <Authors>CloudyWing</Authors>
     <Product>FormValidators</Product>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <FileVersion>1.0.19283.0</FileVersion>
   </PropertyGroup>

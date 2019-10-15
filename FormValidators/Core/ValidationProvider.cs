@@ -30,6 +30,15 @@ namespace CloudyWing.FormValidators.Core {
         public Func<string, string, DateTimeValidator> DateTimeRange(DateTime min, DateTime max, string errorMessageFormat = null)
             => (column, value) => new DateTimeValidator(column, value, min, max, null, errorMessageFormat);
 
+        public Func<string, string, ValueLengthValidator> MinLength(int min, string customMessageFormat = null)
+            => (column, value) => ValueLengthValidator.CreateMinLength(column, value, min, customMessageFormat);
+
+        public Func<string, string, ValueLengthValidator> MaxLength(int max, string customMessageFormat = null)
+            => (column, value) => ValueLengthValidator.CreateMaxLength(column, value, max, customMessageFormat);
+
+        public Func<string, string, ValueLengthValidator> LengthRange(int min, int max, string customMessageFormat = null)
+            => (column, value) => new ValueLengthValidator(column, value, min, max, customMessageFormat);
+
         public Func<string, string, RegexValidator> Regex(string pattern, string customMessageFormat = null)
             => (column, value) => new RegexValidator(column, value, pattern, customMessageFormat);
 

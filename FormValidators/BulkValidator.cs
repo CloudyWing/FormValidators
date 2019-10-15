@@ -32,6 +32,8 @@ namespace CloudyWing.FormValidators {
 
         public string ErrorMessageWithLF => GetErrorMessage("\n");
 
+        public IReadOnlyCollection<string> ErrorMessages => new ReadOnlyCollection<string>(errorMessages);
+
         public bool IsValid { get; private set; } = false;
 
         public bool IsStoppedIfFail { get; }
@@ -41,7 +43,13 @@ namespace CloudyWing.FormValidators {
 
             foreach (IFormValidatable item in Items) {
                 if (!item.Validate()) {
-                    errorMessages.Add(item.ErrorMessage);
+                    if (item is BulkValidator innerItems) {
+                        foreach (var _message in innerItems.ErrorMessages) {
+                            errorMessages.Add(_message);
+                        }
+                    } else {
+                        errorMessages.Add(item.ErrorMessage);
+                    }
                     if (IsStoppedIfFail) {
                         break;
                     }

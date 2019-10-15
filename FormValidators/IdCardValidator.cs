@@ -12,7 +12,7 @@ namespace CloudyWing.FormValidators {
 
         public IdCardTypes IdCardType { get; }
 
-        public override string DefaultErrorMessageFormat => "「{0}」必須為正確身分證格式格式。";
+        public override string DefaultErrorMessageFormat => "「{0}」必須為正確身分證格式。";
 
         protected override bool ValidateValue() {
             if (string.IsNullOrWhiteSpace(Value)) {

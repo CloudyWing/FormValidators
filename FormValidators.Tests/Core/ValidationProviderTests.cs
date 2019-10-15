@@ -11,7 +11,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             provider = new ValidationProvider();
         }
 
-        [Test()]
+        [Test]
         public void Required_Message_AreEqual() {
             const string column = "Required";
             const string message = "測試{0}";
@@ -22,7 +22,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
         }
 
-        [Test()]
+        [Test]
         public void Integer_Message_AreEqual() {
             const string column = "Integer";
             const string message = "測試{0}";
@@ -33,7 +33,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
         }
 
-        [Test()]
+        [Test]
         public void MinInt_Message_AreEqual() {
             const string column = "MinInt";
             const string message = "測試{0}{1}";
@@ -45,7 +45,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min));
         }
 
-        [Test()]
+        [Test]
         public void MaxInt_Message_AreEqual() {
             const string column = "MaxInt";
             const string message = "測試{0}{1}";
@@ -57,7 +57,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, max));
         }
 
-        [Test()]
+        [Test]
         public void IntRange_Message_AreEqual() {
             const string column = "IntRange";
             const string message = "測試{0}{1}{2}";
@@ -70,7 +70,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min, max));
         }
 
-        [Test()]
+        [Test]
         public void DateTime_Message_AreEqual() {
             const string column = "DateTime";
             const string message = "測試{0}";
@@ -81,7 +81,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
         }
 
-        [Test()]
+        [Test]
         public void MinDateTime_Message_AreEqual() {
             const string column = "MinDateTime";
             const string message = "測試{0}{1}";
@@ -93,7 +93,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min));
         }
 
-        [Test()]
+        [Test]
         public void MaxDateTime_Message_AreEqual() {
             const string column = "MaxDateTime";
             const string message = "測試{0}{1}";
@@ -105,7 +105,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, max));
         }
 
-        [Test()]
+        [Test]
         public void DateTimeRange_Message_AreEqual() {
             const string column = "DateTimeRange";
             const string message = "測試{0}{1}{2}";
@@ -117,8 +117,44 @@ namespace CloudyWing.FormValidators.Core.Tests {
 
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min, max));
         }
+        [Test]
+        public void MinLength_Message_AreEqual() {
+            const string column = "MinLength";
+            const string message = "測試{0}{1}";
+            int min = 3;
 
-        [Test()]
+            IFormValidatable validator = provider.MinLength(min, message)(column, "12");
+            validator.Validate();
+
+            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min));
+        }
+
+        [Test]
+        public void MaxLength_Message_AreEqual() {
+            const string column = "MaxLength";
+            const string message = "測試{0}{1}";
+            int max = 3;
+
+            IFormValidatable validator = provider.MaxLength(max, message)(column, "1234");
+            validator.Validate();
+
+            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, max));
+        }
+
+        [Test]
+        public void LengthRange_Message_AreEqual() {
+            const string column = "LengthRange";
+            const string message = "測試{0}{1}{2}";
+            int min = 2;
+            int max = 4;
+
+            IFormValidatable validator = provider.LengthRange(min, max, message)(column, "12345");
+            validator.Validate();
+
+            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min, max));
+        }
+
+        [Test]
         public void Regex_Message_AreEqual() {
             const string column = "Regex";
             const string message = "測試{0}";
@@ -129,7 +165,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
         }
 
-        [Test()]
+        [Test]
         public void Email_Message_AreEqual() {
             const string column = "Email";
             const string message = "測試{0}";
@@ -140,7 +176,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
         }
 
-        [Test()]
+        [Test]
         public void MobilePhone_Message_AreEqual() {
             const string column = "MobilePhone";
             const string message = "測試{0}";
@@ -151,7 +187,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
         }
 
-        [Test()]
+        [Test]
         public void IdCard_Message_AreEqual() {
             const string column = "IdCard";
             const string message = "測試{0}";
@@ -162,7 +198,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
         }
 
-        [Test()]
+        [Test]
         public void Compare_Message_AreEqual() {
             const string column = "Compare";
             const string message = "測試{0}";

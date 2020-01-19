@@ -74,3 +74,6 @@ BulkValidator validators = new BulkValidator(cfg => {
     cfg.AddTrueAssert(true, "錯誤訊息");
 });
 ```
+
+## License
+This project is MIT [licensed](https://github.com/CloudyWing/FormValidators/master/LICENSE.md).

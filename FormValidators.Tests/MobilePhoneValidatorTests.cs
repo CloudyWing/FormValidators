@@ -11,6 +11,7 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("", true)]
         [TestCase(" ", true)]
         [TestCase("0912345678", true)]
+        [TestCase("0912-345678", true)]
         [TestCase("09123456789", false)]
         [TestCase("091234567", false)]
         [TestCase("0812345678", false)]

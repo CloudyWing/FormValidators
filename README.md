@@ -76,4 +76,4 @@ BulkValidator validators = new BulkValidator(cfg => {
 ```
 
 ## License
-This project is MIT [licensed](https://github.com/CloudyWing/FormValidators/master/LICENSE.md).
+This project is MIT [licensed](https://github.com/CloudyWing/FormValidators/blob/master/LICENSE.md).

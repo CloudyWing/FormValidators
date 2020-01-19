@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
@@ -51,7 +51,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             DateTimeValidator validator = new DateTimeValidator(column, "error");
             validator.Validate();
@@ -64,7 +64,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             DateTimeValidator validator = new DateTimeValidator(column, "error", "{0}DateTime");
             validator.Validate();
@@ -77,7 +77,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_MinFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
             DateTime minDateTime = new DateTime(1912, 3, 5);
 
             DateTimeValidator validator = DateTimeValidator.CreateMinDateTime(column, "1912/03/04", minDateTime);
@@ -91,7 +91,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_MinCustomFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
             DateTime minDateTime = new DateTime(1912, 3, 5);
 
             DateTimeValidator validator = DateTimeValidator.CreateMinDateTime(column, "1912/03/04", minDateTime, customRangeMessageFormat: "{0}_{1}DateTime");
@@ -105,7 +105,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_MaxFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
             DateTime maxDateTime = new DateTime(1912, 3, 3);
 
             DateTimeValidator validator = DateTimeValidator.CreateMaxDateTime(column, "1912/03/04", maxDateTime);
@@ -119,7 +119,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_MaxCustomFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
             DateTime maxDateTime = new DateTime(1912, 3, 3);
 
             DateTimeValidator validator = DateTimeValidator.CreateMaxDateTime(column, "1912/03/04", maxDateTime, customRangeMessageFormat: "{0}_{1}DateTime");
@@ -133,7 +133,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_RangeFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
             DateTime minDateTime = new DateTime(1912, 3, 5);
             DateTime maxDateTime = new DateTime(1912, 3, 3);
 
@@ -148,7 +148,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_RangeCustomFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
             DateTime minDateTime = new DateTime(1912, 3, 5);
             DateTime maxDateTime = new DateTime(1912, 3, 3);
 

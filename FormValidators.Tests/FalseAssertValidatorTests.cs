@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
@@ -19,7 +19,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_Value_AreEqual() {
-            string expected = "´ú¸ÕFalseAssert";
+            string expected = "æ¸¬è©¦FalseAssert";
 
             FalseAssertValidator validator = new FalseAssertValidator(true, expected);
             validator.Validate();

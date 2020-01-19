@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -20,8 +20,8 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            string column = "Äæ¦ì";
-            string comparisonColumn = "¤ñ¸ûÄæ¦ì";
+            string column = "æ¬„ä½";
+            string comparisonColumn = "æ¯”è¼ƒæ¬„ä½";
 
             DateTimeLessThanValidator validator = new DateTimeLessThanValidator(column, "2020/01/02", comparisonColumn, "2020/01/01");
             validator.Validate();
@@ -34,8 +34,8 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "Äæ¦ì";
-            string comparisonColumn = "¤ñ¸ûÄæ¦ì";
+            string column = "æ¬„ä½";
+            string comparisonColumn = "æ¯”è¼ƒæ¬„ä½";
 
             DateTimeLessThanValidator validator = new DateTimeLessThanValidator(
                 column, "2020/01/02", comparisonColumn, "2020/01/01", customMessageFormat: "{0}DateTimeLessThan{1}"

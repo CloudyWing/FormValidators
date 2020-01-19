@@ -1,4 +1,4 @@
-using NUnit.Framework;
+Ôªøusing NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -20,7 +20,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            string column = "¥˙∏’ƒÊ¶Ï";
+            string column = "Ê∏¨Ë©¶Ê¨Ñ‰Ωç";
 
             EmailValidator validator = new EmailValidator(column, "error");
             validator.Validate();
@@ -33,7 +33,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "¥˙∏’ƒÊ¶Ï";
+            string column = "Ê∏¨Ë©¶Ê¨Ñ‰Ωç";
 
             EmailValidator validator = new EmailValidator(column, "error", "{0}Email");
             validator.Validate();

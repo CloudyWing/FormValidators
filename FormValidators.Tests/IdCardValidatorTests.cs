@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -7,19 +7,19 @@ namespace CloudyWing.FormValidators.Tests {
         public void Setup() {
         }
 
-        [TestCase("A188222138", true)] // °ê¥Á¨­¥÷ÃÒ¨k¥Í
-        [TestCase("A213788383", true)] // °ê¥Á¨­¥÷ÃÒ¤k¥Í
-        [TestCase("AA00036116", false)] // »OÆW¦a°Ï©~¯dÃÒ¨k¥Í
-        [TestCase("AB90001505", false)] // »OÆW¦a°Ï©~¯dÃÒ¤k¥Í
-        [TestCase("AC02065646", false)] // ¥~¹´©~¯dÃÒ¨k¥Í
-        [TestCase("AD01915363", false)] // ¥~¹´©~¯dÃÒ¤k¥Í
-        [TestCase("AY90001505", false)] // ¹C¥Á¨k¥Í
-        [TestCase("AX00036116", false)] // ¹C¥Á¤k¥Í
-        [TestCase("A126", false)] // «D10½X
-        [TestCase("AE88222138", false)] // ²Ä¤G½X¿ù»~
-        [TestCase("A111111111", false)] // ®æ¦¡¿ù»~
+        [TestCase("A188222138", true)] // åœ‹æ°‘èº«ä»½è­‰ç”·ç”Ÿ
+        [TestCase("A213788383", true)] // åœ‹æ°‘èº«ä»½è­‰å¥³ç”Ÿ
+        [TestCase("AA00036116", false)] // è‡ºç£åœ°å€å±…ç•™è­‰ç”·ç”Ÿ
+        [TestCase("AB90001505", false)] // è‡ºç£åœ°å€å±…ç•™è­‰å¥³ç”Ÿ
+        [TestCase("AC02065646", false)] // å¤–åƒ‘å±…ç•™è­‰ç”·ç”Ÿ
+        [TestCase("AD01915363", false)] // å¤–åƒ‘å±…ç•™è­‰å¥³ç”Ÿ
+        [TestCase("AY90001505", false)] // éŠæ°‘ç”·ç”Ÿ
+        [TestCase("AX00036116", false)] // éŠæ°‘å¥³ç”Ÿ
+        [TestCase("A126", false)] // é10ç¢¼
+        [TestCase("AE88222138", false)] // ç¬¬äºŒç¢¼éŒ¯èª¤
+        [TestCase("A111111111", false)] // æ ¼å¼éŒ¯èª¤
         public void ValidateNational_ReturnValue_AreEqual(string id, bool expected) {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.National);
             bool actual = validator.Validate();
@@ -27,19 +27,19 @@ namespace CloudyWing.FormValidators.Tests {
             Assert.AreEqual(actual, expected);
         }
 
-        [TestCase("A188222138", false)] // °ê¥Á¨­¥÷ÃÒ¨k¥Í
-        [TestCase("A213788383", false)] // °ê¥Á¨­¥÷ÃÒ¤k¥Í
-        [TestCase("AA00036116", true)] // »OÆW¦a°Ï©~¯dÃÒ¨k¥Í
-        [TestCase("AB90001505", true)] // »OÆW¦a°Ï©~¯dÃÒ¤k¥Í
-        [TestCase("AC02065646", false)] // ¥~¹´©~¯dÃÒ¨k¥Í
-        [TestCase("AD01915363", false)] // ¥~¹´©~¯dÃÒ¤k¥Í
-        [TestCase("AY90001505", false)] // ¹C¥Á¨k¥Í
-        [TestCase("AX00036116", false)] // ¹C¥Á¤k¥Í
-        [TestCase("A126", false)] // «D10½X
-        [TestCase("AE88222138", false)] // ²Ä¤G½X¿ù»~
-        [TestCase("A111111111", false)] // ®æ¦¡¿ù»~
+        [TestCase("A188222138", false)] // åœ‹æ°‘èº«ä»½è­‰ç”·ç”Ÿ
+        [TestCase("A213788383", false)] // åœ‹æ°‘èº«ä»½è­‰å¥³ç”Ÿ
+        [TestCase("AA00036116", true)] // è‡ºç£åœ°å€å±…ç•™è­‰ç”·ç”Ÿ
+        [TestCase("AB90001505", true)] // è‡ºç£åœ°å€å±…ç•™è­‰å¥³ç”Ÿ
+        [TestCase("AC02065646", false)] // å¤–åƒ‘å±…ç•™è­‰ç”·ç”Ÿ
+        [TestCase("AD01915363", false)] // å¤–åƒ‘å±…ç•™è­‰å¥³ç”Ÿ
+        [TestCase("AY90001505", false)] // éŠæ°‘ç”·ç”Ÿ
+        [TestCase("AX00036116", false)] // éŠæ°‘å¥³ç”Ÿ
+        [TestCase("A126", false)] // é10ç¢¼
+        [TestCase("AE88222138", false)] // ç¬¬äºŒç¢¼éŒ¯èª¤
+        [TestCase("A111111111", false)] // æ ¼å¼éŒ¯èª¤
         public void ValidateResident_ReturnValue_AreEqual(string id, bool expected) {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Resident);
             bool actual = validator.Validate();
@@ -47,19 +47,19 @@ namespace CloudyWing.FormValidators.Tests {
             Assert.AreEqual(actual, expected);
         }
 
-        [TestCase("A188222138", false)] // °ê¥Á¨­¥÷ÃÒ¨k¥Í
-        [TestCase("A213788383", false)] // °ê¥Á¨­¥÷ÃÒ¤k¥Í
-        [TestCase("AA00036116", false)] // »OÆW¦a°Ï©~¯dÃÒ¨k¥Í
-        [TestCase("AB90001505", false)] // »OÆW¦a°Ï©~¯dÃÒ¤k¥Í
-        [TestCase("AC02065646", true)] // ¥~¹´©~¯dÃÒ¨k¥Í
-        [TestCase("AD01915363", true)] // ¥~¹´©~¯dÃÒ¤k¥Í
-        [TestCase("AY90001505", false)] // ¹C¥Á¨k¥Í
-        [TestCase("AX00036116", false)] // ¹C¥Á¤k¥Í
-        [TestCase("A126", false)] // «D10½X
-        [TestCase("AE88222138", false)] // ²Ä¤G½X¿ù»~
-        [TestCase("A111111111", false)] // ®æ¦¡¿ù»~
+        [TestCase("A188222138", false)] // åœ‹æ°‘èº«ä»½è­‰ç”·ç”Ÿ
+        [TestCase("A213788383", false)] // åœ‹æ°‘èº«ä»½è­‰å¥³ç”Ÿ
+        [TestCase("AA00036116", false)] // è‡ºç£åœ°å€å±…ç•™è­‰ç”·ç”Ÿ
+        [TestCase("AB90001505", false)] // è‡ºç£åœ°å€å±…ç•™è­‰å¥³ç”Ÿ
+        [TestCase("AC02065646", true)] // å¤–åƒ‘å±…ç•™è­‰ç”·ç”Ÿ
+        [TestCase("AD01915363", true)] // å¤–åƒ‘å±…ç•™è­‰å¥³ç”Ÿ
+        [TestCase("AY90001505", false)] // éŠæ°‘ç”·ç”Ÿ
+        [TestCase("AX00036116", false)] // éŠæ°‘å¥³ç”Ÿ
+        [TestCase("A126", false)] // é10ç¢¼
+        [TestCase("AE88222138", false)] // ç¬¬äºŒç¢¼éŒ¯èª¤
+        [TestCase("A111111111", false)] // æ ¼å¼éŒ¯èª¤
         public void ValidateAlienResident_ReturnValue_AreEqual(string id, bool expected) {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.AlienResident);
             bool actual = validator.Validate();
@@ -67,19 +67,19 @@ namespace CloudyWing.FormValidators.Tests {
             Assert.AreEqual(actual, expected);
         }
 
-        [TestCase("A188222138", false)] // °ê¥Á¨­¥÷ÃÒ¨k¥Í
-        [TestCase("A213788383", false)] // °ê¥Á¨­¥÷ÃÒ¤k¥Í
-        [TestCase("AA00036116", false)] // »OÆW¦a°Ï©~¯dÃÒ¨k¥Í
-        [TestCase("AB90001505", false)] // »OÆW¦a°Ï©~¯dÃÒ¤k¥Í
-        [TestCase("AC02065646", false)] // ¥~¹´©~¯dÃÒ¨k¥Í
-        [TestCase("AD01915363", false)] // ¥~¹´©~¯dÃÒ¤k¥Í
-        [TestCase("AY90001505", true)] // ¹C¥Á¨k¥Í
-        [TestCase("AX00036116", true)] // ¹C¥Á¤k¥Í
-        [TestCase("A126", false)] // «D10½X
-        [TestCase("AE88222138", false)] // ²Ä¤G½X¿ù»~
-        [TestCase("A111111111", false)] // ®æ¦¡¿ù»~
+        [TestCase("A188222138", false)] // åœ‹æ°‘èº«ä»½è­‰ç”·ç”Ÿ
+        [TestCase("A213788383", false)] // åœ‹æ°‘èº«ä»½è­‰å¥³ç”Ÿ
+        [TestCase("AA00036116", false)] // è‡ºç£åœ°å€å±…ç•™è­‰ç”·ç”Ÿ
+        [TestCase("AB90001505", false)] // è‡ºç£åœ°å€å±…ç•™è­‰å¥³ç”Ÿ
+        [TestCase("AC02065646", false)] // å¤–åƒ‘å±…ç•™è­‰ç”·ç”Ÿ
+        [TestCase("AD01915363", false)] // å¤–åƒ‘å±…ç•™è­‰å¥³ç”Ÿ
+        [TestCase("AY90001505", true)] // éŠæ°‘ç”·ç”Ÿ
+        [TestCase("AX00036116", true)] // éŠæ°‘å¥³ç”Ÿ
+        [TestCase("A126", false)] // é10ç¢¼
+        [TestCase("AE88222138", false)] // ç¬¬äºŒç¢¼éŒ¯èª¤
+        [TestCase("A111111111", false)] // æ ¼å¼éŒ¯èª¤
         public void ValidateHomeless_ReturnValue_AreEqual(string id, bool expected) {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Homeless);
             bool actual = validator.Validate();
@@ -89,7 +89,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_Value_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
             string format = "{0}IdentityNumber";
             string expected = string.Format(format, column);
 

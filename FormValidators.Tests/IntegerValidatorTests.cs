@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -47,7 +47,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IntegerValidator validator = new IntegerValidator(column, "error");
             validator.Validate();
@@ -60,7 +60,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IntegerValidator validator = new IntegerValidator(column, "error", "{0}Integer");
             validator.Validate();
@@ -73,7 +73,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_MinFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IntegerValidator validator = IntegerValidator.CreateMinValue(column, "0", 1);
             validator.Validate();
@@ -86,7 +86,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_MinCustomFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IntegerValidator validator = IntegerValidator.CreateMinValue(column, "0", 1, customRangeMessageFormat: "{0}_{1}Integer");
             validator.Validate();
@@ -99,7 +99,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_MaxFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IntegerValidator validator = IntegerValidator.CreateMaxValue(column, "1", 0);
             validator.Validate();
@@ -112,7 +112,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_MaxCustomFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IntegerValidator validator = IntegerValidator.CreateMaxValue(column, "1", 0, customRangeMessageFormat: "{0}_{1}Integer");
             validator.Validate();
@@ -125,7 +125,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_RangeFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IntegerValidator validator = new IntegerValidator(column, "0", 1, 2);
             validator.Validate();
@@ -138,7 +138,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_RangeCustomFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
 
             IntegerValidator validator = new IntegerValidator(column, "0", 1, 2, customRangeMessageFormat: "{0}_{1}_{2}Integer");
             validator.Validate();

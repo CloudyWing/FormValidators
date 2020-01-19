@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -20,8 +20,8 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            string column = "Äæ¦ì";
-            string comparisonColumn = "¤ñ¸ûÄæ¦ì";
+            string column = "æ¬„ä½";
+            string comparisonColumn = "æ¯”è¼ƒæ¬„ä½";
 
             NumberLessThanValidator validator = new NumberLessThanValidator(column, "1.1", comparisonColumn, "0.1");
             validator.Validate();
@@ -34,8 +34,8 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "Äæ¦ì";
-            string comparisonColumn = "¤ñ¸ûÄæ¦ì";
+            string column = "æ¬„ä½";
+            string comparisonColumn = "æ¯”è¼ƒæ¬„ä½";
 
             NumberLessThanValidator validator = new NumberLessThanValidator(
                 column, "1.1", comparisonColumn, "0.1", customMessageFormat: "{0}NumberLessThan{1}"

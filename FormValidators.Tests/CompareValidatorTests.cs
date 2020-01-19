@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -19,8 +19,8 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            const string column = "´ú¸ÕÄæ¦ì";
-            const string comparisonColumn = "¤ñ¸ûÄæ¦ì";
+            const string column = "æ¸¬è©¦æ¬„ä½";
+            const string comparisonColumn = "æ¯”è¼ƒæ¬„ä½";
             CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456");
             validator.Validate();
             Assert.AreEqual(
@@ -31,8 +31,8 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "´ú¸ÕÄæ¦ì";
-            const string comparisonColumn = "¤ñ¸ûÄæ¦ì";
+            string column = "æ¸¬è©¦æ¬„ä½";
+            const string comparisonColumn = "æ¯”è¼ƒæ¬„ä½";
             CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456", "{0}Compare{1}");
             validator.Validate();
             Assert.AreEqual(

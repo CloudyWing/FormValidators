@@ -7,7 +7,7 @@
 
     <PackageId>CloudyWing.FormValidators.Tests</PackageId>
 
-    <Authors>CloudyWing</Authors>
+    <Authors>周尚緯</Authors>
 
     <AssemblyName>CloudyWing.FormValidators.Tests</AssemblyName>
 
@@ -16,6 +16,8 @@
     <FileVersion>2.0.7323.0</FileVersion>
 
     <AssemblyVersion>2.0.0.0</AssemblyVersion>
+
+    <Version>2.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -9,6 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormValidators.Tests", "For
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FC7CBAAE-3BA4-4896-B6F2-5A55ADD06961}"
 	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -36,13 +37,11 @@ Global
 	GlobalSection(AutomaticVersions) = postSolution
 		UpdateAssemblyVersion = True
 		UpdateAssemblyFileVersion = True
-		UpdateAssemblyInfoVersion = True
-		ShouldCreateLogs = True
-		AssemblyVersionSettings = IncrementOnDemand.IncrementOnDemand.None.IncrementOnDemand
-		AssemblyFileVersionSettings = IncrementOnDemand.IncrementOnDemand.DeltaDayStamp.IncrementOnDemand
+		UpdateAssemblyInfoVersion = False
+		AssemblyVersionSettings = None.None.None.None
+		AssemblyFileVersionSettings = None.None.DeltaDayStamp.None
 		UpdatePackageVersion = False
-		AssemblyInfoVersionSemVerSettings = AssemblyVersion.IncrementWithAutoReset.None
-		AssemblyInfoVersionType = SemVer1
+		AssemblyInfoVersionType = SettingsVersion
 		InheritWinAppVersionFrom = None
 	EndGlobalSection
 EndGlobal

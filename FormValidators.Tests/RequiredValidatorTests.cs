@@ -1,4 +1,4 @@
-using NUnit.Framework;
+Ôªøusing NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -19,7 +19,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            string column = "¥˙∏’ƒÊ¶Ï";
+            string column = "Ê∏¨Ë©¶Ê¨Ñ‰Ωç";
 
             RequiredValidator validator = new RequiredValidator(column, null);
             validator.Validate();
@@ -32,7 +32,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "¥˙∏’ƒÊ¶Ï";
+            string column = "Ê∏¨Ë©¶Ê¨Ñ‰Ωç";
 
             RequiredValidator validator = new RequiredValidator(column, null, "{0}Required");
             validator.Validate();

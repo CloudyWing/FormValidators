@@ -2,7 +2,7 @@
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
-    public class IntegerValidatorTests {
+    public class NumberValidatorTests {
         [SetUp]
         public void Setup() {
         }
@@ -13,35 +13,35 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("0", true)]
         [TestCase("1", true)]
         [TestCase("-1", true)]
-        [TestCase("1.1", false)]
+        [TestCase("1.1", true)]
         [TestCase("string", false)]
         public void Validate_Format_AreEqual(string value, bool isValid) {
-            IntegerValidator validator = new IntegerValidator("", value);
+            NumberValidator validator = new NumberValidator("", value);
             Assert.AreEqual(validator.Validate(), isValid);
         }
 
-        [TestCase("3", 2, 4, true)]
-        [TestCase("3", 3, 3, true)]
-        [TestCase("3", 2, 2, false)]
-        [TestCase("3", 4, 4, false)]
-        public void Validate_Range_AreEqual(string value, long min, long max, bool isValid) {
-            IntegerValidator validator = new IntegerValidator("", value, min, max);
+        [TestCase("3.1", 2.1, 4.1, true)]
+        [TestCase("3.1", 3.1, 3.1, true)]
+        [TestCase("3.1", 2.1, 2.1, false)]
+        [TestCase("3.1", 4.1, 4.1, false)]
+        public void Validate_Range_AreEqual(string value, decimal min, decimal max, bool isValid) {
+            NumberValidator validator = new NumberValidator("", value, min, max);
             Assert.AreEqual(validator.Validate(), isValid);
         }
 
-        [TestCase("3", 2, true)]
-        [TestCase("3", 3, true)]
-        [TestCase("3", 4, false)]
-        public void Validate_Min_AreEqual(string value, long min, bool isValid) {
-            IntegerValidator validator = IntegerValidator.CreateMinValue("", value, min);
+        [TestCase("3.1", 2.1, true)]
+        [TestCase("3.1", 3.1, true)]
+        [TestCase("3.1", 4.1, false)]
+        public void Validate_Min_AreEqual(string value, decimal min, bool isValid) {
+            NumberValidator validator = NumberValidator.CreateMinValue("", value, min);
             Assert.AreEqual(validator.Validate(), isValid);
         }
 
-        [TestCase("3", 4, true)]
-        [TestCase("3", 3, true)]
-        [TestCase("3", 2, false)]
-        public void Validate_Max_AreEqual(string value, long max, bool isValid) {
-            IntegerValidator validator = IntegerValidator.CreateMaxValue("", value, max);
+        [TestCase("3.1", 4.1, true)]
+        [TestCase("3.1", 3.1, true)]
+        [TestCase("3.1", 2.1, false)]
+        public void Validate_Max_AreEqual(string value, decimal max, bool isValid) {
+            NumberValidator validator = NumberValidator.CreateMaxValue("", value, max);
             Assert.AreEqual(validator.Validate(), isValid);
         }
 
@@ -49,7 +49,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_BasicFormat_AreEqual() {
             string column = "測試欄位";
 
-            IntegerValidator validator = new IntegerValidator(column, "error");
+            NumberValidator validator = new NumberValidator(column, "error");
             validator.Validate();
 
             Assert.AreEqual(
@@ -62,7 +62,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_CustomFormat_AreEqual() {
             string column = "測試欄位";
 
-            IntegerValidator validator = new IntegerValidator(column, "error", "{0}Integer");
+            NumberValidator validator = new NumberValidator(column, "error", "{0}Number");
             validator.Validate();
 
             Assert.AreEqual(
@@ -75,11 +75,11 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_MinFormat_AreEqual() {
             string column = "測試欄位";
 
-            IntegerValidator validator = IntegerValidator.CreateMinValue(column, "0", 1);
+            NumberValidator validator = NumberValidator.CreateMinValue(column, "0.1", 1.1m);
             validator.Validate();
 
             Assert.AreEqual(
-                string.Format(validator.MinValueErrorMessageFormat, column, 1),
+                string.Format(validator.MinValueErrorMessageFormat, column, 1.1m),
                 validator.ErrorMessage
             );
         }
@@ -88,11 +88,11 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_MinCustomFormat_AreEqual() {
             string column = "測試欄位";
 
-            IntegerValidator validator = IntegerValidator.CreateMinValue(column, "0", 1, customRangeMessageFormat: "{0}_{1}Integer");
+            NumberValidator validator = NumberValidator.CreateMinValue(column, "0.1", 1.1m, customRangeMessageFormat: "{0}_{1}Number");
             validator.Validate();
 
             Assert.AreEqual(
-                string.Format(validator.CustomRangeMessageFormat, column, 1),
+                string.Format(validator.CustomRangeMessageFormat, column, 1.1m),
                 validator.ErrorMessage
             );
         }
@@ -101,11 +101,11 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_MaxFormat_AreEqual() {
             string column = "測試欄位";
 
-            IntegerValidator validator = IntegerValidator.CreateMaxValue(column, "1", 0);
+            NumberValidator validator = NumberValidator.CreateMaxValue(column, "1.1", 0.1m);
             validator.Validate();
 
             Assert.AreEqual(
-                string.Format(validator.MaxValueErrorMessageFormat, column, 0),
+                string.Format(validator.MaxValueErrorMessageFormat, column, 0.1m),
                 validator.ErrorMessage
             );
         }
@@ -114,11 +114,11 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_MaxCustomFormat_AreEqual() {
             string column = "測試欄位";
 
-            IntegerValidator validator = IntegerValidator.CreateMaxValue(column, "1", 0, customRangeMessageFormat: "{0}_{1}Integer");
+            NumberValidator validator = NumberValidator.CreateMaxValue(column, "1.1", 0.1m, customRangeMessageFormat: "{0}_{1}Number");
             validator.Validate();
 
             Assert.AreEqual(
-                string.Format(validator.CustomRangeMessageFormat, column, 0),
+                string.Format(validator.CustomRangeMessageFormat, column, 0.1m),
                 validator.ErrorMessage
             );
         }
@@ -127,11 +127,11 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_RangeFormat_AreEqual() {
             string column = "測試欄位";
 
-            IntegerValidator validator = new IntegerValidator(column, "0", 1, 2);
+            NumberValidator validator = new NumberValidator(column, "0.1", 1.1m, 2.1m);
             validator.Validate();
 
             Assert.AreEqual(
-                string.Format(validator.RangeErrorMessageFormat, column, 1, 2),
+                string.Format(validator.RangeErrorMessageFormat, column, 1.1m, 2.1m),
                 validator.ErrorMessage
             );
         }
@@ -140,11 +140,11 @@ namespace CloudyWing.FormValidators.Tests {
         public void ErrorMessage_RangeCustomFormat_AreEqual() {
             string column = "測試欄位";
 
-            IntegerValidator validator = new IntegerValidator(column, "0", 1, 2, customRangeMessageFormat: "{0}_{1}_{2}Integer");
+            NumberValidator validator = new NumberValidator(column, "0.1", 1.1m, 2.1m, customRangeMessageFormat: "{0}_{1}_{2}Number");
             validator.Validate();
 
             Assert.AreEqual(
-                string.Format(validator.CustomRangeMessageFormat, column, 1, 2),
+                string.Format(validator.CustomRangeMessageFormat, column, 1.1m, 2.1m),
                 validator.ErrorMessage
             );
         }

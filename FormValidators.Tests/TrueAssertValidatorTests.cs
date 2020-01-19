@@ -1,3 +1,4 @@
+ï»¿using System;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
@@ -18,11 +19,21 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_Value_AreEqual() {
-            string expected = "´ú¸ÕTrueAssert";
+            string expected = "æ¸¬è©¦TrueAssert";
             TrueAssertValidator validator = new TrueAssertValidator(false, expected);
             validator.Validate();
 
             Assert.AreEqual(validator.ErrorMessage, expected);
+        }
+
+        [Test]
+        public void Predicate_Exception_Timing() {
+            int dividend = 0;
+            int division = 1;
+
+            Assert.DoesNotThrow(() => new TrueAssertValidator(() => (division / dividend) == 0, ""));
+
+            Assert.Throws<DivideByZeroException>(() => new TrueAssertValidator(() => (division / dividend) == 0, "").Validate());
         }
     }
 }

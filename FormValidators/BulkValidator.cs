@@ -6,7 +6,7 @@ using System.Linq;
 namespace CloudyWing.FormValidators {
     using Core;
 
-    public class BulkValidator : Collection<IFormValidatable>, IFormValidatable {
+    public class BulkValidator : Collection<IFormValidator>, IFormValidator {
         private readonly IList<string> errorMessages = new List<string>();
 
         public BulkValidator(bool isStoppedIfFail = false) {
@@ -41,7 +41,7 @@ namespace CloudyWing.FormValidators {
         public bool Validate() {
             errorMessages.Clear();
 
-            foreach (IFormValidatable item in Items) {
+            foreach (IFormValidator item in Items) {
                 if (!item.Validate()) {
                     if (item is BulkValidator innerItems) {
                         foreach (var _message in innerItems.ErrorMessages) {

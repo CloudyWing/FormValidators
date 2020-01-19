@@ -1,4 +1,4 @@
-using NUnit.Framework;
+Ôªøusing NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -12,29 +12,31 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase(" ", "", true)]
         [TestCase("123", "123", true)]
         [TestCase("123", "456", false)]
-        public void Validate_ReturnValue_AreEqual(string value, string validationValue, bool isValid) {
-            CompareValidator validator = new CompareValidator("", value, validationValue);
+        public void Validate_ReturnValue_AreEqual(string value, string comparisonValue, bool isValid) {
+            CompareValidator validator = new CompareValidator("", value, "", comparisonValue);
             Assert.AreEqual(validator.Validate(), isValid);
         }
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            string column = "¥˙∏’ƒÊ¶Ï";
-            CompareValidator validator = new CompareValidator(column, "123", "456");
+            const string column = "Ê∏¨Ë©¶Ê¨Ñ‰Ωç";
+            const string comparisonColumn = "ÊØîËºÉÊ¨Ñ‰Ωç";
+            CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456");
             validator.Validate();
             Assert.AreEqual(
-                string.Format(validator.DefaultErrorMessageFormat, column),
+                string.Format(validator.DefaultErrorMessageFormat, column, comparisonColumn),
                 validator.ErrorMessage
             );
         }
 
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "¥˙∏’ƒÊ¶Ï";
-            CompareValidator validator = new CompareValidator(column, "123", "456", "{0}Compare");
+            string column = "Ê∏¨Ë©¶Ê¨Ñ‰Ωç";
+            const string comparisonColumn = "ÊØîËºÉÊ¨Ñ‰Ωç";
+            CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456", "{0}Compare{1}");
             validator.Validate();
             Assert.AreEqual(
-                string.Format(validator.CustomErrorMessageFormat, column),
+                string.Format(validator.CustomErrorMessageFormat, column, comparisonColumn),
                 validator.ErrorMessage
             );
         }

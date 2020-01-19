@@ -1,4 +1,4 @@
-using NUnit.Framework;
+Ôªøusing NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -11,6 +11,7 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("", true)]
         [TestCase(" ", true)]
         [TestCase("0912345678", true)]
+        [TestCase("0912-345678", true)]
         [TestCase("09123456789", false)]
         [TestCase("091234567", false)]
         [TestCase("0812345678", false)]
@@ -22,7 +23,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            string column = "¥˙∏’ƒÊ¶Ï";
+            string column = "Ê∏¨Ë©¶Ê¨Ñ‰Ωç";
 
             MobilePhoneValidator validator = new MobilePhoneValidator(column, "error");
             validator.Validate();
@@ -35,7 +36,7 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "¥˙∏’ƒÊ¶Ï";
+            string column = "Ê∏¨Ë©¶Ê¨Ñ‰Ωç";
 
             MobilePhoneValidator validator = new MobilePhoneValidator(column, "error", "{0}MobilePhone");
             validator.Validate();

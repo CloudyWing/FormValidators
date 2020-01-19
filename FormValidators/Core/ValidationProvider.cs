@@ -53,6 +53,18 @@ namespace CloudyWing.FormValidators.Core {
 
         public Func<string, string, CompareValidator> Compare(string validationValue, string customMessageFormat = null)
             => (column, value) => new CompareValidator(column, value, validationValue, customMessageFormat);
+
+        public Func<string, string, IntegerLessThanValidator> IntegerLessThan(
+            string comparisonColumn, string comparisonValue, bool allowedEquals, string customMessageFormat = null
+        ) => (column, value) => new IntegerLessThanValidator(column, value, comparisonColumn, comparisonValue, allowedEquals, customMessageFormat);
+
+        public Func<string, string, NumberLessThanValidator> NumberLessThan(
+            string comparisonColumn, string comparisonValue, bool allowedEquals, string customMessageFormat = null
+        ) => (column, value) => new NumberLessThanValidator(column, value, comparisonColumn, comparisonValue, allowedEquals, customMessageFormat);
+
+        public Func<string, string, DateTimeLessThanValidator> DateTimeLessThan(
+            string comparisonColumn, string comparisonValue, bool allowedEquals, string customMessageFormat = null
+        ) => (column, value) => new DateTimeLessThanValidator(column, value, comparisonColumn, comparisonValue, allowedEquals, customMessageFormat);
     }
 
 }

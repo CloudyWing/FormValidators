@@ -208,5 +208,41 @@ namespace CloudyWing.FormValidators.Core.Tests {
 
             Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
         }
+
+        [Test]
+        public void IntegerLessThan_Message_AreEqual() {
+            const string column = "Column";
+            const string comparisonColumn = "Comparison Column";
+            const string message = "測試{0}必須小於{1}";
+
+            IFormValidatable validator = provider.IntegerLessThan(comparisonColumn, "1", false, message)(column, "1");
+            validator.Validate();
+
+            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, comparisonColumn));
+        }
+
+        [Test]
+        public void NumberLessThan_Message_AreEqual() {
+            const string column = "Column";
+            const string comparisonColumn = "Comparison Column";
+            const string message = "測試{0}必須小於{1}";
+
+            IFormValidatable validator = provider.NumberLessThan(comparisonColumn, "1.1", false, message)(column, "1.1");
+            validator.Validate();
+
+            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, comparisonColumn));
+        }
+
+        [Test]
+        public void DateTimeLessThan_Message_AreEqual() {
+            const string column = "Column";
+            const string comparisonColumn = "Comparison Column";
+            const string message = "測試{0}必須小於{1}";
+
+            IFormValidatable validator = provider.DateTimeLessThan(comparisonColumn, "2020/01/01", false, message)(column, "2020/01/01");
+            validator.Validate();
+
+            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, comparisonColumn));
+        }
     }
 }

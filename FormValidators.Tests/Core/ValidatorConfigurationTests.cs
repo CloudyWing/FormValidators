@@ -62,7 +62,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
         }
 
         [Test()]
-        public void Add_TrueAssert_Result() {
+        public void AddTrueAssert_Result() {
             const string message = "TestTrueAssert";
             BulkValidator expected = new BulkValidator() {
                 new TrueAssertValidator(false, message)
@@ -76,13 +76,34 @@ namespace CloudyWing.FormValidators.Core.Tests {
         }
 
         [Test()]
-        public void Add_FalseAssert_Result() {
+        public void AddFalseAssert_Result() {
             const string message = "TestFalseAssert";
             BulkValidator expected = new BulkValidator() {
                 new FalseAssertValidator(false, message)
             };
 
             config.AddFalseAssert(true, message);
+
+            Assert.AreEqual(expected.IsValid, validators.IsValid);
+            Assert.AreEqual(expected.ErrorMessage, validators.ErrorMessage);
+            Assert.That(validators, Has.Count.EqualTo(expected.Count));
+        }
+
+        [Test()]
+        public void AddBulk_Result() {
+            BulkValidator expected = new BulkValidator {
+                new BulkValidator(cfg => {
+                    cfg.Add("Column1", "Value1", opt => opt.Required(), opt => opt.DateTime());
+                    cfg.Add("Column2", "Value2", opt => opt.Required());
+                })
+            };
+            expected.Validate();
+
+            config.AddBulk(cfg => {
+                cfg.Add("Column1", "Value1", opt => opt.Required(), opt => opt.DateTime());
+                cfg.Add("Column2", "Value2", opt => opt.Required());
+            });
+            validators.Validate();
 
             Assert.AreEqual(expected.IsValid, validators.IsValid);
             Assert.AreEqual(expected.ErrorMessage, validators.ErrorMessage);

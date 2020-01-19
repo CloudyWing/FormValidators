@@ -49,5 +49,8 @@ namespace CloudyWing.FormValidators.Core {
 
         public void AddFalseAssert(bool isFalse, string message)
             => validators.Add(new FalseAssertValidator(isFalse, message));
+
+        public void AddBulk(Action<ValidatorConfiguration> configure, bool isStoppedIfFail = false)
+            => validators.Add(new BulkValidator(configure, isStoppedIfFail));
     }
 }

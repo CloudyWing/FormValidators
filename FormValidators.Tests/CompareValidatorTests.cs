@@ -12,18 +12,19 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase(" ", "", true)]
         [TestCase("123", "123", true)]
         [TestCase("123", "456", false)]
-        public void Validate_ReturnValue_AreEqual(string value, string validationValue, bool isValid) {
-            CompareValidator validator = new CompareValidator("", value, validationValue);
+        public void Validate_ReturnValue_AreEqual(string value, string comparisonValue, bool isValid) {
+            CompareValidator validator = new CompareValidator("", value, "", comparisonValue);
             Assert.AreEqual(validator.Validate(), isValid);
         }
 
         [Test]
         public void ErrorMessage_BasicFormat_AreEqual() {
-            string column = "測試欄位";
-            CompareValidator validator = new CompareValidator(column, "123", "456");
+            const string column = "測試欄位";
+            const string comparisonColumn = "比較欄位";
+            CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456");
             validator.Validate();
             Assert.AreEqual(
-                string.Format(validator.DefaultErrorMessageFormat, column),
+                string.Format(validator.DefaultErrorMessageFormat, column, comparisonColumn),
                 validator.ErrorMessage
             );
         }
@@ -31,10 +32,11 @@ namespace CloudyWing.FormValidators.Tests {
         [Test]
         public void ErrorMessage_CustomFormat_AreEqual() {
             string column = "測試欄位";
-            CompareValidator validator = new CompareValidator(column, "123", "456", "{0}Compare");
+            const string comparisonColumn = "比較欄位";
+            CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456", "{0}Compare{1}");
             validator.Validate();
             Assert.AreEqual(
-                string.Format(validator.CustomErrorMessageFormat, column),
+                string.Format(validator.CustomErrorMessageFormat, column, comparisonColumn),
                 validator.ErrorMessage
             );
         }

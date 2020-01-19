@@ -201,12 +201,13 @@ namespace CloudyWing.FormValidators.Core.Tests {
         [Test]
         public void Compare_Message_AreEqual() {
             const string column = "Compare";
+            const string comparisonColumn = "ComparisonColumn";
             const string message = "測試{0}";
 
-            IFormValidatable validator = provider.Compare("123", message)(column, "321");
+            IFormValidatable validator = provider.Compare(comparisonColumn, "123", message)(column, "321");
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
+            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, comparisonColumn));
         }
 
         [Test]

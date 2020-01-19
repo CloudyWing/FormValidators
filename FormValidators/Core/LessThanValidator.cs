@@ -2,7 +2,7 @@
 
 namespace CloudyWing.FormValidators.Core {
     public abstract class LessThanValidator<T> : IFormValidatable
-        where T : IConvertible, IComparable<T>, IEquatable<T> {
+        where T : struct, IConvertible, IComparable<T>, IEquatable<T> {
         /// <summary>
         /// Initializes a new instance of the <see cref="LessThanValidator{T}"/> class.
         /// </summary>

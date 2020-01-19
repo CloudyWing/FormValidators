@@ -1,5 +1,5 @@
 ﻿namespace CloudyWing.FormValidators.Core {
-    public abstract class FormValidatorBase : IFormValidatable {
+    public abstract class FormValidatorBase : IFormValidator {
         public FormValidatorBase(string column, string value, string customMessageFormat) {
             Column = column;
             Value = value;

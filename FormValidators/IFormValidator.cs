@@ -1,5 +1,5 @@
 ﻿namespace CloudyWing.FormValidators {
-    public interface IFormValidatable {
+    public interface IFormValidator {
         string ErrorMessage { get; }
 
         bool IsValid { get; }

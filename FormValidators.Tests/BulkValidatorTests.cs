@@ -42,9 +42,9 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_ErrorMessage_AreEqual() {
-            IFormValidatable validate1 = new TrueAssertValidator(false, "1");
-            IFormValidatable validate2 = new TrueAssertValidator(true, "2");
-            IFormValidatable validate3 = new TrueAssertValidator(false, "3");
+            IFormValidator validate1 = new TrueAssertValidator(false, "1");
+            IFormValidator validate2 = new TrueAssertValidator(true, "2");
+            IFormValidator validate3 = new TrueAssertValidator(false, "3");
 
             BulkValidator validators = new BulkValidator {
                 validate1, validate2, validate3
@@ -56,9 +56,9 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_ErrorMessageWithBR_AreEqual() {
-            IFormValidatable validate1 = new TrueAssertValidator(false, "1");
-            IFormValidatable validate2 = new TrueAssertValidator(true, "2");
-            IFormValidatable validate3 = new TrueAssertValidator(false, "3");
+            IFormValidator validate1 = new TrueAssertValidator(false, "1");
+            IFormValidator validate2 = new TrueAssertValidator(true, "2");
+            IFormValidator validate3 = new TrueAssertValidator(false, "3");
 
             BulkValidator validators = new BulkValidator {
                 validate1, validate2, validate3
@@ -70,9 +70,9 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_ErrorMessageWithLF_AreEqual() {
-            IFormValidatable validate1 = new TrueAssertValidator(false, "1");
-            IFormValidatable validate2 = new TrueAssertValidator(true, "2");
-            IFormValidatable validate3 = new TrueAssertValidator(false, "3");
+            IFormValidator validate1 = new TrueAssertValidator(false, "1");
+            IFormValidator validate2 = new TrueAssertValidator(true, "2");
+            IFormValidator validate3 = new TrueAssertValidator(false, "3");
 
             BulkValidator validators = new BulkValidator {
                 validate1, validate2, validate3
@@ -84,9 +84,9 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessage_ErrorMessageWithNewLine_AreEqual() {
-            IFormValidatable validate1 = new TrueAssertValidator(false, "1");
-            IFormValidatable validate2 = new TrueAssertValidator(true, "2");
-            IFormValidatable validate3 = new TrueAssertValidator(false, "3");
+            IFormValidator validate1 = new TrueAssertValidator(false, "1");
+            IFormValidator validate2 = new TrueAssertValidator(true, "2");
+            IFormValidator validate3 = new TrueAssertValidator(false, "3");
 
             BulkValidator validators = new BulkValidator {
                 validate1, validate2, validate3
@@ -131,9 +131,9 @@ namespace CloudyWing.FormValidators.Tests {
 
         [Test]
         public void ErrorMessageStoppedIfFail_ErrorMessage_AreEqual() {
-            IFormValidatable validate1 = new TrueAssertValidator(false, "1");
-            IFormValidatable validate2 = new TrueAssertValidator(true, "2");
-            IFormValidatable validate3 = new TrueAssertValidator(false, "3");
+            IFormValidator validate1 = new TrueAssertValidator(false, "1");
+            IFormValidator validate2 = new TrueAssertValidator(true, "2");
+            IFormValidator validate3 = new TrueAssertValidator(false, "3");
             BulkValidator validators = new BulkValidator(true) {
                 validate1, validate2, validate3
             };

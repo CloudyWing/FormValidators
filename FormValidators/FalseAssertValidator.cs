@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace CloudyWing.FormValidators {
-    public class FalseAssertValidator : IFormValidatable {
+    public class FalseAssertValidator : IFormValidator {
         private readonly string errorMessage = "";
         private readonly Func<bool> falsePredicate;
 

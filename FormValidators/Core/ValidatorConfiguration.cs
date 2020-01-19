@@ -12,30 +12,30 @@ namespace CloudyWing.FormValidators.Core {
 
         public void Add(
             string column, string value,
-            params Func<ValidationProvider, Func<string, string, IFormValidatable>>[] validationFunctions
+            params Func<ValidationProvider, Func<string, string, IFormValidator>>[] validationFunctions
         ) {
             AddIf(true, column, value, validationFunctions);
         }
 
         public void Add(
             string column, string value,
-            IEnumerable<Func<ValidationProvider, Func<string, string, IFormValidatable>>> validationFunctions
+            IEnumerable<Func<ValidationProvider, Func<string, string, IFormValidator>>> validationFunctions
         ) {
             AddIf(true, column, value, validationFunctions);
         }
 
         public void AddIf(
            bool condition, string column, string value,
-           params Func<ValidationProvider, Func<string, string, IFormValidatable>>[] validationFunctions
+           params Func<ValidationProvider, Func<string, string, IFormValidator>>[] validationFunctions
        ) {
             AddIf(condition, column, value,
-                validationFunctions as IEnumerable<Func<ValidationProvider, Func<string, string, IFormValidatable>>>
+                validationFunctions as IEnumerable<Func<ValidationProvider, Func<string, string, IFormValidator>>>
             );
         }
 
         public void AddIf(
             bool condition, string column, string value,
-            IEnumerable<Func<ValidationProvider, Func<string, string, IFormValidatable>>> validationFunctions
+            IEnumerable<Func<ValidationProvider, Func<string, string, IFormValidator>>> validationFunctions
         ) {
             if (condition) {
                 foreach (var function in validationFunctions) {

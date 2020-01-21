@@ -90,13 +90,16 @@ if (!validators.Validate()) {
 }
 ```
 
-可使用搭配ValidatorConfiguration建立BulkValidator
+可使用BulkValidator(Action\<ValidatorConfiguration\> configure)簡化建立程式碼
 ```
 BulkValidator validators = new BulkValidator(cfg => {
     cfg.Add("欄位一", "值一", opt => opt.Required()); // 增加一個驗證
     cfg.Add("欄位二", "值二", opt => opt.Required(), opt => opt.DateTime()); // 增加多個驗證
     cfg.AddIf(condition, "欄位三", "值三", opt => opt.Required(), opt => opt.DateTime()); // condition為true時，才會驗證
     cfg.AddTrueAssert(true, "錯誤訊息");
+    cfg.AddBulk(_cfg => {
+         _cfg.Add("欄位四", "值四", opt => opt.Required());
+    });
 });
 ```
 

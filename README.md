@@ -1,16 +1,41 @@
 # FormValidators
 
-用來驗證於輸入資料格式，適用於Web Form使用，不過Web Form本身有驗證控制項，所以此專案更多是用在記錄資料驗證的方式，偏向娛樂性質居多。
+用於驗證資料格式，適用於如Web Form控制項等輸入值皆為字串之場合。
+不過Web Form本身有Validation Controls，所以除非捨棄Validation Controls，自行定義驗證方式，否則此專案更多是用於記錄資料驗證的方式，偏向娛樂性質居多。
 
-## 專案說明
+## Supported Frameworks
+* .NET Standard 2.0
+* .NET Framework 4.5
 
-Class Library：使用Standard 2.0開發。
+## Documentation
 
-FormValidators：主專案。
+### FormValidators：
 
-FormValidators.Tests：測試專案。
+* 基本驗證
+  * RequiredValidator：Value的必填驗證，如果是Null、空字串或空格，視為沒有值。
+  * ValueLengthValidator：Value的長度驗證。
+  * BulkValidator：批量驗證，參數isStoppedIfFail可控制驗證不通過時，是否繼續後續驗證。
+* 型別驗證
+  * IntegerValidator：整數和極限值驗證。
+  * NumberValidator：數值和極限值驗證。
+  * DateTimeValidator：日期和極限值驗證。
+* 比較驗證
+  * CompareValidator：比較兩欄位的值是否相等。
+  * IntegerLessThanValidator：整數起訖值驗證，目標值必須小於驗證值；allowedEquals為true時，可以等於。
+  * NumberLessThanValidator：數值起訖值驗證，目標值必須小於驗證值；allowedEquals為true時，可以等於。
+  * DateTimeLessThanValidator：日期起訖值驗證，目標值必須小於驗證值；allowedEquals為true時，可以等於。
+* 格式驗證
+  * RegexValidator：使用正規式驗證Value。
+  * EmailValidator：Email格式驗證。
+  * MobilePhoneValidator：手機格式驗證。
+  * IdCardValidator：身分證驗證，可用IdCardTypes設定驗證允許格式「國民身分證」、「臺灣地區居留證」、「外僑居留證」和「遊民證」，預設全部允許。
+* Boolean驗證
+  * TrueAssertValidator：參數為true時，驗證通過；參數可用Func\<T\>將條件式延後到Validate()時執行。
+  * FalseAssertValidator：參數為true時，驗證通過；參數可用Func\<T\>將條件式延後到Validate()時執行。
 
-## 範例
+需注意除了RequiredValidator、BulkValidator和Boolean驗證外，當Value為Null、空字串或空格皆視為驗證通過。
+
+## Examples
 
 作法一：取得全部驗證的錯誤訊息
 ```
@@ -36,7 +61,7 @@ if (!validators.Validate()) {
 
 作法二：取得第一個錯誤訊息
 ```
-// 建立容器，並將Validator加入批次裡
+// 建立容器，並將Validator加入批量裡
 BulkValidator validators = new BulkValidator(true);
 // TrueAssert遇到true，驗證成功
 validators.Add(new TrueAssertValidator(true, "錯誤訊息一"));
@@ -65,13 +90,16 @@ if (!validators.Validate()) {
 }
 ```
 
-可使用搭配ValidatorConfiguration建立BulkValidator
+可使用BulkValidator(Action\<ValidatorConfiguration\> configure)簡化建立程式碼
 ```
 BulkValidator validators = new BulkValidator(cfg => {
     cfg.Add("欄位一", "值一", opt => opt.Required()); // 增加一個驗證
     cfg.Add("欄位二", "值二", opt => opt.Required(), opt => opt.DateTime()); // 增加多個驗證
     cfg.AddIf(condition, "欄位三", "值三", opt => opt.Required(), opt => opt.DateTime()); // condition為true時，才會驗證
     cfg.AddTrueAssert(true, "錯誤訊息");
+    cfg.AddBulk(_cfg => {
+         _cfg.Add("欄位四", "值四", opt => opt.Required());
+    });
 });
 ```
 

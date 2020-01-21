@@ -6,10 +6,11 @@
     <RootNamespace>CloudyWing.FormValidators</RootNamespace>
     <Authors>周尚緯</Authors>
     <Product>FormValidators</Product>
-    <Version>2.0.1</Version>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.7323.0</FileVersion>
-    <Description>用來驗證於Web Form輸入資料格式。</Description>
+    <Version>2.1.0</Version>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.7325.0</FileVersion>
+    <Description>用於驗證資料格式，適用於如Web Form控制項等輸入值皆為字串之場合。
+不過Web Form本身有Validation Controls，所以除非捨棄Validation Controls，自行定義驗證方式，否則此專案更多是用於記錄資料驗證的方式，偏向娛樂性質居多。</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/CloudyWing/FormValidators</RepositoryUrl>

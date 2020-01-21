@@ -47,8 +47,14 @@ namespace CloudyWing.FormValidators.Core {
         public void AddTrueAssert(bool isTrue, string message)
             => validators.Add(new TrueAssertValidator(isTrue, message));
 
+        public void AddTrueAssert(Func<bool> truePredicate, string message)
+            => validators.Add(new TrueAssertValidator(truePredicate, message));
+
         public void AddFalseAssert(bool isFalse, string message)
             => validators.Add(new FalseAssertValidator(isFalse, message));
+
+        public void AddFalseAssert(Func<bool> falsePredicate, string message)
+            => validators.Add(new FalseAssertValidator(falsePredicate, message));
 
         public void AddBulk(Action<ValidatorConfiguration> configure, bool isStoppedIfFail = false)
             => validators.Add(new BulkValidator(configure, isStoppedIfFail));

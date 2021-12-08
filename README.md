@@ -103,5 +103,34 @@ BulkValidator validators = new BulkValidator(cfg => {
 });
 ```
 
+客製化驗證
+```
+// 撰寫新的FormValidator
+public class CustomFormValidator : IFormValidator {
+    public CustomFormValidator(string column, string value) {
+        Column = column;
+        Value = value;
+    }
+
+    public string Column { get; set; }
+
+    public string Value { get; set; }
+
+    public string ErrorMessage { get; }
+
+    public bool IsValid { get; }
+
+    public bool Validate() {
+        // 填寫您的實作
+    }
+}
+
+// 撰寫ValidationProvider的擴充方法
+public static class ValidationProviderExtensions {
+    public static Func<string, string, CustomFormValidator> Custom(this ValidationProvider provider)
+        => (column, value) => new CustomFormValidator(column, value);
+}
+```
+
 ## License
 This project is MIT [licensed](https://github.com/CloudyWing/FormValidators/blob/master/LICENSE.md).

@@ -10,13 +10,14 @@
     <AssemblyVersion>2.1.0.0</AssemblyVersion>
     <FileVersion>2.1.7325.0</FileVersion>
     <Description>用於驗證資料格式，適用於如Web Form控制項等輸入值皆為字串之場合。
-不過Web Form本身有Validation Controls，所以除非捨棄Validation Controls，自行定義驗證方式，否則此專案更多是用於記錄資料驗證的方式，偏向娛樂性質居多。</Description>
+不過 Web Form 本身有 Validation Controls，所以除非捨棄 Validation Controls，自行定義驗證方式，否則此專案更多是用於記錄資料驗證的方式，偏向娛樂性質居多。</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/CloudyWing/FormValidators</RepositoryUrl>
     <PackageProjectUrl>https://github.com/CloudyWing/FormValidators</PackageProjectUrl>
     <Company />
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
@@ -24,9 +25,13 @@
     </AssemblyAttribute>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\LICENSE.md">
+    <None Include="..\..\LICENSE.md">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 </Project>

@@ -2,6 +2,9 @@
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators {
+    /// <summary>
+    /// The datetime less than validator
+    /// </summary>
     public sealed class DateTimeLessThanValidator : LessThanValidator<DateTime> {
         /// <summary>
         /// Initializes a new instance of the <see cref="DateTimeLessThanValidator"/> class.
@@ -17,6 +20,7 @@ namespace CloudyWing.FormValidators {
             bool allowedEquals = true, string customMessageFormat = null)
             : base(column, value, comparisonColumn, comparisonValue, allowedEquals, customMessageFormat) { }
 
+        /// <inheritdoc/>
         protected override bool TryParse(string value, out DateTime result) {
             return DateTime.TryParse(value, out result);
         }

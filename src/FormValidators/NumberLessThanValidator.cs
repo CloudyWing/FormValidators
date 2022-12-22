@@ -1,10 +1,9 @@
 ﻿using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators {
+    /// <summary>The number less than validator.</summary>
     public sealed class NumberLessThanValidator : LessThanValidator<decimal> {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NumberLessThanValidator"/> class.
-        /// </summary>
+        /// <summary>Initializes a new instance of the <see cref="NumberLessThanValidator" /> class.</summary>
         /// <param name="column">The column.</param>
         /// <param name="value">The value.</param>
         /// <param name="comparisonColumn">The comparison column.</param>
@@ -16,6 +15,7 @@ namespace CloudyWing.FormValidators {
             bool allowedEquals = true, string customMessageFormat = null)
             : base(column, value, comparisonColumn, comparisonValue, allowedEquals, customMessageFormat) { }
 
+        /// <inheritdoc/>
         protected override bool TryParse(string value, out decimal result) {
             return decimal.TryParse(value, out result);
         }

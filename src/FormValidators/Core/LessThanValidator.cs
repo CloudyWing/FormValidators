@@ -1,6 +1,8 @@
 ﻿using System;
 
 namespace CloudyWing.FormValidators.Core {
+    /// <summary>The less than validator abstract class.</summary>
+    /// <typeparam name="T">The value type.</typeparam>
     public abstract class LessThanValidator<T> : IFormValidator
         where T : struct, IConvertible, IComparable<T>, IEquatable<T> {
         /// <summary>
@@ -33,24 +35,42 @@ namespace CloudyWing.FormValidators.Core {
             CustomErrorMessageFormat = customMessageFormat;
         }
 
+        /// <summary>Gets or sets the column.</summary>
+        /// <value>The column.</value>
         public string Column { get; set; }
 
+        /// <summary>Gets or sets the value.</summary>
+        /// <value>The value.</value>
         public string Value { get; set; }
 
+        /// <summary>Gets or sets the comparison column.</summary>
+        /// <value>The comparison column.</value>
         public string ComparisonColumn { get; set; }
 
+        /// <summary>Gets or sets the comparison value.</summary>
+        /// <value>The comparison value.</value>
         public string ComparisonValue { get; set; }
 
+        /// <summary>Gets or sets a value indicating whether [allowed equals].</summary>
+        /// <value>
+        ///   <c>true</c> if [allowed equals]; otherwise, <c>false</c>.</value>
         public bool AllowedEquals { get; set; }
 
+        /// <inheritdoc />
         public string ErrorMessage { get; private set; }
 
+        /// <inheritdoc />
         public bool IsValid { get; private set; }
 
+        /// <summary>Gets the default error message format.</summary>
+        /// <value>The default error message format.</value>
         public virtual string DefaultErrorMessageFormat { get; } = "「{0}」必須要小於「{1}」。";
 
+        /// <summary>Gets or sets the custom error message format.</summary>
+        /// <value>The custom error message format.</value>
         public string CustomErrorMessageFormat { get; set; }
 
+        /// <inheritdoc />
         public bool Validate() {
             // 格式不正確就不驗證
             if (!TryParse(Value, out T _value)
@@ -66,6 +86,10 @@ namespace CloudyWing.FormValidators.Core {
             return IsValid;
         }
 
+        /// <summary>Tries the parse.</summary>
+        /// <param name="value">The value.</param>
+        /// <param name="result">The result.</param>
+        /// <returns>Parse value to type <c>T</c> result.</returns>
         protected abstract bool TryParse(string value, out T result);
 
         private string CreateErrorMessage() {

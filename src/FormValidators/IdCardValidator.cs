@@ -1,19 +1,28 @@
 ﻿using System.Text.RegularExpressions;
+using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators {
-    using Core;
-
+    /// <summary>The identity card validator.</summary>
     public sealed class IdCardValidator : FormValidatorBase {
+        /// <summary>Initializes a new instance of the <see cref="IdCardValidator" /> class.</summary>
+        /// <param name="column">The column.</param>
+        /// <param name="value">The value.</param>
+        /// <param name="idCardType">Type of the identifier card.</param>
+        /// <param name="customMessageFormat">The custom message format.</param>
         public IdCardValidator(string column, string value,
             IdCardTypes idCardType = IdCardTypes.All, string customMessageFormat = null)
             : base(column, value, customMessageFormat) {
             IdCardType = idCardType;
         }
 
+        /// <summary>Gets the type of the identifier card.</summary>
+        /// <value>The type of the identifier card.</value>
         public IdCardTypes IdCardType { get; }
 
+        /// <inheritdoc/>
         public override string DefaultErrorMessageFormat => "「{0}」必須為正確身分證格式。";
 
+        /// <inheritdoc/>
         protected override bool ValidateValue() {
             if (string.IsNullOrWhiteSpace(Value)) {
                 return true;

@@ -7,14 +7,16 @@ namespace CloudyWing.FormValidators.Tests {
         public void Setup() {
         }
 
-        [TestCase("A188222138", true)] // 國民身份證男生
-        [TestCase("A213788383", true)] // 國民身份證女生
-        [TestCase("AA00036116", false)] // 臺灣地區居留證男生
-        [TestCase("AB90001505", false)] // 臺灣地區居留證女生
-        [TestCase("AC02065646", false)] // 外僑居留證男生
-        [TestCase("AD01915363", false)] // 外僑居留證女生
-        [TestCase("AY90001505", false)] // 遊民男生
-        [TestCase("AX00036116", false)] // 遊民女生
+        [TestCase("A188222138", true)] // 國民身份證號男生
+        [TestCase("A213788383", true)] // 國民身份證號女生
+        [TestCase("AA00036116", false)] // 臺灣地區居留證統一證號男生
+        [TestCase("AB90001505", false)] // 臺灣地區居留證統一證號女生
+        [TestCase("AC02065646", false)] // 外僑居留證統一證號男生
+        [TestCase("AD01915363", false)] // 外僑居留證統一證號女生
+        [TestCase("AY90001505", false)] // 遊民證號男生
+        [TestCase("AX00036116", false)] // 遊民證號女生
+        [TestCase("A894677652", false)] // 新式外來人口統一證號男生
+        [TestCase("A926268625", false)] // 新式外來人口統一證號女生
         [TestCase("A126", false)] // 非10碼
         [TestCase("AE88222138", false)] // 第二碼錯誤
         [TestCase("A111111111", false)] // 格式錯誤
@@ -27,14 +29,16 @@ namespace CloudyWing.FormValidators.Tests {
             Assert.AreEqual(actual, expected);
         }
 
-        [TestCase("A188222138", false)] // 國民身份證男生
-        [TestCase("A213788383", false)] // 國民身份證女生
-        [TestCase("AA00036116", true)] // 臺灣地區居留證男生
-        [TestCase("AB90001505", true)] // 臺灣地區居留證女生
-        [TestCase("AC02065646", false)] // 外僑居留證男生
-        [TestCase("AD01915363", false)] // 外僑居留證女生
-        [TestCase("AY90001505", false)] // 遊民男生
-        [TestCase("AX00036116", false)] // 遊民女生
+        [TestCase("A188222138", false)] // 國民身份證號男生
+        [TestCase("A213788383", false)] // 國民身份證號女生
+        [TestCase("AA00036116", true)] // 臺灣地區居留證統一證號男生
+        [TestCase("AB90001505", true)] // 臺灣地區居留證統一證號女生
+        [TestCase("AC02065646", false)] // 外僑居留證統一證號男生
+        [TestCase("AD01915363", false)] // 外僑居留證統一證號女生
+        [TestCase("AY90001505", false)] // 遊民證號男生
+        [TestCase("AX00036116", false)] // 遊民證號女生
+        [TestCase("A894677652", false)] // 新式外來人口統一證號男生
+        [TestCase("A926268625", false)] // 新式外來人口統一證號女生
         [TestCase("A126", false)] // 非10碼
         [TestCase("AE88222138", false)] // 第二碼錯誤
         [TestCase("A111111111", false)] // 格式錯誤
@@ -47,14 +51,16 @@ namespace CloudyWing.FormValidators.Tests {
             Assert.AreEqual(actual, expected);
         }
 
-        [TestCase("A188222138", false)] // 國民身份證男生
-        [TestCase("A213788383", false)] // 國民身份證女生
-        [TestCase("AA00036116", false)] // 臺灣地區居留證男生
-        [TestCase("AB90001505", false)] // 臺灣地區居留證女生
-        [TestCase("AC02065646", true)] // 外僑居留證男生
-        [TestCase("AD01915363", true)] // 外僑居留證女生
-        [TestCase("AY90001505", false)] // 遊民男生
-        [TestCase("AX00036116", false)] // 遊民女生
+        [TestCase("A188222138", false)] // 國民身份證號男生
+        [TestCase("A213788383", false)] // 國民身份證號女生
+        [TestCase("AA00036116", false)] // 臺灣地區居留證統一證號男生
+        [TestCase("AB90001505", false)] // 臺灣地區居留證統一證號女生
+        [TestCase("AC02065646", true)] // 外僑居留證統一證號男生
+        [TestCase("AD01915363", true)] // 外僑居留證統一證號女生
+        [TestCase("AY90001505", false)] // 遊民證號男生
+        [TestCase("AX00036116", false)] // 遊民證號女生
+        [TestCase("A894677652", false)] // 新式外來人口統一證號男生
+        [TestCase("A926268625", false)] // 新式外來人口統一證號女生
         [TestCase("A126", false)] // 非10碼
         [TestCase("AE88222138", false)] // 第二碼錯誤
         [TestCase("A111111111", false)] // 格式錯誤
@@ -67,14 +73,16 @@ namespace CloudyWing.FormValidators.Tests {
             Assert.AreEqual(actual, expected);
         }
 
-        [TestCase("A188222138", false)] // 國民身份證男生
-        [TestCase("A213788383", false)] // 國民身份證女生
-        [TestCase("AA00036116", false)] // 臺灣地區居留證男生
-        [TestCase("AB90001505", false)] // 臺灣地區居留證女生
-        [TestCase("AC02065646", false)] // 外僑居留證男生
-        [TestCase("AD01915363", false)] // 外僑居留證女生
-        [TestCase("AY90001505", true)] // 遊民男生
-        [TestCase("AX00036116", true)] // 遊民女生
+        [TestCase("A188222138", false)] // 國民身份證號男生
+        [TestCase("A213788383", false)] // 國民身份證號女生
+        [TestCase("AA00036116", false)] // 臺灣地區居留證統一證號男生
+        [TestCase("AB90001505", false)] // 臺灣地區居留證統一證號女生
+        [TestCase("AC02065646", false)] // 外僑居留證統一證號男生
+        [TestCase("AD01915363", false)] // 外僑居留證統一證號女生
+        [TestCase("AY90001505", true)] // 遊民證號男生
+        [TestCase("AX00036116", true)] // 遊民證號女生
+        [TestCase("A894677652", false)] // 新式外來人口統一證號男生
+        [TestCase("A926268625", false)] // 新式外來人口統一證號女生
         [TestCase("A126", false)] // 非10碼
         [TestCase("AE88222138", false)] // 第二碼錯誤
         [TestCase("A111111111", false)] // 格式錯誤
@@ -82,6 +90,28 @@ namespace CloudyWing.FormValidators.Tests {
             string column = "測試欄位";
 
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Homeless);
+            bool actual = validator.Validate();
+
+            Assert.AreEqual(actual, expected);
+        }
+
+        [TestCase("A188222138", false)] // 國民身份證號男生
+        [TestCase("A213788383", false)] // 國民身份證號女生
+        [TestCase("AA00036116", false)] // 臺灣地區居留證統一證號男生
+        [TestCase("AB90001505", false)] // 臺灣地區居留證統一證號女生
+        [TestCase("AC02065646", false)] // 外僑居留證統一證號男生
+        [TestCase("AD01915363", false)] // 外僑居留證統一證號女生
+        [TestCase("AY90001505", false)] // 遊民證號男生
+        [TestCase("AX00036116", false)] // 遊民證號女生
+        [TestCase("A894677652", true)] // 新式外來人口統一證號男生
+        [TestCase("A926268625", true)] // 新式外來人口統一證號女生
+        [TestCase("A126", false)] // 非10碼
+        [TestCase("AE88222138", false)] // 第二碼錯誤
+        [TestCase("A111111111", false)] // 格式錯誤
+        public void ValidateNewResident_ReturnValue_AreEqual(string id, bool expected) {
+            string column = "測試欄位";
+
+            IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.NewResident);
             bool actual = validator.Validate();
 
             Assert.AreEqual(actual, expected);

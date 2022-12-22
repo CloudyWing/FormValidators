@@ -58,6 +58,10 @@ namespace CloudyWing.FormValidators {
                 secondCharPattern += "YX";
             }
 
+            if (IdCardType.HasFlag(IdCardTypes.NewResident)) {
+                secondCharPattern += "89";
+            }
+
             return $@"[A-Z][{secondCharPattern}][0-9]{{8}}";
         }
 

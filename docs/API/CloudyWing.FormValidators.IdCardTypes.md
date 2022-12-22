@@ -14,11 +14,11 @@ public enum IdCardTypes
 
 `AlienResident` 4
 
-外僑居留證
+外僑居留證統一證號
 
 <a name='CloudyWing.FormValidators.IdCardTypes.All'></a>
 
-`All` 15
+`All` 31
 
 All
 
@@ -26,22 +26,28 @@ All
 
 `Homeless` 8
 
-遊民證
+遊民證號
 
 <a name='CloudyWing.FormValidators.IdCardTypes.National'></a>
 
 `National` 1
 
-國民身分證
+國民身分證號
+
+<a name='CloudyWing.FormValidators.IdCardTypes.NewResident'></a>
+
+`NewResident` 16
+
+新式外來人口統一證號
 
 <a name='CloudyWing.FormValidators.IdCardTypes.None'></a>
 
 `None` 0
 
-The none
+The none.
 
 <a name='CloudyWing.FormValidators.IdCardTypes.Resident'></a>
 
 `Resident` 2
 
-臺灣地區居留證
+臺灣地區居留證統一證號

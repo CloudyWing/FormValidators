@@ -474,6 +474,33 @@ The custom message format.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MobilePhone(CloudyWing.FormValidators.MobilePhoneFormats,string)'></a>
+
+## ValidationProvider.MobilePhone(MobilePhoneFormats, string) Method
+
+Mobile phone validation.
+
+```csharp
+public System.Func<string,string,CloudyWing.FormValidators.MobilePhoneValidator> MobilePhone(CloudyWing.FormValidators.MobilePhoneFormats formats, string customMessageFormat=null);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MobilePhone(CloudyWing.FormValidators.MobilePhoneFormats,string).formats'></a>
+
+`formats` [MobilePhoneFormats](CloudyWing.FormValidators.MobilePhoneFormats.md 'CloudyWing.FormValidators.MobilePhoneFormats')
+
+The formats.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MobilePhone(CloudyWing.FormValidators.MobilePhoneFormats,string).customMessageFormat'></a>
+
+`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The custom message format.
+
+#### Returns
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[MobilePhoneValidator](CloudyWing.FormValidators.MobilePhoneValidator.md 'CloudyWing.FormValidators.MobilePhoneValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
+The validator creator.
+
 <a name='CloudyWing.FormValidators.Core.ValidationProvider.MobilePhone(string)'></a>
 
 ## ValidationProvider.MobilePhone(string) Method

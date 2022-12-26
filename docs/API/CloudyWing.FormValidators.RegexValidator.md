@@ -16,6 +16,35 @@ Derived
 &#8627; [MobilePhoneValidator](CloudyWing.FormValidators.MobilePhoneValidator.md 'CloudyWing.FormValidators.MobilePhoneValidator')
 ### Constructors
 
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string)'></a>
+
+## RegexValidator(string, string, string) Constructor
+
+Initializes a new instance of the [RegexValidator](CloudyWing.FormValidators.RegexValidator.md 'CloudyWing.FormValidators.RegexValidator') class.
+
+```csharp
+protected RegexValidator(string column, string value, string customMessageFormat=null);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string).column'></a>
+
+`column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The column.
+
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string).value'></a>
+
+`value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The value.
+
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string).customMessageFormat'></a>
+
+`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The custom message format.
+
 <a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,string)'></a>
 
 ## RegexValidator(string, string, string, string) Constructor
@@ -73,7 +102,7 @@ The default error message format.
 Gets the pattern.
 
 ```csharp
-public string Pattern { get; }
+public string Pattern { get; set; }
 ```
 
 #### Property Value

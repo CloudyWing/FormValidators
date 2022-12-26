@@ -7,6 +7,14 @@ namespace CloudyWing.FormValidators {
         /// <summary>Initializes a new instance of the <see cref="RegexValidator" /> class.</summary>
         /// <param name="column">The column.</param>
         /// <param name="value">The value.</param>
+        /// <param name="customMessageFormat">The custom message format.</param>
+        protected RegexValidator(string column, string value, string customMessageFormat = null)
+            : base(column, value, customMessageFormat) {
+        }
+
+        /// <summary>Initializes a new instance of the <see cref="RegexValidator" /> class.</summary>
+        /// <param name="column">The column.</param>
+        /// <param name="value">The value.</param>
         /// <param name="pattern">The pattern.</param>
         /// <param name="customMessageFormat">The custom message format.</param>
         public RegexValidator(string column, string value, string pattern, string customMessageFormat = null)
@@ -16,7 +24,7 @@ namespace CloudyWing.FormValidators {
 
         /// <summary>Gets the pattern.</summary>
         /// <value>The pattern.</value>
-        public string Pattern { get; }
+        public string Pattern { get; protected set; }
 
         /// <inheritdoc/>
         public override string DefaultErrorMessageFormat => "「{0}」格式錯誤。";

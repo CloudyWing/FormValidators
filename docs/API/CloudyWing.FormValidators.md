@@ -28,3 +28,4 @@
 | Enums | |
 | :--- | :--- |
 | [IdCardTypes](CloudyWing.FormValidators.IdCardTypes.md 'CloudyWing.FormValidators.IdCardTypes') | The identity card Tyoe. |
+| [MobilePhoneFormats](CloudyWing.FormValidators.MobilePhoneFormats.md 'CloudyWing.FormValidators.MobilePhoneFormats') | The mobile phone formats. |

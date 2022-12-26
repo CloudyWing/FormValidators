@@ -12,6 +12,41 @@ public sealed class MobilePhoneValidator : CloudyWing.FormValidators.RegexValida
 Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [FormValidatorBase](CloudyWing.FormValidators.Core.FormValidatorBase.md 'CloudyWing.FormValidators.Core.FormValidatorBase') &#129106; [RegexValidator](CloudyWing.FormValidators.RegexValidator.md 'CloudyWing.FormValidators.RegexValidator') &#129106; MobilePhoneValidator
 ### Constructors
 
+<a name='CloudyWing.FormValidators.MobilePhoneValidator.MobilePhoneValidator(string,string,CloudyWing.FormValidators.MobilePhoneFormats,string)'></a>
+
+## MobilePhoneValidator(string, string, MobilePhoneFormats, string) Constructor
+
+Initializes a new instance of the [MobilePhoneValidator](CloudyWing.FormValidators.MobilePhoneValidator.md 'CloudyWing.FormValidators.MobilePhoneValidator') class.
+
+```csharp
+public MobilePhoneValidator(string column, string value, CloudyWing.FormValidators.MobilePhoneFormats formats, string customMessageFormat=null);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.MobilePhoneValidator.MobilePhoneValidator(string,string,CloudyWing.FormValidators.MobilePhoneFormats,string).column'></a>
+
+`column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The column.
+
+<a name='CloudyWing.FormValidators.MobilePhoneValidator.MobilePhoneValidator(string,string,CloudyWing.FormValidators.MobilePhoneFormats,string).value'></a>
+
+`value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The value.
+
+<a name='CloudyWing.FormValidators.MobilePhoneValidator.MobilePhoneValidator(string,string,CloudyWing.FormValidators.MobilePhoneFormats,string).formats'></a>
+
+`formats` [MobilePhoneFormats](CloudyWing.FormValidators.MobilePhoneFormats.md 'CloudyWing.FormValidators.MobilePhoneFormats')
+
+The formats.
+
+<a name='CloudyWing.FormValidators.MobilePhoneValidator.MobilePhoneValidator(string,string,CloudyWing.FormValidators.MobilePhoneFormats,string).customMessageFormat'></a>
+
+`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+
+The custom message format.
+
 <a name='CloudyWing.FormValidators.MobilePhoneValidator.MobilePhoneValidator(string,string,string)'></a>
 
 ## MobilePhoneValidator(string, string, string) Constructor

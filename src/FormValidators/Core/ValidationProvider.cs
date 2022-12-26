@@ -121,6 +121,14 @@ namespace CloudyWing.FormValidators.Core {
             return (column, value) => new MobilePhoneValidator(column, value, customMessageFormat);
         }
 
+        /// <summary>Mobile phone validation.</summary>
+        /// <param name="formats">The formats.</param>
+        /// <param name="customMessageFormat">The custom message format.</param>
+        /// <returns>The validator creator.</returns>
+        public Func<string, string, MobilePhoneValidator> MobilePhone(MobilePhoneFormats formats, string customMessageFormat = null) {
+            return (column, value) => new MobilePhoneValidator(column, value, formats, customMessageFormat);
+        }
+
         /// <summary>Identifiers card validation.</summary>
         /// <param name="idTypes">The identifier types.</param>
         /// <param name="customMessageFormat">The custom message format.</param>

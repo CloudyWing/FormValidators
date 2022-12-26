@@ -20,147 +20,163 @@ namespace CloudyWing.FormValidators.Core {
         }
 
         /// <summary>Validation indicate that a value is integer.</summary>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, IntegerValidator> Integer(string customErrorMessageFormat) {
-            return Integer((_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+        public Func<string, string, IntegerValidator> Integer(bool allowedThousands, string customErrorMessageFormat) {
+            return Integer(allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
         /// <summary>Validation indicate that a value is integer.</summary>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, IntegerValidator> Integer(
-            Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+            bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
         ) {
-            return (column, value) => new IntegerValidator(column, value, customErrorMessageAccessor);
+            return (column, value) => new IntegerValidator(column, value, allowedThousands, customErrorMessageAccessor);
         }
 
         /// <summary>Validation constrains the minimum integer of a value.</summary>
         /// <param name="min">The minimum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, IntegerValidator> MinInt(int min, string customErrorMessageFormat) {
-            return MinInt(min, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+        public Func<string, string, IntegerValidator> MinInt(int min, bool allowedThousands, string customErrorMessageFormat) {
+            return MinInt(min, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
         /// <summary>Validation constrains the minimum integer of a value.</summary>
         /// <param name="min">The minimum.</param>
+        /// <param name="allowedThousands"></param>
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, IntegerValidator> MinInt(
-            int min, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+            int min, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
         ) {
-            return (column, value) => new IntegerValidator(column, value, min, null, customErrorMessageAccessor);
+            return (column, value) => new IntegerValidator(column, value, min, null, allowedThousands, customErrorMessageAccessor);
         }
 
         /// <summary>Validation constrains the maximum integer of a value.</summary>
         /// <param name="max">The maximum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, IntegerValidator> MaxInt(int max, string customErrorMessageFormat) {
-            return MaxInt(max, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+        public Func<string, string, IntegerValidator> MaxInt(int max, bool allowedThousands, string customErrorMessageFormat) {
+            return MaxInt(max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
         /// <summary>Validation constrains the maximum integer of a value.</summary>
         /// <param name="max">The maximum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, IntegerValidator> MaxInt(
-            int max, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+            int max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
         ) {
-            return (column, value) => new IntegerValidator(column, value, null, max, customErrorMessageAccessor);
+            return (column, value) => new IntegerValidator(column, value, null, max, allowedThousands, customErrorMessageAccessor);
         }
 
         /// <summary>Validation constrains the integer range of a value.</summary>
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, IntegerValidator> IntRange(int min, int max, string customErrorMessageFormat) {
-            return IntRange(min, max, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+        public Func<string, string, IntegerValidator> IntRange(int min, int max, bool allowedThousands, string customErrorMessageFormat) {
+            return IntRange(min, max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
         /// <summary>Validation constrains the integer range of a value.</summary>
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, IntegerValidator> IntRange(
-            int min, int max, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+            int min, int max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
         ) {
-            return (column, value) => new IntegerValidator(column, value, min, max, customErrorMessageAccessor);
+            return (column, value) => new IntegerValidator(column, value, min, max, allowedThousands, customErrorMessageAccessor);
         }
 
         /// <summary>Validation indicate that a value is number.</summary>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, NumberValidator> Number(string customErrorMessageFormat) {
-            return Number((_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+        public Func<string, string, NumberValidator> Number(bool allowedThousands, string customErrorMessageFormat) {
+            return Number(allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
         /// <summary>Validation indicate that a value is number.</summary>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, NumberValidator> Number(
-            Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+            bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
         ) {
-            return (column, value) => new NumberValidator(column, value, customErrorMessageAccessor);
+            return (column, value) => new NumberValidator(column, value, allowedThousands, customErrorMessageAccessor);
         }
 
         /// <summary>Validation constrains the minimum number of a value.</summary>
         /// <param name="min">The minimum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, NumberValidator> MinNumber(int min, string customErrorMessageFormat) {
-            return MinNumber(min, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+        public Func<string, string, NumberValidator> MinNumber(int min, bool allowedThousands, string customErrorMessageFormat) {
+            return MinNumber(min, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
         /// <summary>Validation constrains the minimum number of a value.</summary>
         /// <param name="min">The minimum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, NumberValidator> MinNumber(
-            int min, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+            int min, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
         ) {
-            return (column, value) => new NumberValidator(column, value, min, null, customErrorMessageAccessor);
+            return (column, value) => new NumberValidator(column, value, min, null, allowedThousands, customErrorMessageAccessor);
         }
 
         /// <summary>Validation constrains the maximum number of a value.</summary>
         /// <param name="max">The maximum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, NumberValidator> MaxNumber(int max, string customErrorMessageFormat) {
-            return MaxNumber(max, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+        public Func<string, string, NumberValidator> MaxNumber(int max, bool allowedThousands, string customErrorMessageFormat) {
+            return MaxNumber(max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
         /// <summary>Validation constrains the maximum number of a value.</summary>
         /// <param name="max">The maximum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, NumberValidator> MaxNumber(
-            int max, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+            int max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
         ) {
-            return (column, value) => new NumberValidator(column, value, null, max, customErrorMessageAccessor);
+            return (column, value) => new NumberValidator(column, value, null, max, allowedThousands, customErrorMessageAccessor);
         }
 
         /// <summary>Validation constrains the number range of a value.</summary>
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, NumberValidator> NumberRange(int min, int max, string customErrorMessageFormat) {
-            return NumberRange(min, max, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+        public Func<string, string, NumberValidator> NumberRange(int min, int max, bool allowedThousands, string customErrorMessageFormat) {
+            return NumberRange(min, max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
         /// <summary>Validation constrains the number range of a value.</summary>
         /// <param name="min">The minimum.</param>
         /// <param name="max">The maximum.</param>
+        /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, NumberValidator> NumberRange(
-            int min, int max, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+            int min, int max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
         ) {
-            return (column, value) => new NumberValidator(column, value, min, max, customErrorMessageAccessor);
+            return (column, value) => new NumberValidator(column, value, min, max, allowedThousands, customErrorMessageAccessor);
         }
 
         /// <summary>Validation indicate that a value is date time.</summary>

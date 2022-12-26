@@ -15,6 +15,7 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("0.1", "-1.1", false, false)]
         [TestCase("a", "2", false, true)]
         [TestCase("0", "a", false, true)]
+        [TestCase("1,000.1", "1,000.1", true, true)]
         public void Validate_Value_LessThan(string value, string comparisonValue, bool allowedEqual, bool isValid) {
             NumberLessThanValidator validator = new NumberLessThanValidator("", value, "", comparisonValue, allowedEqual);
             Assert.AreEqual(validator.Validate(), isValid);

@@ -5,44 +5,58 @@ using NUnit.Framework;
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
     public class NumberValidatorTests {
-        [TestCase(null, true)]
-        [TestCase("", true)]
-        [TestCase(" ", true)]
-        [TestCase("0", true)]
-        [TestCase("1", true)]
-        [TestCase("-1", true)]
-        [TestCase("1.1", true)]
-        [TestCase("string", false)]
-        public void Validate_Message_AreEqual(string value, bool isValid) {
-            NumberValidator validator = new NumberValidator("", value);
+        [TestCase(null, true, true)]
+        [TestCase("", true, true)]
+        [TestCase(" ", true, true)]
+        [TestCase("0", true, true)]
+        [TestCase("1", true, true)]
+        [TestCase("-1", true, true)]
+        [TestCase("1.1", true, true)]
+        [TestCase("1,000.1", true, true)]
+        [TestCase("1,000.1", false, false)]
+        [TestCase("string", true, false)]
+        public void Validate_Message_AreEqual(string value, bool allowedThousands, bool isValid) {
+            NumberValidator validator = new NumberValidator("", value, allowedThousands);
 
             validator.Validate().Should().Be(isValid);
         }
 
-        [TestCase("3.1", 2.1, 4.1, true)]
-        [TestCase("3.1", 3.1, 3.1, true)]
-        [TestCase("3.1", 2.1, 2.1, false)]
-        [TestCase("3.1", 4.1, 4.1, false)]
-        public void Validate_Range_AreEqual(string value, decimal min, decimal max, bool isValid) {
-            NumberValidator validator = new NumberValidator("", value, min, max);
+        [TestCase("3.1", 2.1, 4.1, true, true)]
+        [TestCase("3.1", 3.1, 3.1, true, true)]
+        [TestCase("3.1", 2.1, 2.1, true, false)]
+        [TestCase("3.1", 4.1, 4.1, true, false)]
+        [TestCase("3,000.1", 3000.1, 3000.1, true, true)]
+        [TestCase("3,000.1", 3000.1, 3000.1, false, false)]
+        public void Validate_Range_AreEqual(string value, decimal min, decimal max, bool allowedThousands, bool isValid) {
+            NumberValidator validator = new NumberValidator("", value, min, max, allowedThousands);
 
             validator.Validate().Should().Be(isValid);
         }
 
-        [TestCase("3.1", 2.1, true)]
-        [TestCase("3.1", 3.1, true)]
-        [TestCase("3.1", 4.1, false)]
-        public void Validate_Min_AreEqual(string value, decimal min, bool isValid) {
-            NumberValidator validator = new NumberValidator("", value, min, null);
+        [TestCase("3.1", 2.1, true, true)]
+        [TestCase("3.1", 3.1, true, true)]
+        [TestCase("3.1", 4.1, true, false)]
+        [TestCase("-2.1", -3.1, true, true)]
+        [TestCase("-3.1", -3.1, true, true)]
+        [TestCase("-4.1", -3.1, true, false)]
+        [TestCase("3,000.1", 3000.1, true, true)]
+        [TestCase("3,000.1", 3000.1, false, false)]
+        public void Validate_Min_AreEqual(string value, decimal min, bool allowedThousands, bool isValid) {
+            NumberValidator validator = new NumberValidator("", value, min, null, allowedThousands);
 
             validator.Validate().Should().Be(isValid);
         }
 
-        [TestCase("3.1", 4.1, true)]
-        [TestCase("3.1", 3.1, true)]
-        [TestCase("3.1", 2.1, false)]
-        public void Validate_Max_AreEqual(string value, decimal max, bool isValid) {
-            NumberValidator validator = new NumberValidator("", value, null, max);
+        [TestCase("3.1", 4.1, true, true)]
+        [TestCase("3.1", 3.1, true, true)]
+        [TestCase("3.1", 2.1, true, false)]
+        [TestCase("-4.1", -3.1, true, true)]
+        [TestCase("-3.1", -3.1, true, true)]
+        [TestCase("-2.1", -3.1, true, false)]
+        [TestCase("3,000.1", 3000.1, true, true)]
+        [TestCase("3,000.1", 3000.1, false, false)]
+        public void Validate_Max_AreEqual(string value, decimal max, bool allowedThousands, bool isValid) {
+            NumberValidator validator = new NumberValidator("", value, null, max, allowedThousands);
 
             validator.Validate().Should().Be(isValid);
         }
@@ -65,7 +79,7 @@ namespace CloudyWing.FormValidators.Tests {
             string value = "error";
             string expected = column + value;
 
-            NumberValidator validator = new NumberValidator(column, value, (c, v, _, _) => c + v);
+            NumberValidator validator = new NumberValidator(column, value, false, (c, v, _, _) => c + v);
             validator.Validate();
 
             validator.ErrorMessage.Should().Be(expected);
@@ -92,7 +106,7 @@ namespace CloudyWing.FormValidators.Tests {
             string expected = column + value + min;
 
             NumberValidator validator = new NumberValidator(
-                column, value, min, null, (c, v, _min, _) => c + v + _min
+                column, value, min, null, false, (c, v, _min, _) => c + v + _min
             );
             validator.Validate();
 
@@ -119,7 +133,7 @@ namespace CloudyWing.FormValidators.Tests {
             decimal max = 0.1m;
             string expected = column + value + max;
 
-            NumberValidator validator = new NumberValidator(column, value, null, max, (c, v, _, _max) => c + v + _max);
+            NumberValidator validator = new NumberValidator(column, value, null, max, false, (c, v, _, _max) => c + v + _max);
             validator.Validate();
 
             validator.ErrorMessage.Should().Be(expected);
@@ -148,7 +162,7 @@ namespace CloudyWing.FormValidators.Tests {
             string expected = column + value + min + max;
 
             NumberValidator validator = new NumberValidator(
-                column, value, min, max, (c, v, _min, _max) => c + v + _min + _max
+                column, value, min, max, false, (c, v, _min, _max) => c + v + _min + _max
             );
             validator.Validate();
 

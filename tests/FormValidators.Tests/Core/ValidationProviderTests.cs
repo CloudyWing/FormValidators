@@ -32,7 +32,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             string format = "測試{0}{1}";
             string expected = string.Format(format, column, value);
 
-            IFormValidator validator = provider.Integer(format)(column, value);
+            IFormValidator validator = provider.Integer(false, format)(column, value);
             validator.Validate();
 
             validator.ErrorMessage.Should().Be(expected);
@@ -46,7 +46,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             string format = "測試{0}{1}{2}";
             string expected = string.Format(format, column, value, min);
 
-            IFormValidator validator = provider.MinInt(min, format)(column, value);
+            IFormValidator validator = provider.MinInt(min, false, format)(column, value);
             validator.Validate();
 
             validator.ErrorMessage.Should().Be(expected);
@@ -60,7 +60,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             string format = "測試{0}{1}{3}";
             string expected = string.Format(format, column, value, null, max);
 
-            IFormValidator validator = provider.MaxInt(max, format)(column, value);
+            IFormValidator validator = provider.MaxInt(max, false, format)(column, value);
             validator.Validate();
 
             validator.ErrorMessage.Should().Be(expected);
@@ -75,7 +75,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             string format = "測試{0}{1}{2}{3}";
             string expected = string.Format(format, column, value, min, max);
 
-            IFormValidator validator = provider.IntRange(min, max, format)(column, value);
+            IFormValidator validator = provider.IntRange(min, max, false, format)(column, value);
             validator.Validate();
 
             validator.ErrorMessage.Should().Be(expected);

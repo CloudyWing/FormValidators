@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators {
@@ -18,7 +19,7 @@ namespace CloudyWing.FormValidators {
 
         /// <inheritdoc/>
         protected override bool TryParse(string value, out long result) {
-            return long.TryParse(value, out result);
+            return long.TryParse(value, NumberStyles.Any, null, out result);
         }
     }
 }

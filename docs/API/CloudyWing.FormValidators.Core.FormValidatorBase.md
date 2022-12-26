@@ -3,7 +3,7 @@
 
 ## FormValidatorBase Class
 
-The form validator abstract class.
+The form validator base abstract class.
 
 ```csharp
 public abstract class FormValidatorBase :
@@ -14,10 +14,11 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 
 Derived  
 &#8627; [CompareValidator](CloudyWing.FormValidators.CompareValidator.md 'CloudyWing.FormValidators.CompareValidator')  
+&#8627; [BasicFormValidator](CloudyWing.FormValidators.Core.BasicFormValidator.md 'CloudyWing.FormValidators.Core.BasicFormValidator')  
 &#8627; [ComparableTypeValidator&lt;T&gt;](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>')  
+&#8627; [LessThanValidator&lt;T&gt;](CloudyWing.FormValidators.Core.LessThanValidator_T_.md 'CloudyWing.FormValidators.Core.LessThanValidator<T>')  
 &#8627; [IdCardValidator](CloudyWing.FormValidators.IdCardValidator.md 'CloudyWing.FormValidators.IdCardValidator')  
-&#8627; [RegexValidator](CloudyWing.FormValidators.RegexValidator.md 'CloudyWing.FormValidators.RegexValidator')  
-&#8627; [RequiredValidator](CloudyWing.FormValidators.RequiredValidator.md 'CloudyWing.FormValidators.RequiredValidator')  
+&#8627; [MobilePhoneValidator](CloudyWing.FormValidators.MobilePhoneValidator.md 'CloudyWing.FormValidators.MobilePhoneValidator')  
 &#8627; [ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator')
 
 Implements [IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing.FormValidators.IFormValidator')
@@ -26,34 +27,28 @@ Implements [IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyW
 - [IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing.FormValidators.IFormValidator')
 ### Constructors
 
-<a name='CloudyWing.FormValidators.Core.FormValidatorBase.FormValidatorBase(string,string,string)'></a>
+<a name='CloudyWing.FormValidators.Core.FormValidatorBase.FormValidatorBase(string,string)'></a>
 
-## FormValidatorBase(string, string, string) Constructor
+## FormValidatorBase(string, string) Constructor
 
 Initializes a new instance of the [FormValidatorBase](CloudyWing.FormValidators.Core.FormValidatorBase.md 'CloudyWing.FormValidators.Core.FormValidatorBase') class.
 
 ```csharp
-public FormValidatorBase(string column, string value, string customMessageFormat);
+public FormValidatorBase(string column, string value);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.FormValidatorBase.FormValidatorBase(string,string,string).column'></a>
+<a name='CloudyWing.FormValidators.Core.FormValidatorBase.FormValidatorBase(string,string).column'></a>
 
 `column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The column.
 
-<a name='CloudyWing.FormValidators.Core.FormValidatorBase.FormValidatorBase(string,string,string).value'></a>
+<a name='CloudyWing.FormValidators.Core.FormValidatorBase.FormValidatorBase(string,string).value'></a>
 
 `value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The value.
-
-<a name='CloudyWing.FormValidators.Core.FormValidatorBase.FormValidatorBase(string,string,string).customMessageFormat'></a>
-
-`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The custom message format.
 ### Properties
 
 <a name='CloudyWing.FormValidators.Core.FormValidatorBase.Column'></a>
@@ -63,40 +58,40 @@ The custom message format.
 Gets or sets the column.
 
 ```csharp
-public string Column { get; set; }
+public string Column { get; }
 ```
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
 The column.
 
-<a name='CloudyWing.FormValidators.Core.FormValidatorBase.CustomErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.FormValidatorBase.CustomErrorMessage'></a>
 
-## FormValidatorBase.CustomErrorMessageFormat Property
+## FormValidatorBase.CustomErrorMessage Property
 
-Gets or sets the custom error message format.
+Gets the custom error message.
 
 ```csharp
-public string CustomErrorMessageFormat { get; set; }
+protected abstract string CustomErrorMessage { get; }
 ```
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The custom error message format.
+The custom error message.
 
-<a name='CloudyWing.FormValidators.Core.FormValidatorBase.DefaultErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.FormValidatorBase.DefaultErrorMessage'></a>
 
-## FormValidatorBase.DefaultErrorMessageFormat Property
+## FormValidatorBase.DefaultErrorMessage Property
 
-Gets the default error message format.
+Gets the default error message.
 
 ```csharp
-public abstract string DefaultErrorMessageFormat { get; }
+protected abstract string DefaultErrorMessage { get; }
 ```
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The default error message format.
+The default error message.
 
 <a name='CloudyWing.FormValidators.Core.FormValidatorBase.ErrorMessage'></a>
 
@@ -113,6 +108,20 @@ Implements [ErrorMessage](CloudyWing.FormValidators.IFormValidator.md#CloudyWing
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
 The error message.
+
+<a name='CloudyWing.FormValidators.Core.FormValidatorBase.HasCustomErrorMessage'></a>
+
+## FormValidatorBase.HasCustomErrorMessage Property
+
+Gets a value indicating whether this instance has custom error message.
+
+```csharp
+protected abstract bool HasCustomErrorMessage { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+`true` if this instance has custom error message; otherwise, `false`.
 
 <a name='CloudyWing.FormValidators.Core.FormValidatorBase.IsValid'></a>
 
@@ -137,7 +146,7 @@ Implements [IsValid](CloudyWing.FormValidators.IFormValidator.md#CloudyWing.Form
 Gets or sets the value.
 
 ```csharp
-public string Value { get; set; }
+public string Value { get; }
 ```
 
 #### Property Value

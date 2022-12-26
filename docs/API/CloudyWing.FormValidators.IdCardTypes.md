@@ -40,12 +40,6 @@ All
 
 新式外來人口統一證號
 
-<a name='CloudyWing.FormValidators.IdCardTypes.None'></a>
-
-`None` 0
-
-The none.
-
 <a name='CloudyWing.FormValidators.IdCardTypes.Resident'></a>
 
 `Resident` 2

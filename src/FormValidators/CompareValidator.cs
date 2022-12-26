@@ -1,7 +1,8 @@
-﻿using CloudyWing.FormValidators.Core;
+﻿using System;
+using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators {
-    /// <summary>The compare validator.</summary>
+    /// <summary>Compare the value of one column with the value of another column.</summary>
     /// <seealso cref="FormValidatorBase" />
     public class CompareValidator : FormValidatorBase {
         /// <summary>Initializes a new instance of the <see cref="CompareValidator" /> class.</summary>
@@ -9,11 +10,14 @@ namespace CloudyWing.FormValidators {
         /// <param name="value">The value.</param>
         /// <param name="comparisonColumn">The comparison column.</param>
         /// <param name="comparisonValue">The comparison value.</param>
-        /// <param name="customMessageFormat">The custom message format.</param>
-        public CompareValidator(string column, string value, string comparisonColumn, string comparisonValue, string customMessageFormat = null)
-            : base(column, value, customMessageFormat) {
+        /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, comparison column, comparison value.</param>
+        public CompareValidator(
+            string column, string value, string comparisonColumn, string comparisonValue,
+            Func<string, string, string, string, string> customErrorMessageAccessor = null
+        ) : base(column, value) {
             ComparisonColumn = comparisonColumn;
             ComparisonValue = comparisonValue;
+            CustomErrorMessageAccessor = customErrorMessageAccessor;
         }
 
         /// <summary>Gets the comparison column.</summary>
@@ -24,19 +28,23 @@ namespace CloudyWing.FormValidators {
         /// <value>The comparison value.</value>
         public string ComparisonValue { get; }
 
+        /// <summary>Gets the custom range message format.</summary>
+        /// <value>The custom range message format.</value>
+        public Func<string, string, string, string, string> CustomErrorMessageAccessor { get; set; }
+
         /// <inheritdoc/>
-        public override string DefaultErrorMessageFormat => "「{0}」和「{1}」輸入不一致。";
+        protected override string DefaultErrorMessage => ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor(Column, Value, ComparisonColumn, ComparisonValue);
+
+        /// <inheritdoc/>
+        protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, ComparisonColumn, ComparisonValue);
+
+        /// <inheritdoc/>
+        protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
 
         /// <inheritdoc/>
         protected override bool ValidateValue() {
             // 是否有填資料由RequiredValidator驗證，所以沒填就不驗證
             return string.IsNullOrWhiteSpace(Value) || Value == ComparisonValue;
-        }
-
-        /// <inheritdoc/>
-        protected override string CreateErrorMessage() {
-            return string.IsNullOrWhiteSpace(CustomErrorMessageFormat) ?
-                string.Format(DefaultErrorMessageFormat, Column, ComparisonColumn) : string.Format(CustomErrorMessageFormat, Column, ComparisonColumn);
         }
     }
 }

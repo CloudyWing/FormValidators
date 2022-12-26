@@ -4,9 +4,6 @@ namespace CloudyWing.FormValidators {
     /// <summary>The identity card Tyoe.</summary>
     [Flags]
     public enum IdCardTypes {
-        /// <summary>The none.</summary>
-        None = 0,
-
         /// <summary>國民身分證號</summary>
         National = 1,
 

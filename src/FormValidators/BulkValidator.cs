@@ -27,11 +27,11 @@ namespace CloudyWing.FormValidators {
 
         /// <summary>Gets the error message, separated by br.</summary>
         /// <value>The error message.</value>
-        public string ErrorMessage => ErrorMessageWithBreak;
+        public string ErrorMessage => ErrorMessageWithBR;
 
         /// <summary>Gets the error message, separated by br.</summary>
         /// <value>The error message separated by br.</value>
-        public string ErrorMessageWithBreak => GetErrorMessage("<br />");
+        public string ErrorMessageWithBR => GetErrorMessage("<br />");
 
         /// <summary>Gets the error message, separated by newlines.</summary>
         /// <value>The error message separated by new line.</value>

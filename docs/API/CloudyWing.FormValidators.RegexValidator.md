@@ -6,94 +6,69 @@
 The regex validator.
 
 ```csharp
-public class RegexValidator : CloudyWing.FormValidators.Core.FormValidatorBase
+public class RegexValidator : CloudyWing.FormValidators.Core.BasicFormValidator
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [FormValidatorBase](CloudyWing.FormValidators.Core.FormValidatorBase.md 'CloudyWing.FormValidators.Core.FormValidatorBase') &#129106; RegexValidator
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; [FormValidatorBase](CloudyWing.FormValidators.Core.FormValidatorBase.md 'CloudyWing.FormValidators.Core.FormValidatorBase') &#129106; [BasicFormValidator](CloudyWing.FormValidators.Core.BasicFormValidator.md 'CloudyWing.FormValidators.Core.BasicFormValidator') &#129106; RegexValidator
 
 Derived  
-&#8627; [EmailValidator](CloudyWing.FormValidators.EmailValidator.md 'CloudyWing.FormValidators.EmailValidator')  
-&#8627; [MobilePhoneValidator](CloudyWing.FormValidators.MobilePhoneValidator.md 'CloudyWing.FormValidators.MobilePhoneValidator')
+&#8627; [EmailValidator](CloudyWing.FormValidators.EmailValidator.md 'CloudyWing.FormValidators.EmailValidator')
 ### Constructors
 
-<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string)'></a>
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,System.Func_string,string,string_)'></a>
 
-## RegexValidator(string, string, string) Constructor
+## RegexValidator(string, string, string, Func<string,string,string>) Constructor
 
 Initializes a new instance of the [RegexValidator](CloudyWing.FormValidators.RegexValidator.md 'CloudyWing.FormValidators.RegexValidator') class.
 
 ```csharp
-protected RegexValidator(string column, string value, string customMessageFormat=null);
+public RegexValidator(string column, string value, string pattern, System.Func<string,string,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string).column'></a>
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,System.Func_string,string,string_).column'></a>
 
 `column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The column.
 
-<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string).value'></a>
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,System.Func_string,string,string_).value'></a>
 
 `value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The value.
 
-<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string).customMessageFormat'></a>
-
-`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The custom message format.
-
-<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,string)'></a>
-
-## RegexValidator(string, string, string, string) Constructor
-
-Initializes a new instance of the [RegexValidator](CloudyWing.FormValidators.RegexValidator.md 'CloudyWing.FormValidators.RegexValidator') class.
-
-```csharp
-public RegexValidator(string column, string value, string pattern, string customMessageFormat=null);
-```
-#### Parameters
-
-<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,string).column'></a>
-
-`column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The column.
-
-<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,string).value'></a>
-
-`value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The value.
-
-<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,string).pattern'></a>
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,System.Func_string,string,string_).pattern'></a>
 
 `pattern` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The pattern.
 
-<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,string).customMessageFormat'></a>
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,string,System.Func_string,string,string_).customErrorMessageAccessor'></a>
 
-`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')
 
-The custom message format.
+The custom error message accessor. The agrumts are column, value.
+
+#### Exceptions
+
+[System.ArgumentNullException](https://docs.microsoft.com/en-us/dotnet/api/System.ArgumentNullException 'System.ArgumentNullException')  
+pattern
 ### Properties
 
-<a name='CloudyWing.FormValidators.RegexValidator.DefaultErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.RegexValidator.DefaultErrorMessageAccessor'></a>
 
-## RegexValidator.DefaultErrorMessageFormat Property
+## RegexValidator.DefaultErrorMessageAccessor Property
 
-Gets the default error message format.
+Gets the get default error message.
 
 ```csharp
-public override string DefaultErrorMessageFormat { get; }
+protected override System.Func<string,string,string> DefaultErrorMessageAccessor { get; }
 ```
 
 #### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The default error message format.
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
+The get default error message.
 
 <a name='CloudyWing.FormValidators.RegexValidator.Pattern'></a>
 

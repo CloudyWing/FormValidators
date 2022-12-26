@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using CloudyWing.FormValidators.Core;
+using FluentAssertions;
+using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -15,33 +17,33 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("wing.com", false)]
         public void Validate_ReturnValue_AreEqual(string value, bool isValid) {
             EmailValidator validator = new EmailValidator("", value);
-            Assert.AreEqual(validator.Validate(), isValid);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [Test]
-        public void ErrorMessage_BasicFormat_AreEqual() {
+        public void ErrorMessage_DefaultMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "error";
 
-            EmailValidator validator = new EmailValidator(column, "error");
+            EmailValidator validator = new EmailValidator(column, value);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.DefaultErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            string expected = ErrorMessageProvider.ValueIsEmailAccessor(column, value);
+
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_CustomFormat_AreEqual() {
+        public void ErrorMessage_CustomMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "error";
+            string expected = column + value;
 
-            EmailValidator validator = new EmailValidator(column, "error", "{0}Email");
+            EmailValidator validator = new EmailValidator(column, value, (c, v) => c + v);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
     }
 }

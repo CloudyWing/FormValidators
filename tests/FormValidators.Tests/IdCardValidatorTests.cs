@@ -1,12 +1,10 @@
-﻿using NUnit.Framework;
+﻿using CloudyWing.FormValidators.Core;
+using FluentAssertions;
+using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
     public class IdCardValidatorTests {
-        [SetUp]
-        public void Setup() {
-        }
-
         [TestCase("A188222138", true)] // 國民身份證號男生
         [TestCase("A213788383", true)] // 國民身份證號女生
         [TestCase("AA00036116", false)] // 臺灣地區居留證統一證號男生
@@ -26,7 +24,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.National);
             bool actual = validator.Validate();
 
-            Assert.AreEqual(actual, expected);
+            actual.Should().Be(expected);
         }
 
         [TestCase("A188222138", false)] // 國民身份證號男生
@@ -48,7 +46,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Resident);
             bool actual = validator.Validate();
 
-            Assert.AreEqual(actual, expected);
+            actual.Should().Be(expected);
         }
 
         [TestCase("A188222138", false)] // 國民身份證號男生
@@ -70,7 +68,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.AlienResident);
             bool actual = validator.Validate();
 
-            Assert.AreEqual(actual, expected);
+            actual.Should().Be(expected);
         }
 
         [TestCase("A188222138", false)] // 國民身份證號男生
@@ -92,7 +90,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Homeless);
             bool actual = validator.Validate();
 
-            Assert.AreEqual(actual, expected);
+            actual.Should().Be(expected);
         }
 
         [TestCase("A188222138", false)] // 國民身份證號男生
@@ -114,19 +112,32 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.NewResident);
             bool actual = validator.Validate();
 
-            Assert.AreEqual(actual, expected);
+            actual.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_Value_AreEqual() {
+        public void ErrorMessage_DefaultMessage_AreEqual() {
             string column = "測試欄位";
-            string format = "{0}IdentityNumber";
-            string expected = string.Format(format, column);
+            string value = "123";
+            IdCardTypes types = IdCardTypes.All;
+            string expected = ErrorMessageProvider.ValueIsIdCardAccessor(column, value, types);
 
-            IdCardValidator validator = new IdCardValidator(column, "123", IdCardTypes.All, format);
+            IdCardValidator validator = new IdCardValidator(column, value, types);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, expected);
+            validator.ErrorMessage.Should().Be(expected);
+        }
+
+        [Test]
+        public void ErrorMessage_CustomMessage_AreEqual() {
+            string column = "測試欄位";
+            string value = "123";
+            string expected = column + value + IdCardTypes.All;
+
+            IdCardValidator validator = new IdCardValidator(column, value, IdCardTypes.All, (c, v, f) => c + v + f);
+            validator.Validate();
+
+            validator.ErrorMessage.Should().Be(expected);
         }
     }
 }

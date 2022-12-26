@@ -1,12 +1,10 @@
-﻿using NUnit.Framework;
+﻿using CloudyWing.FormValidators.Core;
+using FluentAssertions;
+using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
     public class CompareValidatorTests {
-        [SetUp]
-        public void Setup() {
-        }
-
         [TestCase(null, "", true)]
         [TestCase("", "", true)]
         [TestCase(" ", "", true)]
@@ -14,31 +12,36 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("123", "456", false)]
         public void Validate_ReturnValue_AreEqual(string value, string comparisonValue, bool isValid) {
             CompareValidator validator = new CompareValidator("", value, "", comparisonValue);
-            Assert.AreEqual(validator.Validate(), isValid);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [Test]
-        public void ErrorMessage_BasicFormat_AreEqual() {
+        public void ErrorMessage_DefaultMessage_AreEqual() {
             const string column = "測試欄位";
+            const string value = "123";
             const string comparisonColumn = "比較欄位";
+            const string comparisonValue = "456";
+            string expected = ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor(column, value, comparisonColumn, comparisonValue);
+
             CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456");
             validator.Validate();
-            Assert.AreEqual(
-                string.Format(validator.DefaultErrorMessageFormat, column, comparisonColumn),
-                validator.ErrorMessage
-            );
+
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_CustomFormat_AreEqual() {
-            string column = "測試欄位";
+        public void ErrorMessage_CustomMessage_AreEqual() {
+            const string column = "測試欄位";
+            const string value = "123";
             const string comparisonColumn = "比較欄位";
-            CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456", "{0}Compare{1}");
+            const string comparisonValue = "456";
+            string expected = column + value + comparisonColumn + comparisonValue;
+
+            CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456", (c, v, cc, cv) => c + v + cc + cv);
             validator.Validate();
-            Assert.AreEqual(
-                string.Format(validator.CustomErrorMessageFormat, column, comparisonColumn),
-                validator.ErrorMessage
-            );
+
+            validator.ErrorMessage.Should().Be(expected);
         }
     }
 }

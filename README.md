@@ -21,9 +21,9 @@
   * DateTimeValidator：日期和極限值驗證。
 * 比較驗證
   * CompareValidator：比較兩欄位的值是否相等。
-  * IntegerLessThanValidator：整數起訖值驗證，目標值必須小於驗證值；allowedEquals為true時，可以等於。
-  * NumberLessThanValidator：數值起訖值驗證，目標值必須小於驗證值；allowedEquals為true時，可以等於。
-  * DateTimeLessThanValidator：日期起訖值驗證，目標值必須小於驗證值；allowedEquals為true時，可以等於。
+  * IntegerLessThanValidator：整數起訖值驗證，目標值必須小於驗證值；allowedEqual為true時，可以等於。
+  * NumberLessThanValidator：數值起訖值驗證，目標值必須小於驗證值；allowedEqual為true時，可以等於。
+  * DateTimeLessThanValidator：日期起訖值驗證，目標值必須小於驗證值；allowedEqual為true時，可以等於。
 * 格式驗證
   * RegexValidator：使用正規式驗證Value。
   * EmailValidator：Email格式驗證。
@@ -53,7 +53,7 @@ validators.Add(new TrueAssertValidator({bool}, "錯誤訊息"));
 // 進行資料驗證
 if (!validators.Validate()) {
     // 驗證失敗使用validators.ErrorMessage取得錯誤訊息，多個錯誤訊息使用<br />隔開
-    // ErrorMessageWithBreak等同於ErrorMessage
+    // ErrorMessageWithBR等同於ErrorMessage
     // ErrorMessageWithLF，使用\n隔開
     // ErrorMessageWithNewLine，使用Environment.NewLine隔開
 }

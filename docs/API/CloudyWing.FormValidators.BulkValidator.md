@@ -86,14 +86,14 @@ public System.Collections.Generic.IReadOnlyCollection<string> ErrorMessages { ge
 [System.Collections.Generic.IReadOnlyCollection&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IReadOnlyCollection-1 'System.Collections.Generic.IReadOnlyCollection`1')  
 The error messages.
 
-<a name='CloudyWing.FormValidators.BulkValidator.ErrorMessageWithBreak'></a>
+<a name='CloudyWing.FormValidators.BulkValidator.ErrorMessageWithBR'></a>
 
-## BulkValidator.ErrorMessageWithBreak Property
+## BulkValidator.ErrorMessageWithBR Property
 
 Gets the error message, separated by br.
 
 ```csharp
-public string ErrorMessageWithBreak { get; }
+public string ErrorMessageWithBR { get; }
 ```
 
 #### Property Value

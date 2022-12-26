@@ -1,12 +1,10 @@
-﻿using NUnit.Framework;
+﻿using CloudyWing.FormValidators.Core;
+using FluentAssertions;
+using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
     public class IntegerValidatorTests {
-        [SetUp]
-        public void Setup() {
-        }
-
         [TestCase(null, true)]
         [TestCase("", true)]
         [TestCase(" ", true)]
@@ -15,9 +13,10 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("-1", true)]
         [TestCase("1.1", false)]
         [TestCase("string", false)]
-        public void Validate_Format_AreEqual(string value, bool isValid) {
+        public void Validate_Message_AreEqual(string value, bool isValid) {
             IntegerValidator validator = new IntegerValidator("", value);
-            Assert.AreEqual(validator.Validate(), isValid);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [TestCase("3", 2, 4, true)]
@@ -26,127 +25,130 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("3", 4, 4, false)]
         public void Validate_Range_AreEqual(string value, long min, long max, bool isValid) {
             IntegerValidator validator = new IntegerValidator("", value, min, max);
-            Assert.AreEqual(validator.Validate(), isValid);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [TestCase("3", 2, true)]
         [TestCase("3", 3, true)]
         [TestCase("3", 4, false)]
         public void Validate_Min_AreEqual(string value, long min, bool isValid) {
-            IntegerValidator validator = IntegerValidator.CreateMinValue("", value, min);
-            Assert.AreEqual(validator.Validate(), isValid);
+            IntegerValidator validator = new IntegerValidator("", value, min, null);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [TestCase("3", 4, true)]
         [TestCase("3", 3, true)]
         [TestCase("3", 2, false)]
         public void Validate_Max_AreEqual(string value, long max, bool isValid) {
-            IntegerValidator validator = IntegerValidator.CreateMaxValue("", value, max);
-            Assert.AreEqual(validator.Validate(), isValid);
+            IntegerValidator validator = new IntegerValidator("", value, null, max);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [Test]
-        public void ErrorMessage_BasicFormat_AreEqual() {
+        public void ErrorMessage_DefaultMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "error";
+            string expected = ErrorMessageProvider.ValueIsIntegerAccessor(column, value);
 
-            IntegerValidator validator = new IntegerValidator(column, "error");
+            IntegerValidator validator = new IntegerValidator(column, value);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.DefaultErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_CustomFormat_AreEqual() {
+        public void ErrorMessage_CustomMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "error";
+            string expected = column + value;
 
-            IntegerValidator validator = new IntegerValidator(column, "error", "{0}Integer");
+            IntegerValidator validator = new IntegerValidator(column, value, (c, v, _, _) => c + v);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_MinFormat_AreEqual() {
+        public void ErrorMessage_MinDefaultMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "0";
+            int min = 1;
+            string expected = ErrorMessageProvider.ValueGreaterOrEqualAccessor(column, value, min);
 
-            IntegerValidator validator = IntegerValidator.CreateMinValue(column, "0", 1);
+            IntegerValidator validator = new IntegerValidator(column, value, min, null);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.MinValueErrorMessageFormat, column, 1),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_MinCustomFormat_AreEqual() {
+        public void ErrorMessage_MinCustomMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "0";
+            int min = 1;
+            string expected = column + value + min;
 
-            IntegerValidator validator = IntegerValidator.CreateMinValue(column, "0", 1, customRangeMessageFormat: "{0}_{1}Integer");
+            IntegerValidator validator = new IntegerValidator(column, value, min, null, (c, v, _min, _) => c + v + _min);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomRangeMessageFormat, column, 1),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_MaxFormat_AreEqual() {
+        public void ErrorMessage_MaxDefaultMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "1";
+            int max = 0;
+            string expected = ErrorMessageProvider.ValueLessOrEqualAccessor(column, value, max);
 
-            IntegerValidator validator = IntegerValidator.CreateMaxValue(column, "1", 0);
+            IntegerValidator validator = new IntegerValidator(column, value, null, max);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.MaxValueErrorMessageFormat, column, 0),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_MaxCustomFormat_AreEqual() {
+        public void ErrorMessage_MaxCustomMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "1";
+            int max = 0;
+            string expected = column + value + max;
 
-            IntegerValidator validator = IntegerValidator.CreateMaxValue(column, "1", 0, customRangeMessageFormat: "{0}_{1}Integer");
+            IntegerValidator validator = new IntegerValidator(column, value, null, max, (c, v, _, _max) => c + v + _max);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomRangeMessageFormat, column, 0),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_RangeFormat_AreEqual() {
+        public void ErrorMessage_RangeDefaultMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "0";
+            int min = 1;
+            int max = 2;
+            string expected = ErrorMessageProvider.ValueInRangeAccessor(column, value, min, max);
 
-            IntegerValidator validator = new IntegerValidator(column, "0", 1, 2);
+            IntegerValidator validator = new IntegerValidator(column, value, min, max);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.RangeErrorMessageFormat, column, 1, 2),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_RangeCustomFormat_AreEqual() {
+        public void ErrorMessage_RangeCustomMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "0";
+            int min = 1;
+            int max = 2;
+            string expected = column + value + min + max;
 
-            IntegerValidator validator = new IntegerValidator(column, "0", 1, 2, customRangeMessageFormat: "{0}_{1}_{2}Integer");
+            IntegerValidator validator = new IntegerValidator(column, value, min, max, (c, v, _min, _max) => c + v + _min + _max);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomRangeMessageFormat, column, 1, 2),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
     }
 }

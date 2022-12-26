@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators {
@@ -7,20 +8,31 @@ namespace CloudyWing.FormValidators {
         /// <summary>Initializes a new instance of the <see cref="IdCardValidator" /> class.</summary>
         /// <param name="column">The column.</param>
         /// <param name="value">The value.</param>
-        /// <param name="idCardType">Type of the identifier card.</param>
-        /// <param name="customMessageFormat">The custom message format.</param>
+        /// <param name="idCardType">Type of the identification card.</param>
+        /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, identification card types.</param>
         public IdCardValidator(string column, string value,
-            IdCardTypes idCardType = IdCardTypes.All, string customMessageFormat = null)
-            : base(column, value, customMessageFormat) {
+            IdCardTypes idCardType = IdCardTypes.All, Func<string, string, IdCardTypes, string> customErrorMessageAccessor = null)
+            : base(column, value) {
             IdCardType = idCardType;
+            CustomErrorMessageAccessor = customErrorMessageAccessor;
         }
 
-        /// <summary>Gets the type of the identifier card.</summary>
-        /// <value>The type of the identifier card.</value>
+        /// <summary>Gets the type of the identification card.</summary>
+        /// <value>The type of the identification card.</value>
         public IdCardTypes IdCardType { get; }
 
+        /// <summary>Gets or sets the custom error message accessor.</summary>
+        /// <value>The custom error message accessor.</value>
+        public Func<string, string, IdCardTypes, string> CustomErrorMessageAccessor { get; }
+
         /// <inheritdoc/>
-        public override string DefaultErrorMessageFormat => "「{0}」必須為正確身分證格式。";
+        protected override string DefaultErrorMessage => ErrorMessageProvider.ValueIsIdCardAccessor(Column, Value, IdCardType);
+
+        /// <inheritdoc/>
+        protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, IdCardType);
+
+        /// <inheritdoc/>
+        protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
 
         /// <inheritdoc/>
         protected override bool ValidateValue() {

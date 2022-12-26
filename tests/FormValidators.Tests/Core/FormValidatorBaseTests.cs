@@ -1,12 +1,10 @@
-﻿using NUnit.Framework;
+﻿using CloudyWing.FormValidators.Core;
+using FluentAssertions;
+using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Core.Tests {
+namespace CloudyWing.FormValidators.Tests.Core {
     [TestFixture]
     public class FormValidatorBaseTests {
-        [SetUp]
-        public void Setup() {
-        }
-
         [TestCase("0", true)]
         [TestCase("1", true)]
         [TestCase(null, false)]
@@ -16,7 +14,7 @@ namespace CloudyWing.FormValidators.Core.Tests {
             FormValidatorBase validator = new RequiredValidator("", value);
             validator.Validate();
 
-            Assert.AreEqual(validator.IsValid, isValid);
+            validator.IsValid.Should().Be(isValid);
         }
     }
 }

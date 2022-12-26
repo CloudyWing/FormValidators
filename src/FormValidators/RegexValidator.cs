@@ -1,25 +1,19 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators {
     /// <summary>The regex validator.</summary>
-    public class RegexValidator : FormValidatorBase {
-        /// <summary>Initializes a new instance of the <see cref="RegexValidator" /> class.</summary>
-        /// <param name="column">The column.</param>
-        /// <param name="value">The value.</param>
-        /// <param name="customMessageFormat">The custom message format.</param>
-        protected RegexValidator(string column, string value, string customMessageFormat = null)
-            : base(column, value, customMessageFormat) {
-        }
-
+    public class RegexValidator : BasicFormValidator {
         /// <summary>Initializes a new instance of the <see cref="RegexValidator" /> class.</summary>
         /// <param name="column">The column.</param>
         /// <param name="value">The value.</param>
         /// <param name="pattern">The pattern.</param>
-        /// <param name="customMessageFormat">The custom message format.</param>
-        public RegexValidator(string column, string value, string pattern, string customMessageFormat = null)
-            : base(column, value, customMessageFormat) {
-            Pattern = pattern;
+        /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value.</param>
+        /// <exception cref="ArgumentNullException">pattern</exception>
+        public RegexValidator(string column, string value, string pattern, Func<string, string, string> customErrorMessageAccessor = null)
+            : base(column, value, customErrorMessageAccessor) {
+            Pattern = pattern ?? throw new ArgumentNullException(nameof(pattern));
         }
 
         /// <summary>Gets the pattern.</summary>
@@ -27,7 +21,7 @@ namespace CloudyWing.FormValidators {
         public string Pattern { get; protected set; }
 
         /// <inheritdoc/>
-        public override string DefaultErrorMessageFormat => "「{0}」格式錯誤。";
+        protected override Func<string, string, string> DefaultErrorMessageAccessor => ErrorMessageProvider.ValueMatchRegexAccessor;
 
         /// <inheritdoc/>
         protected override bool ValidateValue() {

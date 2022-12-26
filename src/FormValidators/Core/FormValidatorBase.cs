@@ -1,24 +1,22 @@
 ﻿namespace CloudyWing.FormValidators.Core {
-    /// <summary>The form validator abstract class.</summary>
+    /// <summary>The form validator base abstract class.</summary>
     /// <seealso cref="IFormValidator" />
     public abstract class FormValidatorBase : IFormValidator {
         /// <summary>Initializes a new instance of the <see cref="FormValidatorBase" /> class.</summary>
         /// <param name="column">The column.</param>
         /// <param name="value">The value.</param>
-        /// <param name="customMessageFormat">The custom message format.</param>
-        public FormValidatorBase(string column, string value, string customMessageFormat) {
+        public FormValidatorBase(string column, string value) {
             Column = column;
             Value = value;
-            CustomErrorMessageFormat = customMessageFormat;
         }
 
         /// <summary>Gets or sets the column.</summary>
         /// <value>The column.</value>
-        public string Column { get; set; }
+        public string Column { get; }
 
         /// <summary>Gets or sets the value.</summary>
         /// <value>The value.</value>
-        public string Value { get; set; }
+        public string Value { get; }
 
         /// <inheritdoc />
         public string ErrorMessage { get; private set; }
@@ -26,13 +24,18 @@
         /// <inheritdoc />
         public bool IsValid { get; private set; }
 
-        /// <summary>Gets the default error message format.</summary>
-        /// <value>The default error message format.</value>
-        public abstract string DefaultErrorMessageFormat { get; }
+        /// <summary>Gets the default error message.</summary>
+        /// <value>The default error message.</value>
+        protected abstract string DefaultErrorMessage { get; }
 
-        /// <summary>Gets or sets the custom error message format.</summary>
-        /// <value>The custom error message format.</value>
-        public string CustomErrorMessageFormat { get; set; }
+        /// <summary>Gets the custom error message.</summary>
+        /// <value>The custom error message.</value>
+        protected abstract string CustomErrorMessage { get; }
+
+        /// <summary>Gets a value indicating whether this instance has custom error message.</summary>
+        /// <value>
+        ///   <c>true</c> if this instance has custom error message; otherwise, <c>false</c>.</value>
+        protected abstract bool HasCustomErrorMessage { get; }
 
         /// <inheritdoc />
         public bool Validate() {
@@ -48,8 +51,7 @@
         /// <summary>Creates the error message.</summary>
         /// <returns>The error message.</returns>
         protected virtual string CreateErrorMessage() {
-            return string.IsNullOrWhiteSpace(CustomErrorMessageFormat) ?
-                string.Format(DefaultErrorMessageFormat, Column) : string.Format(CustomErrorMessageFormat, Column);
+            return HasCustomErrorMessage ? CustomErrorMessage : DefaultErrorMessage;
         }
     }
 }

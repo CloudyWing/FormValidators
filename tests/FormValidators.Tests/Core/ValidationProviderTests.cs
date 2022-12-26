@@ -1,7 +1,9 @@
 ﻿using System;
+using CloudyWing.FormValidators.Core;
+using FluentAssertions;
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Core.Tests {
+namespace CloudyWing.FormValidators.Tests.Core {
     [TestFixture()]
     public class ValidationProviderTests {
         private ValidationProvider provider;
@@ -13,237 +15,285 @@ namespace CloudyWing.FormValidators.Core.Tests {
 
         [Test]
         public void Required_Message_AreEqual() {
-            const string column = "Required";
-            const string message = "測試{0}";
+            string column = "Required";
+            string format = "測試{0}";
+            string expected = string.Format(format, column);
 
-            IFormValidator validator = provider.Required(message)(column, null);
+            IFormValidator validator = provider.Required(format)(column, null);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void Integer_Message_AreEqual() {
-            const string column = "Integer";
-            const string message = "測試{0}";
+            string column = "Integer";
+            string value = "N/A";
+            string format = "測試{0}{1}";
+            string expected = string.Format(format, column, value);
 
-            IFormValidator validator = provider.Integer(message)(column, "N/A");
+            IFormValidator validator = provider.Integer(format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void MinInt_Message_AreEqual() {
-            const string column = "MinInt";
-            const string message = "測試{0}{1}";
-            const int min = 3;
+            string column = "MinInt";
+            string value = "2";
+            int min = 3;
+            string format = "測試{0}{1}{2}";
+            string expected = string.Format(format, column, value, min);
 
-            IFormValidator validator = provider.MinInt(min, message)(column, "2");
+            IFormValidator validator = provider.MinInt(min, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void MaxInt_Message_AreEqual() {
-            const string column = "MaxInt";
-            const string message = "測試{0}{1}";
-            const int max = 3;
+            string column = "MaxInt";
+            string value = "4";
+            int max = 3;
+            string format = "測試{0}{1}{3}";
+            string expected = string.Format(format, column, value, null, max);
 
-            IFormValidator validator = provider.MaxInt(max, message)(column, "4");
+            IFormValidator validator = provider.MaxInt(max, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, max));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void IntRange_Message_AreEqual() {
-            const string column = "IntRange";
-            const string message = "測試{0}{1}{2}";
-            const int min = 2;
-            const int max = 4;
+            string column = "IntRange";
+            string value = "1";
+            int min = 2;
+            int max = 4;
+            string format = "測試{0}{1}{2}{3}";
+            string expected = string.Format(format, column, value, min, max);
 
-            IFormValidator validator = provider.IntRange(min, max, message)(column, "1");
+            IFormValidator validator = provider.IntRange(min, max, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min, max));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void DateTime_Message_AreEqual() {
-            const string column = "DateTime";
-            const string message = "測試{0}";
+            string column = "DateTime";
+            string value = "NotDateTime";
+            string format = "測試{0}{1}";
+            string expected = string.Format(format, column, value);
 
-            IFormValidator validator = provider.DateTime(message)(column, "NotDateTime");
+            IFormValidator validator = provider.DateTime(format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void MinDateTime_Message_AreEqual() {
-            const string column = "MinDateTime";
-            const string message = "測試{0}{1}";
+            string column = "MinDateTime";
             DateTime min = DateTime.Today;
+            string value = min.AddDays(-1).ToString("yyyy/MM/dd");
+            string format = "測試{0}{1}{2}";
+            string expected = string.Format(format, column, value, min);
 
-            IFormValidator validator = provider.MinDateTime(min, message)(column, min.AddDays(-1).ToString("yyyy/MM/dd"));
+            IFormValidator validator = provider.MinDateTime(min, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void MaxDateTime_Message_AreEqual() {
-            const string column = "MaxDateTime";
-            const string message = "測試{0}{1}";
+            string column = "MaxDateTime";
             DateTime max = DateTime.Today;
+            string value = max.AddDays(1).ToString("yyyy/MM/dd");
+            string format = "測試{0}{1}{3}";
+            string expected = string.Format(format, column, value, null, max);
 
-            IFormValidator validator = provider.MaxDateTime(max, message)(column, max.AddDays(1).ToString("yyyy/MM/dd"));
+            IFormValidator validator = provider.MaxDateTime(max, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, max));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void DateTimeRange_Message_AreEqual() {
-            const string column = "DateTimeRange";
-            const string message = "測試{0}{1}{2}";
+            string column = "DateTimeRange";
             DateTime min = DateTime.Today.AddDays(-1);
             DateTime max = DateTime.Today.AddDays(1);
+            string value = max.AddDays(1).ToString("yyyy/MM/dd");
+            string format = "測試{0}{1}{2}{3}";
+            string expected = string.Format(format, column, value, min, max);
 
-            IFormValidator validator = provider.DateTimeRange(min, max, message)(column, max.AddDays(1).ToString("yyyy/MM/dd"));
+            IFormValidator validator = provider.DateTimeRange(min, max, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min, max));
+            validator.ErrorMessage.Should().Be(expected);
         }
         [Test]
         public void MinLength_Message_AreEqual() {
-            const string column = "MinLength";
-            const string message = "測試{0}{1}";
+            string column = "MinLength";
+            string value = "12";
             int min = 3;
+            string format = "測試{0}{1}{2}";
+            string expected = string.Format(format, column, value, min);
 
-            IFormValidator validator = provider.MinLength(min, message)(column, "12");
+            IFormValidator validator = provider.MinLength(min, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void MaxLength_Message_AreEqual() {
-            const string column = "MaxLength";
-            const string message = "測試{0}{1}";
+            string column = "MaxLength";
+            string value = "1234";
             int max = 3;
+            string format = "測試{0}{1}{3}";
+            string expected = string.Format(format, column, value, null, max);
 
-            IFormValidator validator = provider.MaxLength(max, message)(column, "1234");
+            IFormValidator validator = provider.MaxLength(max, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, max));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void LengthRange_Message_AreEqual() {
-            const string column = "LengthRange";
-            const string message = "測試{0}{1}{2}";
+            string column = "LengthRange";
+            string value = "12345";
             int min = 2;
             int max = 4;
+            string format = "測試{0}{1}{2}{3}";
+            string expected = string.Format(format, column, value, min, max);
 
-            IFormValidator validator = provider.LengthRange(min, max, message)(column, "12345");
+            IFormValidator validator = provider.LengthRange(min, max, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, min, max));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void Regex_Message_AreEqual() {
-            const string column = "Regex";
-            const string message = "測試{0}";
+            string column = "Regex";
+            string value = "a";
+            string format = "測試{0}{1}";
+            string expected = string.Format(format, column, value);
 
-            IFormValidator validator = provider.Regex(@"\d", message)(column, "a");
+            IFormValidator validator = provider.Regex(@"\d", format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void Email_Message_AreEqual() {
-            const string column = "Email";
-            const string message = "測試{0}";
+            string column = "Email";
+            string value = "NotEmail";
+            string format = "測試{0}{1}";
+            string expected = string.Format(format, column, value);
 
-            IFormValidator validator = provider.Email(message)(column, "NotEmail");
+            IFormValidator validator = provider.Email(format)(column, "NotEmail");
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void MobilePhone_Message_AreEqual() {
-            const string column = "MobilePhone";
-            const string message = "測試{0}";
+            string column = "MobilePhone";
+            string value = "NotPhone";
+            MobilePhoneFormats phoneFormats = MobilePhoneFormats.All;
+            string format = "測試{0}{1}{2}";
+            string expected = string.Format(format, column, value, phoneFormats);
 
-            IFormValidator validator = provider.MobilePhone(message)(column, "NotPhone");
+            IFormValidator validator = provider.MobilePhone(phoneFormats, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void IdCard_Message_AreEqual() {
-            const string column = "IdCard";
-            const string message = "測試{0}";
+            string column = "IdCard";
+            string value = "NotIdCard";
+            IdCardTypes types = IdCardTypes.All;
+            string format = "測試{0}{1}{2}";
+            string expected = string.Format(format, column, value, types);
 
-            IFormValidator validator = provider.IdCard(IdCardTypes.All, message)(column, "NotIdCard");
+            IFormValidator validator = provider.IdCard(types, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void Compare_Message_AreEqual() {
-            const string column = "Compare";
-            const string comparisonColumn = "ComparisonColumn";
-            const string message = "測試{0}";
+            string column = "Compare";
+            string value = "124";
+            string comparisonColumn = "ComparisonColumn";
+            string comparisonValue = "321";
+            string format = "測試{0}{1}{2}{3}";
+            string expected = string.Format(format, column, value, comparisonColumn, comparisonValue);
 
-            IFormValidator validator = provider.Compare(comparisonColumn, "123", message)(column, "321");
+            IFormValidator validator = provider.Compare(comparisonColumn, comparisonValue, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, comparisonColumn));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void IntegerLessThan_Message_AreEqual() {
-            const string column = "Column";
-            const string comparisonColumn = "Comparison Column";
-            const string message = "測試{0}必須小於{1}";
+            string column = "Column";
+            string value = "2";
+            string comparisonColumn = "Comparison Column";
+            string comparisonValue = "1";
+            bool allowedEqual = false;
+            string format = "測試{0}({1})必須小於{2}({3})，是否允許等於為{4}";
+            string expected = string.Format(format, column, value, comparisonColumn, comparisonValue, allowedEqual);
 
-            IFormValidator validator = provider.IntegerLessThan(comparisonColumn, "1", false, message)(column, "1");
+            IFormValidator validator = provider.IntegerLessThan(comparisonColumn, comparisonValue, allowedEqual, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, comparisonColumn));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void NumberLessThan_Message_AreEqual() {
-            const string column = "Column";
-            const string comparisonColumn = "Comparison Column";
-            const string message = "測試{0}必須小於{1}";
+            string column = "Column";
+            string value = "1.2";
+            string comparisonColumn = "Comparison Column";
+            string comparisonValue = "1.1";
+            bool allowedEqual = false;
+            string format = "測試{0}({1})必須小於{2}({3})，是否允許等於為{4}";
+            string expected = string.Format(format, column, value, comparisonColumn, comparisonValue, allowedEqual);
 
-            IFormValidator validator = provider.NumberLessThan(comparisonColumn, "1.1", false, message)(column, "1.1");
+            IFormValidator validator = provider.NumberLessThan(comparisonColumn, comparisonValue, allowedEqual, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, comparisonColumn));
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
         public void DateTimeLessThan_Message_AreEqual() {
-            const string column = "Column";
-            const string comparisonColumn = "Comparison Column";
-            const string message = "測試{0}必須小於{1}";
+            string column = "Column";
+            string value = "2020/01/02";
+            string comparisonColumn = "Comparison Column";
+            string comparisonValue = "2020/01/01";
+            bool allowedEqual = false;
+            string format = "測試{0}({1})必須小於{2}({3})，是否允許等於為{4}";
+            string expected = string.Format(format, column, value, comparisonColumn, comparisonValue, allowedEqual);
 
-            IFormValidator validator = provider.DateTimeLessThan(comparisonColumn, "2020/01/01", false, message)(column, "2020/01/01");
+            IFormValidator validator = provider.DateTimeLessThan(comparisonColumn, comparisonValue, allowedEqual, format)(column, value);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, string.Format(message, column, comparisonColumn));
+            validator.ErrorMessage.Should().Be(expected);
         }
     }
 }

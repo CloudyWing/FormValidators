@@ -1,12 +1,10 @@
 ﻿using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
     public class BulkValidatorTests {
-        [SetUp]
-        public void SetUp() { }
-
         [Test]
         public void Validate_AllTrue_IsTrue() {
             BulkValidator validators = new BulkValidator {
@@ -15,29 +13,29 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(true, "")
             };
 
-            Assert.IsTrue(validators.Validate());
+            validators.Validate().Should().BeTrue();
         }
 
         [Test]
-        public void Validate_AnyFalse_IsFalse() {
+        public void Validate_AnyFalse_IsFasle() {
             BulkValidator validators = new BulkValidator {
                 new TrueAssertValidator(true, ""),
                 new TrueAssertValidator(false, ""),
                 new TrueAssertValidator(true, "")
             };
 
-            Assert.IsFalse(validators.Validate());
+            validators.Validate().Should().BeFalse();
         }
 
         [Test]
-        public void Validate_AllFalse_IsFalse() {
+        public void Validate_AllFalse_IsFasle() {
             BulkValidator validators = new BulkValidator {
                 new TrueAssertValidator(false, ""),
                 new TrueAssertValidator(false, ""),
                 new TrueAssertValidator(false, "")
             };
 
-            Assert.IsFalse(validators.Validate());
+            validators.Validate().Should().BeFalse();
         }
 
         [Test]
@@ -49,9 +47,10 @@ namespace CloudyWing.FormValidators.Tests {
             BulkValidator validators = new BulkValidator {
                 validate1, validate2, validate3
             };
+
             validators.Validate();
 
-            Assert.AreEqual(validators.ErrorMessage, $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
+            validators.ErrorMessage.Should().Be($"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
         }
 
         [Test]
@@ -65,7 +64,9 @@ namespace CloudyWing.FormValidators.Tests {
             };
             validators.Validate();
 
-            Assert.AreEqual(validators.ErrorMessageWithBreak, $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
+            string excepted = $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}";
+
+            validators.ErrorMessageWithBR.Should().Be(excepted);
         }
 
         [Test]
@@ -79,7 +80,9 @@ namespace CloudyWing.FormValidators.Tests {
             };
             validators.Validate();
 
-            Assert.AreEqual(validators.ErrorMessageWithLF, $"{validate1.ErrorMessage}\n{validate3.ErrorMessage}");
+            string excepted = $"{validate1.ErrorMessage}\n{validate3.ErrorMessage}";
+
+            validators.ErrorMessageWithLF.Should().Be(excepted);
         }
 
         [Test]
@@ -93,7 +96,9 @@ namespace CloudyWing.FormValidators.Tests {
             };
             validators.Validate();
 
-            Assert.AreEqual(validators.ErrorMessageWithNewLine, $"{validate1.ErrorMessage}{Environment.NewLine}{validate3.ErrorMessage}");
+            string excepted = $"{validate1.ErrorMessage}{Environment.NewLine}{validate3.ErrorMessage}";
+
+            validators.ErrorMessageWithNewLine.Should().Be(excepted);
         }
 
         [Test]
@@ -104,7 +109,7 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(true, "")
             };
 
-            Assert.IsTrue(validators.Validate());
+            validators.Validate().Should().BeTrue();
         }
 
         [Test]
@@ -115,7 +120,7 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(true, "")
             };
 
-            Assert.IsFalse(validators.Validate());
+            validators.Validate().Should().BeFalse();
         }
 
         [Test]
@@ -126,7 +131,7 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(false, "")
             };
 
-            Assert.IsFalse(validators.Validate());
+            validators.Validate().Should().BeFalse();
         }
 
         [Test]
@@ -139,7 +144,7 @@ namespace CloudyWing.FormValidators.Tests {
             };
             validators.Validate();
 
-            Assert.AreEqual(validators.ErrorMessage, validate1.ErrorMessage);
+            validators.ErrorMessage.Should().Be(validate1.ErrorMessage);
         }
     }
 }

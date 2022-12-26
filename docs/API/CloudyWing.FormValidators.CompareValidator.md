@@ -3,7 +3,7 @@
 
 ## CompareValidator Class
 
-The compare validator.
+Compare the value of one column with the value of another column.
 
 ```csharp
 public class CompareValidator : CloudyWing.FormValidators.Core.FormValidatorBase
@@ -15,46 +15,46 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 - [FormValidatorBase](CloudyWing.FormValidators.Core.FormValidatorBase.md 'CloudyWing.FormValidators.Core.FormValidatorBase')
 ### Constructors
 
-<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,string)'></a>
+<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,System.Func_string,string,string,string,string_)'></a>
 
-## CompareValidator(string, string, string, string, string) Constructor
+## CompareValidator(string, string, string, string, Func<string,string,string,string,string>) Constructor
 
 Initializes a new instance of the [CompareValidator](CloudyWing.FormValidators.CompareValidator.md 'CloudyWing.FormValidators.CompareValidator') class.
 
 ```csharp
-public CompareValidator(string column, string value, string comparisonColumn, string comparisonValue, string customMessageFormat=null);
+public CompareValidator(string column, string value, string comparisonColumn, string comparisonValue, System.Func<string,string,string,string,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,string).column'></a>
+<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,System.Func_string,string,string,string,string_).column'></a>
 
 `column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The column.
 
-<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,string).value'></a>
+<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,System.Func_string,string,string,string,string_).value'></a>
 
 `value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The value.
 
-<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,string).comparisonColumn'></a>
+<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,System.Func_string,string,string,string,string_).comparisonColumn'></a>
 
 `comparisonColumn` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The comparison column.
 
-<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,string).comparisonValue'></a>
+<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,System.Func_string,string,string,string,string_).comparisonValue'></a>
 
 `comparisonValue` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The comparison value.
 
-<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,string).customMessageFormat'></a>
+<a name='CloudyWing.FormValidators.CompareValidator.CompareValidator(string,string,string,string,System.Func_string,string,string,string,string_).customErrorMessageAccessor'></a>
 
-`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
-The custom message format.
+The custom error message accessor. The agrumts are column, value, comparison column, comparison value.
 ### Properties
 
 <a name='CloudyWing.FormValidators.CompareValidator.ComparisonColumn'></a>
@@ -85,34 +85,62 @@ public string ComparisonValue { get; }
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
 The comparison value.
 
-<a name='CloudyWing.FormValidators.CompareValidator.DefaultErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.CompareValidator.CustomErrorMessage'></a>
 
-## CompareValidator.DefaultErrorMessageFormat Property
+## CompareValidator.CustomErrorMessage Property
 
-Gets the default error message format.
+Gets the custom error message.
 
 ```csharp
-public override string DefaultErrorMessageFormat { get; }
+protected override string CustomErrorMessage { get; }
 ```
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The default error message format.
-### Methods
+The custom error message.
 
-<a name='CloudyWing.FormValidators.CompareValidator.CreateErrorMessage()'></a>
+<a name='CloudyWing.FormValidators.CompareValidator.CustomErrorMessageAccessor'></a>
 
-## CompareValidator.CreateErrorMessage() Method
+## CompareValidator.CustomErrorMessageAccessor Property
 
-Creates the error message.
+Gets the custom range message format.
 
 ```csharp
-protected override string CreateErrorMessage();
+public System.Func<string,string,string,string,string> CustomErrorMessageAccessor { get; set; }
 ```
 
-#### Returns
+#### Property Value
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')  
+The custom range message format.
+
+<a name='CloudyWing.FormValidators.CompareValidator.DefaultErrorMessage'></a>
+
+## CompareValidator.DefaultErrorMessage Property
+
+Gets the default error message.
+
+```csharp
+protected override string DefaultErrorMessage { get; }
+```
+
+#### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The error message.
+The default error message.
+
+<a name='CloudyWing.FormValidators.CompareValidator.HasCustomErrorMessage'></a>
+
+## CompareValidator.HasCustomErrorMessage Property
+
+Gets a value indicating whether this instance has custom error message.
+
+```csharp
+protected override bool HasCustomErrorMessage { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+`true` if this instance has custom error message; otherwise, `false`.
+### Methods
 
 <a name='CloudyWing.FormValidators.CompareValidator.ValidateValue()'></a>
 

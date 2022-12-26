@@ -1,13 +1,10 @@
-﻿using NUnit.Framework;
+﻿using CloudyWing.FormValidators.Core;
+using FluentAssertions;
+using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
-
     [TestFixture]
     public class RegexValidatorTests {
-        [SetUp]
-        public void Setup() {
-        }
-
         [TestCase(null, "", true)]
         [TestCase("", "", true)]
         [TestCase(" ", "", true)]
@@ -15,33 +12,32 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("a123456", @"^\d{7}$", false)]
         public void Validate_ReturnValue_AreEqual(string value, string pattern, bool isValid) {
             RegexValidator validator = new RegexValidator("", value, pattern);
-            Assert.AreEqual(validator.Validate(), isValid);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [Test]
-        public void ErrorMessage_BasicFormat_AreEqual() {
+        public void ErrorMessage_DefaultMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "123456";
+            string expected = ErrorMessageProvider.ValueMatchRegexAccessor(column, value);
 
-            RegexValidator validator = new RegexValidator(column, "123456", @"\D+");
+            RegexValidator validator = new RegexValidator(column, value, @"\D+");
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.DefaultErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_CustomFormat_AreEqual() {
+        public void ErrorMessage_CustomMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "123456";
+            string expected = column + value;
 
-            RegexValidator validator = new RegexValidator(column, "123456", @"\D+", "{0}Regex");
+            RegexValidator validator = new RegexValidator(column, value, @"\D+", (c, v) => c + v);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
     }
 }

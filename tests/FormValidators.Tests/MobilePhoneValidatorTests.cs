@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using CloudyWing.FormValidators.Core;
+using FluentAssertions;
+using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -37,33 +39,34 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("1912345678", MobilePhoneFormats.All, false)]
         public void Validate_ReturnValue_AreEqual(string value, MobilePhoneFormats formats, bool isValid) {
             MobilePhoneValidator validator = new MobilePhoneValidator("", value, formats);
-            Assert.AreEqual(validator.Validate(), isValid);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [Test]
-        public void ErrorMessage_BasicFormat_AreEqual() {
+        public void ErrorMessage_DefaultMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "error";
+            MobilePhoneFormats formats = MobilePhoneFormats.All;
+            string expexted = ErrorMessageProvider.ValueIsMobilePhoneAccessor(column, value, formats);
 
-            MobilePhoneValidator validator = new MobilePhoneValidator(column, "error");
+            MobilePhoneValidator validator = new MobilePhoneValidator(column, value);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.DefaultErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expexted);
         }
 
         [Test]
-        public void ErrorMessage_CustomFormat_AreEqual() {
+        public void ErrorMessage_CustomMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "error";
+            MobilePhoneFormats formats = MobilePhoneFormats.All;
+            string expexted = column + value + formats;
 
-            MobilePhoneValidator validator = new MobilePhoneValidator(column, "error", "{0}MobilePhone");
+            MobilePhoneValidator validator = new MobilePhoneValidator(column, value, formats, (c, v, f) => c + v + f);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expexted);
         }
     }
 }

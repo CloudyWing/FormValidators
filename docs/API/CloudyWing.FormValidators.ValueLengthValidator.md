@@ -3,7 +3,7 @@
 
 ## ValueLengthValidator Class
 
-The value length validator.
+Validation constraints a value does not exceed the length range.
 
 ```csharp
 public sealed class ValueLengthValidator : CloudyWing.FormValidators.Core.FormValidatorBase
@@ -15,96 +15,138 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 - [FormValidatorBase](CloudyWing.FormValidators.Core.FormValidatorBase.md 'CloudyWing.FormValidators.Core.FormValidatorBase')
 ### Constructors
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,int,string)'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,long,System.Func_string,string,long,long,string_)'></a>
 
-## ValueLengthValidator(string, string, int, int, string) Constructor
+## ValueLengthValidator(string, string, long, long, Func<string,string,long,long,string>) Constructor
 
 Initializes a new instance of the [ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator') class.
 
 ```csharp
-public ValueLengthValidator(string column, string value, int min, int max, string customMessageFormat=null);
+public ValueLengthValidator(string column, string value, long min, long max, System.Func<string,string,long,long,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,int,string).column'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,long,System.Func_string,string,long,long,string_).column'></a>
 
 `column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The column.
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,int,string).value'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,long,System.Func_string,string,long,long,string_).value'></a>
 
 `value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The value.
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,int,string).min'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,long,System.Func_string,string,long,long,string_).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
-The minimum.
+The minimum. Less than or equal to 0 means unlimited.
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,int,string).max'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,long,System.Func_string,string,long,long,string_).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
-The maximum.
+The maximum. Less than or equal to 0 means unlimited.
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,int,string).customMessageFormat'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,long,System.Func_string,string,long,long,string_).customErrorMessageAccessor'></a>
 
-`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
-The custom message format.
+The custom error message accessor. The agrumts are column, value, min, max.
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,string)'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,System.Func_string,string,long,long,string_)'></a>
 
-## ValueLengthValidator(string, string, int, string) Constructor
+## ValueLengthValidator(string, string, long, Func<string,string,long,long,string>) Constructor
 
 Initializes a new instance of the [ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator') class.
 
 ```csharp
-public ValueLengthValidator(string column, string value, int max, string customMessageFormat=null);
+public ValueLengthValidator(string column, string value, long max, System.Func<string,string,long,long,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,string).column'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,System.Func_string,string,long,long,string_).column'></a>
 
 `column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The column.
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,string).value'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,System.Func_string,string,long,long,string_).value'></a>
 
 `value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The value.
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,string).max'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,System.Func_string,string,long,long,string_).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,int,string).customMessageFormat'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string,string,long,System.Func_string,string,long,long,string_).customErrorMessageAccessor'></a>
 
-`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
-The custom message format.
+The custom error message accessor. The agrumts are column, value, min, max.
 ### Properties
 
-<a name='CloudyWing.FormValidators.ValueLengthValidator.DefaultErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.ValueLengthValidator.CustomErrorMessage'></a>
 
-## ValueLengthValidator.DefaultErrorMessageFormat Property
+## ValueLengthValidator.CustomErrorMessage Property
 
-Gets the default error message format.
+Gets the custom error message.
 
 ```csharp
-public override string DefaultErrorMessageFormat { get; }
+protected override string CustomErrorMessage { get; }
 ```
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The default error message format.
+The custom error message.
+
+<a name='CloudyWing.FormValidators.ValueLengthValidator.CustomErrorMessageAccessor'></a>
+
+## ValueLengthValidator.CustomErrorMessageAccessor Property
+
+Gets the custom range message format.
+
+```csharp
+public System.Func<string,string,long,long,string> CustomErrorMessageAccessor { get; set; }
+```
+
+#### Property Value
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')  
+The custom range message format.
+
+<a name='CloudyWing.FormValidators.ValueLengthValidator.DefaultErrorMessage'></a>
+
+## ValueLengthValidator.DefaultErrorMessage Property
+
+Gets the default error message.
+
+```csharp
+protected override string DefaultErrorMessage { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The default error message.
+
+<a name='CloudyWing.FormValidators.ValueLengthValidator.HasCustomErrorMessage'></a>
+
+## ValueLengthValidator.HasCustomErrorMessage Property
+
+Gets a value indicating whether this instance has custom error message.
+
+```csharp
+protected override bool HasCustomErrorMessage { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+`true` if this instance has custom error message; otherwise, `false`.
 
 <a name='CloudyWing.FormValidators.ValueLengthValidator.MaxLength'></a>
 
@@ -113,26 +155,12 @@ The default error message format.
 Gets the maximum length.
 
 ```csharp
-public int MaxLength { get; }
+public long MaxLength { get; }
 ```
 
 #### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
+[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')  
 The maximum length.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.MaxLengthErrorMessageFormat'></a>
-
-## ValueLengthValidator.MaxLengthErrorMessageFormat Property
-
-Gets the maximum length error message format.
-
-```csharp
-public string MaxLengthErrorMessageFormat { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The maximum length error message format.
 
 <a name='CloudyWing.FormValidators.ValueLengthValidator.MinLength'></a>
 
@@ -141,119 +169,13 @@ The maximum length error message format.
 Gets the minimum length.
 
 ```csharp
-public int MinLength { get; }
+public long MinLength { get; }
 ```
 
 #### Property Value
-[System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')  
+[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')  
 The minimum length.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.MinLengthErrorMessageFormat'></a>
-
-## ValueLengthValidator.MinLengthErrorMessageFormat Property
-
-Gets the minimum length error message format.
-
-```csharp
-public string MinLengthErrorMessageFormat { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The minimum length error message format.
 ### Methods
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateErrorMessage()'></a>
-
-## ValueLengthValidator.CreateErrorMessage() Method
-
-Creates the error message.
-
-```csharp
-protected override string CreateErrorMessage();
-```
-
-#### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The error message.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMaxLength(string,string,int,string)'></a>
-
-## ValueLengthValidator.CreateMaxLength(string, string, int, string) Method
-
-Creates the maximum length validator.
-
-```csharp
-public static CloudyWing.FormValidators.ValueLengthValidator CreateMaxLength(string column, string value, int max, string customMessageFormat=null);
-```
-#### Parameters
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMaxLength(string,string,int,string).column'></a>
-
-`column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The column.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMaxLength(string,string,int,string).value'></a>
-
-`value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The value.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMaxLength(string,string,int,string).max'></a>
-
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-The maximum.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMaxLength(string,string,int,string).customMessageFormat'></a>
-
-`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The custom message format.
-
-#### Returns
-[ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator')  
-The maximum length validator.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMinLength(string,string,int,string)'></a>
-
-## ValueLengthValidator.CreateMinLength(string, string, int, string) Method
-
-Creates the minimum length validator.
-
-```csharp
-public static CloudyWing.FormValidators.ValueLengthValidator CreateMinLength(string column, string value, int min, string customMessageFormat=null);
-```
-#### Parameters
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMinLength(string,string,int,string).column'></a>
-
-`column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The column.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMinLength(string,string,int,string).value'></a>
-
-`value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The value.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMinLength(string,string,int,string).min'></a>
-
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
-
-The minimum.
-
-<a name='CloudyWing.FormValidators.ValueLengthValidator.CreateMinLength(string,string,int,string).customMessageFormat'></a>
-
-`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The custom message format.
-
-#### Returns
-[ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator')  
-The minimum length validator.
 
 <a name='CloudyWing.FormValidators.ValueLengthValidator.ValidateValue()'></a>
 

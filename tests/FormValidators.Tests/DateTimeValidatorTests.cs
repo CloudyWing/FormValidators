@@ -1,13 +1,11 @@
 ﻿using System;
+using CloudyWing.FormValidators.Core;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
     public class DateTimeValidatorTests {
-        [SetUp]
-        public void Setup() {
-        }
-
         [TestCase(null, true)]
         [TestCase("", true)]
         [TestCase(" ", true)]
@@ -20,23 +18,26 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("error", false)]
         public void Validate_Format_AreEqual(string value, bool isValid) {
             DateTimeValidator validator = new DateTimeValidator("", value);
-            Assert.AreEqual(validator.Validate(), isValid);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [TestCase("1912/3/2", true)]
         [TestCase("1912/3/3", true)]
         [TestCase("1912/3/1", false)]
         public void Validate_Min_AreEqual(string value, bool isValid) {
-            DateTimeValidator validator = DateTimeValidator.CreateMinDateTime("", value, new DateTime(1912, 3, 2));
-            Assert.AreEqual(validator.Validate(), isValid);
+            DateTimeValidator validator = new DateTimeValidator("", value, new DateTime(1912, 3, 2), null);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [TestCase("1912/3/1", true)]
         [TestCase("1912/3/2", true)]
         [TestCase("1912/3/3", false)]
         public void Validate_Max_AreEqual(string value, bool isValid) {
-            DateTimeValidator validator = DateTimeValidator.CreateMaxDateTime("", value, new DateTime(1912, 3, 2));
-            Assert.AreEqual(validator.Validate(), isValid);
+            DateTimeValidator validator = new DateTimeValidator("", value, null, new DateTime(1912, 3, 2));
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [TestCase("1912/3/2", true)]
@@ -46,119 +47,112 @@ namespace CloudyWing.FormValidators.Tests {
         [TestCase("1912/3/5", false)]
         public void Validate_Range_AreEqual(string value, bool isValid) {
             DateTimeValidator validator = new DateTimeValidator("", value, new DateTime(1912, 3, 2), new DateTime(1912, 3, 4));
-            Assert.AreEqual(validator.Validate(), isValid);
+
+            validator.Validate().Should().Be(isValid);
         }
 
         [Test]
-        public void ErrorMessage_BasicFormat_AreEqual() {
+        public void ErrorMessage_DefaultMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "error";
+            string expected = ErrorMessageProvider.ValueIsDateTimeAccessor(column, value);
 
-            DateTimeValidator validator = new DateTimeValidator(column, "error");
+            DateTimeValidator validator = new DateTimeValidator(column, value);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.DefaultErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_CustomFormat_AreEqual() {
+        public void ErrorMessage_CustomMessage_AreEqual() {
             string column = "測試欄位";
+            string value = "error";
+            string expected = column + value;
 
-            DateTimeValidator validator = new DateTimeValidator(column, "error", "{0}DateTime");
+            DateTimeValidator validator = new DateTimeValidator(column, value, (c, v, _, _) => c + v);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomErrorMessageFormat, column),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_MinFormat_AreEqual() {
+        public void ErrorMessage_MinDefaultMessage_AreEqual() {
             string column = "測試欄位";
-            DateTime minDateTime = new DateTime(1912, 3, 5);
+            string value = "1912/03/04";
+            DateTime min = new DateTime(1912, 3, 5);
+            string expected = ErrorMessageProvider.ValueGreaterOrEqualAccessor(column, value, min);
 
-            DateTimeValidator validator = DateTimeValidator.CreateMinDateTime(column, "1912/03/04", minDateTime);
+            DateTimeValidator validator = new DateTimeValidator(column, value, min, null);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.MinValueErrorMessageFormat, column, minDateTime),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_MinCustomFormat_AreEqual() {
+        public void ErrorMessage_MinCustomMessage_AreEqual() {
             string column = "測試欄位";
-            DateTime minDateTime = new DateTime(1912, 3, 5);
+            string value = "1912/03/04";
+            DateTime min = new DateTime(1912, 3, 5);
+            string expected = column + value + min;
 
-            DateTimeValidator validator = DateTimeValidator.CreateMinDateTime(column, "1912/03/04", minDateTime, customRangeMessageFormat: "{0}_{1}DateTime");
+            DateTimeValidator validator = new DateTimeValidator(column, value, min, null, (c, v, _min, _) => c + v + min);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomRangeMessageFormat, column, minDateTime),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_MaxFormat_AreEqual() {
+        public void ErrorMessage_MaxDefaultMessage_AreEqual() {
             string column = "測試欄位";
-            DateTime maxDateTime = new DateTime(1912, 3, 3);
+            string value = "1912/03/04";
+            DateTime max = new DateTime(1912, 3, 3);
+            string expected = ErrorMessageProvider.ValueLessOrEqualAccessor(column, value, max);
 
-            DateTimeValidator validator = DateTimeValidator.CreateMaxDateTime(column, "1912/03/04", maxDateTime);
+            DateTimeValidator validator = new DateTimeValidator(column, value, null, max);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.MaxValueErrorMessageFormat, column, maxDateTime),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_MaxCustomFormat_AreEqual() {
+        public void ErrorMessage_MaxCustomMessage_AreEqual() {
             string column = "測試欄位";
-            DateTime maxDateTime = new DateTime(1912, 3, 3);
+            string value = "1912/03/04";
+            DateTime max = new DateTime(1912, 3, 3);
+            string expected = column + value + max;
 
-            DateTimeValidator validator = DateTimeValidator.CreateMaxDateTime(column, "1912/03/04", maxDateTime, customRangeMessageFormat: "{0}_{1}DateTime");
+            DateTimeValidator validator = new DateTimeValidator(column, value, null, max, (c, v, _, _max) => c + v + _max);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomRangeMessageFormat, column, maxDateTime),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_RangeFormat_AreEqual() {
+        public void ErrorMessage_RangeDefaultMessage_AreEqual() {
             string column = "測試欄位";
-            DateTime minDateTime = new DateTime(1912, 3, 5);
-            DateTime maxDateTime = new DateTime(1912, 3, 3);
+            string value = "1912/03/04";
+            DateTime min = new DateTime(1912, 3, 5);
+            DateTime max = new DateTime(1912, 3, 3);
+            string expected = ErrorMessageProvider.ValueInRangeAccessor(column, value, min, max);
 
-            DateTimeValidator validator = new DateTimeValidator(column, "1912/03/04", minDateTime, maxDateTime);
+            DateTimeValidator validator = new DateTimeValidator(column, value, min, max);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.RangeErrorMessageFormat, column, minDateTime, maxDateTime),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
 
         [Test]
-        public void ErrorMessage_RangeCustomFormat_AreEqual() {
+        public void ErrorMessage_RangeCustomMessage_AreEqual() {
             string column = "測試欄位";
-            DateTime minDateTime = new DateTime(1912, 3, 5);
-            DateTime maxDateTime = new DateTime(1912, 3, 3);
+            string value = "1912/03/04";
+            DateTime min = new DateTime(1912, 3, 5);
+            DateTime max = new DateTime(1912, 3, 3);
+            string expected = column + value + min + max;
 
-            DateTimeValidator validator = new DateTimeValidator(column, "1912/03/04", minDateTime, maxDateTime, customRangeMessageFormat: "{0}_{1}_{2}DateTime");
+            DateTimeValidator validator = new DateTimeValidator(column, value, min, max, (c, v, _min, _max) => c + v + _min + _max);
             validator.Validate();
 
-            Assert.AreEqual(
-                string.Format(validator.CustomRangeMessageFormat, column, minDateTime, maxDateTime),
-                validator.ErrorMessage
-            );
+            validator.ErrorMessage.Should().Be(expected);
         }
     }
 }

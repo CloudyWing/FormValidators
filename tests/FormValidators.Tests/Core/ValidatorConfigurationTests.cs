@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using CloudyWing.FormValidators.Core;
+using FluentAssertions;
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Core.Tests {
+namespace CloudyWing.FormValidators.Tests.Core {
     [TestFixture()]
     public class ValidatorConfigurationTests {
         private BulkValidator validators;
@@ -36,57 +38,57 @@ namespace CloudyWing.FormValidators.Core.Tests {
             config.Add("Column3", "Value3", funcs);
             validators.Validate();
 
-            Assert.AreEqual(expected.IsValid, validators.IsValid);
-            Assert.AreEqual(expected.ErrorMessage, validators.ErrorMessage);
-            Assert.That(validators, Has.Count.EqualTo(expected.Count));
+            validators.IsValid.Should().Be(expected.IsValid);
+            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
+            validators.Count.Should().Be(expected.Count);
         }
 
         [Test()]
         public void AddIf_ConditionIsTrue_Count() {
-            const string message = "TestAddIfTrue";
-            const string column = "欄位";
+            string message = "TestAddIfTrue";
+            string column = "欄位";
 
             config.AddIf(true, column, null, opt => opt.Required(message));
 
-            Assert.AreEqual(validators.Count, 1);
+            validators.Count.Should().Be(1);
         }
 
         [Test()]
         public void AddIf_ConditionIsFalse_Count() {
-            const string message = "TestAddIfFalse";
-            const string column = "欄位";
+            string message = "TestAddIfFalse";
+            string column = "欄位";
 
             config.AddIf(false, column, null, opt => opt.Required(message));
 
-            Assert.AreEqual(validators.Count, 0);
+            validators.Count.Should().Be(0);
         }
 
         [Test()]
         public void AddTrueAssert_Result() {
-            const string message = "TestTrueAssert";
+            string message = "TestTrueAssert";
             BulkValidator expected = new BulkValidator() {
                 new TrueAssertValidator(false, message)
             };
 
             config.AddTrueAssert(false, message);
 
-            Assert.AreEqual(expected.IsValid, validators.IsValid);
-            Assert.AreEqual(expected.ErrorMessage, validators.ErrorMessage);
-            Assert.That(validators, Has.Count.EqualTo(expected.Count));
+            validators.IsValid.Should().Be(expected.IsValid);
+            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
+            validators.Count.Should().Be(expected.Count);
         }
 
         [Test()]
         public void AddFalseAssert_Result() {
-            const string message = "TestFalseAssert";
+            string message = "TestFalseAssert";
             BulkValidator expected = new BulkValidator() {
                 new FalseAssertValidator(false, message)
             };
 
             config.AddFalseAssert(true, message);
 
-            Assert.AreEqual(expected.IsValid, validators.IsValid);
-            Assert.AreEqual(expected.ErrorMessage, validators.ErrorMessage);
-            Assert.That(validators, Has.Count.EqualTo(expected.Count));
+            validators.IsValid.Should().Be(expected.IsValid);
+            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
+            validators.Count.Should().Be(expected.Count);
         }
 
         [Test()]
@@ -105,9 +107,9 @@ namespace CloudyWing.FormValidators.Core.Tests {
             });
             validators.Validate();
 
-            Assert.AreEqual(expected.IsValid, validators.IsValid);
-            Assert.AreEqual(expected.ErrorMessage, validators.ErrorMessage);
-            Assert.That(validators, Has.Count.EqualTo(expected.Count));
+            validators.IsValid.Should().Be(expected.IsValid);
+            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
+            validators.Count.Should().Be(expected.Count);
         }
     }
 }

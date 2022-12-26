@@ -28,67 +28,117 @@ Derived
 - [FormValidatorBase](CloudyWing.FormValidators.Core.FormValidatorBase.md 'CloudyWing.FormValidators.Core.FormValidatorBase')
 ### Constructors
 
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,string,string)'></a>
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,System.Func_string,string,System.Nullable_T_,System.Nullable_T_,string_)'></a>
 
-## ComparableTypeValidator(string, string, Nullable<T>, Nullable<T>, string, string) Constructor
+## ComparableTypeValidator(string, string, Nullable<T>, Nullable<T>, Func<string,string,Nullable<T>,Nullable<T>,string>) Constructor
 
 Initializes a new instance of the [ComparableTypeValidator&lt;T&gt;](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>') class.
 
 ```csharp
-protected ComparableTypeValidator(string column, string value, System.Nullable<T> min=null, System.Nullable<T> max=null, string customMessageFormat=null, string customRangeMessageFormat=null);
+protected ComparableTypeValidator(string column, string value, System.Nullable<T> min, System.Nullable<T> max, System.Func<string,string,System.Nullable<T>,System.Nullable<T>,string> customErrorMessageAccessor);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,string,string).column'></a>
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,System.Func_string,string,System.Nullable_T_,System.Nullable_T_,string_).column'></a>
 
 `column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The column.
 
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,string,string).value'></a>
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,System.Func_string,string,System.Nullable_T_,System.Nullable_T_,string_).value'></a>
 
 `value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
 The value.
 
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,string,string).min'></a>
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,System.Func_string,string,System.Nullable_T_,System.Nullable_T_,string_).min'></a>
 
 `min` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[T](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md#CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.T 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,string,string).max'></a>
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,System.Func_string,string,System.Nullable_T_,System.Nullable_T_,string_).max'></a>
 
 `max` [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[T](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md#CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.T 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,string,string).customMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,System.Func_string,string,System.Nullable_T_,System.Nullable_T_,string_).customErrorMessageAccessor'></a>
 
-`customMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[T](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md#CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.T 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[T](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md#CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.T 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
-The custom message format.
-
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.ComparableTypeValidator(string,string,System.Nullable_T_,System.Nullable_T_,string,string).customRangeMessageFormat'></a>
-
-`customRangeMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
-
-The custom range message format.
+The custom error message accessor. The agrumts are column, value, min, max.
 ### Properties
 
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.CustomRangeMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.CastErrorMessageAccessor'></a>
 
-## ComparableTypeValidator<T>.CustomRangeMessageFormat Property
+## ComparableTypeValidator<T>.CastErrorMessageAccessor Property
 
-Gets the custom range message format.
+Gets the cast error message accessor.
 
 ```csharp
-public string CustomRangeMessageFormat { get; }
+protected abstract System.Func<string,string,string> CastErrorMessageAccessor { get; }
+```
+
+#### Property Value
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
+The cast error message accessor.
+
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.CustomErrorMessage'></a>
+
+## ComparableTypeValidator<T>.CustomErrorMessage Property
+
+Gets the custom error message.
+
+```csharp
+protected override string CustomErrorMessage { get; }
 ```
 
 #### Property Value
 [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The custom error message.
+
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.CustomErrorMessageAccessor'></a>
+
+## ComparableTypeValidator<T>.CustomErrorMessageAccessor Property
+
+Gets the custom range message format.
+
+```csharp
+public System.Func<string,string,System.Nullable<T>,System.Nullable<T>,string> CustomErrorMessageAccessor { get; }
+```
+
+#### Property Value
+[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[T](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md#CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.T 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[T](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md#CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.T 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')  
 The custom range message format.
+
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.DefaultErrorMessage'></a>
+
+## ComparableTypeValidator<T>.DefaultErrorMessage Property
+
+Gets the default error message.
+
+```csharp
+protected override string DefaultErrorMessage { get; }
+```
+
+#### Property Value
+[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
+The default error message.
+
+<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.HasCustomErrorMessage'></a>
+
+## ComparableTypeValidator<T>.HasCustomErrorMessage Property
+
+Gets a value indicating whether this instance has custom error message.
+
+```csharp
+protected override bool HasCustomErrorMessage { get; }
+```
+
+#### Property Value
+[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')  
+`true` if this instance has custom error message; otherwise, `false`.
 
 <a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.MaxValue'></a>
 
@@ -104,20 +154,6 @@ public System.Nullable<T> MaxValue { get; }
 [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[T](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md#CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.T 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 The maximum value.
 
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.MaxValueErrorMessageFormat'></a>
-
-## ComparableTypeValidator<T>.MaxValueErrorMessageFormat Property
-
-Gets the maximum value error message format.
-
-```csharp
-public string MaxValueErrorMessageFormat { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The maximum value error message format.
-
 <a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.MinValue'></a>
 
 ## ComparableTypeValidator<T>.MinValue Property
@@ -131,49 +167,7 @@ public System.Nullable<T> MinValue { get; }
 #### Property Value
 [System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[T](CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.md#CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.T 'CloudyWing.FormValidators.Core.ComparableTypeValidator<T>.T')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')  
 The minimum value.
-
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.MinValueErrorMessageFormat'></a>
-
-## ComparableTypeValidator<T>.MinValueErrorMessageFormat Property
-
-Gets the minimum value error message format.
-
-```csharp
-public string MinValueErrorMessageFormat { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The minimum value error message format.
-
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.RangeErrorMessageFormat'></a>
-
-## ComparableTypeValidator<T>.RangeErrorMessageFormat Property
-
-Gets the range error message format.
-
-```csharp
-public string RangeErrorMessageFormat { get; }
-```
-
-#### Property Value
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The range error message format.
 ### Methods
-
-<a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.CreateErrorMessage()'></a>
-
-## ComparableTypeValidator<T>.CreateErrorMessage() Method
-
-Creates the error message.
-
-```csharp
-protected override string CreateErrorMessage();
-```
-
-#### Returns
-[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')  
-The error message.
 
 <a name='CloudyWing.FormValidators.Core.ComparableTypeValidator_T_.TryParse(string,T)'></a>
 

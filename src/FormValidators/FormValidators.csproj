@@ -6,10 +6,7 @@
     <RootNamespace>CloudyWing.FormValidators</RootNamespace>
     <Authors>周尚緯</Authors>
     <Product>FormValidators</Product>
-    <Version>2.1.0</Version>
-    <AssemblyVersion>2.1.0.0</AssemblyVersion>
-    <FileVersion>2.1.7325.0</FileVersion>
-    <Description>用於驗證資料格式，適用於如Web Form控制項等輸入值皆為字串之場合。
+    <Description>用於驗證資料格式，適用於如 Web Form 控制項等輸入值皆為字串之場合。
 不過 Web Form 本身有 Validation Controls，所以除非捨棄 Validation Controls，自行定義驗證方式，否則此專案更多是用於記錄資料驗證的方式，偏向娛樂性質居多。</Description>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <RepositoryType>git</RepositoryType>
@@ -21,6 +18,7 @@
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DefaultDocumentationGeneratedPages>Namespaces,Types</DefaultDocumentationGeneratedPages>
     <DefaultDocumentationFolder>../../docs/API</DefaultDocumentationFolder>
+    <PackageIcon>icon.png</PackageIcon>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
@@ -28,6 +26,10 @@
     </AssemblyAttribute>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\build\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Include="..\..\LICENSE.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
@@ -39,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="DefaultDocumentation" Version="0.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

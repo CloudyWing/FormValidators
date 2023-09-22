@@ -42,7 +42,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, IntegerValidator> MinInt(int min, bool allowedThousands, string customErrorMessageFormat) {
+        public Func<string, string, IntegerValidator> MinInt(long min, bool allowedThousands, string customErrorMessageFormat) {
             return MinInt(min, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
@@ -52,7 +52,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, IntegerValidator> MinInt(
-            int min, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+            long min, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
         ) {
             return (column, value) => new IntegerValidator(column, value, min, null, allowedThousands, customErrorMessageAccessor);
         }
@@ -62,7 +62,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, IntegerValidator> MaxInt(int max, bool allowedThousands, string customErrorMessageFormat) {
+        public Func<string, string, IntegerValidator> MaxInt(long max, bool allowedThousands, string customErrorMessageFormat) {
             return MaxInt(max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
@@ -72,7 +72,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, IntegerValidator> MaxInt(
-            int max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+            long max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
         ) {
             return (column, value) => new IntegerValidator(column, value, null, max, allowedThousands, customErrorMessageAccessor);
         }
@@ -83,7 +83,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, IntegerValidator> IntRange(int min, int max, bool allowedThousands, string customErrorMessageFormat) {
+        public Func<string, string, IntegerValidator> IntRange(long min, long max, bool allowedThousands, string customErrorMessageFormat) {
             return IntRange(min, max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
@@ -94,7 +94,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, IntegerValidator> IntRange(
-            int min, int max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+            long min, long max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
         ) {
             return (column, value) => new IntegerValidator(column, value, min, max, allowedThousands, customErrorMessageAccessor);
         }
@@ -122,7 +122,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, NumberValidator> MinNumber(int min, bool allowedThousands, string customErrorMessageFormat) {
+        public Func<string, string, NumberValidator> MinNumber(decimal min, bool allowedThousands, string customErrorMessageFormat) {
             return MinNumber(min, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
@@ -132,7 +132,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, NumberValidator> MinNumber(
-            int min, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+            decimal min, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
         ) {
             return (column, value) => new NumberValidator(column, value, min, null, allowedThousands, customErrorMessageAccessor);
         }
@@ -142,7 +142,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, NumberValidator> MaxNumber(int max, bool allowedThousands, string customErrorMessageFormat) {
+        public Func<string, string, NumberValidator> MaxNumber(decimal max, bool allowedThousands, string customErrorMessageFormat) {
             return MaxNumber(max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
@@ -152,7 +152,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, NumberValidator> MaxNumber(
-            int max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+            decimal max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
         ) {
             return (column, value) => new NumberValidator(column, value, null, max, allowedThousands, customErrorMessageAccessor);
         }
@@ -163,7 +163,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, NumberValidator> NumberRange(int min, int max, bool allowedThousands, string customErrorMessageFormat) {
+        public Func<string, string, NumberValidator> NumberRange(decimal min, decimal max, bool allowedThousands, string customErrorMessageFormat) {
             return NumberRange(min, max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
@@ -174,7 +174,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, NumberValidator> NumberRange(
-            int min, int max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+            decimal min, decimal max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
         ) {
             return (column, value) => new NumberValidator(column, value, min, max, allowedThousands, customErrorMessageAccessor);
         }
@@ -257,7 +257,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="min">The minimum.</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, ValueLengthValidator> MinLength(int min, string customErrorMessageFormat) {
+        public Func<string, string, ValueLengthValidator> MinLength(long min, string customErrorMessageFormat) {
             return MinLength(min, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
@@ -266,7 +266,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, ValueLengthValidator> MinLength(
-            int min, Func<string, string, long, long, string> customErrorMessageAccessor = null
+            long min, Func<string, string, long, long, string> customErrorMessageAccessor = null
         ) {
             return (column, value) => new ValueLengthValidator(column, value, min, 0, customErrorMessageAccessor);
         }
@@ -275,7 +275,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="max">The maximum.</param>
         /// <param name="customErrorMessageFormat">The custom error message format. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
-        public Func<string, string, ValueLengthValidator> MaxLength(int max, string customErrorMessageFormat) {
+        public Func<string, string, ValueLengthValidator> MaxLength(long max, string customErrorMessageFormat) {
             return MaxLength(max, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
         }
 
@@ -284,7 +284,7 @@ namespace CloudyWing.FormValidators.Core {
         /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
         /// <returns>The validator creator.</returns>
         public Func<string, string, ValueLengthValidator> MaxLength(
-            int max, Func<string, string, long, long, string> customErrorMessageAccessor = null
+            long max, Func<string, string, long, long, string> customErrorMessageAccessor = null
         ) {
             return (column, value) => new ValueLengthValidator(column, value, 0, max, customErrorMessageAccessor);
         }

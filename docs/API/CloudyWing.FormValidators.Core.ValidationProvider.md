@@ -492,36 +492,36 @@ The custom error message accessor. The agrumts are column, value, comparison col
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IntegerLessThanValidator](CloudyWing.FormValidators.IntegerLessThanValidator.md 'CloudyWing.FormValidators.IntegerLessThanValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,string)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,string)'></a>
 
-## ValidationProvider.IntRange(int, int, bool, string) Method
+## ValidationProvider.IntRange(long, long, bool, string) Method
 
 Validation constrains the integer range of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> IntRange(int min, int max, bool allowedThousands, string customErrorMessageFormat);
+public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> IntRange(long min, long max, bool allowedThousands, string customErrorMessageFormat);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,string).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,string).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,string).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,string).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,string).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,string).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,string).customErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,string).customErrorMessageFormat'></a>
 
 `customErrorMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -531,36 +531,36 @@ The custom error message format. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IntegerValidator](CloudyWing.FormValidators.IntegerValidator.md 'CloudyWing.FormValidators.IntegerValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_)'></a>
 
-## ValidationProvider.IntRange(int, int, bool, Func<string,string,Nullable<long>,Nullable<long>,string>) Method
+## ValidationProvider.IntRange(long, long, bool, Func<string,string,Nullable<long>,Nullable<long>,string>) Method
 
 Validation constrains the integer range of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> IntRange(int min, int max, bool allowedThousands=false, System.Func<string,string,System.Nullable<long>,System.Nullable<long>,string> customErrorMessageAccessor=null);
+public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> IntRange(long min, long max, bool allowedThousands=false, System.Func<string,string,System.Nullable<long>,System.Nullable<long>,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(int,int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).customErrorMessageAccessor'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long,long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).customErrorMessageAccessor'></a>
 
 `customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
@@ -690,30 +690,30 @@ The custom error message accessor. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[DateTimeValidator](CloudyWing.FormValidators.DateTimeValidator.md 'CloudyWing.FormValidators.DateTimeValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(int,bool,string)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long,bool,string)'></a>
 
-## ValidationProvider.MaxInt(int, bool, string) Method
+## ValidationProvider.MaxInt(long, bool, string) Method
 
 Validation constrains the maximum integer of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> MaxInt(int max, bool allowedThousands, string customErrorMessageFormat);
+public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> MaxInt(long max, bool allowedThousands, string customErrorMessageFormat);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(int,bool,string).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long,bool,string).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(int,bool,string).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long,bool,string).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(int,bool,string).customErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long,bool,string).customErrorMessageFormat'></a>
 
 `customErrorMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -723,30 +723,30 @@ The custom error message format. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IntegerValidator](CloudyWing.FormValidators.IntegerValidator.md 'CloudyWing.FormValidators.IntegerValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_)'></a>
 
-## ValidationProvider.MaxInt(int, bool, Func<string,string,Nullable<long>,Nullable<long>,string>) Method
+## ValidationProvider.MaxInt(long, bool, Func<string,string,Nullable<long>,Nullable<long>,string>) Method
 
 Validation constrains the maximum integer of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> MaxInt(int max, bool allowedThousands=false, System.Func<string,string,System.Nullable<long>,System.Nullable<long>,string> customErrorMessageAccessor=null);
+public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> MaxInt(long max, bool allowedThousands=false, System.Func<string,string,System.Nullable<long>,System.Nullable<long>,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).customErrorMessageAccessor'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).customErrorMessageAccessor'></a>
 
 `customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
@@ -756,24 +756,24 @@ The custom error message accessor. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IntegerValidator](CloudyWing.FormValidators.IntegerValidator.md 'CloudyWing.FormValidators.IntegerValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(int,string)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(long,string)'></a>
 
-## ValidationProvider.MaxLength(int, string) Method
+## ValidationProvider.MaxLength(long, string) Method
 
 Validation to constrains a value does not exceed a maximum length.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.ValueLengthValidator> MaxLength(int max, string customErrorMessageFormat);
+public System.Func<string,string,CloudyWing.FormValidators.ValueLengthValidator> MaxLength(long max, string customErrorMessageFormat);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(int,string).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(long,string).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(int,string).customErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(long,string).customErrorMessageFormat'></a>
 
 `customErrorMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -783,24 +783,24 @@ The custom error message format. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(int,System.Func_string,string,long,long,string_)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(long,System.Func_string,string,long,long,string_)'></a>
 
-## ValidationProvider.MaxLength(int, Func<string,string,long,long,string>) Method
+## ValidationProvider.MaxLength(long, Func<string,string,long,long,string>) Method
 
 Validation to constrains a value does not exceed a maximum length.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.ValueLengthValidator> MaxLength(int max, System.Func<string,string,long,long,string> customErrorMessageAccessor=null);
+public System.Func<string,string,CloudyWing.FormValidators.ValueLengthValidator> MaxLength(long max, System.Func<string,string,long,long,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(int,System.Func_string,string,long,long,string_).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(long,System.Func_string,string,long,long,string_).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(int,System.Func_string,string,long,long,string_).customErrorMessageAccessor'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(long,System.Func_string,string,long,long,string_).customErrorMessageAccessor'></a>
 
 `customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
@@ -810,30 +810,30 @@ The custom error message accessor. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(int,bool,string)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal,bool,string)'></a>
 
-## ValidationProvider.MaxNumber(int, bool, string) Method
+## ValidationProvider.MaxNumber(decimal, bool, string) Method
 
 Validation constrains the maximum number of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> MaxNumber(int max, bool allowedThousands, string customErrorMessageFormat);
+public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> MaxNumber(decimal max, bool allowedThousands, string customErrorMessageFormat);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(int,bool,string).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal,bool,string).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(int,bool,string).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal,bool,string).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(int,bool,string).customErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal,bool,string).customErrorMessageFormat'></a>
 
 `customErrorMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -843,30 +843,30 @@ The custom error message format. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[NumberValidator](CloudyWing.FormValidators.NumberValidator.md 'CloudyWing.FormValidators.NumberValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_)'></a>
 
-## ValidationProvider.MaxNumber(int, bool, Func<string,string,Nullable<decimal>,Nullable<decimal>,string>) Method
+## ValidationProvider.MaxNumber(decimal, bool, Func<string,string,Nullable<decimal>,Nullable<decimal>,string>) Method
 
 Validation constrains the maximum number of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> MaxNumber(int max, bool allowedThousands=false, System.Func<string,string,System.Nullable<decimal>,System.Nullable<decimal>,string> customErrorMessageAccessor=null);
+public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> MaxNumber(decimal max, bool allowedThousands=false, System.Func<string,string,System.Nullable<decimal>,System.Nullable<decimal>,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).customErrorMessageAccessor'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).customErrorMessageAccessor'></a>
 
 `customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
@@ -930,30 +930,30 @@ The custom error message accessor. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[DateTimeValidator](CloudyWing.FormValidators.DateTimeValidator.md 'CloudyWing.FormValidators.DateTimeValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(int,bool,string)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long,bool,string)'></a>
 
-## ValidationProvider.MinInt(int, bool, string) Method
+## ValidationProvider.MinInt(long, bool, string) Method
 
 Validation constrains the minimum integer of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> MinInt(int min, bool allowedThousands, string customErrorMessageFormat);
+public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> MinInt(long min, bool allowedThousands, string customErrorMessageFormat);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(int,bool,string).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long,bool,string).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(int,bool,string).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long,bool,string).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(int,bool,string).customErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long,bool,string).customErrorMessageFormat'></a>
 
 `customErrorMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -963,28 +963,28 @@ The custom error message format. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IntegerValidator](CloudyWing.FormValidators.IntegerValidator.md 'CloudyWing.FormValidators.IntegerValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_)'></a>
 
-## ValidationProvider.MinInt(int, bool, Func<string,string,Nullable<long>,Nullable<long>,string>) Method
+## ValidationProvider.MinInt(long, bool, Func<string,string,Nullable<long>,Nullable<long>,string>) Method
 
 Validation constrains the minimum integer of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> MinInt(int min, bool allowedThousands=false, System.Func<string,string,System.Nullable<long>,System.Nullable<long>,string> customErrorMessageAccessor=null);
+public System.Func<string,string,CloudyWing.FormValidators.IntegerValidator> MinInt(long min, bool allowedThousands=false, System.Func<string,string,System.Nullable<long>,System.Nullable<long>,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(int,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).customErrorMessageAccessor'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long,bool,System.Func_string,string,System.Nullable_long_,System.Nullable_long_,string_).customErrorMessageAccessor'></a>
 
 `customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
@@ -994,24 +994,24 @@ The custom error message accessor. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IntegerValidator](CloudyWing.FormValidators.IntegerValidator.md 'CloudyWing.FormValidators.IntegerValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(int,string)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(long,string)'></a>
 
-## ValidationProvider.MinLength(int, string) Method
+## ValidationProvider.MinLength(long, string) Method
 
 Validation to constrains a value does not exceed a minimum length.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.ValueLengthValidator> MinLength(int min, string customErrorMessageFormat);
+public System.Func<string,string,CloudyWing.FormValidators.ValueLengthValidator> MinLength(long min, string customErrorMessageFormat);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(int,string).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(long,string).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(int,string).customErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(long,string).customErrorMessageFormat'></a>
 
 `customErrorMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1021,24 +1021,24 @@ The custom error message format. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(int,System.Func_string,string,long,long,string_)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(long,System.Func_string,string,long,long,string_)'></a>
 
-## ValidationProvider.MinLength(int, Func<string,string,long,long,string>) Method
+## ValidationProvider.MinLength(long, Func<string,string,long,long,string>) Method
 
 Validation to constrains a value does not exceed a minimum length.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.ValueLengthValidator> MinLength(int min, System.Func<string,string,long,long,string> customErrorMessageAccessor=null);
+public System.Func<string,string,CloudyWing.FormValidators.ValueLengthValidator> MinLength(long min, System.Func<string,string,long,long,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(int,System.Func_string,string,long,long,string_).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(long,System.Func_string,string,long,long,string_).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(int,System.Func_string,string,long,long,string_).customErrorMessageAccessor'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinLength(long,System.Func_string,string,long,long,string_).customErrorMessageAccessor'></a>
 
 `customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int64 'System.Int64')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
@@ -1048,30 +1048,30 @@ The custom error message accessor. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[ValueLengthValidator](CloudyWing.FormValidators.ValueLengthValidator.md 'CloudyWing.FormValidators.ValueLengthValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(int,bool,string)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal,bool,string)'></a>
 
-## ValidationProvider.MinNumber(int, bool, string) Method
+## ValidationProvider.MinNumber(decimal, bool, string) Method
 
 Validation constrains the minimum number of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> MinNumber(int min, bool allowedThousands, string customErrorMessageFormat);
+public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> MinNumber(decimal min, bool allowedThousands, string customErrorMessageFormat);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(int,bool,string).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal,bool,string).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(int,bool,string).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal,bool,string).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(int,bool,string).customErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal,bool,string).customErrorMessageFormat'></a>
 
 `customErrorMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1081,30 +1081,30 @@ The custom error message format. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[NumberValidator](CloudyWing.FormValidators.NumberValidator.md 'CloudyWing.FormValidators.NumberValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_)'></a>
 
-## ValidationProvider.MinNumber(int, bool, Func<string,string,Nullable<decimal>,Nullable<decimal>,string>) Method
+## ValidationProvider.MinNumber(decimal, bool, Func<string,string,Nullable<decimal>,Nullable<decimal>,string>) Method
 
 Validation constrains the minimum number of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> MinNumber(int min, bool allowedThousands=false, System.Func<string,string,System.Nullable<decimal>,System.Nullable<decimal>,string> customErrorMessageAccessor=null);
+public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> MinNumber(decimal min, bool allowedThousands=false, System.Func<string,string,System.Nullable<decimal>,System.Nullable<decimal>,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).customErrorMessageAccessor'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).customErrorMessageAccessor'></a>
 
 `customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 
@@ -1300,36 +1300,36 @@ The custom error message accessor. The agrumts are column, value, comparison col
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[NumberLessThanValidator](CloudyWing.FormValidators.NumberLessThanValidator.md 'CloudyWing.FormValidators.NumberLessThanValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,string)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,string)'></a>
 
-## ValidationProvider.NumberRange(int, int, bool, string) Method
+## ValidationProvider.NumberRange(decimal, decimal, bool, string) Method
 
 Validation constrains the number range of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> NumberRange(int min, int max, bool allowedThousands, string customErrorMessageFormat);
+public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> NumberRange(decimal min, decimal max, bool allowedThousands, string customErrorMessageFormat);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,string).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,string).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,string).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,string).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,string).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,string).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,string).customErrorMessageFormat'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,string).customErrorMessageFormat'></a>
 
 `customErrorMessageFormat` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
 
@@ -1339,36 +1339,36 @@ The custom error message format. The agrumts are column, value, min, max.
 [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[NumberValidator](CloudyWing.FormValidators.NumberValidator.md 'CloudyWing.FormValidators.NumberValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')  
 The validator creator.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_)'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_)'></a>
 
-## ValidationProvider.NumberRange(int, int, bool, Func<string,string,Nullable<decimal>,Nullable<decimal>,string>) Method
+## ValidationProvider.NumberRange(decimal, decimal, bool, Func<string,string,Nullable<decimal>,Nullable<decimal>,string>) Method
 
 Validation constrains the number range of a value.
 
 ```csharp
-public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> NumberRange(int min, int max, bool allowedThousands=false, System.Func<string,string,System.Nullable<decimal>,System.Nullable<decimal>,string> customErrorMessageAccessor=null);
+public System.Func<string,string,CloudyWing.FormValidators.NumberValidator> NumberRange(decimal min, decimal max, bool allowedThousands=false, System.Func<string,string,System.Nullable<decimal>,System.Nullable<decimal>,string> customErrorMessageAccessor=null);
 ```
 #### Parameters
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).min'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).min'></a>
 
-`min` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`min` [System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')
 
 The minimum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).max'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).max'></a>
 
-`max` [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.Int32 'System.Int32')
+`max` [System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')
 
 The maximum.
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).allowedThousands'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).allowedThousands'></a>
 
 `allowedThousands` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
 
 if set to `true` [allowed thousands].
 
-<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(int,int,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).customErrorMessageAccessor'></a>
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal,decimal,bool,System.Func_string,string,System.Nullable_decimal_,System.Nullable_decimal_,string_).customErrorMessageAccessor'></a>
 
 `customErrorMessageAccessor` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.Nullable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[System.Decimal](https://docs.microsoft.com/en-us/dotnet/api/System.Decimal 'System.Decimal')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Nullable-1 'System.Nullable`1')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-5 'System.Func`5')
 

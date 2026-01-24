@@ -1,22 +1,22 @@
-#### [CloudyWing.FormValidators](index.md 'index')
-### [CloudyWing.FormValidators.Core](CloudyWing.FormValidators.Core.md 'CloudyWing.FormValidators.Core')
+#### [CloudyWing\.FormValidators](index.md 'index')
+### [CloudyWing\.FormValidators\.Core](CloudyWing.FormValidators.Core.md 'CloudyWing\.FormValidators\.Core')
 
 ## ValidatorConfiguration Class
 
-The validator configuration.
+The validator configuration\.
 
 ```csharp
 public class ValidatorConfiguration
 ```
 
-Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ValidatorConfiguration
+Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; ValidatorConfiguration
 ### Constructors
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.ValidatorConfiguration(CloudyWing.FormValidators.BulkValidator)'></a>
 
-## ValidatorConfiguration(BulkValidator) Constructor
+## ValidatorConfiguration\(BulkValidator\) Constructor
 
-Initializes a new instance of the [ValidatorConfiguration](CloudyWing.FormValidators.Core.ValidatorConfiguration.md 'CloudyWing.FormValidators.Core.ValidatorConfiguration') class.
+Initializes a new instance of the [ValidatorConfiguration](CloudyWing.FormValidators.Core.ValidatorConfiguration.md 'CloudyWing\.FormValidators\.Core\.ValidatorConfiguration') class\.
 
 ```csharp
 public ValidatorConfiguration(CloudyWing.FormValidators.BulkValidator validators);
@@ -25,16 +25,16 @@ public ValidatorConfiguration(CloudyWing.FormValidators.BulkValidator validators
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.ValidatorConfiguration(CloudyWing.FormValidators.BulkValidator).validators'></a>
 
-`validators` [BulkValidator](CloudyWing.FormValidators.BulkValidator.md 'CloudyWing.FormValidators.BulkValidator')
+`validators` [BulkValidator](CloudyWing.FormValidators.BulkValidator.md 'CloudyWing\.FormValidators\.BulkValidator')
 
-The validators.
+The validators\.
 ### Methods
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.Add(string,string,System.Collections.Generic.IEnumerable_System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator___)'></a>
 
-## ValidatorConfiguration.Add(string, string, IEnumerable<Func<ValidationProvider,Func<string,string,IFormValidator>>>) Method
+## ValidatorConfiguration\.Add\(string, string, IEnumerable\<Func\<ValidationProvider,Func\<string,string,IFormValidator\>\>\>\) Method
 
-Adds the validators.
+Adds the validators\.
 
 ```csharp
 public void Add(string column, string value, System.Collections.Generic.IEnumerable<System.Func<CloudyWing.FormValidators.Core.ValidationProvider,System.Func<string,string,CloudyWing.FormValidators.IFormValidator>>> validatorCreators);
@@ -43,27 +43,27 @@ public void Add(string column, string value, System.Collections.Generic.IEnumera
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.Add(string,string,System.Collections.Generic.IEnumerable_System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator___).column'></a>
 
-`column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`column` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The column.
+The column\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.Add(string,string,System.Collections.Generic.IEnumerable_System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator___).value'></a>
 
-`value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`value` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The value.
+The value\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.Add(string,string,System.Collections.Generic.IEnumerable_System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator___).validatorCreators'></a>
 
-`validatorCreators` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[ValidationProvider](CloudyWing.FormValidators.Core.ValidationProvider.md 'CloudyWing.FormValidators.Core.ValidationProvider')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing.FormValidators.IFormValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+`validatorCreators` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[ValidationProvider](CloudyWing.FormValidators.Core.ValidationProvider.md 'CloudyWing\.FormValidators\.Core\.ValidationProvider')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing\.FormValidators\.IFormValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
-The validator creators.
+The validator creators\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.Add(string,string,System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator__[])'></a>
 
-## ValidatorConfiguration.Add(string, string, Func<ValidationProvider,Func<string,string,IFormValidator>>[]) Method
+## ValidatorConfiguration\.Add\(string, string, Func\<ValidationProvider,Func\<string,string,IFormValidator\>\>\[\]\) Method
 
-Adds the validators.
+Adds the validators\.
 
 ```csharp
 public void Add(string column, string value, params System.Func<CloudyWing.FormValidators.Core.ValidationProvider,System.Func<string,string,CloudyWing.FormValidators.IFormValidator>>[] validatorCreators);
@@ -72,27 +72,27 @@ public void Add(string column, string value, params System.Func<CloudyWing.FormV
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.Add(string,string,System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator__[]).column'></a>
 
-`column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`column` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The column.
+The column\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.Add(string,string,System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator__[]).value'></a>
 
-`value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`value` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The value.
+The value\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.Add(string,string,System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator__[]).validatorCreators'></a>
 
-`validatorCreators` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[ValidationProvider](CloudyWing.FormValidators.Core.ValidationProvider.md 'CloudyWing.FormValidators.Core.ValidationProvider')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing.FormValidators.IFormValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`validatorCreators` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[ValidationProvider](CloudyWing.FormValidators.Core.ValidationProvider.md 'CloudyWing\.FormValidators\.Core\.ValidationProvider')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing\.FormValidators\.IFormValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
-The validator creators.
+The validator creators\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddBulk(System.Action_CloudyWing.FormValidators.Core.ValidatorConfiguration_,bool)'></a>
 
-## ValidatorConfiguration.AddBulk(Action<ValidatorConfiguration>, bool) Method
+## ValidatorConfiguration\.AddBulk\(Action\<ValidatorConfiguration\>, bool\) Method
 
-Adds the bulk validator.
+Adds the bulk validator\.
 
 ```csharp
 public void AddBulk(System.Action<CloudyWing.FormValidators.Core.ValidatorConfiguration> configure, bool isStoppedIfFail=false);
@@ -101,21 +101,21 @@ public void AddBulk(System.Action<CloudyWing.FormValidators.Core.ValidatorConfig
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddBulk(System.Action_CloudyWing.FormValidators.Core.ValidatorConfiguration_,bool).configure'></a>
 
-`configure` [System.Action&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')[ValidatorConfiguration](CloudyWing.FormValidators.Core.ValidatorConfiguration.md 'CloudyWing.FormValidators.Core.ValidatorConfiguration')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Action-1 'System.Action`1')
+`configure` [System\.Action&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.action-1 'System\.Action\`1')[ValidatorConfiguration](CloudyWing.FormValidators.Core.ValidatorConfiguration.md 'CloudyWing\.FormValidators\.Core\.ValidatorConfiguration')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.action-1 'System\.Action\`1')
 
-The configure.
+The configure\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddBulk(System.Action_CloudyWing.FormValidators.Core.ValidatorConfiguration_,bool).isStoppedIfFail'></a>
 
-`isStoppedIfFail` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+`isStoppedIfFail` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-if set to `true` [is stopped if fail].
+if set to `true` \[is stopped if fail\]\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddFalseAssert(bool,string)'></a>
 
-## ValidatorConfiguration.AddFalseAssert(bool, string) Method
+## ValidatorConfiguration\.AddFalseAssert\(bool, string\) Method
 
-Adds the false assert validator.
+Adds the false assert validator\.
 
 ```csharp
 public void AddFalseAssert(bool isFalse, string message);
@@ -124,21 +124,21 @@ public void AddFalseAssert(bool isFalse, string message);
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddFalseAssert(bool,string).isFalse'></a>
 
-`isFalse` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+`isFalse` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-if set to `true` [is false].
+if set to `true` \[is false\]\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddFalseAssert(bool,string).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message.
+The message\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddFalseAssert(System.Func_bool_,string)'></a>
 
-## ValidatorConfiguration.AddFalseAssert(Func<bool>, string) Method
+## ValidatorConfiguration\.AddFalseAssert\(Func\<bool\>, string\) Method
 
-Adds the false assert validator.
+Adds the false assert validator\.
 
 ```csharp
 public void AddFalseAssert(System.Func<bool> falsePredicate, string message);
@@ -147,21 +147,21 @@ public void AddFalseAssert(System.Func<bool> falsePredicate, string message);
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddFalseAssert(System.Func_bool_,string).falsePredicate'></a>
 
-`falsePredicate` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+`falsePredicate` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-1 'System\.Func\`1')[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-1 'System\.Func\`1')
 
-The false predicate.
+The false predicate\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddFalseAssert(System.Func_bool_,string).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message.
+The message\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Collections.Generic.IEnumerable_System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator___)'></a>
 
-## ValidatorConfiguration.AddIf(bool, string, string, IEnumerable<Func<ValidationProvider,Func<string,string,IFormValidator>>>) Method
+## ValidatorConfiguration\.AddIf\(bool, string, string, IEnumerable\<Func\<ValidationProvider,Func\<string,string,IFormValidator\>\>\>\) Method
 
-Adds validators if condition is `true`.
+Adds validators if condition is `true`\.
 
 ```csharp
 public void AddIf(bool condition, string column, string value, System.Collections.Generic.IEnumerable<System.Func<CloudyWing.FormValidators.Core.ValidationProvider,System.Func<string,string,CloudyWing.FormValidators.IFormValidator>>> validatorCreators);
@@ -170,25 +170,25 @@ public void AddIf(bool condition, string column, string value, System.Collection
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Collections.Generic.IEnumerable_System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator___).condition'></a>
 
-`condition` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+`condition` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Collections.Generic.IEnumerable_System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator___).column'></a>
 
-`column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`column` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Collections.Generic.IEnumerable_System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator___).value'></a>
 
-`value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`value` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Collections.Generic.IEnumerable_System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator___).validatorCreators'></a>
 
-`validatorCreators` [System.Collections.Generic.IEnumerable&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[ValidationProvider](CloudyWing.FormValidators.Core.ValidationProvider.md 'CloudyWing.FormValidators.Core.ValidationProvider')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing.FormValidators.IFormValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1')
+`validatorCreators` [System\.Collections\.Generic\.IEnumerable&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[ValidationProvider](CloudyWing.FormValidators.Core.ValidationProvider.md 'CloudyWing\.FormValidators\.Core\.ValidationProvider')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing\.FormValidators\.IFormValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.collections.generic.ienumerable-1 'System\.Collections\.Generic\.IEnumerable\`1')
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator__[])'></a>
 
-## ValidatorConfiguration.AddIf(bool, string, string, Func<ValidationProvider,Func<string,string,IFormValidator>>[]) Method
+## ValidatorConfiguration\.AddIf\(bool, string, string, Func\<ValidationProvider,Func\<string,string,IFormValidator\>\>\[\]\) Method
 
-Adds validators if condition is `true`.
+Adds validators if condition is `true`\.
 
 ```csharp
 public void AddIf(bool condition, string column, string value, params System.Func<CloudyWing.FormValidators.Core.ValidationProvider,System.Func<string,string,CloudyWing.FormValidators.IFormValidator>>[] validatorCreators);
@@ -197,33 +197,33 @@ public void AddIf(bool condition, string column, string value, params System.Fun
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator__[]).condition'></a>
 
-`condition` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+`condition` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-if set to `true` [condition].
+if set to `true` \[condition\]\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator__[]).column'></a>
 
-`column` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`column` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The column.
+The column\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator__[]).value'></a>
 
-`value` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`value` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The value.
+The value\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddIf(bool,string,string,System.Func_CloudyWing.FormValidators.Core.ValidationProvider,System.Func_string,string,CloudyWing.FormValidators.IFormValidator__[]).validatorCreators'></a>
 
-`validatorCreators` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[ValidationProvider](CloudyWing.FormValidators.Core.ValidationProvider.md 'CloudyWing.FormValidators.Core.ValidationProvider')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')[,](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing.FormValidators.IFormValidator')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-3 'System.Func`3')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-2 'System.Func`2')[[]](https://docs.microsoft.com/en-us/dotnet/api/System.Array 'System.Array')
+`validatorCreators` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[ValidationProvider](CloudyWing.FormValidators.Core.ValidationProvider.md 'CloudyWing\.FormValidators\.Core\.ValidationProvider')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[IFormValidator](CloudyWing.FormValidators.IFormValidator.md 'CloudyWing\.FormValidators\.IFormValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-2 'System\.Func\`2')[\[\]](https://learn.microsoft.com/en-us/dotnet/api/system.array 'System\.Array')
 
-The validator creators.
+The validator creators\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddTrueAssert(bool,string)'></a>
 
-## ValidatorConfiguration.AddTrueAssert(bool, string) Method
+## ValidatorConfiguration\.AddTrueAssert\(bool, string\) Method
 
-Adds the true assert validator.
+Adds the true assert validator\.
 
 ```csharp
 public void AddTrueAssert(bool isTrue, string message);
@@ -232,21 +232,21 @@ public void AddTrueAssert(bool isTrue, string message);
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddTrueAssert(bool,string).isTrue'></a>
 
-`isTrue` [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')
+`isTrue` [System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')
 
-if set to `true` [is true].
+if set to `true` \[is true\]\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddTrueAssert(bool,string).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message.
+The message\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddTrueAssert(System.Func_bool_,string)'></a>
 
-## ValidatorConfiguration.AddTrueAssert(Func<bool>, string) Method
+## ValidatorConfiguration\.AddTrueAssert\(Func\<bool\>, string\) Method
 
-Adds the true assert validator.
+Adds the true assert validator\.
 
 ```csharp
 public void AddTrueAssert(System.Func<bool> truePredicate, string message);
@@ -255,12 +255,12 @@ public void AddTrueAssert(System.Func<bool> truePredicate, string message);
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddTrueAssert(System.Func_bool_,string).truePredicate'></a>
 
-`truePredicate` [System.Func&lt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')[System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'System.Boolean')[&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Func-1 'System.Func`1')
+`truePredicate` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-1 'System\.Func\`1')[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-1 'System\.Func\`1')
 
-The true predicate.
+The true predicate\.
 
 <a name='CloudyWing.FormValidators.Core.ValidatorConfiguration.AddTrueAssert(System.Func_bool_,string).message'></a>
 
-`message` [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String')
+`message` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
 
-The message.
+The message\.

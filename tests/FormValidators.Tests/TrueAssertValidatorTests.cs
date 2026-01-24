@@ -14,7 +14,7 @@ namespace CloudyWing.FormValidators.Tests {
             TrueAssertValidator validator = new TrueAssertValidator(value, "");
             bool actual = validator.Validate() == value;
 
-            Assert.IsTrue(actual);
+            Assert.That(actual, Is.True);
         }
 
         [Test]
@@ -23,7 +23,7 @@ namespace CloudyWing.FormValidators.Tests {
             TrueAssertValidator validator = new TrueAssertValidator(false, expected);
             validator.Validate();
 
-            Assert.AreEqual(validator.ErrorMessage, expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]

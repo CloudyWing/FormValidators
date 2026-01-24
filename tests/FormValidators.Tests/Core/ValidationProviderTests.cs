@@ -1,7 +1,7 @@
 ﻿using System;
 using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests.Core {
     [TestFixture()]
@@ -22,7 +22,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.Required(format)(column, null);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.Integer(false, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.MinInt(min, false, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -63,7 +63,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.MaxInt(max, false, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -78,7 +78,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.IntRange(min, max, false, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.DateTime(format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -105,7 +105,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.MinDateTime(min, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -119,7 +119,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.MaxDateTime(max, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -134,7 +134,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.DateTimeRange(min, max, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
         [Test]
         public void MinLength_Message_AreEqual() {
@@ -147,7 +147,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.MinLength(min, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -161,7 +161,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.MaxLength(max, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -176,7 +176,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.LengthRange(min, max, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -189,7 +189,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.Regex(@"\d", format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -202,7 +202,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.Email(format)(column, "NotEmail");
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -216,7 +216,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.MobilePhone(phoneFormats, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -230,7 +230,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.IdCard(types, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -245,7 +245,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.Compare(comparisonColumn, comparisonValue, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -261,7 +261,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.IntegerLessThan(comparisonColumn, comparisonValue, allowedEqual, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -277,7 +277,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.NumberLessThan(comparisonColumn, comparisonValue, allowedEqual, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -293,7 +293,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
             IFormValidator validator = provider.DateTimeLessThan(comparisonColumn, comparisonValue, allowedEqual, format)(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
     }
 }

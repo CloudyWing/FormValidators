@@ -1,6 +1,6 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -14,7 +14,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Value_LessThan(string value, string comparisonValue, bool allowedEqual, bool isValid) {
             DateTimeLessThanValidator validator = new DateTimeLessThanValidator("", value, "", comparisonValue, allowedEqual);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [Test]
@@ -29,7 +29,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeLessThanValidator validator = new DateTimeLessThanValidator(column, value, comparisonColumn, comparisonValue, allowedEqual);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace CloudyWing.FormValidators.Tests {
             );
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -13,7 +13,7 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(true, "")
             };
 
-            validators.Validate().Should().BeTrue();
+            Assert.That(validators.Validate(), Is.True);
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(true, "")
             };
 
-            validators.Validate().Should().BeFalse();
+            Assert.That(validators.Validate(), Is.False);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(false, "")
             };
 
-            validators.Validate().Should().BeFalse();
+            Assert.That(validators.Validate(), Is.False);
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace CloudyWing.FormValidators.Tests {
 
             validators.Validate();
 
-            validators.ErrorMessage.Should().Be($"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}");
+            Assert.That(validators.ErrorMessage, Is.EqualTo($"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}"));
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace CloudyWing.FormValidators.Tests {
 
             string excepted = $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}";
 
-            validators.ErrorMessageWithBR.Should().Be(excepted);
+            Assert.That(validators.ErrorMessageWithBR, Is.EqualTo(excepted));
         }
 
         [Test]
@@ -82,7 +82,7 @@ namespace CloudyWing.FormValidators.Tests {
 
             string excepted = $"{validate1.ErrorMessage}\n{validate3.ErrorMessage}";
 
-            validators.ErrorMessageWithLF.Should().Be(excepted);
+            Assert.That(validators.ErrorMessageWithLF, Is.EqualTo(excepted));
         }
 
         [Test]
@@ -98,7 +98,7 @@ namespace CloudyWing.FormValidators.Tests {
 
             string excepted = $"{validate1.ErrorMessage}{Environment.NewLine}{validate3.ErrorMessage}";
 
-            validators.ErrorMessageWithNewLine.Should().Be(excepted);
+            Assert.That(validators.ErrorMessageWithNewLine, Is.EqualTo(excepted));
         }
 
         [Test]
@@ -109,7 +109,7 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(true, "")
             };
 
-            validators.Validate().Should().BeTrue();
+            Assert.That(validators.Validate(), Is.True);
         }
 
         [Test]
@@ -120,7 +120,7 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(true, "")
             };
 
-            validators.Validate().Should().BeFalse();
+            Assert.That(validators.Validate(), Is.False);
         }
 
         [Test]
@@ -131,7 +131,7 @@ namespace CloudyWing.FormValidators.Tests {
                 new TrueAssertValidator(false, "")
             };
 
-            validators.Validate().Should().BeFalse();
+            Assert.That(validators.Validate(), Is.False);
         }
 
         [Test]
@@ -144,7 +144,7 @@ namespace CloudyWing.FormValidators.Tests {
             };
             validators.Validate();
 
-            validators.ErrorMessage.Should().Be(validate1.ErrorMessage);
+            Assert.That(validators.ErrorMessage, Is.EqualTo(validate1.ErrorMessage));
         }
     }
 }

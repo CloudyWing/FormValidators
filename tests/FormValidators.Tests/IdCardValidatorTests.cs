@@ -1,6 +1,6 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -24,7 +24,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.National);
             bool actual = validator.Validate();
 
-            actual.Should().Be(expected);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [TestCase("A188222138", false)] // 國民身份證號男生
@@ -46,7 +46,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Resident);
             bool actual = validator.Validate();
 
-            actual.Should().Be(expected);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [TestCase("A188222138", false)] // 國民身份證號男生
@@ -68,7 +68,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.AlienResident);
             bool actual = validator.Validate();
 
-            actual.Should().Be(expected);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [TestCase("A188222138", false)] // 國民身份證號男生
@@ -90,7 +90,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Homeless);
             bool actual = validator.Validate();
 
-            actual.Should().Be(expected);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [TestCase("A188222138", false)] // 國民身份證號男生
@@ -112,7 +112,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.NewResident);
             bool actual = validator.Validate();
 
-            actual.Should().Be(expected);
+            Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
@@ -125,7 +125,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, value, types);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -137,7 +137,7 @@ namespace CloudyWing.FormValidators.Tests {
             IdCardValidator validator = new IdCardValidator(column, value, IdCardTypes.All, (c, v, f) => c + v + f);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
     }
 }

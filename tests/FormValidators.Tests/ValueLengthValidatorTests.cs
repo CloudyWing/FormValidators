@@ -1,6 +1,6 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -11,7 +11,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Min_AreEqual(string value, int min, bool isValid) {
             ValueLengthValidator validator = new ValueLengthValidator("", value, min, 0);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [TestCase("123", 3, true)]
@@ -20,7 +20,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Max_AreEqual(string value, int max, bool isValid) {
             ValueLengthValidator validator = new ValueLengthValidator("", value, 0, max);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [TestCase("123", 0, 3, true)]
@@ -29,7 +29,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Range_AreEqual(string value, int min, int max, bool isValid) {
             ValueLengthValidator validator = new ValueLengthValidator("", value, min, max);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace CloudyWing.FormValidators.Tests {
             ValueLengthValidator validator = new ValueLengthValidator(column, value, min, max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -57,7 +57,7 @@ namespace CloudyWing.FormValidators.Tests {
             ValueLengthValidator validator = new ValueLengthValidator(column, value, min, max, (c, v, _min, _max) => c + v + _min + _max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace CloudyWing.FormValidators.Tests {
             ValueLengthValidator validator = new ValueLengthValidator(column, value, min, 0);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -83,7 +83,7 @@ namespace CloudyWing.FormValidators.Tests {
             ValueLengthValidator validator = new ValueLengthValidator(column, value, min, 0, (c, v, _min, _) => c + v + _min);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -96,7 +96,7 @@ namespace CloudyWing.FormValidators.Tests {
             ValueLengthValidator validator = new ValueLengthValidator(column, value, 0, max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -109,7 +109,7 @@ namespace CloudyWing.FormValidators.Tests {
             ValueLengthValidator validator = new ValueLengthValidator(column, value, max, (c, v, _, _max) => c + v + _max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
     }
 }

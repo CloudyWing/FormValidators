@@ -1,6 +1,6 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -18,7 +18,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Message_AreEqual(string value, bool allowedThousands, bool isValid) {
             NumberValidator validator = new NumberValidator("", value, allowedThousands);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [TestCase("3.1", 2.1, 4.1, true, true)]
@@ -30,7 +30,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Range_AreEqual(string value, decimal min, decimal max, bool allowedThousands, bool isValid) {
             NumberValidator validator = new NumberValidator("", value, min, max, allowedThousands);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [TestCase("3.1", 2.1, true, true)]
@@ -44,7 +44,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Min_AreEqual(string value, decimal min, bool allowedThousands, bool isValid) {
             NumberValidator validator = new NumberValidator("", value, min, null, allowedThousands);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [TestCase("3.1", 4.1, true, true)]
@@ -58,7 +58,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Max_AreEqual(string value, decimal max, bool allowedThousands, bool isValid) {
             NumberValidator validator = new NumberValidator("", value, null, max, allowedThousands);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace CloudyWing.FormValidators.Tests {
             NumberValidator validator = new NumberValidator(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -82,7 +82,7 @@ namespace CloudyWing.FormValidators.Tests {
             NumberValidator validator = new NumberValidator(column, value, false, (c, v, _, _) => c + v);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -95,7 +95,7 @@ namespace CloudyWing.FormValidators.Tests {
             NumberValidator validator = new NumberValidator(column, value, min, null);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -110,7 +110,7 @@ namespace CloudyWing.FormValidators.Tests {
             );
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -123,7 +123,7 @@ namespace CloudyWing.FormValidators.Tests {
             NumberValidator validator = new NumberValidator(column, value, null, max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -136,7 +136,7 @@ namespace CloudyWing.FormValidators.Tests {
             NumberValidator validator = new NumberValidator(column, value, null, max, false, (c, v, _, _max) => c + v + _max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -150,7 +150,7 @@ namespace CloudyWing.FormValidators.Tests {
             NumberValidator validator = new NumberValidator(column, value, min, max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -166,7 +166,7 @@ namespace CloudyWing.FormValidators.Tests {
             );
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
     }
 }

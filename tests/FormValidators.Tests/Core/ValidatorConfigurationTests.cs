@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests.Core {
     [TestFixture()]
@@ -38,9 +38,9 @@ namespace CloudyWing.FormValidators.Tests.Core {
             config.Add("Column3", "Value3", funcs);
             validators.Validate();
 
-            validators.IsValid.Should().Be(expected.IsValid);
-            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
-            validators.Count.Should().Be(expected.Count);
+            Assert.That(validators.IsValid, Is.EqualTo(expected.IsValid));
+            Assert.That(validators.ErrorMessage, Is.EqualTo(expected.ErrorMessage));
+            Assert.That(validators.Count, Is.EqualTo(expected.Count));
         }
 
         [Test()]
@@ -50,7 +50,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
 
             config.AddIf(true, column, null, opt => opt.Required(message));
 
-            validators.Count.Should().Be(1);
+            Assert.That(validators.Count, Is.EqualTo(1));
         }
 
         [Test()]
@@ -60,7 +60,7 @@ namespace CloudyWing.FormValidators.Tests.Core {
 
             config.AddIf(false, column, null, opt => opt.Required(message));
 
-            validators.Count.Should().Be(0);
+            Assert.That(validators.Count, Is.EqualTo(0));
         }
 
         [Test()]
@@ -72,9 +72,9 @@ namespace CloudyWing.FormValidators.Tests.Core {
 
             config.AddTrueAssert(false, message);
 
-            validators.IsValid.Should().Be(expected.IsValid);
-            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
-            validators.Count.Should().Be(expected.Count);
+            Assert.That(validators.IsValid, Is.EqualTo(expected.IsValid));
+            Assert.That(validators.ErrorMessage, Is.EqualTo(expected.ErrorMessage));
+            Assert.That(validators.Count, Is.EqualTo(expected.Count));
         }
 
         [Test()]
@@ -86,9 +86,9 @@ namespace CloudyWing.FormValidators.Tests.Core {
 
             config.AddFalseAssert(true, message);
 
-            validators.IsValid.Should().Be(expected.IsValid);
-            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
-            validators.Count.Should().Be(expected.Count);
+            Assert.That(validators.IsValid, Is.EqualTo(expected.IsValid));
+            Assert.That(validators.ErrorMessage, Is.EqualTo(expected.ErrorMessage));
+            Assert.That(validators.Count, Is.EqualTo(expected.Count));
         }
 
         [Test()]
@@ -107,9 +107,9 @@ namespace CloudyWing.FormValidators.Tests.Core {
             });
             validators.Validate();
 
-            validators.IsValid.Should().Be(expected.IsValid);
-            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
-            validators.Count.Should().Be(expected.Count);
+            Assert.That(validators.IsValid, Is.EqualTo(expected.IsValid));
+            Assert.That(validators.ErrorMessage, Is.EqualTo(expected.ErrorMessage));
+            Assert.That(validators.Count, Is.EqualTo(expected.Count));
         }
     }
 }

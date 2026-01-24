@@ -1,6 +1,6 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -40,7 +40,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_ReturnValue_AreEqual(string value, MobilePhoneFormats formats, bool isValid) {
             MobilePhoneValidator validator = new MobilePhoneValidator("", value, formats);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [Test]
@@ -53,7 +53,7 @@ namespace CloudyWing.FormValidators.Tests {
             MobilePhoneValidator validator = new MobilePhoneValidator(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expexted);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expexted));
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace CloudyWing.FormValidators.Tests {
             MobilePhoneValidator validator = new MobilePhoneValidator(column, value, formats, (c, v, f) => c + v + f);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expexted);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expexted));
         }
     }
 }

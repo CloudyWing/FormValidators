@@ -1,7 +1,7 @@
 ﻿using System;
 using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -19,7 +19,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Format_AreEqual(string value, bool isValid) {
             DateTimeValidator validator = new DateTimeValidator("", value);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [TestCase("1912/3/2", true)]
@@ -28,7 +28,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Min_AreEqual(string value, bool isValid) {
             DateTimeValidator validator = new DateTimeValidator("", value, new DateTime(1912, 3, 2), null);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [TestCase("1912/3/1", true)]
@@ -37,7 +37,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Max_AreEqual(string value, bool isValid) {
             DateTimeValidator validator = new DateTimeValidator("", value, null, new DateTime(1912, 3, 2));
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [TestCase("1912/3/2", true)]
@@ -48,7 +48,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_Range_AreEqual(string value, bool isValid) {
             DateTimeValidator validator = new DateTimeValidator("", value, new DateTime(1912, 3, 2), new DateTime(1912, 3, 4));
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [Test]
@@ -60,7 +60,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = new DateTimeValidator(column, value);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = new DateTimeValidator(column, value, (c, v, _, _) => c + v);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = new DateTimeValidator(column, value, min, null);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -98,7 +98,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = new DateTimeValidator(column, value, min, null, (c, v, _min, _) => c + v + min);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -111,7 +111,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = new DateTimeValidator(column, value, null, max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -124,7 +124,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = new DateTimeValidator(column, value, null, max, (c, v, _, _max) => c + v + _max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -138,7 +138,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = new DateTimeValidator(column, value, min, max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -152,7 +152,7 @@ namespace CloudyWing.FormValidators.Tests {
             DateTimeValidator validator = new DateTimeValidator(column, value, min, max, (c, v, _min, _max) => c + v + _min + _max);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
     }
 }

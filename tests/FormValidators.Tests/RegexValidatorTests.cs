@@ -1,6 +1,6 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
+
 
 namespace CloudyWing.FormValidators.Tests {
     [TestFixture]
@@ -13,7 +13,7 @@ namespace CloudyWing.FormValidators.Tests {
         public void Validate_ReturnValue_AreEqual(string value, string pattern, bool isValid) {
             RegexValidator validator = new RegexValidator("", value, pattern);
 
-            validator.Validate().Should().Be(isValid);
+            Assert.That(validator.Validate(), Is.EqualTo(isValid));
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace CloudyWing.FormValidators.Tests {
             RegexValidator validator = new RegexValidator(column, value, @"\D+");
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
 
         [Test]
@@ -37,7 +37,7 @@ namespace CloudyWing.FormValidators.Tests {
             RegexValidator validator = new RegexValidator(column, value, @"\D+", (c, v) => c + v);
             validator.Validate();
 
-            validator.ErrorMessage.Should().Be(expected);
+            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
         }
     }
 }

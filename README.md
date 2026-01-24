@@ -1,4 +1,4 @@
-# FormValidators
+﻿# FormValidators
 
 用於驗證資料格式，適用於如 Web Form 控制項等輸入值皆為字串之場合。
 不過 Web Form 本身有 Validation Controls，所以除非捨棄 Validation Controls，自行定義驗證方式，否則此專案更多是用於記錄資料驗證的方式，偏向娛樂性質居多。

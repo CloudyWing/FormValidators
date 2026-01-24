@@ -1,4 +1,4 @@
-# Examples
+﻿# Examples
 
 ## 驗證全部項目，並取得全部驗證的錯誤訊息
 ```csharp

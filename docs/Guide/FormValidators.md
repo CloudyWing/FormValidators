@@ -1,4 +1,4 @@
-# FormValidators：
+﻿# FormValidators：
 目前提供以下幾種預設驗證：
 
 ## 基本驗證

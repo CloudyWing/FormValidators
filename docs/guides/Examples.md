@@ -1,6 +1,7 @@
-# Examples
+﻿# Examples
 
 ## 驗證全部項目，並取得全部驗證的錯誤訊息
+
 ```csharp
 // 建立容器，並將 Validator加入 Bulk 裡
 BulkValidator validators = new BulkValidator();
@@ -23,6 +24,7 @@ if (!validators.Validate()) {
 ```
 
 ## 驗證失敗後，停止驗證後續項目，只取得第一個錯誤訊息
+
 ```csharp
 // 建立容器，並將 Validator 加入批量裡
 BulkValidator validators = new BulkValidator(true);
@@ -37,6 +39,7 @@ if (!validators.Validate()) {
 ```
 
 ## 混合使用
+
 ```csharp
 BulkValidator validators = new BulkValidator {
     new BulkValidator(true) {
@@ -54,6 +57,7 @@ if (!validators.Validate()) {
 ```
 
 ## 使用 BulkValidator(Action\<ValidatorConfiguration\> configure) 簡化建立程式碼
+
 ```csharp
 BulkValidator validators = new BulkValidator(cfg => {
     cfg.Add("欄位一", "值一", opt => opt.Required()); // 增加一個驗證

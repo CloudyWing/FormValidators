@@ -1,40 +1,40 @@
 ﻿using System;
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Tests {
-    [TestFixture]
-    public class FalseAssertValidatorTests {
-        [SetUp]
-        public void Setup() {
-        }
+namespace CloudyWing.FormValidators.Tests;
 
-        [TestCase(true)]
-        [TestCase(false)]
-        public void Validate_ReturnValue_IsFalse(bool value) {
-            FalseAssertValidator validator = new FalseAssertValidator(value, "");
-            bool actual = validator.Validate() == value;
+[TestFixture]
+public class FalseAssertValidatorTests {
+    [SetUp]
+    public void Setup() {
+    }
 
-            Assert.That(actual, Is.False);
-        }
+    [TestCase(true)]
+    [TestCase(false)]
+    public void Validate_ReturnValue_IsFalse(bool value) {
+        FalseAssertValidator validator = new FalseAssertValidator(value, "");
+        bool actual = validator.Validate() == value;
 
-        [Test]
-        public void ErrorMessage_Value_AreEqual() {
-            string expected = "測試FalseAssert";
+        Assert.That(actual, Is.False);
+    }
 
-            FalseAssertValidator validator = new FalseAssertValidator(true, expected);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_Value_AreEqual() {
+        string expected = "測試FalseAssert";
 
-            Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
-        }
+        FalseAssertValidator validator = new FalseAssertValidator(true, expected);
+        validator.Validate();
 
-        [Test]
-        public void Predicate_Exception_Timing() {
-            int dividend = 0;
-            int division = 1;
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 
-            Assert.DoesNotThrow(() => new FalseAssertValidator(() => (division / dividend) == 0, ""));
+    [Test]
+    public void Predicate_Exception_Timing() {
+        int dividend = 0;
+        int division = 1;
 
-            Assert.Throws<DivideByZeroException>(() => new FalseAssertValidator(() => (division / dividend) == 0, "").Validate());
-        }
+        Assert.DoesNotThrow(() => new FalseAssertValidator(() => (division / dividend) == 0, ""));
+
+        Assert.Throws<DivideByZeroException>(() => new FalseAssertValidator(() => (division / dividend) == 0, "").Validate());
     }
 }

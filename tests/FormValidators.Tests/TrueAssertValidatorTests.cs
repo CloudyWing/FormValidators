@@ -5,13 +5,9 @@ namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
 public class TrueAssertValidatorTests {
-    [SetUp]
-    public void Setup() {
-    }
-
     [TestCase(true)]
     [TestCase(false)]
-    public void Validate_ReturnValue_IsTrue(bool value) {
+    public void Validate_WhenConditionIsProvided_ReturnsConditionResult(bool value) {
         TrueAssertValidator validator = new TrueAssertValidator(value, "");
         bool actual = validator.Validate() == value;
 
@@ -19,7 +15,7 @@ public class TrueAssertValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_Value_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string expected = "測試TrueAssert";
         TrueAssertValidator validator = new TrueAssertValidator(false, expected);
         validator.Validate();
@@ -28,7 +24,7 @@ public class TrueAssertValidatorTests {
     }
 
     [Test]
-    public void Predicate_Exception_Timing() {
+    public void Validate_WhenPredicateMatches_ThrowsExceptionLazyLoading() {
         int dividend = 0;
         int division = 1;
 

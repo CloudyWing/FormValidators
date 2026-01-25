@@ -5,24 +5,20 @@ namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
 public class EmailValidatorTests {
-    [SetUp]
-    public void Setup() {
-    }
-
     [TestCase(null, true)]
     [TestCase("", true)]
     [TestCase(" ", true)]
     [TestCase("wing@gmail.com", true)]
     [TestCase("wing@gmail", false)]
     [TestCase("wing.com", false)]
-    public void Validate_ReturnValue_AreEqual(string value, bool isValid) {
+    public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, bool isValid) {
         EmailValidator validator = new EmailValidator("", value);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
         string value = "error";
 
@@ -35,7 +31,7 @@ public class EmailValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "測試欄位";
         string value = "error";
         string expected = column + value;

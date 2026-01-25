@@ -10,14 +10,14 @@ public class RegexValidatorTests {
     [TestCase(" ", "", true)]
     [TestCase("1234567", @"^\d{7}$", true)]
     [TestCase("a123456", @"^\d{7}$", false)]
-    public void Validate_ReturnValue_AreEqual(string value, string pattern, bool isValid) {
+    public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, string pattern, bool isValid) {
         RegexValidator validator = new RegexValidator("", value, pattern);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
         string value = "123456";
         string expected = ErrorMessageProvider.ValueMatchRegexAccessor(column, value);
@@ -29,7 +29,7 @@ public class RegexValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "測試欄位";
         string value = "123456";
         string expected = column + value;

@@ -15,7 +15,7 @@ public class IntegerValidatorTests {
     [TestCase("1,000", true, true)]
     [TestCase("1,000", false, false)]
     [TestCase("string", true, false)]
-    public void Validate_Message_AreEqual(string value, bool allowedThousands, bool isValid) {
+    public void Validate_WithVariousInputs_ReturnsExpectedResult(string value, bool allowedThousands, bool isValid) {
         IntegerValidator validator = new IntegerValidator("", value, allowedThousands);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
@@ -27,7 +27,7 @@ public class IntegerValidatorTests {
     [TestCase("3", 4, 4, true, false)]
     [TestCase("1,000", 1000, 1000, true, true)]
     [TestCase("1,000", 1000, 1000, false, false)]
-    public void Validate_Range_AreEqual(string value, long min, long max, bool allowedThousands, bool isValid) {
+    public void Validate_WithRangeConstraint_ReturnsExpectedResult(string value, long min, long max, bool allowedThousands, bool isValid) {
         IntegerValidator validator = new IntegerValidator("", value, min, max, allowedThousands);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
@@ -38,7 +38,7 @@ public class IntegerValidatorTests {
     [TestCase("3", 4, true, false)]
     [TestCase("3,000", 3000, true, true)]
     [TestCase("3,000", 3000, false, false)]
-    public void Validate_Min_AreEqual(string value, long min, bool allowedThousands, bool isValid) {
+    public void Validate_WithMinConstraint_ReturnsExpectedResult(string value, long min, bool allowedThousands, bool isValid) {
         IntegerValidator validator = new IntegerValidator("", value, min, null, allowedThousands);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
@@ -49,14 +49,14 @@ public class IntegerValidatorTests {
     [TestCase("3", 2, true, false)]
     [TestCase("3,000", 3000, true, true)]
     [TestCase("3,000", 3000, false, false)]
-    public void Validate_Max_AreEqual(string value, long max, bool allowedThousands, bool isValid) {
+    public void Validate_WithMaxConstraint_ReturnsExpectedResult(string value, long max, bool allowedThousands, bool isValid) {
         IntegerValidator validator = new IntegerValidator("", value, null, max, allowedThousands);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
         string value = "error";
         string expected = ErrorMessageProvider.ValueIsIntegerAccessor(column, value);
@@ -68,7 +68,7 @@ public class IntegerValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "測試欄位";
         string value = "error";
         string expected = column + value;
@@ -80,7 +80,7 @@ public class IntegerValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_MinDefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenMinConstraintFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
         string value = "0";
         int min = 1;
@@ -93,7 +93,7 @@ public class IntegerValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_MinCustomMessage_AreEqual() {
+    public void ErrorMessage_WhenMinConstraintFails_ReturnsCustomMessage() {
         string column = "測試欄位";
         string value = "0";
         int min = 1;
@@ -106,7 +106,7 @@ public class IntegerValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_MaxDefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenMaxConstraintFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
         string value = "1";
         int max = 0;
@@ -119,7 +119,7 @@ public class IntegerValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_MaxCustomMessage_AreEqual() {
+    public void ErrorMessage_WhenMaxConstraintFails_ReturnsCustomMessage() {
         string column = "測試欄位";
         string value = "1";
         int max = 0;
@@ -132,7 +132,7 @@ public class IntegerValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_RangeDefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenRangeConstraintFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
         string value = "0";
         int min = 1;
@@ -146,7 +146,7 @@ public class IntegerValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_RangeCustomMessage_AreEqual() {
+    public void ErrorMessage_WhenRangeConstraintFails_ReturnsCustomMessage() {
         string column = "測試欄位";
         string value = "0";
         int min = 1;

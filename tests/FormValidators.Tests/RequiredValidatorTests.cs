@@ -10,14 +10,14 @@ public class RequiredValidatorTests {
     [TestCase(null, false)]
     [TestCase("", false)]
     [TestCase(" ", false)]
-    public void Validate_ReturnValue_AreEqual(string value, bool isValid) {
+    public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, bool isValid) {
         RequiredValidator validator = new RequiredValidator("", value);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
         string value = null;
         string expected = ErrorMessageProvider.ValueIsRequiredAccessor(column, value);
@@ -29,7 +29,7 @@ public class RequiredValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "測試欄位";
         string value = null;
         string expected = column + value;

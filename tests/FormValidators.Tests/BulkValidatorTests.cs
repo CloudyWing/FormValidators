@@ -6,7 +6,7 @@ namespace CloudyWing.FormValidators.Tests;
 [TestFixture]
 public class BulkValidatorTests {
     [Test]
-    public void Validate_AllTrue_IsTrue() {
+    public void Validate_WhenAllValidatorsAreTrue_ReturnsTrue() {
         BulkValidator validators = new BulkValidator {
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(true, ""),
@@ -17,7 +17,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void Validate_AnyFalse_IsFasle() {
+    public void Validate_WhenAnyValidatorIsFalse_ReturnsFalse() {
         BulkValidator validators = new BulkValidator {
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(false, ""),
@@ -28,7 +28,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void Validate_AllFalse_IsFasle() {
+    public void Validate_WhenAllValidatorsAreFalse_ReturnsFalse() {
         BulkValidator validators = new BulkValidator {
             new TrueAssertValidator(false, ""),
             new TrueAssertValidator(false, ""),
@@ -39,7 +39,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_ErrorMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCombinedErrorMessage() {
         IFormValidator validate1 = new TrueAssertValidator(false, "1");
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");
@@ -54,7 +54,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_ErrorMessageWithBR_AreEqual() {
+    public void ErrorMessageWithBR_WhenValidationFails_ReturnsMessageWithHtmlBreak() {
         IFormValidator validate1 = new TrueAssertValidator(false, "1");
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");
@@ -70,7 +70,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_ErrorMessageWithLF_AreEqual() {
+    public void ErrorMessageWithLF_WhenValidationFails_ReturnsMessageWithLineFeed() {
         IFormValidator validate1 = new TrueAssertValidator(false, "1");
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");
@@ -86,7 +86,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_ErrorMessageWithNewLine_AreEqual() {
+    public void ErrorMessageWithNewLine_WhenValidationFails_ReturnsMessageWithEnvironmentNewLine() {
         IFormValidator validate1 = new TrueAssertValidator(false, "1");
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");
@@ -102,7 +102,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void ValidateStoppedIfFail_AllTrue_IsTrue() {
+    public void Validate_WhenStoppedIfFailIsSetAndAllTrue_ReturnsTrue() {
         BulkValidator validators = new BulkValidator(true) {
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(true, ""),
@@ -113,7 +113,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void ValidateStoppedIfFail_AnyFalse_IsFalse() {
+    public void Validate_WhenStoppedIfFailIsSetAndAnyFalse_ReturnsFalse() {
         BulkValidator validators = new BulkValidator(true) {
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(false, ""),
@@ -124,7 +124,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void ValidateStoppedIfFail_AllFalse_IsFalse() {
+    public void Validate_WhenStoppedIfFailIsSetAndAllFalse_ReturnsFalse() {
         BulkValidator validators = new BulkValidator(true) {
             new TrueAssertValidator(false, ""),
             new TrueAssertValidator(false, ""),
@@ -135,7 +135,7 @@ public class BulkValidatorTests {
     }
 
     [Test]
-    public void ErrorMessageStoppedIfFail_ErrorMessage_AreEqual() {
+    public void ErrorMessage_WhenStoppedIfFailIsSetAndValidationFails_ReturnsFirstErrorMessage() {
         IFormValidator validate1 = new TrueAssertValidator(false, "1");
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");

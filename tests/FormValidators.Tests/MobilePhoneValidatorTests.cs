@@ -5,11 +5,6 @@ namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
 public class MobilePhoneValidatorTests {
-    [SetUp]
-    public void Setup() {
-    }
-
-    [Test]
     [TestCase(null, MobilePhoneFormats.AllowContainDashes, true)]
     [TestCase(null, MobilePhoneFormats.AllowWithoutDashes, true)]
     [TestCase(null, MobilePhoneFormats.All, true)]
@@ -37,14 +32,14 @@ public class MobilePhoneValidatorTests {
     [TestCase("1912345678", MobilePhoneFormats.AllowContainDashes, false)]
     [TestCase("1912345678", MobilePhoneFormats.AllowWithoutDashes, false)]
     [TestCase("1912345678", MobilePhoneFormats.All, false)]
-    public void Validate_ReturnValue_AreEqual(string value, MobilePhoneFormats formats, bool isValid) {
+    public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, MobilePhoneFormats formats, bool isValid) {
         MobilePhoneValidator validator = new MobilePhoneValidator("", value, formats);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
         string value = "error";
         MobilePhoneFormats formats = MobilePhoneFormats.All;
@@ -57,7 +52,7 @@ public class MobilePhoneValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "測試欄位";
         string value = "error";
         MobilePhoneFormats formats = MobilePhoneFormats.All;

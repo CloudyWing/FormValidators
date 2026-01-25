@@ -10,14 +10,14 @@ public class CompareValidatorTests {
     [TestCase(" ", "", true)]
     [TestCase("123", "123", true)]
     [TestCase("123", "456", false)]
-    public void Validate_ReturnValue_AreEqual(string value, string comparisonValue, bool isValid) {
+    public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, string comparisonValue, bool isValid) {
         CompareValidator validator = new CompareValidator("", value, "", comparisonValue);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         const string column = "測試欄位";
         const string value = "123";
         const string comparisonColumn = "比較欄位";
@@ -31,7 +31,7 @@ public class CompareValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         const string column = "測試欄位";
         const string value = "123";
         const string comparisonColumn = "比較欄位";

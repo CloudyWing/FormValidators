@@ -11,14 +11,14 @@ public class DateTimeLessThanValidatorTests {
     [TestCase("2020/01/02", "2020/01/01", false, false)]
     [TestCase("AA", "2020/01/01", false, true)]
     [TestCase("2020/01/01", "AA", false, true)]
-    public void Validate_Value_LessThan(string value, string comparisonValue, bool allowedEqual, bool isValid) {
+    public void Validate_WhenComparingDateTimes_ReturnsExpectedResult(string value, string comparisonValue, bool allowedEqual, bool isValid) {
         DateTimeLessThanValidator validator = new DateTimeLessThanValidator("", value, "", comparisonValue, allowedEqual);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "欄位";
         string value = "2020/01/02";
         string comparisonColumn = "比較欄位";
@@ -33,7 +33,7 @@ public class DateTimeLessThanValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "欄位";
         string value = "2020/01/02";
         string comparisonColumn = "比較欄位";

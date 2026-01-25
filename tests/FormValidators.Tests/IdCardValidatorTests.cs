@@ -18,7 +18,7 @@ public class IdCardValidatorTests {
     [TestCase("A126", false)] // 非10碼
     [TestCase("AE88222138", false)] // 第二碼錯誤
     [TestCase("A111111111", false)] // 格式錯誤
-    public void ValidateNational_ReturnValue_AreEqual(string id, bool expected) {
+    public void Validate_WhenNationalIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
         IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.National);
@@ -40,7 +40,7 @@ public class IdCardValidatorTests {
     [TestCase("A126", false)] // 非10碼
     [TestCase("AE88222138", false)] // 第二碼錯誤
     [TestCase("A111111111", false)] // 格式錯誤
-    public void ValidateResident_ReturnValue_AreEqual(string id, bool expected) {
+    public void Validate_WhenResidentIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
         IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Resident);
@@ -62,7 +62,7 @@ public class IdCardValidatorTests {
     [TestCase("A126", false)] // 非10碼
     [TestCase("AE88222138", false)] // 第二碼錯誤
     [TestCase("A111111111", false)] // 格式錯誤
-    public void ValidateAlienResident_ReturnValue_AreEqual(string id, bool expected) {
+    public void Validate_WhenAlienResidentIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
         IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.AlienResident);
@@ -84,7 +84,7 @@ public class IdCardValidatorTests {
     [TestCase("A126", false)] // 非10碼
     [TestCase("AE88222138", false)] // 第二碼錯誤
     [TestCase("A111111111", false)] // 格式錯誤
-    public void ValidateHomeless_ReturnValue_AreEqual(string id, bool expected) {
+    public void Validate_WhenHomelessIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
         IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Homeless);
@@ -106,7 +106,7 @@ public class IdCardValidatorTests {
     [TestCase("A126", false)] // 非10碼
     [TestCase("AE88222138", false)] // 第二碼錯誤
     [TestCase("A111111111", false)] // 格式錯誤
-    public void ValidateNewResident_ReturnValue_AreEqual(string id, bool expected) {
+    public void Validate_WhenNewResidentIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
         IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.NewResident);
@@ -116,7 +116,7 @@ public class IdCardValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
         string value = "123";
         IdCardTypes types = IdCardTypes.All;
@@ -129,7 +129,7 @@ public class IdCardValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "測試欄位";
         string value = "123";
         string expected = column + value + IdCardTypes.All;

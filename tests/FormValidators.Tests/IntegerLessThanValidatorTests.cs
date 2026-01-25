@@ -12,14 +12,14 @@ public class IntegerLessThanValidatorTests {
     [TestCase("1.1", "0", false, true)]
     [TestCase("2", "1.1", false, true)]
     [TestCase("1,000", "1,000", true, true)]
-    public void Validate_Value_LessThan(string value, string comparisonValue, bool allowedEqual, bool isValid) {
+    public void Validate_WhenComparingDateTimes_ReturnsExpectedResult(string value, string comparisonValue, bool allowedEqual, bool isValid) {
         IntegerLessThanValidator validator = new IntegerLessThanValidator("", value, "", comparisonValue, allowedEqual);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "欄位";
         string value = "1";
         string comparisonColumn = "比較欄位";
@@ -34,7 +34,7 @@ public class IntegerLessThanValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "欄位";
         string value = "1";
         string comparisonColumn = "比較欄位";

@@ -5,10 +5,6 @@ namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
 public class NumberLessThanValidatorTests {
-    [SetUp]
-    public void Setup() {
-    }
-
     [TestCase("0.1", "0.1", true, true)]
     [TestCase("0.1", "0.1", false, false)]
     [TestCase("0.1", "1.1", false, true)]
@@ -16,13 +12,13 @@ public class NumberLessThanValidatorTests {
     [TestCase("a", "2", false, true)]
     [TestCase("0", "a", false, true)]
     [TestCase("1,000.1", "1,000.1", true, true)]
-    public void Validate_Value_LessThan(string value, string comparisonValue, bool allowedEqual, bool isValid) {
+    public void Validate_WhenComparingDateTimes_ReturnsExpectedResult(string value, string comparisonValue, bool allowedEqual, bool isValid) {
         NumberLessThanValidator validator = new NumberLessThanValidator("", value, "", comparisonValue, allowedEqual);
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
     [Test]
-    public void ErrorMessage_DefaultMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "欄位";
         string value = "1.1";
         string comparisonColumn = "比較欄位";
@@ -37,7 +33,7 @@ public class NumberLessThanValidatorTests {
     }
 
     [Test]
-    public void ErrorMessage_CustomMessage_AreEqual() {
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "欄位";
         string value = "1.1";
         string comparisonColumn = "比較欄位";

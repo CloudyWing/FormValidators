@@ -78,6 +78,48 @@ The custom error message accessor\. The arguments are column, value, comparison 
 [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[CompareValidator](CloudyWing.FormValidators.CompareValidator.md 'CloudyWing\.FormValidators\.CompareValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
 The validator creator\.
 
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.CreditCard(string)'></a>
+
+## ValidationProvider\.CreditCard\(string\) Method
+
+Validation indicate that a value is credit card\.
+
+```csharp
+public System.Func<string,string,CloudyWing.FormValidators.CreditCardValidator> CreditCard(string customErrorMessageFormat);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.CreditCard(string).customErrorMessageFormat'></a>
+
+`customErrorMessageFormat` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The custom error message format\. The arguments are column, value\.
+
+#### Returns
+[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[CreditCardValidator](CloudyWing.FormValidators.CreditCardValidator.md 'CloudyWing\.FormValidators\.CreditCardValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
+The validator creator\.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.CreditCard(System.Func_string,string,string_)'></a>
+
+## ValidationProvider\.CreditCard\(Func\<string,string,string\>\) Method
+
+Validation indicate that a value is credit card\.
+
+```csharp
+public System.Func<string,string,CloudyWing.FormValidators.CreditCardValidator> CreditCard(System.Func<string,string,string> customErrorMessageAccessor=null);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.CreditCard(System.Func_string,string,string_).customErrorMessageAccessor'></a>
+
+`customErrorMessageAccessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')
+
+The custom error message accessor\. The arguments are column, value\.
+
+#### Returns
+[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[CreditCardValidator](CloudyWing.FormValidators.CreditCardValidator.md 'CloudyWing\.FormValidators\.CreditCardValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
+The validator creator\.
+
 <a name='CloudyWing.FormValidators.Core.ValidationProvider.DateTime(string)'></a>
 
 ## ValidationProvider\.DateTime\(string\) Method
@@ -568,6 +610,60 @@ The custom error message accessor\. The arguments are column, value, min, max\.
 
 #### Returns
 [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[IntegerValidator](CloudyWing.FormValidators.IntegerValidator.md 'CloudyWing\.FormValidators\.IntegerValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
+The validator creator\.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IPAddress(CloudyWing.FormValidators.IPAddressTypes,string)'></a>
+
+## ValidationProvider\.IPAddress\(IPAddressTypes, string\) Method
+
+Validation indicate that a value is IP address\.
+
+```csharp
+public System.Func<string,string,CloudyWing.FormValidators.IPAddressValidator> IPAddress(CloudyWing.FormValidators.IPAddressTypes types, string customErrorMessageFormat);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IPAddress(CloudyWing.FormValidators.IPAddressTypes,string).types'></a>
+
+`types` [IPAddressTypes](CloudyWing.FormValidators.IPAddressTypes.md 'CloudyWing\.FormValidators\.IPAddressTypes')
+
+The types\.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IPAddress(CloudyWing.FormValidators.IPAddressTypes,string).customErrorMessageFormat'></a>
+
+`customErrorMessageFormat` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The custom error message format\. The arguments are column, value, The IP address types\.
+
+#### Returns
+[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[IPAddressValidator](CloudyWing.FormValidators.IPAddressValidator.md 'CloudyWing\.FormValidators\.IPAddressValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
+The validator creator\.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IPAddress(CloudyWing.FormValidators.IPAddressTypes,System.Func_string,string,CloudyWing.FormValidators.IPAddressTypes,string_)'></a>
+
+## ValidationProvider\.IPAddress\(IPAddressTypes, Func\<string,string,IPAddressTypes,string\>\) Method
+
+Validation indicate that a value is IP address\.
+
+```csharp
+public System.Func<string,string,CloudyWing.FormValidators.IPAddressValidator> IPAddress(CloudyWing.FormValidators.IPAddressTypes types=CloudyWing.FormValidators.IPAddressTypes.All, System.Func<string,string,CloudyWing.FormValidators.IPAddressTypes,string> customErrorMessageAccessor=null);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IPAddress(CloudyWing.FormValidators.IPAddressTypes,System.Func_string,string,CloudyWing.FormValidators.IPAddressTypes,string_).types'></a>
+
+`types` [IPAddressTypes](CloudyWing.FormValidators.IPAddressTypes.md 'CloudyWing\.FormValidators\.IPAddressTypes')
+
+The types\.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.IPAddress(CloudyWing.FormValidators.IPAddressTypes,System.Func_string,string,CloudyWing.FormValidators.IPAddressTypes,string_).customErrorMessageAccessor'></a>
+
+`customErrorMessageAccessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[IPAddressTypes](CloudyWing.FormValidators.IPAddressTypes.md 'CloudyWing\.FormValidators\.IPAddressTypes')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')
+
+The custom error message accessor\. The arguments are column, value, The IP address types\.
+
+#### Returns
+[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[IPAddressValidator](CloudyWing.FormValidators.IPAddressValidator.md 'CloudyWing\.FormValidators\.IPAddressValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
 The validator creator\.
 
 <a name='CloudyWing.FormValidators.Core.ValidationProvider.LengthRange(int,int,string)'></a>
@@ -1472,4 +1568,58 @@ The custom error message accessor\. The arguments are column, value\.
 
 #### Returns
 [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[RequiredValidator](CloudyWing.FormValidators.RequiredValidator.md 'CloudyWing\.FormValidators\.RequiredValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
+The validator creator\.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind,string)'></a>
+
+## ValidationProvider\.Url\(UriKind, string\) Method
+
+Validation indicate that a value is URL\.
+
+```csharp
+public System.Func<string,string,CloudyWing.FormValidators.UrlValidator> Url(System.UriKind kind, string customErrorMessageFormat);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind,string).kind'></a>
+
+`kind` [System\.UriKind](https://learn.microsoft.com/en-us/dotnet/api/system.urikind 'System\.UriKind')
+
+The kind\.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind,string).customErrorMessageFormat'></a>
+
+`customErrorMessageFormat` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The custom error message format\. The arguments are column, value\.
+
+#### Returns
+[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[UrlValidator](CloudyWing.FormValidators.UrlValidator.md 'CloudyWing\.FormValidators\.UrlValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
+The validator creator\.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind,System.Func_string,string,string_)'></a>
+
+## ValidationProvider\.Url\(UriKind, Func\<string,string,string\>\) Method
+
+Validation indicate that a value is URL\.
+
+```csharp
+public System.Func<string,string,CloudyWing.FormValidators.UrlValidator> Url(System.UriKind kind=System.UriKind.Absolute, System.Func<string,string,string> customErrorMessageAccessor=null);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind,System.Func_string,string,string_).kind'></a>
+
+`kind` [System\.UriKind](https://learn.microsoft.com/en-us/dotnet/api/system.urikind 'System\.UriKind')
+
+The kind\.
+
+<a name='CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind,System.Func_string,string,string_).customErrorMessageAccessor'></a>
+
+`customErrorMessageAccessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')
+
+The custom error message accessor\. The arguments are column, value\.
+
+#### Returns
+[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[UrlValidator](CloudyWing.FormValidators.UrlValidator.md 'CloudyWing\.FormValidators\.UrlValidator')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
 The validator creator\.

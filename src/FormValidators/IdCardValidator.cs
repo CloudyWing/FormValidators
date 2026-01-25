@@ -22,6 +22,9 @@ public sealed class IdCardValidator : FormValidatorBase {
         CustomErrorMessageAccessor = customErrorMessageAccessor;
     }
 
+    private static readonly int[] Weights = { 1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1 };
+    private const string LetterMapping = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
+
     /// <summary>
     /// Gets the type of the identification card.
     /// </summary>
@@ -87,23 +90,38 @@ public sealed class IdCardValidator : FormValidatorBase {
     }
 
     private bool ValidateCheckCode() {
-        int[] weights = [1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1];
         int sum = 0;
-        string numbers = ConvertToNumber(Value[0]).ToString()
-            + (ConvertToNumber(Value[1]) % 10).ToString()
-            + Value.Substring(2);
 
-        for (int i = 0; i < numbers.Length; i++) {
-            sum += int.Parse(numbers[i].ToString()) * weights[i];
+        int firstCharVal = ConvertToNumber(Value[0]);
+        sum += firstCharVal / 10 * Weights[0];
+        sum += firstCharVal % 10 * Weights[1];
+
+        int secondCharVal = ConvertToNumber(Value[1]);
+        sum += secondCharVal % 10 * Weights[2];
+
+        for (int i = 2; i < 10; i++) {
+            sum += (Value[i] - '0') * Weights[i + 1];
         }
 
         return sum % 10 == 0;
     }
 
-    private int ConvertToNumber(char fromChar) {
-        string valueMap = "ABCDEFGHJKLMNPQRSTUVXYWZIO";
+    private static int ConvertToNumber(char c) {
+        if (c >= '0' && c <= '9') {
+            return c - '0';
+        }
 
-        return int.TryParse(fromChar.ToString(), out int result)
-            ? result : (valueMap.IndexOf(fromChar) + 10);
+        char upper = ToUpper(c);
+        int index = LetterMapping.IndexOf(upper);
+
+        if (index != -1) {
+            return index + 10;
+        }
+
+        return 9;
+    }
+
+    private static char ToUpper(char c) {
+        return (c >= 'a' && c <= 'z') ? (char)(c - 32) : c;
     }
 }

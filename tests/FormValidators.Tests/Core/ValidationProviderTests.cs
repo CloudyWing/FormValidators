@@ -295,4 +295,43 @@ public class ValidationProviderTests {
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
+    [Test]
+    public void Url_Message_AreEqual() {
+        string column = "Url";
+        string value = "NotUrl";
+        string format = "測試{0}{1}";
+        string expected = string.Format(format, column, value);
+
+        IFormValidator validator = provider.Url(UriKind.Absolute, format)(column, value);
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void IPAddress_Message_AreEqual() {
+        string column = "IPAddress";
+        string value = "NotIP";
+        IPAddressTypes types = IPAddressTypes.All;
+        string format = "測試{0}{1}{2}";
+        string expected = string.Format(format, column, value, types);
+
+        IFormValidator validator = provider.IPAddress(types, format)(column, value);
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void CreditCard_Message_AreEqual() {
+        string column = "CreditCard";
+        string value = "NotCard";
+        string format = "測試{0}{1}";
+        string expected = string.Format(format, column, value);
+
+        IFormValidator validator = provider.CreditCard(format)(column, value);
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 }

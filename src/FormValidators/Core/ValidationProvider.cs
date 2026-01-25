@@ -3,8 +3,8 @@
 namespace CloudyWing.FormValidators.Core;
 
 /// <summary>
-    /// The validation provider.
-    /// </summary>
+/// The validation provider.
+/// </summary>
 public class ValidationProvider {
     /// <summary>
     /// Validation indicate that a value is required.
@@ -596,5 +596,74 @@ public class ValidationProvider {
         Func<string, string, string, string, bool, string> customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
+    }
+    /// <summary>
+    /// Validation indicate that a value is URL.
+    /// </summary>
+    /// <param name="kind">The kind.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, UrlValidator> Url(
+        UriKind kind, string customErrorMessageFormat
+    ) {
+        return Url(kind, (_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is URL.
+    /// </summary>
+    /// <param name="kind">The kind.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, UrlValidator> Url(
+        UriKind kind = UriKind.Absolute,
+        Func<string, string, string> customErrorMessageAccessor = null
+    ) {
+        return (column, value) => new(column, value, kind, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is IP address.
+    /// </summary>
+    /// <param name="types">The types.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, The IP address types.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, IPAddressValidator> IPAddress(
+        IPAddressTypes types, string customErrorMessageFormat
+    ) {
+        return IPAddress(types, (_column, _value, _types) => string.Format(customErrorMessageFormat, _column, _value, _types));
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is IP address.
+    /// </summary>
+    /// <param name="types">The types.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, The IP address types.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, IPAddressValidator> IPAddress(
+        IPAddressTypes types = IPAddressTypes.All,
+        Func<string, string, IPAddressTypes, string> customErrorMessageAccessor = null
+    ) {
+        return (column, value) => new(column, value, types, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is credit card.
+    /// </summary>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, CreditCardValidator> CreditCard(string customErrorMessageFormat) {
+        return CreditCard((_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is credit card.
+    /// </summary>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, CreditCardValidator> CreditCard(
+        Func<string, string, string> customErrorMessageAccessor = null
+    ) {
+        return (column, value) => new(column, value, customErrorMessageAccessor);
     }
 }

@@ -54,6 +54,20 @@ public static System.Func<string,string,object,object,string> ValueInRangeAccess
 [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-5 'System\.Func\`5')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-5 'System\.Func\`5')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-5 'System\.Func\`5')[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-5 'System\.Func\`5')[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-5 'System\.Func\`5')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-5 'System\.Func\`5')  
 The value in range accessor\. The arguments are column, value, min, max\.
 
+<a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsCreditCardAccessor'></a>
+
+## ErrorMessageProvider\.ValueIsCreditCardAccessor Property
+
+Gets the value is credit card accessor\.
+
+```csharp
+public static System.Func<string,string,string> ValueIsCreditCardAccessor { get; private set; }
+```
+
+#### Property Value
+[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
+The value is credit card accessor\. The arguments are column, value\.
+
 <a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsDateTimeAccessor'></a>
 
 ## ErrorMessageProvider\.ValueIsDateTimeAccessor Property
@@ -110,6 +124,20 @@ public static System.Func<string,string,string> ValueIsIntegerAccessor { get; pr
 [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
 The value is integer accessor\. The arguments are column, value\.
 
+<a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsIPAddressAccessor'></a>
+
+## ErrorMessageProvider\.ValueIsIPAddressAccessor Property
+
+Gets the value is IP address accessor\.
+
+```csharp
+public static System.Func<string,string,CloudyWing.FormValidators.IPAddressTypes,string> ValueIsIPAddressAccessor { get; private set; }
+```
+
+#### Property Value
+[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[IPAddressTypes](CloudyWing.FormValidators.IPAddressTypes.md 'CloudyWing\.FormValidators\.IPAddressTypes')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')  
+The value is IP address accessor\. The arguments are column, value, IP address types\.
+
 <a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsMobilePhoneAccessor'></a>
 
 ## ErrorMessageProvider\.ValueIsMobilePhoneAccessor Property
@@ -151,6 +179,20 @@ public static System.Func<string,string,string> ValueIsRequiredAccessor { get; p
 #### Property Value
 [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
 The value is required accessor\. The arguments are column, value\.
+
+<a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsUrlAccessor'></a>
+
+## ErrorMessageProvider\.ValueIsUrlAccessor Property
+
+Gets the value is URL accessor\.
+
+```csharp
+public static System.Func<string,string,string> ValueIsUrlAccessor { get; private set; }
+```
+
+#### Property Value
+[System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
+The value is URL accessor\. The arguments are column, value\.
 
 <a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLengthGreaterOrEqualAccessor'></a>
 
@@ -303,6 +345,28 @@ The accessor\. The arguments are column, value, min, max\.
 [System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 accessor
 
+<a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsCreditCardAccessor(System.Func_string,string,string_)'></a>
+
+## ErrorMessageProvider\.SetValueIsCreditCardAccessor\(Func\<string,string,string\>\) Method
+
+Sets the value is credit card accessor\.
+
+```csharp
+public static void SetValueIsCreditCardAccessor(System.Func<string,string,string> accessor);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsCreditCardAccessor(System.Func_string,string,string_).accessor'></a>
+
+`accessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')
+
+The accessor\. The arguments are column, value\.
+
+#### Exceptions
+
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
+accessor
+
 <a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsDateTimeAccessor(System.Func_string,string,string_)'></a>
 
 ## ErrorMessageProvider\.SetValueIsDateTimeAccessor\(Func\<string,string,string\>\) Method
@@ -391,6 +455,28 @@ The accessor\. The arguments are column, value\.
 [System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 accessor
 
+<a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsIPAddressAccessor(System.Func_string,string,CloudyWing.FormValidators.IPAddressTypes,string_)'></a>
+
+## ErrorMessageProvider\.SetValueIsIPAddressAccessor\(Func\<string,string,IPAddressTypes,string\>\) Method
+
+Sets the value is IP address accessor\.
+
+```csharp
+public static void SetValueIsIPAddressAccessor(System.Func<string,string,CloudyWing.FormValidators.IPAddressTypes,string> accessor);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsIPAddressAccessor(System.Func_string,string,CloudyWing.FormValidators.IPAddressTypes,string_).accessor'></a>
+
+`accessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[IPAddressTypes](CloudyWing.FormValidators.IPAddressTypes.md 'CloudyWing\.FormValidators\.IPAddressTypes')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')
+
+The accessor\. The arguments are column, value, IP address types\.
+
+#### Exceptions
+
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
+accessor
+
 <a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsMobilePhoneAccessor(System.Func_string,string,CloudyWing.FormValidators.MobilePhoneFormats,string_)'></a>
 
 ## ErrorMessageProvider\.SetValueIsMobilePhoneAccessor\(Func\<string,string,MobilePhoneFormats,string\>\) Method
@@ -447,6 +533,28 @@ public static void SetValueIsRequiredAccessor(System.Func<string,string,string> 
 #### Parameters
 
 <a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsRequiredAccessor(System.Func_string,string,string_).accessor'></a>
+
+`accessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')
+
+The accessor\. The arguments are column, value\.
+
+#### Exceptions
+
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
+accessor
+
+<a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsUrlAccessor(System.Func_string,string,string_)'></a>
+
+## ErrorMessageProvider\.SetValueIsUrlAccessor\(Func\<string,string,string\>\) Method
+
+Sets the value is URL accessor\.
+
+```csharp
+public static void SetValueIsUrlAccessor(System.Func<string,string,string> accessor);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsUrlAccessor(System.Func_string,string,string_).accessor'></a>
 
 `accessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')
 

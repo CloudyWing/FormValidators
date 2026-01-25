@@ -39,4 +39,13 @@ public class RegexValidatorTests {
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
+
+    [Test]
+    public void Validate_WhenRegexInstanceIsUsed_ReturnsExpectedResult() {
+        string value = "1234567";
+        System.Text.RegularExpressions.Regex regex = new(@"^\d{7}$");
+        RegexValidator validator = new("", value, regex);
+
+        Assert.That(validator.Validate(), Is.True);
+    }
 }

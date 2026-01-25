@@ -12,8 +12,10 @@ public abstract class BasicFormValidator : CloudyWing.FormValidators.Core.FormVa
 Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object') &#129106; [FormValidatorBase](CloudyWing.FormValidators.Core.FormValidatorBase.md 'CloudyWing\.FormValidators\.Core\.FormValidatorBase') &#129106; BasicFormValidator
 
 Derived  
+&#8627; [CreditCardValidator](CloudyWing.FormValidators.CreditCardValidator.md 'CloudyWing\.FormValidators\.CreditCardValidator')  
 &#8627; [RegexValidator](CloudyWing.FormValidators.RegexValidator.md 'CloudyWing\.FormValidators\.RegexValidator')  
-&#8627; [RequiredValidator](CloudyWing.FormValidators.RequiredValidator.md 'CloudyWing\.FormValidators\.RequiredValidator')
+&#8627; [RequiredValidator](CloudyWing.FormValidators.RequiredValidator.md 'CloudyWing\.FormValidators\.RequiredValidator')  
+&#8627; [UrlValidator](CloudyWing.FormValidators.UrlValidator.md 'CloudyWing\.FormValidators\.UrlValidator')
 
 ### See Also
 - [FormValidatorBase](CloudyWing.FormValidators.Core.FormValidatorBase.md 'CloudyWing\.FormValidators\.Core\.FormValidatorBase')

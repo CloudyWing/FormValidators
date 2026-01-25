@@ -287,4 +287,49 @@ public static class ErrorMessageProvider {
     public static void SetValueLessThanAnotherColumnValueAccessor(Func<string, string, string, string, bool, string> accessor) {
         ValueLessThanAnotherColumnValueAccessor = accessor ?? throw new(nameof(accessor));
     }
+
+    /// <summary>
+    /// Gets the value is URL accessor.
+    /// </summary>
+    /// <value>The value is URL accessor. The arguments are column, value.</value>
+    public static Func<string, string, string> ValueIsUrlAccessor { get; private set; } = (column, value) => $"「{column}」必須為正確的網址格式。";
+
+    /// <summary>
+    /// Sets the value is URL accessor.
+    /// </summary>
+    /// <param name="accessor">The accessor. The arguments are column, value.</param>
+    /// <exception cref="ArgumentNullException">accessor</exception>
+    public static void SetValueIsUrlAccessor(Func<string, string, string> accessor) {
+        ValueIsUrlAccessor = accessor ?? throw new(nameof(accessor));
+    }
+
+    /// <summary>
+    /// Gets the value is IP address accessor.
+    /// </summary>
+    /// <value>The value is IP address accessor. The arguments are column, value, IP address types.</value>
+    public static Func<string, string, IPAddressTypes, string> ValueIsIPAddressAccessor { get; private set; } = (column, value, types) => $"「{column}」必須為正確的IP位址格式。";
+
+    /// <summary>
+    /// Sets the value is IP address accessor.
+    /// </summary>
+    /// <param name="accessor">The accessor. The arguments are column, value, IP address types.</param>
+    /// <exception cref="ArgumentNullException">accessor</exception>
+    public static void SetValueIsIPAddressAccessor(Func<string, string, IPAddressTypes, string> accessor) {
+        ValueIsIPAddressAccessor = accessor ?? throw new(nameof(accessor));
+    }
+
+    /// <summary>
+    /// Gets the value is credit card accessor.
+    /// </summary>
+    /// <value>The value is credit card accessor. The arguments are column, value.</value>
+    public static Func<string, string, string> ValueIsCreditCardAccessor { get; private set; } = (column, value) => $"「{column}」必須為正確的信用卡號碼。";
+
+    /// <summary>
+    /// Sets the value is credit card accessor.
+    /// </summary>
+    /// <param name="accessor">The accessor. The arguments are column, value.</param>
+    /// <exception cref="ArgumentNullException">accessor</exception>
+    public static void SetValueIsCreditCardAccessor(Func<string, string, string> accessor) {
+        ValueIsCreditCardAccessor = accessor ?? throw new(nameof(accessor));
+    }
 }

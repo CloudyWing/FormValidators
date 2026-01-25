@@ -54,6 +54,46 @@ The custom error message accessor\. The arguments are column, value\.
 
 [System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
 pattern
+
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,System.Text.RegularExpressions.Regex,System.Func_string,string,string_)'></a>
+
+## RegexValidator\(string, string, Regex, Func\<string,string,string\>\) Constructor
+
+Initializes a new instance of the [RegexValidator](CloudyWing.FormValidators.RegexValidator.md 'CloudyWing\.FormValidators\.RegexValidator') class\.
+
+```csharp
+public RegexValidator(string column, string value, System.Text.RegularExpressions.Regex regex, System.Func<string,string,string> customErrorMessageAccessor=null);
+```
+#### Parameters
+
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,System.Text.RegularExpressions.Regex,System.Func_string,string,string_).column'></a>
+
+`column` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The column\.
+
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,System.Text.RegularExpressions.Regex,System.Func_string,string,string_).value'></a>
+
+`value` [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')
+
+The value\.
+
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,System.Text.RegularExpressions.Regex,System.Func_string,string,string_).regex'></a>
+
+`regex` [System\.Text\.RegularExpressions\.Regex](https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex 'System\.Text\.RegularExpressions\.Regex')
+
+The regex\.
+
+<a name='CloudyWing.FormValidators.RegexValidator.RegexValidator(string,string,System.Text.RegularExpressions.Regex,System.Func_string,string,string_).customErrorMessageAccessor'></a>
+
+`customErrorMessageAccessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')
+
+The custom error message accessor\. The arguments are column, value\.
+
+#### Exceptions
+
+[System\.ArgumentNullException](https://learn.microsoft.com/en-us/dotnet/api/system.argumentnullexception 'System\.ArgumentNullException')  
+regex
 ### Properties
 
 <a name='CloudyWing.FormValidators.RegexValidator.DefaultErrorMessageAccessor'></a>
@@ -83,6 +123,20 @@ public string Pattern { get; protected set; }
 #### Property Value
 [System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')  
 The pattern\.
+
+<a name='CloudyWing.FormValidators.RegexValidator.RegexInstance'></a>
+
+## RegexValidator\.RegexInstance Property
+
+Gets or sets the regex instance\.
+
+```csharp
+protected System.Text.RegularExpressions.Regex RegexInstance { protected get; protected set; }
+```
+
+#### Property Value
+[System\.Text\.RegularExpressions\.Regex](https://learn.microsoft.com/en-us/dotnet/api/system.text.regularexpressions.regex 'System\.Text\.RegularExpressions\.Regex')  
+The regex instance\.
 ### Methods
 
 <a name='CloudyWing.FormValidators.RegexValidator.ValidateValue()'></a>

@@ -33,7 +33,7 @@ public class MobilePhoneValidatorTests {
     [TestCase("1912345678", MobilePhoneFormats.AllowWithoutDashes, false)]
     [TestCase("1912345678", MobilePhoneFormats.All, false)]
     public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, MobilePhoneFormats formats, bool isValid) {
-        MobilePhoneValidator validator = new MobilePhoneValidator("", value, formats);
+        MobilePhoneValidator validator = new("", value, formats);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
@@ -45,7 +45,7 @@ public class MobilePhoneValidatorTests {
         MobilePhoneFormats formats = MobilePhoneFormats.All;
         string expexted = ErrorMessageProvider.ValueIsMobilePhoneAccessor(column, value, formats);
 
-        MobilePhoneValidator validator = new MobilePhoneValidator(column, value);
+        MobilePhoneValidator validator = new(column, value);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expexted));
@@ -58,7 +58,7 @@ public class MobilePhoneValidatorTests {
         MobilePhoneFormats formats = MobilePhoneFormats.All;
         string expexted = column + value + formats;
 
-        MobilePhoneValidator validator = new MobilePhoneValidator(column, value, formats, (c, v, f) => c + v + f);
+        MobilePhoneValidator validator = new(column, value, formats, (c, v, f) => c + v + f);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expexted));

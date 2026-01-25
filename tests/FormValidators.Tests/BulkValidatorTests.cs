@@ -7,33 +7,33 @@ namespace CloudyWing.FormValidators.Tests;
 public class BulkValidatorTests {
     [Test]
     public void Validate_WhenAllValidatorsAreTrue_ReturnsTrue() {
-        BulkValidator validators = new BulkValidator {
+        BulkValidator validators = [
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(true, "")
-        };
+        ];
 
         Assert.That(validators.Validate(), Is.True);
     }
 
     [Test]
     public void Validate_WhenAnyValidatorIsFalse_ReturnsFalse() {
-        BulkValidator validators = new BulkValidator {
+        BulkValidator validators = [
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(false, ""),
             new TrueAssertValidator(true, "")
-        };
+        ];
 
         Assert.That(validators.Validate(), Is.False);
     }
 
     [Test]
     public void Validate_WhenAllValidatorsAreFalse_ReturnsFalse() {
-        BulkValidator validators = new BulkValidator {
+        BulkValidator validators = [
             new TrueAssertValidator(false, ""),
             new TrueAssertValidator(false, ""),
             new TrueAssertValidator(false, "")
-        };
+        ];
 
         Assert.That(validators.Validate(), Is.False);
     }
@@ -44,9 +44,11 @@ public class BulkValidatorTests {
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");
 
-        BulkValidator validators = new BulkValidator {
-            validate1, validate2, validate3
-        };
+        BulkValidator validators = [
+            validate1,
+            validate2,
+            validate3
+        ];
 
         validators.Validate();
 
@@ -59,9 +61,11 @@ public class BulkValidatorTests {
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");
 
-        BulkValidator validators = new BulkValidator {
-            validate1, validate2, validate3
-        };
+        BulkValidator validators = [
+            validate1,
+            validate2,
+            validate3
+        ];
         validators.Validate();
 
         string excepted = $"{validate1.ErrorMessage}<br />{validate3.ErrorMessage}";
@@ -75,9 +79,11 @@ public class BulkValidatorTests {
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");
 
-        BulkValidator validators = new BulkValidator {
-            validate1, validate2, validate3
-        };
+        BulkValidator validators = [
+            validate1,
+            validate2,
+            validate3
+        ];
         validators.Validate();
 
         string excepted = $"{validate1.ErrorMessage}\n{validate3.ErrorMessage}";
@@ -91,9 +97,11 @@ public class BulkValidatorTests {
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");
 
-        BulkValidator validators = new BulkValidator {
-            validate1, validate2, validate3
-        };
+        BulkValidator validators = [
+            validate1,
+            validate2,
+            validate3
+        ];
         validators.Validate();
 
         string excepted = $"{validate1.ErrorMessage}{Environment.NewLine}{validate3.ErrorMessage}";
@@ -103,7 +111,7 @@ public class BulkValidatorTests {
 
     [Test]
     public void Validate_WhenStoppedIfFailIsSetAndAllTrue_ReturnsTrue() {
-        BulkValidator validators = new BulkValidator(true) {
+        BulkValidator validators = new(true) {
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(true, "")
@@ -114,7 +122,7 @@ public class BulkValidatorTests {
 
     [Test]
     public void Validate_WhenStoppedIfFailIsSetAndAnyFalse_ReturnsFalse() {
-        BulkValidator validators = new BulkValidator(true) {
+        BulkValidator validators = new(true) {
             new TrueAssertValidator(true, ""),
             new TrueAssertValidator(false, ""),
             new TrueAssertValidator(true, "")
@@ -125,7 +133,7 @@ public class BulkValidatorTests {
 
     [Test]
     public void Validate_WhenStoppedIfFailIsSetAndAllFalse_ReturnsFalse() {
-        BulkValidator validators = new BulkValidator(true) {
+        BulkValidator validators = new(true) {
             new TrueAssertValidator(false, ""),
             new TrueAssertValidator(false, ""),
             new TrueAssertValidator(false, "")
@@ -139,8 +147,10 @@ public class BulkValidatorTests {
         IFormValidator validate1 = new TrueAssertValidator(false, "1");
         IFormValidator validate2 = new TrueAssertValidator(true, "2");
         IFormValidator validate3 = new TrueAssertValidator(false, "3");
-        BulkValidator validators = new BulkValidator(true) {
-            validate1, validate2, validate3
+        BulkValidator validators = new(true) {
+            validate1,
+            validate2,
+            validate3
         };
         validators.Validate();
 

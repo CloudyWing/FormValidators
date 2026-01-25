@@ -17,7 +17,7 @@ public class ValidationProvider {
     public Func<string, string, RequiredValidator> Required(
         Func<string, string, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new RequiredValidator(column, value, customErrorMessageAccessor);
+        return (column, value) => new(column, value, customErrorMessageAccessor);
     }
 
     /// <summary>Validation indicate that a value is integer.</summary>
@@ -35,7 +35,7 @@ public class ValidationProvider {
     public Func<string, string, IntegerValidator> Integer(
         bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new IntegerValidator(column, value, allowedThousands, customErrorMessageAccessor);
+        return (column, value) => new(column, value, allowedThousands, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constrains the minimum integer of a value.</summary>
@@ -55,7 +55,7 @@ public class ValidationProvider {
     public Func<string, string, IntegerValidator> MinInt(
         long min, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new IntegerValidator(column, value, min, null, allowedThousands, customErrorMessageAccessor);
+        return (column, value) => new(column, value, min, null, allowedThousands, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constrains the maximum integer of a value.</summary>
@@ -75,7 +75,7 @@ public class ValidationProvider {
     public Func<string, string, IntegerValidator> MaxInt(
         long max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new IntegerValidator(column, value, null, max, allowedThousands, customErrorMessageAccessor);
+        return (column, value) => new(column, value, null, max, allowedThousands, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constrains the integer range of a value.</summary>
@@ -97,7 +97,7 @@ public class ValidationProvider {
     public Func<string, string, IntegerValidator> IntRange(
         long min, long max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new IntegerValidator(column, value, min, max, allowedThousands, customErrorMessageAccessor);
+        return (column, value) => new(column, value, min, max, allowedThousands, customErrorMessageAccessor);
     }
 
     /// <summary>Validation indicate that a value is number.</summary>
@@ -115,7 +115,7 @@ public class ValidationProvider {
     public Func<string, string, NumberValidator> Number(
         bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new NumberValidator(column, value, allowedThousands, customErrorMessageAccessor);
+        return (column, value) => new(column, value, allowedThousands, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constrains the minimum number of a value.</summary>
@@ -135,7 +135,7 @@ public class ValidationProvider {
     public Func<string, string, NumberValidator> MinNumber(
         decimal min, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new NumberValidator(column, value, min, null, allowedThousands, customErrorMessageAccessor);
+        return (column, value) => new(column, value, min, null, allowedThousands, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constrains the maximum number of a value.</summary>
@@ -155,7 +155,7 @@ public class ValidationProvider {
     public Func<string, string, NumberValidator> MaxNumber(
         decimal max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new NumberValidator(column, value, null, max, allowedThousands, customErrorMessageAccessor);
+        return (column, value) => new(column, value, null, max, allowedThousands, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constrains the number range of a value.</summary>
@@ -177,7 +177,7 @@ public class ValidationProvider {
     public Func<string, string, NumberValidator> NumberRange(
         decimal min, decimal max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new NumberValidator(column, value, min, max, allowedThousands, customErrorMessageAccessor);
+        return (column, value) => new(column, value, min, max, allowedThousands, customErrorMessageAccessor);
     }
 
     /// <summary>Validation indicate that a value is date time.</summary>
@@ -193,7 +193,7 @@ public class ValidationProvider {
     public Func<string, string, DateTimeValidator> DateTime(
         Func<string, string, DateTime?, DateTime?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new DateTimeValidator(column, value, customErrorMessageAccessor);
+        return (column, value) => new(column, value, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constrains the minimum date time of a value.</summary>
@@ -211,7 +211,7 @@ public class ValidationProvider {
     public Func<string, string, DateTimeValidator> MinDateTime(
         DateTime min, Func<string, string, DateTime?, DateTime?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new DateTimeValidator(column, value, min, null, customErrorMessageAccessor);
+        return (column, value) => new(column, value, min, null, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constrains the maximum date time of a value.</summary>
@@ -229,7 +229,7 @@ public class ValidationProvider {
     public Func<string, string, DateTimeValidator> MaxDateTime(
         DateTime max, Func<string, string, DateTime?, DateTime?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new DateTimeValidator(column, value, null, max, customErrorMessageAccessor);
+        return (column, value) => new(column, value, null, max, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constrains the date time range of a value.</summary>
@@ -251,7 +251,7 @@ public class ValidationProvider {
     public Func<string, string, DateTimeValidator> DateTimeRange(
         DateTime min, DateTime max, Func<string, string, DateTime?, DateTime?, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new DateTimeValidator(column, value, min, max, customErrorMessageAccessor);
+        return (column, value) => new(column, value, min, max, customErrorMessageAccessor);
     }
 
     /// <summary>Validation to constrains a value does not exceed a minimum length.</summary>
@@ -269,7 +269,7 @@ public class ValidationProvider {
     public Func<string, string, ValueLengthValidator> MinLength(
         long min, Func<string, string, long, long, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new ValueLengthValidator(column, value, min, 0, customErrorMessageAccessor);
+        return (column, value) => new(column, value, min, 0, customErrorMessageAccessor);
     }
 
     /// <summary>Validation to constrains a value does not exceed a maximum length.</summary>
@@ -287,7 +287,7 @@ public class ValidationProvider {
     public Func<string, string, ValueLengthValidator> MaxLength(
         long max, Func<string, string, long, long, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new ValueLengthValidator(column, value, 0, max, customErrorMessageAccessor);
+        return (column, value) => new(column, value, 0, max, customErrorMessageAccessor);
     }
 
     /// <summary>Validation constraints a value does not exceed the length range.</summary>
@@ -309,7 +309,7 @@ public class ValidationProvider {
     public Func<string, string, ValueLengthValidator> LengthRange(
         int min, int max, Func<string, string, long, long, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new ValueLengthValidator(column, value, min, max, customErrorMessageAccessor);
+        return (column, value) => new(column, value, min, max, customErrorMessageAccessor);
     }
 
     /// <summary>Regex validation.</summary>
@@ -327,7 +327,7 @@ public class ValidationProvider {
     public Func<string, string, RegexValidator> Regex(
         string pattern, Func<string, string, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new RegexValidator(column, value, pattern, customErrorMessageAccessor);
+        return (column, value) => new(column, value, pattern, customErrorMessageAccessor);
     }
 
     /// <summary>Email validation.</summary>
@@ -343,7 +343,7 @@ public class ValidationProvider {
     public Func<string, string, EmailValidator> Email(
         Func<string, string, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new EmailValidator(column, value, customErrorMessageAccessor);
+        return (column, value) => new(column, value, customErrorMessageAccessor);
     }
 
     /// <summary>Mobile phone validation.</summary>
@@ -364,7 +364,7 @@ public class ValidationProvider {
         MobilePhoneFormats formats = MobilePhoneFormats.All,
         Func<string, string, MobilePhoneFormats, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new MobilePhoneValidator(column, value, formats, customErrorMessageAccessor);
+        return (column, value) => new(column, value, formats, customErrorMessageAccessor);
     }
 
     /// <summary>Identification card validation.</summary>
@@ -383,7 +383,7 @@ public class ValidationProvider {
         IdCardTypes idTypes = IdCardTypes.All,
         Func<string, string, IdCardTypes, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new IdCardValidator(column, value, idTypes, customErrorMessageAccessor);
+        return (column, value) => new(column, value, idTypes, customErrorMessageAccessor);
     }
 
     /// <summary>Compare the value of one column with the value of another column.</summary>
@@ -410,7 +410,7 @@ public class ValidationProvider {
         string comparisonColumn, string comparisonValue,
         Func<string, string, string, string, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new CompareValidator(column, value, comparisonColumn, comparisonValue, customErrorMessageAccessor);
+        return (column, value) => new(column, value, comparisonColumn, comparisonValue, customErrorMessageAccessor);
     }
 
     /// <summary>Validate that an integer value is less than another column value.</summary>
@@ -439,7 +439,7 @@ public class ValidationProvider {
         string comparisonColumn, string comparisonValue, bool allowedEqual = true,
         Func<string, string, string, string, bool, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new IntegerLessThanValidator(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
+        return (column, value) => new(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
     }
 
     /// <summary>Validate that an number value is less than another column value.</summary>
@@ -468,7 +468,7 @@ public class ValidationProvider {
         string comparisonColumn, string comparisonValue, bool allowedEqual = true,
         Func<string, string, string, string, bool, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new NumberLessThanValidator(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
+        return (column, value) => new(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
     }
 
     /// <summary>Validate that an date time value is less than another column value.</summary>
@@ -497,6 +497,6 @@ public class ValidationProvider {
         string comparisonColumn, string comparisonValue, bool allowedEqual = true,
         Func<string, string, string, string, bool, string> customErrorMessageAccessor = null
     ) {
-        return (column, value) => new DateTimeLessThanValidator(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
+        return (column, value) => new(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
     }
 }

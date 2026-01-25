@@ -10,7 +10,7 @@ namespace CloudyWing.FormValidators;
 /// The bulk validator.
 /// </summary>
 public class BulkValidator : Collection<IFormValidator>, IFormValidator {
-    private readonly IList<string> errorMessages = new List<string>();
+    private readonly IList<string> errorMessages = [];
 
     /// <summary>Initializes a new instance of the <see cref="BulkValidator" /> class.</summary>
     /// <param name="isStoppedIfFail">if set to <c>true</c> [is stopped if fail].</param>

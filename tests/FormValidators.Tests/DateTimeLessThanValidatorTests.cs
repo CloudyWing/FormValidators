@@ -12,7 +12,7 @@ public class DateTimeLessThanValidatorTests {
     [TestCase("AA", "2020/01/01", false, true)]
     [TestCase("2020/01/01", "AA", false, true)]
     public void Validate_WhenComparingDateTimes_ReturnsExpectedResult(string value, string comparisonValue, bool allowedEqual, bool isValid) {
-        DateTimeLessThanValidator validator = new DateTimeLessThanValidator("", value, "", comparisonValue, allowedEqual);
+        DateTimeLessThanValidator validator = new("", value, "", comparisonValue, allowedEqual);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
@@ -26,7 +26,7 @@ public class DateTimeLessThanValidatorTests {
         bool allowedEqual = false;
         string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, value, comparisonColumn, comparisonValue, allowedEqual);
 
-        DateTimeLessThanValidator validator = new DateTimeLessThanValidator(column, value, comparisonColumn, comparisonValue, allowedEqual);
+        DateTimeLessThanValidator validator = new(column, value, comparisonColumn, comparisonValue, allowedEqual);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -41,7 +41,7 @@ public class DateTimeLessThanValidatorTests {
         bool allowedEqual = false;
         string expected = column + value + comparisonColumn + comparisonValue + allowedEqual;
 
-        DateTimeLessThanValidator validator = new DateTimeLessThanValidator(
+        DateTimeLessThanValidator validator = new(
             column, value, comparisonColumn, comparisonValue, allowedEqual, (c, v, cc, cv, b) => c + v + cc + cv + b
         );
         validator.Validate();

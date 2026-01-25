@@ -11,7 +11,7 @@ public class CompareValidatorTests {
     [TestCase("123", "123", true)]
     [TestCase("123", "456", false)]
     public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, string comparisonValue, bool isValid) {
-        CompareValidator validator = new CompareValidator("", value, "", comparisonValue);
+        CompareValidator validator = new("", value, "", comparisonValue);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
@@ -24,7 +24,7 @@ public class CompareValidatorTests {
         const string comparisonValue = "456";
         string expected = ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor(column, value, comparisonColumn, comparisonValue);
 
-        CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456");
+        CompareValidator validator = new(column, "123", comparisonColumn, "456");
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -38,7 +38,7 @@ public class CompareValidatorTests {
         const string comparisonValue = "456";
         string expected = column + value + comparisonColumn + comparisonValue;
 
-        CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456", (c, v, cc, cv) => c + v + cc + cv);
+        CompareValidator validator = new(column, "123", comparisonColumn, "456", (c, v, cc, cv) => c + v + cc + cv);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));

@@ -13,7 +13,7 @@ public class NumberLessThanValidatorTests {
     [TestCase("0", "a", false, true)]
     [TestCase("1,000.1", "1,000.1", true, true)]
     public void Validate_WhenComparingDateTimes_ReturnsExpectedResult(string value, string comparisonValue, bool allowedEqual, bool isValid) {
-        NumberLessThanValidator validator = new NumberLessThanValidator("", value, "", comparisonValue, allowedEqual);
+        NumberLessThanValidator validator = new("", value, "", comparisonValue, allowedEqual);
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
 
@@ -26,7 +26,7 @@ public class NumberLessThanValidatorTests {
         bool allowedEqual = false;
         string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, value, comparisonColumn, comparisonValue, allowedEqual);
 
-        NumberLessThanValidator validator = new NumberLessThanValidator(column, value, comparisonColumn, comparisonValue, allowedEqual);
+        NumberLessThanValidator validator = new(column, value, comparisonColumn, comparisonValue, allowedEqual);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -41,7 +41,7 @@ public class NumberLessThanValidatorTests {
         bool allowedEqual = false;
         string expected = column + value + comparisonColumn + comparisonValue + allowedEqual;
 
-        NumberLessThanValidator validator = new NumberLessThanValidator(
+        NumberLessThanValidator validator = new(
             column, value, comparisonColumn, comparisonValue, allowedEqual,
             (c, v, cc, cv, b) => c + v + cc + cv + b
         );

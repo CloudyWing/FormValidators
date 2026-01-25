@@ -8,7 +8,7 @@ public class TrueAssertValidatorTests {
     [TestCase(true)]
     [TestCase(false)]
     public void Validate_WhenConditionIsProvided_ReturnsConditionResult(bool value) {
-        TrueAssertValidator validator = new TrueAssertValidator(value, "");
+        TrueAssertValidator validator = new(value, "");
         bool actual = validator.Validate() == value;
 
         Assert.That(actual, Is.True);
@@ -17,7 +17,7 @@ public class TrueAssertValidatorTests {
     [Test]
     public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string expected = "測試TrueAssert";
-        TrueAssertValidator validator = new TrueAssertValidator(false, expected);
+        TrueAssertValidator validator = new(false, expected);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));

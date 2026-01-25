@@ -6,7 +6,7 @@ namespace CloudyWing.FormValidators.Core;
 /// <summary>The validator configuration.</summary>
 public class ValidatorConfiguration {
     private readonly BulkValidator validators;
-    private readonly ValidationProvider provider = new ValidationProvider();
+    private readonly ValidationProvider provider = new();
 
     /// <summary>Initializes a new instance of the <see cref="ValidatorConfiguration" /> class.</summary>
     /// <param name="validators">The validators.</param>

@@ -9,7 +9,7 @@ public class ValueLengthValidatorTests {
     [TestCase("123", 3, true)]
     [TestCase("123", 4, false)]
     public void Validate_WithMinConstraint_ReturnsExpectedResult(string value, int min, bool isValid) {
-        ValueLengthValidator validator = new ValueLengthValidator("", value, min, 0);
+        ValueLengthValidator validator = new("", value, min, 0);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
@@ -18,7 +18,7 @@ public class ValueLengthValidatorTests {
     [TestCase("123", 4, true)]
     [TestCase("123", 2, false)]
     public void Validate_WithMaxConstraint_ReturnsExpectedResult(string value, int max, bool isValid) {
-        ValueLengthValidator validator = new ValueLengthValidator("", value, 0, max);
+        ValueLengthValidator validator = new("", value, 0, max);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
@@ -27,7 +27,7 @@ public class ValueLengthValidatorTests {
     [TestCase("123", 2, 2, false)]
     [TestCase("123", 4, 4, false)]
     public void Validate_WithRangeConstraint_ReturnsExpectedResult(string value, int min, int max, bool isValid) {
-        ValueLengthValidator validator = new ValueLengthValidator("", value, min, max);
+        ValueLengthValidator validator = new("", value, min, max);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
@@ -40,7 +40,7 @@ public class ValueLengthValidatorTests {
         int max = 1;
         string expected = ErrorMessageProvider.ValueLengthInRangeAccessor(column, value, min, max);
 
-        ValueLengthValidator validator = new ValueLengthValidator(column, value, min, max);
+        ValueLengthValidator validator = new(column, value, min, max);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -54,7 +54,7 @@ public class ValueLengthValidatorTests {
         int max = 1;
         string expected = column + value + min + max;
 
-        ValueLengthValidator validator = new ValueLengthValidator(column, value, min, max, (c, v, _min, _max) => c + v + _min + _max);
+        ValueLengthValidator validator = new(column, value, min, max, (c, v, _min, _max) => c + v + _min + _max);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -67,7 +67,7 @@ public class ValueLengthValidatorTests {
         int min = 4;
         string expected = ErrorMessageProvider.ValueLengthGreaterOrEqualAccessor(column, value, min);
 
-        ValueLengthValidator validator = new ValueLengthValidator(column, value, min, 0);
+        ValueLengthValidator validator = new(column, value, min, 0);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -80,7 +80,7 @@ public class ValueLengthValidatorTests {
         int min = 4;
         string expected = column + value + min;
 
-        ValueLengthValidator validator = new ValueLengthValidator(column, value, min, 0, (c, v, _min, _) => c + v + _min);
+        ValueLengthValidator validator = new(column, value, min, 0, (c, v, _min, _) => c + v + _min);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -93,7 +93,7 @@ public class ValueLengthValidatorTests {
         int max = 2;
         string expected = ErrorMessageProvider.ValueLengthLessOrEqualAccessor(column, value, max);
 
-        ValueLengthValidator validator = new ValueLengthValidator(column, value, 0, max);
+        ValueLengthValidator validator = new(column, value, 0, max);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -106,7 +106,7 @@ public class ValueLengthValidatorTests {
         int max = 2;
         string expected = column + value + max;
 
-        ValueLengthValidator validator = new ValueLengthValidator(column, value, max, (c, v, _, _max) => c + v + _max);
+        ValueLengthValidator validator = new(column, value, max, (c, v, _, _max) => c + v + _max);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));

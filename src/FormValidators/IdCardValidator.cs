@@ -79,7 +79,7 @@ public sealed class IdCardValidator : FormValidatorBase {
     }
 
     private bool ValidateCheckCode() {
-        int[] weights = { 1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1 };
+        int[] weights = [1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1];
         int sum = 0;
         string numbers = ConvertToNumber(Value[0]).ToString()
             + (ConvertToNumber(Value[1]) % 10).ToString()

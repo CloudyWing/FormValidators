@@ -11,7 +11,7 @@ public class RequiredValidatorTests {
     [TestCase("", false)]
     [TestCase(" ", false)]
     public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, bool isValid) {
-        RequiredValidator validator = new RequiredValidator("", value);
+        RequiredValidator validator = new("", value);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
@@ -22,7 +22,7 @@ public class RequiredValidatorTests {
         string value = null;
         string expected = ErrorMessageProvider.ValueIsRequiredAccessor(column, value);
 
-        RequiredValidator validator = new RequiredValidator(column, value);
+        RequiredValidator validator = new(column, value);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -34,7 +34,7 @@ public class RequiredValidatorTests {
         string value = null;
         string expected = column + value;
 
-        RequiredValidator validator = new RequiredValidator(column, null, (c, v) => c + v);
+        RequiredValidator validator = new(column, null, (c, v) => c + v);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));

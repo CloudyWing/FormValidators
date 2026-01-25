@@ -8,7 +8,7 @@ public class FalseAssertValidatorTests {
     [TestCase(true)]
     [TestCase(false)]
     public void Validate_WhenValueIsProvided_ReturnsNegatedValue(bool value) {
-        FalseAssertValidator validator = new FalseAssertValidator(value, "");
+        FalseAssertValidator validator = new(value, "");
         bool actual = validator.Validate() == value;
 
         Assert.That(actual, Is.False);
@@ -18,7 +18,7 @@ public class FalseAssertValidatorTests {
     public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string expected = "測試FalseAssert";
 
-        FalseAssertValidator validator = new FalseAssertValidator(true, expected);
+        FalseAssertValidator validator = new(true, expected);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));

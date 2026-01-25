@@ -11,7 +11,7 @@ public class RegexValidatorTests {
     [TestCase("1234567", @"^\d{7}$", true)]
     [TestCase("a123456", @"^\d{7}$", false)]
     public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, string pattern, bool isValid) {
-        RegexValidator validator = new RegexValidator("", value, pattern);
+        RegexValidator validator = new("", value, pattern);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
@@ -22,7 +22,7 @@ public class RegexValidatorTests {
         string value = "123456";
         string expected = ErrorMessageProvider.ValueMatchRegexAccessor(column, value);
 
-        RegexValidator validator = new RegexValidator(column, value, @"\D+");
+        RegexValidator validator = new(column, value, @"\D+");
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -34,7 +34,7 @@ public class RegexValidatorTests {
         string value = "123456";
         string expected = column + value;
 
-        RegexValidator validator = new RegexValidator(column, value, @"\D+", (c, v) => c + v);
+        RegexValidator validator = new(column, value, @"\D+", (c, v) => c + v);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));

@@ -12,7 +12,7 @@ public class EmailValidatorTests {
     [TestCase("wing@gmail", false)]
     [TestCase("wing.com", false)]
     public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, bool isValid) {
-        EmailValidator validator = new EmailValidator("", value);
+        EmailValidator validator = new("", value);
 
         Assert.That(validator.Validate(), Is.EqualTo(isValid));
     }
@@ -22,7 +22,7 @@ public class EmailValidatorTests {
         string column = "測試欄位";
         string value = "error";
 
-        EmailValidator validator = new EmailValidator(column, value);
+        EmailValidator validator = new(column, value);
         validator.Validate();
 
         string expected = ErrorMessageProvider.ValueIsEmailAccessor(column, value);
@@ -36,7 +36,7 @@ public class EmailValidatorTests {
         string value = "error";
         string expected = column + value;
 
-        EmailValidator validator = new EmailValidator(column, value, (c, v) => c + v);
+        EmailValidator validator = new(column, value, (c, v) => c + v);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));

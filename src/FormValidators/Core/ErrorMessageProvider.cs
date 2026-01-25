@@ -78,7 +78,7 @@ public static class ErrorMessageProvider {
     /// <summary>Gets the value is identification card accessor.</summary>
     /// <value>The value is identification card accessor. The arguments are column, value, identification card types.</value>
     public static Func<string, string, IdCardTypes, string> ValueIsIdCardAccessor { get; private set; } = (column, value, types) => {
-        List<string> typeNames = new List<string>();
+        List<string> typeNames = [];
         if (types.HasFlag(IdCardTypes.National)) {
             typeNames.Add("國民身分證號");
         }
@@ -114,111 +114,111 @@ public static class ErrorMessageProvider {
     /// <param name="accessor">The accessor. The arguments are column, value.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueIsRequiredAccessor(Func<string, string, string> accessor) {
-        ValueIsRequiredAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueIsRequiredAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value greater or equal accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, min.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueGreaterOrEqualAccessor(Func<string, string, object, string> accessor) {
-        ValueGreaterOrEqualAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueGreaterOrEqualAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value less or equal accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, max.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueLessOrEqualAccessor(Func<string, string, object, string> accessor) {
-        ValueLessOrEqualAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueLessOrEqualAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value in range accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, min, max.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueInRangeAccessor(Func<string, string, object, object, string> accessor) {
-        ValueInRangeAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueInRangeAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value is integer accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueIsIntegerAccessor(Func<string, string, string> accessor) {
-        ValueIsIntegerAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueIsIntegerAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value is number accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueIsNumberAccessor(Func<string, string, string> accessor) {
-        ValueIsNumberAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueIsNumberAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value is date time accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueIsDateTimeAccessor(Func<string, string, string> accessor) {
-        ValueIsDateTimeAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueIsDateTimeAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value length greater or equal accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, min.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueLengthGreaterOrEqualAccessor(Func<string, string, long, string> accessor) {
-        ValueLengthGreaterOrEqualAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueLengthGreaterOrEqualAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value length less or equal accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, max.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueLengthLessOrEqualAccessor(Func<string, string, long, string> accessor) {
-        ValueLengthLessOrEqualAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueLengthLessOrEqualAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value length in range accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, min, max.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueLengthInRangeAccessor(Func<string, string, long, long, string> accessor) {
-        ValueLengthInRangeAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueLengthInRangeAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value match regex accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueMatchRegexAccessor(Func<string, string, string> accessor) {
-        ValueMatchRegexAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueMatchRegexAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value is email accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueIsEmailAccessor(Func<string, string, string> accessor) {
-        ValueIsEmailAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueIsEmailAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value is mobile phone accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, mobile phone formats.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueIsMobilePhoneAccessor(Func<string, string, MobilePhoneFormats, string> accessor) {
-        ValueIsMobilePhoneAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueIsMobilePhoneAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value is identification card accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, identification card types.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueIsIdCardAccessor(Func<string, string, IdCardTypes, string> accessor) {
-        ValueIsIdCardAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueIsIdCardAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value compare another column value accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, comparison column, comparison value.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueCompareAnotherColumnValueAccessor(Func<string, string, string, string, string> accessor) {
-        ValueCompareAnotherColumnValueAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueCompareAnotherColumnValueAccessor = accessor ?? throw new(nameof(accessor));
     }
 
     /// <summary>Sets the value less than another column value accessor.</summary>
     /// <param name="accessor">The accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueLessThanAnotherColumnValueAccessor(Func<string, string, string, string, bool, string> accessor) {
-        ValueLessThanAnotherColumnValueAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+        ValueLessThanAnotherColumnValueAccessor = accessor ?? throw new(nameof(accessor));
     }
 }

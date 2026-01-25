@@ -14,7 +14,7 @@ public class RegexValidator : BasicFormValidator {
     /// <exception cref="ArgumentNullException">pattern</exception>
     public RegexValidator(string column, string value, string pattern, Func<string, string, string> customErrorMessageAccessor = null)
         : base(column, value, customErrorMessageAccessor) {
-        Pattern = pattern ?? throw new ArgumentNullException(nameof(pattern));
+        Pattern = pattern ?? throw new(nameof(pattern));
     }
 
     /// <summary>Gets the pattern.</summary>

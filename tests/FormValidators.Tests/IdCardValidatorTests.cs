@@ -18,10 +18,11 @@ public class IdCardValidatorTests {
     [TestCase("A126", false)] // 非10碼
     [TestCase("AE88222138", false)] // 第二碼錯誤
     [TestCase("A111111111", false)] // 格式錯誤
+    [TestCase("A111111111", false)] // 格式錯誤
     public void Validate_WhenNationalIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
-        IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.National);
+        IdCardValidator validator = new(column, id, IdCardTypes.National);
         bool actual = validator.Validate();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -43,7 +44,7 @@ public class IdCardValidatorTests {
     public void Validate_WhenResidentIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
-        IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Resident);
+        IdCardValidator validator = new(column, id, IdCardTypes.Resident);
         bool actual = validator.Validate();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -65,7 +66,7 @@ public class IdCardValidatorTests {
     public void Validate_WhenAlienResidentIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
-        IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.AlienResident);
+        IdCardValidator validator = new(column, id, IdCardTypes.AlienResident);
         bool actual = validator.Validate();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -87,7 +88,7 @@ public class IdCardValidatorTests {
     public void Validate_WhenHomelessIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
-        IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.Homeless);
+        IdCardValidator validator = new(column, id, IdCardTypes.Homeless);
         bool actual = validator.Validate();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -109,7 +110,7 @@ public class IdCardValidatorTests {
     public void Validate_WhenNewResidentIdIsUsed_ReturnsExpectedResult(string id, bool expected) {
         string column = "測試欄位";
 
-        IdCardValidator validator = new IdCardValidator(column, id, IdCardTypes.NewResident);
+        IdCardValidator validator = new(column, id, IdCardTypes.NewResident);
         bool actual = validator.Validate();
 
         Assert.That(actual, Is.EqualTo(expected));
@@ -122,7 +123,7 @@ public class IdCardValidatorTests {
         IdCardTypes types = IdCardTypes.All;
         string expected = ErrorMessageProvider.ValueIsIdCardAccessor(column, value, types);
 
-        IdCardValidator validator = new IdCardValidator(column, value, types);
+        IdCardValidator validator = new(column, value, types);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
@@ -134,7 +135,7 @@ public class IdCardValidatorTests {
         string value = "123";
         string expected = column + value + IdCardTypes.All;
 
-        IdCardValidator validator = new IdCardValidator(column, value, IdCardTypes.All, (c, v, f) => c + v + f);
+        IdCardValidator validator = new(column, value, IdCardTypes.All, (c, v, f) => c + v + f);
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));

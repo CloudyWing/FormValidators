@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 
 namespace CloudyWing.FormValidators.Tests;
+
 [TestFixture]
 public class IdCardValidatorTests {
     [TestCase("A188222138", true)] // 國民身份證號男生

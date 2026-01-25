@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 
 namespace CloudyWing.FormValidators.Tests.Core;
+
 [TestFixture()]
 public class ValidationProviderTests {
     private ValidationProvider provider;

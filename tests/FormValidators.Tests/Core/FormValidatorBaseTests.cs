@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 
 namespace CloudyWing.FormValidators.Tests.Core;
+
 [TestFixture]
 public class FormValidatorBaseTests {
     [TestCase("0", true)]

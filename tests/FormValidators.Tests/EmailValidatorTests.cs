@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 
 namespace CloudyWing.FormValidators.Tests;
+
 [TestFixture]
 public class EmailValidatorTests {
     [SetUp]

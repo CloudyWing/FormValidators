@@ -2,6 +2,7 @@
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
+
 [TestFixture]
 public class FalseAssertValidatorTests {
     [SetUp]

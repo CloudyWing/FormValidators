@@ -3,6 +3,7 @@ using NUnit.Framework;
 
 
 namespace CloudyWing.FormValidators.Tests;
+
 [TestFixture]
 public class IntegerLessThanValidatorTests {
     [TestCase("0", "0", true, true)]

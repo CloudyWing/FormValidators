@@ -4,6 +4,7 @@ using NUnit.Framework;
 
 
 namespace CloudyWing.FormValidators.Tests.Core;
+
 [TestFixture()]
 public class ErrorMessageProviderTests {
     [Test]

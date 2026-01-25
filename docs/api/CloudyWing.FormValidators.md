@@ -27,5 +27,5 @@
 
 | Enums | |
 | :--- | :--- |
-| [IdCardTypes](CloudyWing.FormValidators.IdCardTypes.md 'CloudyWing\.FormValidators\.IdCardTypes') | The identity card Tyoe\. |
+| [IdCardTypes](CloudyWing.FormValidators.IdCardTypes.md 'CloudyWing\.FormValidators\.IdCardTypes') | The identity card type\. |
 | [MobilePhoneFormats](CloudyWing.FormValidators.MobilePhoneFormats.md 'CloudyWing\.FormValidators\.MobilePhoneFormats') | The mobile phone formats\. |

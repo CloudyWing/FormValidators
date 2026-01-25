@@ -3,10 +3,14 @@ using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
 
-/// <summary>Compare the value of one column with the value of another column.</summary>
+/// <summary>
+/// Compare the value of one column with the value of another column.
+/// </summary>
 /// <seealso cref="FormValidatorBase" />
 public class CompareValidator : FormValidatorBase {
-    /// <summary>Initializes a new instance of the <see cref="CompareValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CompareValidator" /> class.
+    /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="comparisonColumn">The comparison column.</param>
@@ -21,15 +25,21 @@ public class CompareValidator : FormValidatorBase {
         CustomErrorMessageAccessor = customErrorMessageAccessor;
     }
 
-    /// <summary>Gets the comparison column.</summary>
+    /// <summary>
+    /// Gets the comparison column.
+    /// </summary>
     /// <value>The comparison column.</value>
     public string ComparisonColumn { get; }
 
-    /// <summary>Gets the comparison value.</summary>
+    /// <summary>
+    /// Gets the comparison value.
+    /// </summary>
     /// <value>The comparison value.</value>
     public string ComparisonValue { get; }
 
-    /// <summary>Gets the custom range message format.</summary>
+    /// <summary>
+    /// Gets the custom range message format.
+    /// </summary>
     /// <value>The custom range message format.</value>
     public Func<string, string, string, string, string> CustomErrorMessageAccessor { get; set; }
 
@@ -44,7 +54,7 @@ public class CompareValidator : FormValidatorBase {
 
     /// <inheritdoc/>
     protected override bool ValidateValue() {
-        // 是否有填資料由RequiredValidator驗證，所以沒填就不驗證
+        // 是否有填資料由 RequiredValidator 驗證，所以沒填就不驗證
         return string.IsNullOrWhiteSpace(Value) || Value == ComparisonValue;
     }
 }

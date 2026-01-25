@@ -4,17 +4,23 @@ using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
 
-/// <summary>Validation constrains the integer format of a value.</summary>
+/// <summary>
+/// Validation constrains the integer format of a value.
+/// </summary>
 public sealed class IntegerValidator : ComparableTypeValidator<long> {
-    /// <summary>Initializes a new instance of the <see cref="IntegerValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="IntegerValidator" /> class.
+    /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="allowedThousands"></param>
-    /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     public IntegerValidator(string column, string value, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null)
         : this(column, value, null, null, allowedThousands, customErrorMessageAccessor) { }
 
-    /// <summary>Initializes a new instance of the <see cref="IntegerValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="IntegerValidator" /> class.
+    /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="min">The minimum.</param>
@@ -26,7 +32,9 @@ public sealed class IntegerValidator : ComparableTypeValidator<long> {
         AllowedThousands = allowedThousands;
     }
 
-    /// <summary>Gets a value indicating whether [allowed thousands].</summary>
+    /// <summary>
+    /// Gets a value indicating whether [allowed thousands].
+    /// </summary>
     /// <value>
     ///   <c>true</c> if [allowed thousands]; otherwise, <c>false</c>.</value>
     public bool AllowedThousands { get; }

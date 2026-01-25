@@ -12,13 +12,17 @@ namespace CloudyWing.FormValidators;
 public class BulkValidator : Collection<IFormValidator>, IFormValidator {
     private readonly IList<string> errorMessages = [];
 
-    /// <summary>Initializes a new instance of the <see cref="BulkValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BulkValidator" /> class.
+    /// </summary>
     /// <param name="isStoppedIfFail">if set to <c>true</c> [is stopped if fail].</param>
     public BulkValidator(bool isStoppedIfFail = false) {
         IsStoppedIfFail = isStoppedIfFail;
     }
 
-    /// <summary>Initializes a new instance of the <see cref="BulkValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="BulkValidator" /> class.
+    /// </summary>
     /// <param name="configure">The configure.</param>
     /// <param name="isStoppedIfFail">if set to <c>true</c> [is stopped if fail].</param>
     public BulkValidator(Action<ValidatorConfiguration> configure, bool isStoppedIfFail = false) {
@@ -26,32 +30,46 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
         configure(new ValidatorConfiguration(this));
     }
 
-    /// <summary>Gets the error message, separated by br.</summary>
+    /// <summary>
+    /// Gets the error message, separated by br.
+    /// </summary>
     /// <value>The error message.</value>
     public string ErrorMessage => ErrorMessageWithBR;
 
-    /// <summary>Gets the error message, separated by br.</summary>
+    /// <summary>
+    /// Gets the error message, separated by br.
+    /// </summary>
     /// <value>The error message separated by br.</value>
     public string ErrorMessageWithBR => GetErrorMessage("<br />");
 
-    /// <summary>Gets the error message, separated by newlines.</summary>
+    /// <summary>
+    /// Gets the error message, separated by newlines.
+    /// </summary>
     /// <value>The error message separated by new line.</value>
     public string ErrorMessageWithNewLine => GetErrorMessage(Environment.NewLine);
 
-    /// <summary>Gets the error message, separated by <c>\n</c>.</summary>
+    /// <summary>
+    /// Gets the error message, separated by <c>\n</c>.
+    /// </summary>
     /// <value>The error message separated by <c>\n</c>.</value>
     public string ErrorMessageWithLF => GetErrorMessage("\n");
 
-    /// <summary>Gets the error messages.</summary>
+    /// <summary>
+    /// Gets the error messages.
+    /// </summary>
     /// <value>The error messages.</value>
     public IReadOnlyCollection<string> ErrorMessages => new ReadOnlyCollection<string>(errorMessages);
 
-    /// <summary>Returns true if ... is valid.</summary>
+    /// <summary>
+    /// Returns true if ... is valid.
+    /// </summary>
     /// <value>
     ///   <c>true</c> if this instance is valid; otherwise, <c>false</c>.</value>
     public bool IsValid { get; private set; } = false;
 
-    /// <summary>Gets a value indicating whether this instance is stopped if fail.</summary>
+    /// <summary>
+    /// Gets a value indicating whether this instance is stopped if fail.
+    /// </summary>
     /// <value>
     ///   <c>true</c> if this instance is stopped if fail; otherwise, <c>false</c>.</value>
     public bool IsStoppedIfFail { get; }

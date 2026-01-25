@@ -2,15 +2,23 @@
 
 namespace CloudyWing.FormValidators;
 
-/// <summary>The mobile phone formats.</summary>
+/// <summary>
+/// The mobile phone formats.
+/// </summary>
 [Flags]
 public enum MobilePhoneFormats {
-    /// <summary>The allow contain dashes</summary>
+    /// <summary>
+    /// The allow contain dashes.
+    /// </summary>
     AllowContainDashes = 1,
 
-    /// <summary>The allow without dashes</summary>
+    /// <summary>
+    /// The allow without dashes.
+    /// </summary>
     AllowWithoutDashes = 2,
 
-    /// <summary>All</summary>
+    /// <summary>
+    /// All.
+    /// </summary>
     All = AllowContainDashes | AllowWithoutDashes
 }

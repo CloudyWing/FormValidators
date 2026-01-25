@@ -45,7 +45,7 @@ The formats\.
 
 `customErrorMessageAccessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[MobilePhoneFormats](CloudyWing.FormValidators.MobilePhoneFormats.md 'CloudyWing\.FormValidators\.MobilePhoneFormats')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')
 
-The custom error message accessor\. The agrumts are column, value, mobile phone formats\.
+The custom error message accessor\. The arguments are column, value, mobile phone formats\.
 
 <a name='CloudyWing.FormValidators.MobilePhoneValidator.MobilePhoneValidator(string,string,System.Func_string,string,CloudyWing.FormValidators.MobilePhoneFormats,string_)'></a>
 
@@ -74,7 +74,7 @@ The value\.
 
 `customErrorMessageAccessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[MobilePhoneFormats](CloudyWing.FormValidators.MobilePhoneFormats.md 'CloudyWing\.FormValidators\.MobilePhoneFormats')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')
 
-The custom error message accessor\. The agrumts are column, value, mobile phone formats\.
+The custom error message accessor\. The arguments are column, value, mobile phone formats\.
 ### Properties
 
 <a name='CloudyWing.FormValidators.MobilePhoneValidator.CustomErrorMessage'></a>

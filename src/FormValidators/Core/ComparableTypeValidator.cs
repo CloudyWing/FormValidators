@@ -11,12 +11,14 @@ public abstract class ComparableTypeValidator<T> : FormValidatorBase
     where T : struct, IConvertible, IComparable<T>, IEquatable<T> {
     private string defaultErrorMessage = null;
 
-    /// <summary>Initializes a new instance of the <see cref="ComparableTypeValidator{T}" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ComparableTypeValidator{T}" /> class.
+    /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="min">The minimum.</param>
     /// <param name="max">The maximum.</param>
-    /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     protected ComparableTypeValidator(
         string column, string value, T? min, T? max, Func<string, string, T?, T?, string> customErrorMessageAccessor
     ) : base(column, value) {
@@ -25,19 +27,27 @@ public abstract class ComparableTypeValidator<T> : FormValidatorBase
         CustomErrorMessageAccessor = customErrorMessageAccessor;
     }
 
-    /// <summary>Gets the minimum value.</summary>
+    /// <summary>
+    /// Gets the minimum value.
+    /// </summary>
     /// <value>The minimum value.</value>
     public T? MinValue { get; }
 
-    /// <summary>Gets the maximum value.</summary>
+    /// <summary>
+    /// Gets the maximum value.
+    /// </summary>
     /// <value>The maximum value.</value>
     public T? MaxValue { get; }
 
-    /// <summary>Gets the cast error message accessor.</summary>
+    /// <summary>
+    /// Gets the cast error message accessor.
+    /// </summary>
     /// <value>The cast error message accessor.</value>
     protected abstract Func<string, string, string> CastErrorMessageAccessor { get; }
 
-    /// <summary>Gets the custom range message format.</summary>
+    /// <summary>
+    /// Gets the custom range message format.
+    /// </summary>
     /// <value>The custom range message format.</value>
     public Func<string, string, T?, T?, string> CustomErrorMessageAccessor { get; }
 
@@ -75,7 +85,9 @@ public abstract class ComparableTypeValidator<T> : FormValidatorBase
         }
     }
 
-    /// <summary>Tries the parse.</summary>
+    /// <summary>
+    /// Tries the parse.
+    /// </summary>
     /// <param name="value">The value.</param>
     /// <param name="result">The result.</param>
     /// <returns>Parse value to type <c>T</c> result.</returns>

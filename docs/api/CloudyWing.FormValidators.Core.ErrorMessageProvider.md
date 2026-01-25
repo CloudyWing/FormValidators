@@ -3,7 +3,7 @@
 
 ## ErrorMessageProvider Class
 
-The error message provider
+The error message provider\.
 
 ```csharp
 public static class ErrorMessageProvider
@@ -38,7 +38,7 @@ public static System.Func<string,string,object,string> ValueGreaterOrEqualAccess
 
 #### Property Value
 [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system.object 'System\.Object')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')  
-The value greater or equal accessor\. The agrumts are column, value, min, max\.
+The value greater or equal accessor\. The arguments are column, value, min, max\.
 
 <a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueInRangeAccessor'></a>
 
@@ -150,7 +150,7 @@ public static System.Func<string,string,string> ValueIsRequiredAccessor { get; p
 
 #### Property Value
 [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-3 'System\.Func\`3')  
-The value is required accessor\. The agrumts are column, value\.
+The value is required accessor\. The arguments are column, value\.
 
 <a name='CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLengthGreaterOrEqualAccessor'></a>
 

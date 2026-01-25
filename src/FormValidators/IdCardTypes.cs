@@ -2,24 +2,38 @@
 
 namespace CloudyWing.FormValidators;
 
-/// <summary>The identity card Tyoe.</summary>
+/// <summary>
+/// The identity card type.
+/// </summary>
 [Flags]
 public enum IdCardTypes {
-    /// <summary>國民身分證號</summary>
+    /// <summary>
+    /// National.
+    /// </summary>
     National = 1,
 
-    /// <summary>臺灣地區居留證統一證號</summary>
+    /// <summary>
+    /// Resident.
+    /// </summary>
     Resident = 2,
 
-    /// <summary>外僑居留證統一證號</summary>
+    /// <summary>
+    /// Alien resident.
+    /// </summary>
     AlienResident = 4,
 
-    /// <summary>遊民證號</summary>
+    /// <summary>
+    /// Homeless.
+    /// </summary>
     Homeless = 8,
 
-    /// <summary>新式外來人口統一證號</summary>
+    /// <summary>
+    /// New resident.
+    /// </summary>
     NewResident = 16,
 
-    /// <summary>All</summary>
+    /// <summary>
+    /// All.
+    /// </summary>
     All = National | Resident | AlienResident | Homeless | NewResident
 }

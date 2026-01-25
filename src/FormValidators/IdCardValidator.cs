@@ -4,13 +4,17 @@ using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
 
-/// <summary>The identity card validator.</summary>
+/// <summary>
+/// The identity card validator.
+/// </summary>
 public sealed class IdCardValidator : FormValidatorBase {
-    /// <summary>Initializes a new instance of the <see cref="IdCardValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="IdCardValidator" /> class.
+    /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="idCardType">Type of the identification card.</param>
-    /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, identification card types.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, identification card types.</param>
     public IdCardValidator(string column, string value,
         IdCardTypes idCardType = IdCardTypes.All, Func<string, string, IdCardTypes, string> customErrorMessageAccessor = null)
         : base(column, value) {
@@ -18,11 +22,15 @@ public sealed class IdCardValidator : FormValidatorBase {
         CustomErrorMessageAccessor = customErrorMessageAccessor;
     }
 
-    /// <summary>Gets the type of the identification card.</summary>
+    /// <summary>
+    /// Gets the type of the identification card.
+    /// </summary>
     /// <value>The type of the identification card.</value>
     public IdCardTypes IdCardType { get; }
 
-    /// <summary>Gets or sets the custom error message accessor.</summary>
+    /// <summary>
+    /// Gets or sets the custom error message accessor.
+    /// </summary>
     /// <value>The custom error message accessor.</value>
     public Func<string, string, IdCardTypes, string> CustomErrorMessageAccessor { get; }
 

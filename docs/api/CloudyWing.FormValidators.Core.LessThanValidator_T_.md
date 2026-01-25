@@ -70,7 +70,7 @@ if set to `true` \[allowed equal\]\.
 
 `customErrorMessageAccessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-6 'System\.Func\`6')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-6 'System\.Func\`6')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-6 'System\.Func\`6')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-6 'System\.Func\`6')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-6 'System\.Func\`6')[System\.Boolean](https://learn.microsoft.com/en-us/dotnet/api/system.boolean 'System\.Boolean')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-6 'System\.Func\`6')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-6 'System\.Func\`6')
 
-The custom error message accessor\. The agrumts are column, value, comparison column, comparison value, allowed equal\.
+The custom error message accessor\. The arguments are column, value, comparison column, comparison value, allowed equal\.
 ### Properties
 
 <a name='CloudyWing.FormValidators.Core.LessThanValidator_T_.AllowedEqual'></a>

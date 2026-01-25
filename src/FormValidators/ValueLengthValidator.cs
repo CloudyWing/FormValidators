@@ -3,27 +3,33 @@ using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
 
-/// <summary>Validation constraints a value does not exceed the length range.</summary>
+/// <summary>
+/// Validation constraints a value does not exceed the length range.
+/// </summary>
 /// <seealso cref="FormValidatorBase" />
 public sealed class ValueLengthValidator : FormValidatorBase {
     private string defaultErrorMessage;
 
-    /// <summary>Initializes a new instance of the <see cref="ValueLengthValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValueLengthValidator" /> class.
+    /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="max">The maximum.</param>
-    /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     public ValueLengthValidator(
         string column, string value, long max,
         Func<string, string, long, long, string> customErrorMessageAccessor = null
     ) : this(column, value, 0, max, customErrorMessageAccessor) { }
 
-    /// <summary>Initializes a new instance of the <see cref="ValueLengthValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValueLengthValidator" /> class.
+    /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="min">The minimum. Less than or equal to 0 means unlimited.</param>
     /// <param name="max">The maximum. Less than or equal to 0 means unlimited.</param>
-    /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, min, max.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     public ValueLengthValidator(
         string column, string value,
         long min, long max,
@@ -34,15 +40,21 @@ public sealed class ValueLengthValidator : FormValidatorBase {
         CustomErrorMessageAccessor = customErrorMessageAccessor;
     }
 
-    /// <summary>Gets the minimum length.</summary>
+    /// <summary>
+    /// Gets the minimum length.
+    /// </summary>
     /// <value>The minimum length.</value>
     public long MinLength { get; }
 
-    /// <summary>Gets the maximum length.</summary>
+    /// <summary>
+    /// Gets the maximum length.
+    /// </summary>
     /// <value>The maximum length.</value>
     public long MaxLength { get; }
 
-    /// <summary>Gets the custom range message format.</summary>
+    /// <summary>
+    /// Gets the custom range message format.
+    /// </summary>
     /// <value>The custom range message format.</value>
     public Func<string, string, long, long, string> CustomErrorMessageAccessor { get; set; }
 

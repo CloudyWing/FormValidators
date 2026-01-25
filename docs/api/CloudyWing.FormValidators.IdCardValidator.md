@@ -45,7 +45,7 @@ Type of the identification card\.
 
 `customErrorMessageAccessor` [System\.Func&lt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[IdCardTypes](CloudyWing.FormValidators.IdCardTypes.md 'CloudyWing\.FormValidators\.IdCardTypes')[,](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')[System\.String](https://learn.microsoft.com/en-us/dotnet/api/system.string 'System\.String')[&gt;](https://learn.microsoft.com/en-us/dotnet/api/system.func-4 'System\.Func\`4')
 
-The custom error message accessor\. The agrumts are column, value, identification card types\.
+The custom error message accessor\. The arguments are column, value, identification card types\.
 ### Properties
 
 <a name='CloudyWing.FormValidators.IdCardValidator.CustomErrorMessage'></a>

@@ -14,16 +14,16 @@ public enum MobilePhoneFormats
 
 `AllowContainDashes` 1
 
-The allow contain dashes
+The allow contain dashes\.
 
 <a name='CloudyWing.FormValidators.MobilePhoneFormats.AllowWithoutDashes'></a>
 
 `AllowWithoutDashes` 2
 
-The allow without dashes
+The allow without dashes\.
 
 <a name='CloudyWing.FormValidators.MobilePhoneFormats.All'></a>
 
 `All` 3
 
-All
+All\.

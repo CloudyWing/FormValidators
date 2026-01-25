@@ -3,7 +3,7 @@
 
 ## IdCardTypes Enum
 
-The identity card Tyoe\.
+The identity card type\.
 
 ```csharp
 public enum IdCardTypes
@@ -14,34 +14,34 @@ public enum IdCardTypes
 
 `National` 1
 
-國民身分證號
+National\.
 
 <a name='CloudyWing.FormValidators.IdCardTypes.Resident'></a>
 
 `Resident` 2
 
-臺灣地區居留證統一證號
+Resident\.
 
 <a name='CloudyWing.FormValidators.IdCardTypes.AlienResident'></a>
 
 `AlienResident` 4
 
-外僑居留證統一證號
+Alien resident\.
 
 <a name='CloudyWing.FormValidators.IdCardTypes.Homeless'></a>
 
 `Homeless` 8
 
-遊民證號
+Homeless\.
 
 <a name='CloudyWing.FormValidators.IdCardTypes.NewResident'></a>
 
 `NewResident` 16
 
-新式外來人口統一證號
+New resident\.
 
 <a name='CloudyWing.FormValidators.IdCardTypes.All'></a>
 
 `All` 31
 
-All
+All\.

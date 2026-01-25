@@ -2,17 +2,23 @@
 
 namespace CloudyWing.FormValidators;
 
-/// <summary>The true assert validator.</summary>
+/// <summary>
+/// The true assert validator.
+/// </summary>
 public class TrueAssertValidator : IFormValidator {
     private readonly string errorMessage;
     private readonly Func<bool> truePredicate;
 
-    /// <summary>Initializes a new instance of the <see cref="TrueAssertValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TrueAssertValidator" /> class.
+    /// </summary>
     /// <param name="isTrue">if set to <c>true</c> [is true].</param>
     /// <param name="errorMessage">The error message.</param>
     public TrueAssertValidator(bool isTrue, string errorMessage) : this(() => isTrue, errorMessage) { }
 
-    /// <summary>Initializes a new instance of the <see cref="TrueAssertValidator" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TrueAssertValidator" /> class.
+    /// </summary>
     /// <param name="truePredicate">The true predicate.</param>
     /// <param name="errorMessage">The error message.</param>
     public TrueAssertValidator(Func<bool> truePredicate, string errorMessage) {

@@ -3,18 +3,24 @@ using System.Collections.Generic;
 
 namespace CloudyWing.FormValidators.Core;
 
-/// <summary>The validator configuration.</summary>
+/// <summary>
+/// The validator configuration.
+/// </summary>
 public class ValidatorConfiguration {
     private readonly BulkValidator validators;
     private readonly ValidationProvider provider = new();
 
-    /// <summary>Initializes a new instance of the <see cref="ValidatorConfiguration" /> class.</summary>
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValidatorConfiguration" /> class.
+    /// </summary>
     /// <param name="validators">The validators.</param>
     public ValidatorConfiguration(BulkValidator validators) {
         this.validators = validators;
     }
 
-    /// <summary>Adds the validators.</summary>
+    /// <summary>
+    /// Adds the validators.
+    /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="validatorCreators">The validator creators.</param>
@@ -25,7 +31,9 @@ public class ValidatorConfiguration {
         AddIf(true, column, value, validatorCreators);
     }
 
-    /// <summary>Adds the validators.</summary>
+    /// <summary>
+    /// Adds the validators.
+    /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="validatorCreators">The validator creators.</param>
@@ -36,7 +44,9 @@ public class ValidatorConfiguration {
         AddIf(true, column, value, validatorCreators);
     }
 
-    /// <summary>Adds validators if condition is <c>true</c>.</summary>
+    /// <summary>
+    /// Adds validators if condition is <c>true</c>.
+    /// </summary>
     /// <param name="condition">if set to <c>true</c> [condition].</param>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
@@ -50,7 +60,9 @@ public class ValidatorConfiguration {
         );
     }
 
-    /// <summary>Adds validators if condition is <c>true</c>.</summary>
+    /// <summary>
+    /// Adds validators if condition is <c>true</c>.
+    /// </summary>
     /// <param name="condition"></param>
     /// <param name="column"></param>
     /// <param name="value"></param>
@@ -66,35 +78,45 @@ public class ValidatorConfiguration {
         }
     }
 
-    /// <summary>Adds the true assert validator.</summary>
+    /// <summary>
+    /// Adds the true assert validator.
+    /// </summary>
     /// <param name="isTrue">if set to <c>true</c> [is true].</param>
     /// <param name="message">The message.</param>
     public void AddTrueAssert(bool isTrue, string message) {
         validators.Add(new TrueAssertValidator(isTrue, message));
     }
 
-    /// <summary>Adds the true assert validator.</summary>
+    /// <summary>
+    /// Adds the true assert validator.
+    /// </summary>
     /// <param name="truePredicate">The true predicate.</param>
     /// <param name="message">The message.</param>
     public void AddTrueAssert(Func<bool> truePredicate, string message) {
         validators.Add(new TrueAssertValidator(truePredicate, message));
     }
 
-    /// <summary>Adds the false assert validator.</summary>
+    /// <summary>
+    /// Adds the false assert validator.
+    /// </summary>
     /// <param name="isFalse">if set to <c>true</c> [is false].</param>
     /// <param name="message">The message.</param>
     public void AddFalseAssert(bool isFalse, string message) {
         validators.Add(new FalseAssertValidator(isFalse, message));
     }
 
-    /// <summary>Adds the false assert validator.</summary>
+    /// <summary>
+    /// Adds the false assert validator.
+    /// </summary>
     /// <param name="falsePredicate">The false predicate.</param>
     /// <param name="message">The message.</param>
     public void AddFalseAssert(Func<bool> falsePredicate, string message) {
         validators.Add(new FalseAssertValidator(falsePredicate, message));
     }
 
-    /// <summary>Adds the bulk validator.</summary>
+    /// <summary>
+    /// Adds the bulk validator.
+    /// </summary>
     /// <param name="configure">The configure.</param>
     /// <param name="isStoppedIfFail">if set to <c>true</c> [is stopped if fail].</param>
     public void AddBulk(Action<ValidatorConfiguration> configure, bool isStoppedIfFail = false) {

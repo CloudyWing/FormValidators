@@ -17,7 +17,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DefaultDocumentationGeneratedPages>Namespaces,Types</DefaultDocumentationGeneratedPages>
-    <DefaultDocumentationFolder>../../docs/API</DefaultDocumentationFolder>
+    <DefaultDocumentationFolder>../../docs/api</DefaultDocumentationFolder>
     <PackageIcon>icon.png</PackageIcon>
     <MinVerTagPrefix>v</MinVerTagPrefix>
     <LangVersion>10.0</LangVersion>

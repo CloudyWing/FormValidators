@@ -11,7 +11,7 @@ description: FormValidators 的實際應用範例
 
 ```csharp
 // 建立容器，並將 Validator 加入 Bulk 裡
-BulkValidator validators = new BulkValidator();
+BulkValidator validators = new();
 
 // 驗證是否有值
 validators.Add(new RequiredValidator("欄位一", "值一"));
@@ -51,7 +51,7 @@ if (!validators.Validate()) {
 ```csharp
 // 建立容器，並將 Validator 加入批量裡
 // 第一個參數設為 true，表示遇到錯誤即停止
-BulkValidator validators = new BulkValidator(true);
+BulkValidator validators = new(true);
 
 // TrueAssert 遇到 true，驗證成功
 validators.Add(new TrueAssertValidator(true, "錯誤訊息一"));
@@ -80,7 +80,7 @@ if (!validators.Validate()) {
 **情境**：您需要對某些欄位群組進行「遇錯即停」驗證，但整體表單仍要收集所有錯誤。
 
 ```csharp
-BulkValidator validators = new BulkValidator {
+BulkValidator validators = new() {
     // 這個內層 Bulk 設定為 true（遇錯即停）
     new BulkValidator(true) {
         new TrueAssertValidator(true, "錯誤訊息一"),
@@ -110,26 +110,33 @@ if (!validators.Validate()) {
 **情境**：使用 Fluent API 語法，讓程式碼更簡潔易讀。
 
 ```csharp
-BulkValidator validators = new BulkValidator(cfg => {
+BulkValidator validators = new(cfg => {
     // 增加一個驗證
-    cfg.Add("欄位一", "值一", opt => opt.Required());
+    cfg.Add("欄位一", "值一",
+        opt => opt.Required()
+    );
     
     // 增加多個驗證
     cfg.Add("欄位二", "值二", 
         opt => opt.Required(), 
-        opt => opt.DateTime());
+        opt => opt.DateTime()
+    );
     
     // 條件式驗證：只有當 condition 為 true 時，才會驗證
-    cfg.AddIf(condition, "欄位三", "值三", 
+    cfg.AddIf(
+        condition, "欄位三", "值三", 
         opt => opt.Required(), 
-        opt => opt.DateTime());
+        opt => opt.DateTime()
+    );
     
     // 直接加入斷言驗證
     cfg.AddTrueAssert(true, "錯誤訊息");
     
     // 巢狀 Bulk 驗證
     cfg.AddBulk(_cfg => {
-        _cfg.Add("欄位四", "值四", opt => opt.Required());
+        _cfg.Add("欄位四", "值四",
+            opt => opt.Required()
+        );
     });
 });
 
@@ -152,35 +159,41 @@ public class RegisterForm {
     public string PhoneNumber { get; set; }
 
     public bool Validate(out string errorMessage) {
-        BulkValidator validators = new BulkValidator(cfg => {
+        BulkValidator validators = new(cfg => {
             // 使用者名稱：必填，長度 3-20
             cfg.Add("使用者名稱", UserName,
                 opt => opt.Required(),
-                opt => opt.ValueLength(3, 20));
+                opt => opt.ValueLength(3, 20)
+            );
 
             // Email：必填，格式驗證
             cfg.Add("Email", Email,
                 opt => opt.Required(),
-                opt => opt.Email());
+                opt => opt.Email()
+            );
 
             // 密碼：必填，長度至少 8
             cfg.Add("密碼", Password,
                 opt => opt.Required(),
-                opt => opt.ValueLength(8));
+                opt => opt.ValueLength(8)
+            );
 
             // 確認密碼：必填，與密碼相同
             cfg.Add("確認密碼", ConfirmPassword,
                 opt => opt.Required(),
-                opt => opt.Compare(Password, "密碼"));
+                opt => opt.Compare(Password, "密碼")
+            );
 
             // 年齡：必填，整數，範圍 18-100
             cfg.Add("年齡", Age,
                 opt => opt.Required(),
-                opt => opt.Integer(18, 100));
+                opt => opt.Integer(18, 100)
+            );
 
             // 手機號碼：非必填，但有值時需符合格式
             cfg.Add("手機號碼", PhoneNumber,
-                opt => opt.MobilePhone());
+                opt => opt.MobilePhone()
+            );
         });
 
         bool isValid = validators.Validate();
@@ -193,7 +206,7 @@ public class RegisterForm {
 **使用方式**：
 
 ```csharp
-var form = new RegisterForm {
+RegisterForm form = new() {
     UserName = "john_doe",
     Email = "john@example.com",
     Password = "password123",
@@ -220,13 +233,17 @@ if (!form.Validate(out string errorMessage)) {
 ```csharp
 bool isCorporateAccount = true;
 
-BulkValidator validators = new BulkValidator(cfg => {
-    cfg.Add("公司名稱", companyName, opt => opt.Required());
+BulkValidator validators = new(cfg => {
+    cfg.Add("公司名稱", companyName,
+        opt => opt.Required()
+    );
     
     // 只有企業帳號需要驗證統一編號
-    cfg.AddIf(isCorporateAccount, "統一編號", taxId,
+    cfg.AddIf(
+        isCorporateAccount, "統一編號", taxId,
         opt => opt.Required(),
-        opt => opt.ValueLength(8, 8));
+        opt => opt.ValueLength(8, 8)
+    );
 });
 ```
 

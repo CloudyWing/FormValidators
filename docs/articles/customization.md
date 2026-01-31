@@ -56,7 +56,7 @@ public class CustomFormValidator : IFormValidator {
 ### 使用自訂驗證器
 
 ```csharp
-BulkValidator validators = new BulkValidator();
+BulkValidator validators = new();
 validators.Add(new CustomFormValidator("欄位名稱", "欄位值"));
 
 if (!validators.Validate()) {
@@ -82,10 +82,11 @@ public static class ValidationProviderExtensions {
 ### 使用擴充方法
 
 ```csharp
-BulkValidator validators = new BulkValidator(cfg => {
+BulkValidator validators = new(cfg => {
     cfg.Add("欄位名稱", "欄位值", 
         opt => opt.Required(),
-        opt => opt.Custom()); // 使用自訂驗證器
+        opt => opt.Custom()
+    ); // 使用自訂驗證器
 });
 
 if (!validators.Validate()) {
@@ -104,7 +105,7 @@ using System.Text.RegularExpressions;
 using CloudyWing.FormValidators;
 
 public class UrlSlugValidator : IFormValidator {
-    private static readonly Regex SlugRegex = new Regex(
+    private static readonly Regex SlugRegex = new(
         @"^[a-z0-9]+(?:-[a-z0-9]+)*$",
         RegexOptions.Compiled
     );
@@ -154,10 +155,11 @@ public static class CustomValidationProviderExtensions {
 ### 使用範例
 
 ```csharp
-BulkValidator validators = new BulkValidator(cfg => {
+BulkValidator validators = new(cfg => {
     cfg.Add("文章網址", articleSlug,
         opt => opt.Required(),
-        opt => opt.UrlSlug());
+        opt => opt.UrlSlug()
+    );
 });
 
 if (!validators.Validate()) {
@@ -201,7 +203,7 @@ ErrorMessage = $"{Column} 必須為 8-20 位英數字元，且至少包含一個
 
 ```csharp
 // 使用 static readonly 預編譯正規表示式
-private static readonly Regex Pattern = new Regex(
+private static readonly Regex Pattern = new(
     @"^pattern$",
     RegexOptions.Compiled
 );

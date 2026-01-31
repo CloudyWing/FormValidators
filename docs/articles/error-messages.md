@@ -43,17 +43,17 @@ ErrorMessageProvider.SetValueIsRequiredAccessor((column, value) =>
 - **SetValueInRangeAccessor**：值不在指定範圍內
 
 ```csharp
-ErrorMessageProvider.SetValueIsIntegerAccessor((column, value) => 
-    $"{column}必須為整數。");
+ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)
+    => $"{column}必須為整數。");
 
-ErrorMessageProvider.SetValueGreaterOrEqualAccessor((column, value, min) => 
-    $"{column}不得小於 {min}。");
+ErrorMessageProvider.SetValueGreaterOrEqualAccessor((column, value, min)
+    => $"{column}不得小於 {min}。");
 
-ErrorMessageProvider.SetValueLessOrEqualAccessor((column, value, max) => 
-    $"{column}不得大於 {max}。");
+ErrorMessageProvider.SetValueLessOrEqualAccessor((column, value, max)
+    => $"{column}不得大於 {max}。");
 
-ErrorMessageProvider.SetValueInRangeAccessor((column, value, min, max) => 
-    $"{column}必須介於 {min} 與 {max} 之間。");
+ErrorMessageProvider.SetValueInRangeAccessor((column, value, min, max)
+    => $"{column}必須介於 {min} 與 {max} 之間。");
 ```
 
 ### NumberValidator
@@ -87,14 +87,14 @@ ErrorMessageProvider.SetValueIsDateTimeAccessor((column, value) =>
 - **SetValueLengthInRangeAccessor**：長度不在指定範圍內
 
 ```csharp
-ErrorMessageProvider.SetValueLengthGreaterOrEqualAccessor((column, value, minLength) => 
-    $"{column}長度不得少於 {minLength} 個字元。");
+ErrorMessageProvider.SetValueLengthGreaterOrEqualAccessor((column, value, minLength)
+    => $"{column}長度不得少於 {minLength} 個字元。");
 
-ErrorMessageProvider.SetValueLengthLessOrEqualAccessor((column, value, maxLength) => 
-    $"{column}長度不得超過 {maxLength} 個字元。");
+ErrorMessageProvider.SetValueLengthLessOrEqualAccessor((column, value, maxLength)
+    => $"{column}長度不得超過 {maxLength} 個字元。");
 
-ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, minLength, maxLength) => 
-    $"{column}長度必須介於 {minLength} 與 {maxLength} 個字元之間。");
+ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, minLength, maxLength)
+    => $"{column}長度必須介於 {minLength} 與 {maxLength} 個字元之間。");
 ```
 
 ### RegexValidator
@@ -102,8 +102,8 @@ ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, minLength, ma
 - **SetValueMatchRegexAccessor**：值不符合正規表示式
 
 ```csharp
-ErrorMessageProvider.SetValueMatchRegexAccessor((column, value, pattern) => 
-    $"{column}格式不正確。");
+ErrorMessageProvider.SetValueMatchRegexAccessor((column, value, pattern)
+    => $"{column}格式不正確。");
 ```
 
 ### EmailValidator
@@ -111,8 +111,8 @@ ErrorMessageProvider.SetValueMatchRegexAccessor((column, value, pattern) =>
 - **SetValueIsEmailAccessor**：值不是有效的 Email 格式
 
 ```csharp
-ErrorMessageProvider.SetValueIsEmailAccessor((column, value) => 
-    $"{column}必須為有效的 Email 地址。");
+ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
+    => $"{column}必須為有效的 Email 地址。");
 ```
 
 ### MobilePhoneValidator
@@ -120,8 +120,8 @@ ErrorMessageProvider.SetValueIsEmailAccessor((column, value) =>
 - **SetValueIsMobilePhoneAccessor**：值不是有效的手機號碼
 
 ```csharp
-ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value) => 
-    $"{column}必須為有效的手機號碼。");
+ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value)
+    => $"{column}必須為有效的手機號碼。");
 ```
 
 ### IdCardValidator
@@ -129,8 +129,8 @@ ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value) =>
 - **SetValueIsIdCardAccessor**：值不是有效的身分證字號
 
 ```csharp
-ErrorMessageProvider.SetValueIsIdCardAccessor((column, value) => 
-    $"{column}必須為有效的身分證字號。");
+ErrorMessageProvider.SetValueIsIdCardAccessor((column, value)
+    => $"{column}必須為有效的身分證字號。");
 ```
 
 ### CompareValidator
@@ -139,8 +139,8 @@ ErrorMessageProvider.SetValueIsIdCardAccessor((column, value) =>
 
 ```csharp
 ErrorMessageProvider.SetValueCompareAnotherColumnValueAccessor(
-    (column, value, compareColumn, compareValue) => 
-        $"{column}必須與{compareColumn}相同。");
+    (column, value, compareColumn, compareValue)
+    => $"{column}必須與{compareColumn}相同。");
 ```
 
 ### IntegerLessThanValidator
@@ -149,10 +149,10 @@ ErrorMessageProvider.SetValueCompareAnotherColumnValueAccessor(
 
 ```csharp
 ErrorMessageProvider.SetValueLessThanAnotherColumnValueAccessor(
-    (column, value, compareColumn, compareValue, allowedEqual) => 
-        allowedEqual 
-            ? $"{column}必須小於或等於{compareColumn}。"
-            : $"{column}必須小於{compareColumn}。");
+    (column, value, compareColumn, compareValue, allowedEqual)
+    => allowedEqual 
+        ? $"{column}必須小於或等於{compareColumn}。"
+        : $"{column}必須小於{compareColumn}。");
 ```
 
 ### NumberLessThanValidator
@@ -186,38 +186,38 @@ public class Program {
 
     private static void ConfigureErrorMessages() {
         // 基本驗證
-        ErrorMessageProvider.SetValueIsRequiredAccessor((column, value) => 
-            $"{column}為必填欄位。");
+        ErrorMessageProvider.SetValueIsRequiredAccessor((column, value)
+            => $"{column}為必填欄位。");
 
         // 型別驗證
-        ErrorMessageProvider.SetValueIsIntegerAccessor((column, value) => 
-            $"{column}必須為整數。");
+        ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)
+            => $"{column}必須為整數。");
         
-        ErrorMessageProvider.SetValueIsNumberAccessor((column, value) => 
-            $"{column}必須為數值。");
+        ErrorMessageProvider.SetValueIsNumberAccessor((column, value)
+            => $"{column}必須為數值。");
         
-        ErrorMessageProvider.SetValueIsDateTimeAccessor((column, value) => 
-            $"{column}必須為有效日期。");
+        ErrorMessageProvider.SetValueIsDateTimeAccessor((column, value)
+            => $"{column}必須為有效日期。");
 
         // 範圍驗證
-        ErrorMessageProvider.SetValueInRangeAccessor((column, value, min, max) => 
-            $"{column}必須介於 {min} 與 {max} 之間。");
+        ErrorMessageProvider.SetValueInRangeAccessor((column, value, min, max)
+            => $"{column}必須介於 {min} 與 {max} 之間。");
 
         // 長度驗證
-        ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, minLength, maxLength) => 
-            $"{column}長度必須介於 {minLength} 與 {maxLength} 個字元之間。");
+        ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, minLength, maxLength)
+            => $"{column}長度必須介於 {minLength} 與 {maxLength} 個字元之間。");
 
         // 格式驗證
-        ErrorMessageProvider.SetValueIsEmailAccessor((column, value) => 
-            $"請輸入有效的 Email 地址。");
+        ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
+            => $"請輸入有效的 Email 地址。");
         
-        ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value) => 
-            $"請輸入有效的手機號碼。");
+        ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value)
+            => $"請輸入有效的手機號碼。");
 
         // 比較驗證
         ErrorMessageProvider.SetValueCompareAnotherColumnValueAccessor(
-            (column, value, compareColumn, compareValue) => 
-                $"{column}必須與{compareColumn}相同。");
+            (column, value, compareColumn, compareValue)
+            => $"{column}必須與{compareColumn}相同。");
     }
 }
 ```
@@ -230,17 +230,17 @@ public class Program {
 public static void ConfigureErrorMessages(string language) {
     switch (language) {
         case "en-US":
-            ErrorMessageProvider.SetValueIsRequiredAccessor((column, value) => 
-                $"{column} is required.");
-            ErrorMessageProvider.SetValueIsEmailAccessor((column, value) => 
-                $"{column} must be a valid email address.");
+            ErrorMessageProvider.SetValueIsRequiredAccessor((column, value)
+                => $"{column} is required.");
+            ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
+                => $"{column} must be a valid email address.");
             break;
 
         case "zh-TW":
-            ErrorMessageProvider.SetValueIsRequiredAccessor((column, value) => 
-                $"{column}為必填欄位。");
-            ErrorMessageProvider.SetValueIsEmailAccessor((column, value) => 
-                $"{column}必須為有效的 Email 地址。");
+            ErrorMessageProvider.SetValueIsRequiredAccessor((column, value)
+                => $"{column}為必填欄位。");
+            ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
+                => $"{column}必須為有效的 Email 地址。");
             break;
     }
 }
@@ -266,12 +266,12 @@ public static class ErrorMessageConfig {
 
 ```csharp
 // ✗ 不夠明確
-ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, min, max) => 
-    $"{column}長度錯誤。");
+ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, min, max)
+    => $"{column}長度錯誤。");
 
 // ✓ 明確且有幫助
-ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, min, max) => 
-    $"{column}長度必須介於 {min} 與 {max} 個字元之間（目前長度：{value?.Length ?? 0}）。");
+ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, min, max)
+    => $"{column}長度必須介於 {min} 與 {max} 個字元之間（目前長度：{value?.Length ?? 0}）。");
 ```
 
 ### 3. 考慮使用者體驗
@@ -280,12 +280,12 @@ ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, min, max) =>
 
 ```csharp
 // ✗ 過於技術性
-ErrorMessageProvider.SetValueIsIntegerAccessor((column, value) => 
-    $"{column}: Invalid integer format. Expected: [-]?[0-9]+");
+ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)
+    => $"{column}: Invalid integer format. Expected: [-]?[0-9]+);
 
 // ✓ 使用者友善
-ErrorMessageProvider.SetValueIsIntegerAccessor((column, value) => 
-    $"{column}必須為整數（例如：123、-456）。");
+ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)
+    => $"{column}必須為整數（例如：123、-456）。");
 ```
 
 ## 相關資源

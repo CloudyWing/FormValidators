@@ -35,7 +35,7 @@ dotnet add package CloudyWing.FormValidators
 using CloudyWing.FormValidators;
 
 // 建立批量驗證容器
-BulkValidator validators = new BulkValidator();
+BulkValidator validators = new();
 
 // 新增必填驗證
 validators.Add(new RequiredValidator("使用者名稱", userName));
@@ -56,10 +56,17 @@ if (!validators.Validate()) {
 FormValidators 提供了更簡潔的語法來建立驗證：
 
 ```csharp
-BulkValidator validators = new BulkValidator(cfg => {
-    cfg.Add("使用者名稱", userName, opt => opt.Required());
-    cfg.Add("年齡", age, opt => opt.Required(), opt => opt.Integer());
-    cfg.Add("Email", email, opt => opt.Email());
+BulkValidator validators = new(cfg => {
+    cfg.Add("使用者名稱", userName,
+        opt => opt.Required()
+    );
+    cfg.Add("年齡", age,
+        opt => opt.Required(),
+        opt => opt.Integer()
+    );
+    cfg.Add("Email", email,
+        opt => opt.Email()
+    );
 });
 
 if (!validators.Validate()) {

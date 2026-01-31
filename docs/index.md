@@ -27,10 +27,17 @@ Install-Package CloudyWing.FormValidators
 ```csharp
 using CloudyWing.FormValidators;
 
-BulkValidator validators = new BulkValidator(cfg => {
-    cfg.Add("使用者名稱", userName, opt => opt.Required());
-    cfg.Add("Email", email, opt => opt.Required(), opt => opt.Email());
-    cfg.Add("年齡", age, opt => opt.Integer(18, 100));
+BulkValidator validators = new(cfg => {
+    cfg.Add("使用者名稱", userName,
+        opt => opt.Required()
+    );
+    cfg.Add("Email", email,
+        opt => opt.Required(),
+        opt => opt.Email()
+    );
+    cfg.Add("年齡", age,
+        opt => opt.Integer(18, 100)
+    );
 });
 
 if (!validators.Validate()) {

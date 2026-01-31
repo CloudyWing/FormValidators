@@ -350,7 +350,9 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
-# DocFX
+
+# DocFX general
+_site/
 docs/_site/
 docs/api/*.yml
 docs/api/*.manifest

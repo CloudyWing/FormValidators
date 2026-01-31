@@ -1,115 +1,114 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Tests {
-    [TestFixture]
-    public class ValueLengthValidatorTests {
-        [TestCase("123", 0, true)]
-        [TestCase("123", 3, true)]
-        [TestCase("123", 4, false)]
-        public void Validate_Min_AreEqual(string value, int min, bool isValid) {
-            ValueLengthValidator validator = new ValueLengthValidator("", value, min, 0);
+namespace CloudyWing.FormValidators.Tests;
 
-            validator.Validate().Should().Be(isValid);
-        }
+[TestFixture]
+public class ValueLengthValidatorTests {
+    [TestCase("123", 0, true)]
+    [TestCase("123", 3, true)]
+    [TestCase("123", 4, false)]
+    public void Validate_WithMinConstraint_ReturnsExpectedResult(string value, int min, bool isValid) {
+        ValueLengthValidator validator = new("", value, min, 0);
 
-        [TestCase("123", 3, true)]
-        [TestCase("123", 4, true)]
-        [TestCase("123", 2, false)]
-        public void Validate_Max_AreEqual(string value, int max, bool isValid) {
-            ValueLengthValidator validator = new ValueLengthValidator("", value, 0, max);
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
 
-            validator.Validate().Should().Be(isValid);
-        }
+    [TestCase("123", 3, true)]
+    [TestCase("123", 4, true)]
+    [TestCase("123", 2, false)]
+    public void Validate_WithMaxConstraint_ReturnsExpectedResult(string value, int max, bool isValid) {
+        ValueLengthValidator validator = new("", value, 0, max);
 
-        [TestCase("123", 0, 3, true)]
-        [TestCase("123", 2, 2, false)]
-        [TestCase("123", 4, 4, false)]
-        public void Validate_Range_AreEqual(string value, int min, int max, bool isValid) {
-            ValueLengthValidator validator = new ValueLengthValidator("", value, min, max);
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
 
-            validator.Validate().Should().Be(isValid);
-        }
+    [TestCase("123", 0, 3, true)]
+    [TestCase("123", 2, 2, false)]
+    [TestCase("123", 4, 4, false)]
+    public void Validate_WithRangeConstraint_ReturnsExpectedResult(string value, int min, int max, bool isValid) {
+        ValueLengthValidator validator = new("", value, min, max);
 
-        [Test]
-        public void ErrorMessage_RangeDefaultMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = "123";
-            int min = 1;
-            int max = 1;
-            string expected = ErrorMessageProvider.ValueLengthInRangeAccessor(column, value, min, max);
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
 
-            ValueLengthValidator validator = new ValueLengthValidator(column, value, min, max);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenRangeConstraintFails_ReturnsDefaultMessage() {
+        string column = "測試欄位";
+        string value = "123";
+        int min = 1;
+        int max = 1;
+        string expected = ErrorMessageProvider.ValueLengthInRangeAccessor(column, value, min, max);
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        ValueLengthValidator validator = new(column, value, min, max);
+        validator.Validate();
 
-        [Test]
-        public void ErrorMessage_CustomMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = "123";
-            int min = 1;
-            int max = 1;
-            string expected = column + value + min + max;
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 
-            ValueLengthValidator validator = new ValueLengthValidator(column, value, min, max, (c, v, _min, _max) => c + v + _min + _max);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
+        string column = "測試欄位";
+        string value = "123";
+        int min = 1;
+        int max = 1;
+        string expected = column + value + min + max;
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        ValueLengthValidator validator = new(column, value, min, max, (c, v, _min, _max) => c + v + _min + _max);
+        validator.Validate();
 
-        [Test]
-        public void ErrorMessage_MinDefaultMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = "123";
-            int min = 4;
-            string expected = ErrorMessageProvider.ValueLengthGreaterOrEqualAccessor(column, value, min);
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 
-            ValueLengthValidator validator = new ValueLengthValidator(column, value, min, 0);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenMinConstraintFails_ReturnsDefaultMessage() {
+        string column = "測試欄位";
+        string value = "123";
+        int min = 4;
+        string expected = ErrorMessageProvider.ValueLengthGreaterOrEqualAccessor(column, value, min);
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        ValueLengthValidator validator = new(column, value, min, 0);
+        validator.Validate();
 
-        [Test]
-        public void ErrorMessage_MinCustomMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = "123";
-            int min = 4;
-            string expected = column + value + min;
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 
-            ValueLengthValidator validator = new ValueLengthValidator(column, value, min, 0, (c, v, _min, _) => c + v + _min);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenMinConstraintFails_ReturnsCustomMessage() {
+        string column = "測試欄位";
+        string value = "123";
+        int min = 4;
+        string expected = column + value + min;
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        ValueLengthValidator validator = new(column, value, min, 0, (c, v, _min, _) => c + v + _min);
+        validator.Validate();
 
-        [Test]
-        public void ErrorMessage_MaxDefaultMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = "123";
-            int max = 2;
-            string expected = ErrorMessageProvider.ValueLengthLessOrEqualAccessor(column, value, max);
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 
-            ValueLengthValidator validator = new ValueLengthValidator(column, value, 0, max);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenMaxConstraintFails_ReturnsDefaultMessage() {
+        string column = "測試欄位";
+        string value = "123";
+        int max = 2;
+        string expected = ErrorMessageProvider.ValueLengthLessOrEqualAccessor(column, value, max);
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        ValueLengthValidator validator = new(column, value, 0, max);
+        validator.Validate();
 
-        [Test]
-        public void ErrorMessage_MaxCustomMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = "123";
-            int max = 2;
-            string expected = column + value + max;
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 
-            ValueLengthValidator validator = new ValueLengthValidator(column, value, max, (c, v, _, _max) => c + v + _max);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenMaxConstraintFails_ReturnsCustomMessage() {
+        string column = "測試欄位";
+        string value = "123";
+        int max = 2;
+        string expected = column + value + max;
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        ValueLengthValidator validator = new(column, value, max, (c, v, _, _max) => c + v + _max);
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
 }

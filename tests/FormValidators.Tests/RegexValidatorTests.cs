@@ -1,43 +1,51 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Tests {
-    [TestFixture]
-    public class RegexValidatorTests {
-        [TestCase(null, "", true)]
-        [TestCase("", "", true)]
-        [TestCase(" ", "", true)]
-        [TestCase("1234567", @"^\d{7}$", true)]
-        [TestCase("a123456", @"^\d{7}$", false)]
-        public void Validate_ReturnValue_AreEqual(string value, string pattern, bool isValid) {
-            RegexValidator validator = new RegexValidator("", value, pattern);
+namespace CloudyWing.FormValidators.Tests;
 
-            validator.Validate().Should().Be(isValid);
-        }
+[TestFixture]
+public class RegexValidatorTests {
+    [TestCase(null, "", true)]
+    [TestCase("", "", true)]
+    [TestCase(" ", "", true)]
+    [TestCase("1234567", @"^\d{7}$", true)]
+    [TestCase("a123456", @"^\d{7}$", false)]
+    public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, string pattern, bool isValid) {
+        RegexValidator validator = new("", value, pattern);
 
-        [Test]
-        public void ErrorMessage_DefaultMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = "123456";
-            string expected = ErrorMessageProvider.ValueMatchRegexAccessor(column, value);
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
 
-            RegexValidator validator = new RegexValidator(column, value, @"\D+");
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
+        string column = "測試欄位";
+        string value = "123456";
+        string expected = ErrorMessageProvider.ValueMatchRegexAccessor(column, value);
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        RegexValidator validator = new(column, value, @"\D+");
+        validator.Validate();
 
-        [Test]
-        public void ErrorMessage_CustomMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = "123456";
-            string expected = column + value;
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 
-            RegexValidator validator = new RegexValidator(column, value, @"\D+", (c, v) => c + v);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
+        string column = "測試欄位";
+        string value = "123456";
+        string expected = column + value;
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        RegexValidator validator = new(column, value, @"\D+", (c, v) => c + v);
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Validate_WhenRegexInstanceIsUsed_ReturnsExpectedResult() {
+        string value = "1234567";
+        System.Text.RegularExpressions.Regex regex = new(@"^\d{7}$");
+        RegexValidator validator = new("", value, regex);
+
+        Assert.That(validator.Validate(), Is.True);
     }
 }

@@ -1,47 +1,46 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Tests {
-    [TestFixture]
-    public class CompareValidatorTests {
-        [TestCase(null, "", true)]
-        [TestCase("", "", true)]
-        [TestCase(" ", "", true)]
-        [TestCase("123", "123", true)]
-        [TestCase("123", "456", false)]
-        public void Validate_ReturnValue_AreEqual(string value, string comparisonValue, bool isValid) {
-            CompareValidator validator = new CompareValidator("", value, "", comparisonValue);
+namespace CloudyWing.FormValidators.Tests;
 
-            validator.Validate().Should().Be(isValid);
-        }
+[TestFixture]
+public class CompareValidatorTests {
+    [TestCase(null, "", true)]
+    [TestCase("", "", true)]
+    [TestCase(" ", "", true)]
+    [TestCase("123", "123", true)]
+    [TestCase("123", "456", false)]
+    public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, string comparisonValue, bool isValid) {
+        CompareValidator validator = new("", value, "", comparisonValue);
 
-        [Test]
-        public void ErrorMessage_DefaultMessage_AreEqual() {
-            const string column = "測試欄位";
-            const string value = "123";
-            const string comparisonColumn = "比較欄位";
-            const string comparisonValue = "456";
-            string expected = ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor(column, value, comparisonColumn, comparisonValue);
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
 
-            CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456");
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
+        const string column = "測試欄位";
+        const string value = "123";
+        const string comparisonColumn = "比較欄位";
+        const string comparisonValue = "456";
+        string expected = ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor(column, value, comparisonColumn, comparisonValue);
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        CompareValidator validator = new(column, "123", comparisonColumn, "456");
+        validator.Validate();
 
-        [Test]
-        public void ErrorMessage_CustomMessage_AreEqual() {
-            const string column = "測試欄位";
-            const string value = "123";
-            const string comparisonColumn = "比較欄位";
-            const string comparisonValue = "456";
-            string expected = column + value + comparisonColumn + comparisonValue;
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 
-            CompareValidator validator = new CompareValidator(column, "123", comparisonColumn, "456", (c, v, cc, cv) => c + v + cc + cv);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
+        const string column = "測試欄位";
+        const string value = "123";
+        const string comparisonColumn = "比較欄位";
+        const string comparisonValue = "456";
+        string expected = column + value + comparisonColumn + comparisonValue;
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        CompareValidator validator = new(column, "123", comparisonColumn, "456", (c, v, cc, cv) => c + v + cc + cv);
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
 }

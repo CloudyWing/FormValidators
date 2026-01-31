@@ -1,115 +1,114 @@
 ﻿using System;
 using System.Collections.Generic;
 using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Tests.Core {
-    [TestFixture()]
-    public class ValidatorConfigurationTests {
-        private BulkValidator validators;
-        private ValidatorConfiguration config;
+namespace CloudyWing.FormValidators.Tests.Core;
 
-        [SetUp]
-        public void SetUp() {
-            validators = new BulkValidator();
-            config = new ValidatorConfiguration(validators);
-        }
+[TestFixture()]
+public class ValidatorConfigurationTests {
+    private BulkValidator validators;
+    private ValidatorConfiguration config;
 
-        [Test()]
-        public void Add_Bulk_Result() {
-            BulkValidator expected = new BulkValidator() {
-                new RequiredValidator("Column1", "Value1"),
-                new DateTimeValidator("Column1", "Value1"),
-                new RequiredValidator("Column2", "Value2"),
-                new RequiredValidator("Column1", "Value3"),
-                new DateTimeValidator("Column3", "Value3")
-            };
-            expected.Validate();
+    [SetUp]
+    public void SetUp() {
+        validators = new BulkValidator();
+        config = new ValidatorConfiguration(validators);
+    }
 
-            config.Add("Column1", "Value1", opt => opt.Required(), opt => opt.DateTime());
-            config.Add("Column2", "Value2", opt => opt.Required());
+    [Test()]
+    public void Add_Bulk_Result() {
+        BulkValidator expected = new BulkValidator() {
+            new RequiredValidator("Column1", "Value1"),
+            new DateTimeValidator("Column1", "Value1"),
+            new RequiredValidator("Column2", "Value2"),
+            new RequiredValidator("Column1", "Value3"),
+            new DateTimeValidator("Column3", "Value3")
+        };
+        expected.Validate();
 
-            var funcs = new List<Func<ValidationProvider, Func<string, string, IFormValidator>>> {
-                opt => opt.Required(),
-                opt => opt.DateTime()
-            };
+        config.Add("Column1", "Value1", opt => opt.Required(), opt => opt.DateTime());
+        config.Add("Column2", "Value2", opt => opt.Required());
 
-            config.Add("Column3", "Value3", funcs);
-            validators.Validate();
+        var funcs = new List<Func<ValidationProvider, Func<string, string, IFormValidator>>> {
+            opt => opt.Required(),
+            opt => opt.DateTime()
+        };
 
-            validators.IsValid.Should().Be(expected.IsValid);
-            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
-            validators.Count.Should().Be(expected.Count);
-        }
+        config.Add("Column3", "Value3", funcs);
+        validators.Validate();
 
-        [Test()]
-        public void AddIf_ConditionIsTrue_Count() {
-            string message = "TestAddIfTrue";
-            string column = "欄位";
+        Assert.That(validators.IsValid, Is.EqualTo(expected.IsValid));
+        Assert.That(validators.ErrorMessage, Is.EqualTo(expected.ErrorMessage));
+        Assert.That(validators.Count, Is.EqualTo(expected.Count));
+    }
 
-            config.AddIf(true, column, null, opt => opt.Required(message));
+    [Test()]
+    public void AddIf_ConditionIsTrue_Count() {
+        string message = "TestAddIfTrue";
+        string column = "欄位";
 
-            validators.Count.Should().Be(1);
-        }
+        config.AddIf(true, column, null, opt => opt.Required(message));
 
-        [Test()]
-        public void AddIf_ConditionIsFalse_Count() {
-            string message = "TestAddIfFalse";
-            string column = "欄位";
+        Assert.That(validators.Count, Is.EqualTo(1));
+    }
 
-            config.AddIf(false, column, null, opt => opt.Required(message));
+    [Test()]
+    public void AddIf_ConditionIsFalse_Count() {
+        string message = "TestAddIfFalse";
+        string column = "欄位";
 
-            validators.Count.Should().Be(0);
-        }
+        config.AddIf(false, column, null, opt => opt.Required(message));
 
-        [Test()]
-        public void AddTrueAssert_Result() {
-            string message = "TestTrueAssert";
-            BulkValidator expected = new BulkValidator() {
-                new TrueAssertValidator(false, message)
-            };
+        Assert.That(validators.Count, Is.EqualTo(0));
+    }
 
-            config.AddTrueAssert(false, message);
+    [Test()]
+    public void AddTrueAssert_Result() {
+        string message = "TestTrueAssert";
+        BulkValidator expected = new BulkValidator() {
+            new TrueAssertValidator(false, message)
+        };
 
-            validators.IsValid.Should().Be(expected.IsValid);
-            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
-            validators.Count.Should().Be(expected.Count);
-        }
+        config.AddTrueAssert(false, message);
 
-        [Test()]
-        public void AddFalseAssert_Result() {
-            string message = "TestFalseAssert";
-            BulkValidator expected = new BulkValidator() {
-                new FalseAssertValidator(false, message)
-            };
+        Assert.That(validators.IsValid, Is.EqualTo(expected.IsValid));
+        Assert.That(validators.ErrorMessage, Is.EqualTo(expected.ErrorMessage));
+        Assert.That(validators.Count, Is.EqualTo(expected.Count));
+    }
 
-            config.AddFalseAssert(true, message);
+    [Test()]
+    public void AddFalseAssert_Result() {
+        string message = "TestFalseAssert";
+        BulkValidator expected = new BulkValidator() {
+            new FalseAssertValidator(false, message)
+        };
 
-            validators.IsValid.Should().Be(expected.IsValid);
-            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
-            validators.Count.Should().Be(expected.Count);
-        }
+        config.AddFalseAssert(true, message);
 
-        [Test()]
-        public void AddBulk_Result() {
-            BulkValidator expected = new BulkValidator {
-                new BulkValidator(cfg => {
-                    cfg.Add("Column1", "Value1", opt => opt.Required(), opt => opt.DateTime());
-                    cfg.Add("Column2", "Value2", opt => opt.Required());
-                })
-            };
-            expected.Validate();
+        Assert.That(validators.IsValid, Is.EqualTo(expected.IsValid));
+        Assert.That(validators.ErrorMessage, Is.EqualTo(expected.ErrorMessage));
+        Assert.That(validators.Count, Is.EqualTo(expected.Count));
+    }
 
-            config.AddBulk(cfg => {
+    [Test()]
+    public void AddBulk_Result() {
+        BulkValidator expected = new BulkValidator {
+            new BulkValidator(cfg => {
                 cfg.Add("Column1", "Value1", opt => opt.Required(), opt => opt.DateTime());
                 cfg.Add("Column2", "Value2", opt => opt.Required());
-            });
-            validators.Validate();
+            })
+        };
+        expected.Validate();
 
-            validators.IsValid.Should().Be(expected.IsValid);
-            validators.ErrorMessage.Should().Be(expected.ErrorMessage);
-            validators.Count.Should().Be(expected.Count);
-        }
+        config.AddBulk(cfg => {
+            cfg.Add("Column1", "Value1", opt => opt.Required(), opt => opt.DateTime());
+            cfg.Add("Column2", "Value2", opt => opt.Required());
+        });
+        validators.Validate();
+
+        Assert.That(validators.IsValid, Is.EqualTo(expected.IsValid));
+        Assert.That(validators.ErrorMessage, Is.EqualTo(expected.ErrorMessage));
+        Assert.That(validators.Count, Is.EqualTo(expected.Count));
     }
 }

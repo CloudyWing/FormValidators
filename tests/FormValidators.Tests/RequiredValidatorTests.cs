@@ -1,43 +1,42 @@
 ﻿using CloudyWing.FormValidators.Core;
-using FluentAssertions;
 using NUnit.Framework;
 
-namespace CloudyWing.FormValidators.Tests {
-    [TestFixture]
-    public class RequiredValidatorTests {
-        [TestCase("0", true)]
-        [TestCase("1", true)]
-        [TestCase(null, false)]
-        [TestCase("", false)]
-        [TestCase(" ", false)]
-        public void Validate_ReturnValue_AreEqual(string value, bool isValid) {
-            RequiredValidator validator = new RequiredValidator("", value);
+namespace CloudyWing.FormValidators.Tests;
 
-            validator.Validate().Should().Be(isValid);
-        }
+[TestFixture]
+public class RequiredValidatorTests {
+    [TestCase("0", true)]
+    [TestCase("1", true)]
+    [TestCase(null, false)]
+    [TestCase("", false)]
+    [TestCase(" ", false)]
+    public void Validate_WhenComparingValues_ReturnsExpectedResult(string value, bool isValid) {
+        RequiredValidator validator = new("", value);
 
-        [Test]
-        public void ErrorMessage_DefaultMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = null;
-            string expected = ErrorMessageProvider.ValueIsRequiredAccessor(column, value);
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
 
-            RequiredValidator validator = new RequiredValidator(column, value);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
+        string column = "測試欄位";
+        string value = null;
+        string expected = ErrorMessageProvider.ValueIsRequiredAccessor(column, value);
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        RequiredValidator validator = new(column, value);
+        validator.Validate();
 
-        [Test]
-        public void ErrorMessage_CustomMessage_AreEqual() {
-            string column = "測試欄位";
-            string value = null;
-            string expected = column + value;
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 
-            RequiredValidator validator = new RequiredValidator(column, null, (c, v) => c + v);
-            validator.Validate();
+    [Test]
+    public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
+        string column = "測試欄位";
+        string value = null;
+        string expected = column + value;
 
-            validator.ErrorMessage.Should().Be(expected);
-        }
+        RequiredValidator validator = new(column, null, (c, v) => c + v);
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
 }

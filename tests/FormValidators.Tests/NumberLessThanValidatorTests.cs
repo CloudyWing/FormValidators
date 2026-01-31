@@ -24,7 +24,7 @@ public class NumberLessThanValidatorTests {
         string comparisonColumn = "比較欄位";
         string comparisonValue = "0.1";
         bool allowedEqual = false;
-        string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, value, comparisonColumn, comparisonValue, allowedEqual);
+        string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, comparisonColumn, value, comparisonValue, allowedEqual);
 
         NumberLessThanValidator validator = new(column, value, comparisonColumn, comparisonValue, allowedEqual);
         validator.Validate();

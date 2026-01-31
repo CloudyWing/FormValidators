@@ -24,7 +24,7 @@ public class DateTimeLessThanValidatorTests {
         string comparisonColumn = "比較欄位";
         string comparisonValue = "2020/01/01";
         bool allowedEqual = false;
-        string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, value, comparisonColumn, comparisonValue, allowedEqual);
+        string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, comparisonColumn, value, comparisonValue, allowedEqual);
 
         DateTimeLessThanValidator validator = new(column, value, comparisonColumn, comparisonValue, allowedEqual);
         validator.Validate();

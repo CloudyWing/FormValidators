@@ -5,16 +5,22 @@
 
 ## Supported Frameworks
 
+* .NET 10
 * .NET Standard 2.0
 * .NET Framework 4.5
 
 ## Documentation
 
-* [FormValidators](./docs/guides/FormValidators.md)
-* [Examples](./docs/guides/Examples.md)
-* [客製化驗證](./docs/guides/%E5%AE%A2%E8%A3%BD%E5%8C%96%E9%A9%97%E8%AD%89.md)
-* [自訂預設錯誤訊息](./docs/guides/%E8%87%AA%E8%A8%82%E9%A0%90%E8%A8%AD%E9%8C%AF%E8%AA%A4%E8%A8%8A%E6%81%AF.md)
-* [API 文件](./docs/api/index.md)
+完整文檔請參考：<https://cloudywing.github.io/FormValidators/>
+
+或查看以下主要文章：
+
+* [快速開始](./docs/articles/getting-started.md)
+* [驗證器介紹](./docs/articles/validators.md)
+* [使用範例](./docs/articles/usage-examples.md)
+* [客製化驗證](./docs/articles/customization.md)
+* [錯誤訊息設定](./docs/articles/error-messages.md)
+* [API 參考](./docs/api/index.md)
 
 ## License
 

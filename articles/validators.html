@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>驗證器介紹 | FormValidators Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="驗證器介紹 | FormValidators Docs ">
+      
+      <meta name="description" content="FormValidators 提供的所有內建驗證器說明">
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CloudyWing/FormValidators/blob/main/docs/articles/validators.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="FormValidators Docs">
+            FormValidators Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+
+<p>FormValidators 提供多種預設驗證器，涵蓋常見的資料驗證需求。</p>
+<h2 id="基本驗證">基本驗證</h2>
+<h3 id="requiredvalidator">RequiredValidator</h3>
+<p>驗證 <code>Value</code> 是否為必填。如果值為 <code>null</code>、空字串或空格，視為沒有值。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.RequiredValidator.html">RequiredValidator</a></p>
+<h3 id="valuelengthvalidator">ValueLengthValidator</h3>
+<p>驗證 <code>Value</code> 的長度是否符合指定範圍。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.ValueLengthValidator.html">ValueLengthValidator</a></p>
+<h3 id="bulkvalidator">BulkValidator</h3>
+<p>批量驗證容器，可包含多個驗證器。參數 <code>isStoppedIfFail</code> 可控制驗證不通過時，是否繼續後續驗證。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.BulkValidator.html">BulkValidator</a></p>
+<h2 id="型別驗證">型別驗證</h2>
+<p>提供驗證值是否可轉型成特定型別，及最大值和最小值驗證。</p>
+<h3 id="integervalidator">IntegerValidator</h3>
+<p>整數和極限值驗證，資料型別為 <code>long</code>。</p>
+<p><strong>參數</strong>：</p>
+<ul>
+<li><code>allowedThousands</code>：是否允許千分位符號</li>
+</ul>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.IntegerValidator.html">IntegerValidator</a></p>
+<h3 id="numbervalidator">NumberValidator</h3>
+<p>數值和極限值驗證，資料型別為 <code>decimal</code>。</p>
+<p><strong>參數</strong>：</p>
+<ul>
+<li><code>allowedThousands</code>：是否允許千分位符號</li>
+</ul>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.NumberValidator.html">NumberValidator</a></p>
+<h3 id="datetimevalidator">DateTimeValidator</h3>
+<p>日期和極限值驗證，資料型別為 <code>DateTime</code>。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.DateTimeValidator.html">DateTimeValidator</a></p>
+<h2 id="比較驗證">比較驗證</h2>
+<h3 id="comparevalidator">CompareValidator</h3>
+<p>比較兩欄位的值是否相等。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.CompareValidator.html">CompareValidator</a></p>
+<h3 id="integerlessthanvalidator">IntegerLessThanValidator</h3>
+<p>整數欄位比較，<code>Value</code> 必須小於比較的值。</p>
+<p><strong>參數</strong>：</p>
+<ul>
+<li><code>allowedEqual</code>：設為 <code>true</code> 時，可以等於比較值</li>
+</ul>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.IntegerLessThanValidator.html">IntegerLessThanValidator</a></p>
+<h3 id="numberlessthanvalidator">NumberLessThanValidator</h3>
+<p>數值欄位比較，<code>Value</code> 必須小於比較的值。</p>
+<p><strong>參數</strong>：</p>
+<ul>
+<li><code>allowedEqual</code>：設為 <code>true</code> 時，可以等於比較值</li>
+</ul>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.NumberLessThanValidator.html">NumberLessThanValidator</a></p>
+<h3 id="datetimelessthanvalidator">DateTimeLessThanValidator</h3>
+<p>日期欄位比較，<code>Value</code> 必須小於比較的值。</p>
+<p><strong>參數</strong>：</p>
+<ul>
+<li><code>allowedEqual</code>：設為 <code>true</code> 時，可以等於比較值</li>
+</ul>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.DateTimeLessThanValidator.html">DateTimeLessThanValidator</a></p>
+<h2 id="格式驗證">格式驗證</h2>
+<h3 id="regexvalidator">RegexValidator</h3>
+<p>使用正規表示式驗證 <code>Value</code>。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.RegexValidator.html">RegexValidator</a></p>
+<h3 id="emailvalidator">EmailValidator</h3>
+<p>Email 格式驗證。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.EmailValidator.html">EmailValidator</a></p>
+<h3 id="mobilephonevalidator">MobilePhoneValidator</h3>
+<p>手機格式驗證。</p>
+<p><strong>參數</strong>：</p>
+<ul>
+<li><code>MobilePhoneFormats</code>：可指定允許的手機號碼格式</li>
+</ul>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.MobilePhoneValidator.html">MobilePhoneValidator</a></p>
+<h3 id="idcardvalidator">IdCardValidator</h3>
+<p>身分證驗證。</p>
+<p><strong>參數</strong>：</p>
+<ul>
+<li><code>IdCardTypes</code>：設定驗證允許格式，包括：
+<ul>
+<li>國民身分證號</li>
+<li>臺灣地區居留證統一證號</li>
+<li>外僑居留證統一證號</li>
+<li>遊民證號</li>
+<li>新式外來人口統一證號</li>
+</ul>
+</li>
+</ul>
+<p>預設允許全部格式。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.IdCardValidator.html">IdCardValidator</a></p>
+<h3 id="creditcardvalidator">CreditCardValidator</h3>
+<p>信用卡號碼驗證。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.CreditCardValidator.html">CreditCardValidator</a></p>
+<h3 id="urlvalidator">UrlValidator</h3>
+<p>URL 格式驗證。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.UrlValidator.html">UrlValidator</a></p>
+<h3 id="ipaddressvalidator">IPAddressValidator</h3>
+<p>IP 位址驗證。</p>
+<p><strong>參數</strong>：</p>
+<ul>
+<li><code>IPAddressTypes</code>：可指定允許的 IP 類型（IPv4、IPv6 或兩者）</li>
+</ul>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.IPAddressValidator.html">IPAddressValidator</a></p>
+<h2 id="boolean-驗證">Boolean 驗證</h2>
+<h3 id="trueassertvalidator">TrueAssertValidator</h3>
+<p>當條件為 <code>true</code> 時，驗證通過。</p>
+<p><strong>特色</strong>：參數可使用 <code>Func&lt;bool&gt;</code> 將條件式延後到 <code>Validate()</code> 時執行。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.TrueAssertValidator.html">TrueAssertValidator</a></p>
+<h3 id="falseassertvalidator">FalseAssertValidator</h3>
+<p>當條件為 <code>false</code> 時，驗證通過。</p>
+<p><strong>特色</strong>：參數可使用 <code>Func&lt;bool&gt;</code> 將條件式延後到 <code>Validate()</code> 時執行。</p>
+<p><strong>相關 API</strong>：<a class="xref" href="../api/CloudyWing.FormValidators.FalseAssertValidator.html">FalseAssertValidator</a></p>
+<h2 id="重要注意事項">重要注意事項</h2>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>除了 <code>RequiredValidator</code>、<code>BulkValidator</code> 和 Boolean 驗證外，當 <code>Value</code> 為 <code>null</code>、空字串或空格時，皆視為驗證通過。</p>
+<p>這意味著如果您需要驗證必填欄位，必須同時使用 <code>RequiredValidator</code> 和其他型別驗證器。</p>
+</div>
+<h2 id="範例">範例</h2>
+<p>查看 <a href="usage-examples.html">使用範例</a> 了解如何在實際應用中使用這些驗證器。</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CloudyWing/FormValidators/blob/main/docs/articles/validators.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

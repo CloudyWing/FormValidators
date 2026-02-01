@@ -1,0 +1,2526 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ValidationProvider | FormValidators Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ValidationProvider | FormValidators Docs ">
+      
+      <meta name="description" content="The validation provider.">
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CloudyWing/FormValidators/new/main/apiSpec/new?filename=CloudyWing_FormValidators_Core_ValidationProvider.md&amp;value=---%0Auid%3A%20CloudyWing.FormValidators.Core.ValidationProvider%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="FormValidators Docs">
+            FormValidators Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="CloudyWing.FormValidators.Core.ValidationProvider">
+
+
+
+  <h1 id="CloudyWing_FormValidators_Core_ValidationProvider" data-uid="CloudyWing.FormValidators.Core.ValidationProvider" class="text-break">
+Class ValidationProvider  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="CloudyWing.html">CloudyWing</a>.<a class="xref" href="CloudyWing.FormValidators.html">FormValidators</a>.<a class="xref" href="CloudyWing.FormValidators.Core.html">Core</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>CloudyWing.FormValidators.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The validation provider.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ValidationProvider</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ValidationProvider</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Compare_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Compare*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Compare_System_String_System_String_System_Func_System_String_System_String_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Compare(System.String,System.String,System.Func{System.String,System.String,System.String,System.String,System.String})">
+  Compare(string, string, Func&lt;string, string, string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L495"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Compare the value of one column with the value of another column.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, CompareValidator&gt; Compare(string comparisonColumn, string comparisonValue, Func&lt;string, string, string, string, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>comparisonColumn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison column.</p>
+</dd>
+    <dt><code>comparisonValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison value.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, comparison column, comparison value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.CompareValidator.html">CompareValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Compare_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Compare*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Compare_System_String_System_String_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Compare(System.String,System.String,System.String)">
+  Compare(string, string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L478"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Compare the value of one column with the value of another column.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, CompareValidator&gt; Compare(string comparisonColumn, string comparisonValue, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>comparisonColumn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison column.</p>
+</dd>
+    <dt><code>comparisonValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison value.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, comparison column, comparison value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.CompareValidator.html">CompareValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_CreditCard_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.CreditCard*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_CreditCard_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.CreditCard(System.Func{System.String,System.String,System.String})">
+  CreditCard(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L664"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is credit card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, CreditCardValidator&gt; CreditCard(Func&lt;string, string, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.CreditCardValidator.html">CreditCardValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_CreditCard_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.CreditCard*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_CreditCard_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.CreditCard(System.String)">
+  CreditCard(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L655"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is credit card.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, CreditCardValidator&gt; CreditCard(string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.CreditCardValidator.html">CreditCardValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_DateTime_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTime*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_DateTime_System_Func_System_String_System_String_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTime(System.Func{System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String})">
+  DateTime(Func&lt;string, string, DateTime?, DateTime?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L235"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is date time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeValidator&gt; DateTime(Func&lt;string, string, DateTime?, DateTime?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeValidator.html">DateTimeValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_DateTime_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTime*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_DateTime_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTime(System.String)">
+  DateTime(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L226"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is date time.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeValidator&gt; DateTime(string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeValidator.html">DateTimeValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_DateTimeLessThan_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTimeLessThan*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_DateTimeLessThan_System_String_System_String_System_Boolean_System_Func_System_String_System_String_System_String_System_String_System_Boolean_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTimeLessThan(System.String,System.String,System.Boolean,System.Func{System.String,System.String,System.String,System.String,System.Boolean,System.String})">
+  DateTimeLessThan(string, string, bool, Func&lt;string, string, string, string, bool, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L594"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validate that an date time value is less than another column value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeLessThanValidator&gt; DateTimeLessThan(string comparisonColumn, string comparisonValue, bool allowedEqual = true, Func&lt;string, string, string, string, bool, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>comparisonColumn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison column.</p>
+</dd>
+    <dt><code>comparisonValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison value.</p>
+</dd>
+    <dt><code>allowedEqual</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed equal].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-6">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeLessThanValidator.html">DateTimeLessThanValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_DateTimeLessThan_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTimeLessThan*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_DateTimeLessThan_System_String_System_String_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTimeLessThan(System.String,System.String,System.Boolean,System.String)">
+  DateTimeLessThan(string, string, bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L576"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validate that an date time value is less than another column value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeLessThanValidator&gt; DateTimeLessThan(string comparisonColumn, string comparisonValue, bool allowedEqual, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>comparisonColumn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison column.</p>
+</dd>
+    <dt><code>comparisonValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison value.</p>
+</dd>
+    <dt><code>allowedEqual</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed equal].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, comparison column, comparison value, allowed equal.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeLessThanValidator.html">DateTimeLessThanValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_DateTimeRange_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTimeRange*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_DateTimeRange_System_DateTime_System_DateTime_System_Func_System_String_System_String_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTimeRange(System.DateTime,System.DateTime,System.Func{System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String})">
+  DateTimeRange(DateTime, DateTime, Func&lt;string, string, DateTime?, DateTime?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L305"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the date time range of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeValidator&gt; DateTimeRange(DateTime min, DateTime max, Func&lt;string, string, DateTime?, DateTime?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeValidator.html">DateTimeValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_DateTimeRange_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTimeRange*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_DateTimeRange_System_DateTime_System_DateTime_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.DateTimeRange(System.DateTime,System.DateTime,System.String)">
+  DateTimeRange(DateTime, DateTime, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L292"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the date time range of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeValidator&gt; DateTimeRange(DateTime min, DateTime max, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeValidator.html">DateTimeValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Email_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Email*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Email_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Email(System.Func{System.String,System.String,System.String})">
+  Email(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L417"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Email validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, EmailValidator&gt; Email(Func&lt;string, string, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.EmailValidator.html">EmailValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Email_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Email*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Email_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Email(System.String)">
+  Email(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L408"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Email validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, RegexValidator&gt; Email(string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.RegexValidator.html">RegexValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_IPAddress_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IPAddress*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_IPAddress_CloudyWing_FormValidators_IPAddressTypes_System_Func_System_String_System_String_CloudyWing_FormValidators_IPAddressTypes_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IPAddress(CloudyWing.FormValidators.IPAddressTypes,System.Func{System.String,System.String,CloudyWing.FormValidators.IPAddressTypes,System.String})">
+  IPAddress(IPAddressTypes, Func&lt;string, string, IPAddressTypes, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L643"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is IP address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IPAddressValidator&gt; IPAddress(IPAddressTypes types = IPAddressTypes.All, Func&lt;string, string, IPAddressTypes, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>types</code> <a class="xref" href="CloudyWing.FormValidators.IPAddressTypes.html">IPAddressTypes</a></dt>
+    <dd><p>The types.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IPAddressTypes.html">IPAddressTypes</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, The IP address types.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IPAddressValidator.html">IPAddressValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_IPAddress_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IPAddress*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_IPAddress_CloudyWing_FormValidators_IPAddressTypes_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IPAddress(CloudyWing.FormValidators.IPAddressTypes,System.String)">
+  IPAddress(IPAddressTypes, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L631"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is IP address.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IPAddressValidator&gt; IPAddress(IPAddressTypes types, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>types</code> <a class="xref" href="CloudyWing.FormValidators.IPAddressTypes.html">IPAddressTypes</a></dt>
+    <dd><p>The types.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, The IP address types.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IPAddressValidator.html">IPAddressValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_IdCard_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IdCard*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_IdCard_CloudyWing_FormValidators_IdCardTypes_System_Func_System_String_System_String_CloudyWing_FormValidators_IdCardTypes_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IdCard(CloudyWing.FormValidators.IdCardTypes,System.Func{System.String,System.String,CloudyWing.FormValidators.IdCardTypes,System.String})">
+  IdCard(IdCardTypes, Func&lt;string, string, IdCardTypes, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L464"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identification card validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IdCardValidator&gt; IdCard(IdCardTypes idTypes = IdCardTypes.All, Func&lt;string, string, IdCardTypes, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>idTypes</code> <a class="xref" href="CloudyWing.FormValidators.IdCardTypes.html">IdCardTypes</a></dt>
+    <dd><p>The Identification types.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IdCardTypes.html">IdCardTypes</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, The identification card types.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IdCardValidator.html">IdCardValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_IdCard_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IdCard*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_IdCard_CloudyWing_FormValidators_IdCardTypes_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IdCard(CloudyWing.FormValidators.IdCardTypes,System.String)">
+  IdCard(IdCardTypes, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L454"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Identification card validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IdCardValidator&gt; IdCard(IdCardTypes idTypes, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>idTypes</code> <a class="xref" href="CloudyWing.FormValidators.IdCardTypes.html">IdCardTypes</a></dt>
+    <dd><p>The Identification types.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, The identification card types.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IdCardValidator.html">IdCardValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_IntRange_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IntRange*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_IntRange_System_Int64_System_Int64_System_Boolean_System_Func_System_String_System_String_System_Nullable_System_Int64__System_Nullable_System_Int64__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IntRange(System.Int64,System.Int64,System.Boolean,System.Func{System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},System.String})">
+  IntRange(long, long, bool, Func&lt;string, string, long?, long?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L119"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the integer range of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerValidator&gt; IntRange(long min, long max, bool allowedThousands = false, Func&lt;string, string, long?, long?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerValidator.html">IntegerValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_IntRange_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IntRange*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_IntRange_System_Int64_System_Int64_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IntRange(System.Int64,System.Int64,System.Boolean,System.String)">
+  IntRange(long, long, bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L107"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the integer range of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerValidator&gt; IntRange(long min, long max, bool allowedThousands, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerValidator.html">IntegerValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Integer_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Integer*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Integer_System_Boolean_System_Func_System_String_System_String_System_Nullable_System_Int64__System_Nullable_System_Int64__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Integer(System.Boolean,System.Func{System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},System.String})">
+  Integer(bool, Func&lt;string, string, long?, long?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L45"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is integer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerValidator&gt; Integer(bool allowedThousands = false, Func&lt;string, string, long?, long?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerValidator.html">IntegerValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Integer_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Integer*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Integer_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Integer(System.Boolean,System.String)">
+  Integer(bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is integer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerValidator&gt; Integer(bool allowedThousands, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerValidator.html">IntegerValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_IntegerLessThan_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IntegerLessThan*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_IntegerLessThan_System_String_System_String_System_Boolean_System_Func_System_String_System_String_System_String_System_String_System_Boolean_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IntegerLessThan(System.String,System.String,System.Boolean,System.Func{System.String,System.String,System.String,System.String,System.Boolean,System.String})">
+  IntegerLessThan(string, string, bool, Func&lt;string, string, string, string, bool, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L528"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validate that an integer value is less than another column value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerLessThanValidator&gt; IntegerLessThan(string comparisonColumn, string comparisonValue, bool allowedEqual = true, Func&lt;string, string, string, string, bool, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>comparisonColumn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison column.</p>
+</dd>
+    <dt><code>comparisonValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison value.</p>
+</dd>
+    <dt><code>allowedEqual</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed equal].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-6">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerLessThanValidator.html">IntegerLessThanValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_IntegerLessThan_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IntegerLessThan*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_IntegerLessThan_System_String_System_String_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.IntegerLessThan(System.String,System.String,System.Boolean,System.String)">
+  IntegerLessThan(string, string, bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L510"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validate that an integer value is less than another column value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerLessThanValidator&gt; IntegerLessThan(string comparisonColumn, string comparisonValue, bool allowedEqual, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>comparisonColumn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison column.</p>
+</dd>
+    <dt><code>comparisonValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison value.</p>
+</dd>
+    <dt><code>allowedEqual</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed equal].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, comparison column, comparison value, allowed equal.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerLessThanValidator.html">IntegerLessThanValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_LengthRange_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.LengthRange*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_LengthRange_System_Int32_System_Int32_System_Func_System_String_System_String_System_Int64_System_Int64_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.LengthRange(System.Int32,System.Int32,System.Func{System.String,System.String,System.Int64,System.Int64,System.String})">
+  LengthRange(int, int, Func&lt;string, string, long, long, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L375"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constraints a value does not exceed the length range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, ValueLengthValidator&gt; LengthRange(int min, int max, Func&lt;string, string, long, long, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.ValueLengthValidator.html">ValueLengthValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_LengthRange_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.LengthRange*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_LengthRange_System_Int32_System_Int32_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.LengthRange(System.Int32,System.Int32,System.String)">
+  LengthRange(int, int, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L362"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constraints a value does not exceed the length range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, ValueLengthValidator&gt; LengthRange(int min, int max, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.ValueLengthValidator.html">ValueLengthValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MaxDateTime_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxDateTime*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MaxDateTime_System_DateTime_System_Func_System_String_System_String_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxDateTime(System.DateTime,System.Func{System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String})">
+  MaxDateTime(DateTime, Func&lt;string, string, DateTime?, DateTime?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L279"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the maximum date time of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeValidator&gt; MaxDateTime(DateTime max, Func&lt;string, string, DateTime?, DateTime?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeValidator.html">DateTimeValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MaxDateTime_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxDateTime*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MaxDateTime_System_DateTime_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxDateTime(System.DateTime,System.String)">
+  MaxDateTime(DateTime, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the maximum date time of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeValidator&gt; MaxDateTime(DateTime max, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeValidator.html">DateTimeValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MaxInt_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxInt*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MaxInt_System_Int64_System_Boolean_System_Func_System_String_System_String_System_Nullable_System_Int64__System_Nullable_System_Int64__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(System.Int64,System.Boolean,System.Func{System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},System.String})">
+  MaxInt(long, bool, Func&lt;string, string, long?, long?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the maximum integer of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerValidator&gt; MaxInt(long max, bool allowedThousands = false, Func&lt;string, string, long?, long?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerValidator.html">IntegerValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MaxInt_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxInt*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MaxInt_System_Int64_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(System.Int64,System.Boolean,System.String)">
+  MaxInt(long, bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the maximum integer of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerValidator&gt; MaxInt(long max, bool allowedThousands, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerValidator.html">IntegerValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MaxLength_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxLength*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MaxLength_System_Int64_System_Func_System_String_System_String_System_Int64_System_Int64_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(System.Int64,System.Func{System.String,System.String,System.Int64,System.Int64,System.String})">
+  MaxLength(long, Func&lt;string, string, long, long, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L349"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation to constrains a value does not exceed a maximum length.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, ValueLengthValidator&gt; MaxLength(long max, Func&lt;string, string, long, long, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.ValueLengthValidator.html">ValueLengthValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MaxLength_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxLength*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MaxLength_System_Int64_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(System.Int64,System.String)">
+  MaxLength(long, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L339"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation to constrains a value does not exceed a maximum length.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, ValueLengthValidator&gt; MaxLength(long max, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.ValueLengthValidator.html">ValueLengthValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MaxNumber_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MaxNumber_System_Decimal_System_Boolean_System_Func_System_String_System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(System.Decimal,System.Boolean,System.Func{System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String})">
+  MaxNumber(decimal, bool, Func&lt;string, string, decimal?, decimal?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the maximum number of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberValidator&gt; MaxNumber(decimal max, bool allowedThousands = false, Func&lt;string, string, decimal?, decimal?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberValidator.html">NumberValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MaxNumber_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MaxNumber_System_Decimal_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(System.Decimal,System.Boolean,System.String)">
+  MaxNumber(decimal, bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L178"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the maximum number of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberValidator&gt; MaxNumber(decimal max, bool allowedThousands, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberValidator.html">NumberValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MinDateTime_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinDateTime*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MinDateTime_System_DateTime_System_Func_System_String_System_String_System_Nullable_System_DateTime__System_Nullable_System_DateTime__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinDateTime(System.DateTime,System.Func{System.String,System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime},System.String})">
+  MinDateTime(DateTime, Func&lt;string, string, DateTime?, DateTime?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L257"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the minimum date time of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeValidator&gt; MinDateTime(DateTime min, Func&lt;string, string, DateTime?, DateTime?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeValidator.html">DateTimeValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MinDateTime_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinDateTime*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MinDateTime_System_DateTime_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinDateTime(System.DateTime,System.String)">
+  MinDateTime(DateTime, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L247"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the minimum date time of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, DateTimeValidator&gt; MinDateTime(DateTime min, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.DateTimeValidator.html">DateTimeValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MinInt_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinInt*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MinInt_System_Int64_System_Boolean_System_Func_System_String_System_String_System_Nullable_System_Int64__System_Nullable_System_Int64__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinInt(System.Int64,System.Boolean,System.Func{System.String,System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},System.String})">
+  MinInt(long, bool, Func&lt;string, string, long?, long?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the minimum integer of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerValidator&gt; MinInt(long min, bool allowedThousands = false, Func&lt;string, string, long?, long?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerValidator.html">IntegerValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MinInt_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinInt*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MinInt_System_Int64_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinInt(System.Int64,System.Boolean,System.String)">
+  MinInt(long, bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the minimum integer of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, IntegerValidator&gt; MinInt(long min, bool allowedThousands, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IntegerValidator.html">IntegerValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MinLength_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinLength*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MinLength_System_Int64_System_Func_System_String_System_String_System_Int64_System_Int64_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinLength(System.Int64,System.Func{System.String,System.String,System.Int64,System.Int64,System.String})">
+  MinLength(long, Func&lt;string, string, long, long, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L327"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation to constrains a value does not exceed a minimum length.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, ValueLengthValidator&gt; MinLength(long min, Func&lt;string, string, long, long, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.ValueLengthValidator.html">ValueLengthValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MinLength_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinLength*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MinLength_System_Int64_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinLength(System.Int64,System.String)">
+  MinLength(long, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L317"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation to constrains a value does not exceed a minimum length.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, ValueLengthValidator&gt; MinLength(long min, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.ValueLengthValidator.html">ValueLengthValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MinNumber_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinNumber*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MinNumber_System_Decimal_System_Boolean_System_Func_System_String_System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(System.Decimal,System.Boolean,System.Func{System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String})">
+  MinNumber(decimal, bool, Func&lt;string, string, decimal?, decimal?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L165"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the minimum number of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberValidator&gt; MinNumber(decimal min, bool allowedThousands = false, Func&lt;string, string, decimal?, decimal?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberValidator.html">NumberValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MinNumber_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinNumber*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MinNumber_System_Decimal_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(System.Decimal,System.Boolean,System.String)">
+  MinNumber(decimal, bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L154"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the minimum number of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberValidator&gt; MinNumber(decimal min, bool allowedThousands, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberValidator.html">NumberValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MobilePhone_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MobilePhone*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MobilePhone_CloudyWing_FormValidators_MobilePhoneFormats_System_Func_System_String_System_String_CloudyWing_FormValidators_MobilePhoneFormats_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MobilePhone(CloudyWing.FormValidators.MobilePhoneFormats,System.Func{System.String,System.String,CloudyWing.FormValidators.MobilePhoneFormats,System.String})">
+  MobilePhone(MobilePhoneFormats, Func&lt;string, string, MobilePhoneFormats, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L441"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Mobile phone validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, MobilePhoneValidator&gt; MobilePhone(MobilePhoneFormats formats = MobilePhoneFormats.All, Func&lt;string, string, MobilePhoneFormats, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>formats</code> <a class="xref" href="CloudyWing.FormValidators.MobilePhoneFormats.html">MobilePhoneFormats</a></dt>
+    <dd><p>The formats.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.MobilePhoneFormats.html">MobilePhoneFormats</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, The mobile phone formats.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.MobilePhoneValidator.html">MobilePhoneValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_MobilePhone_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MobilePhone*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_MobilePhone_CloudyWing_FormValidators_MobilePhoneFormats_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.MobilePhone(CloudyWing.FormValidators.MobilePhoneFormats,System.String)">
+  MobilePhone(MobilePhoneFormats, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L429"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Mobile phone validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, MobilePhoneValidator&gt; MobilePhone(MobilePhoneFormats formats, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>formats</code> <a class="xref" href="CloudyWing.FormValidators.MobilePhoneFormats.html">MobilePhoneFormats</a></dt>
+    <dd><p>The formats.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, The mobile phone formats.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.MobilePhoneValidator.html">MobilePhoneValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Number_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Number*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Number_System_Boolean_System_Func_System_String_System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Number(System.Boolean,System.Func{System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String})">
+  Number(bool, Func&lt;string, string, decimal?, decimal?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberValidator&gt; Number(bool allowedThousands = false, Func&lt;string, string, decimal?, decimal?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberValidator.html">NumberValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Number_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Number*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Number_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Number(System.Boolean,System.String)">
+  Number(bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberValidator&gt; Number(bool allowedThousands, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberValidator.html">NumberValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_NumberLessThan_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.NumberLessThan*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_NumberLessThan_System_String_System_String_System_Boolean_System_Func_System_String_System_String_System_String_System_String_System_Boolean_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.NumberLessThan(System.String,System.String,System.Boolean,System.Func{System.String,System.String,System.String,System.String,System.Boolean,System.String})">
+  NumberLessThan(string, string, bool, Func&lt;string, string, string, string, bool, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L561"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validate that an number value is less than another column value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberLessThanValidator&gt; NumberLessThan(string comparisonColumn, string comparisonValue, bool allowedEqual = true, Func&lt;string, string, string, string, bool, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>comparisonColumn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison column.</p>
+</dd>
+    <dt><code>comparisonValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison value.</p>
+</dd>
+    <dt><code>allowedEqual</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed equal].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-6">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberLessThanValidator.html">NumberLessThanValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_NumberLessThan_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.NumberLessThan*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_NumberLessThan_System_String_System_String_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.NumberLessThan(System.String,System.String,System.Boolean,System.String)">
+  NumberLessThan(string, string, bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L543"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validate that an number value is less than another column value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberLessThanValidator&gt; NumberLessThan(string comparisonColumn, string comparisonValue, bool allowedEqual, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>comparisonColumn</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison column.</p>
+</dd>
+    <dt><code>comparisonValue</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The comparison value.</p>
+</dd>
+    <dt><code>allowedEqual</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed equal].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, comparison column, comparison value, allowed equal.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberLessThanValidator.html">NumberLessThanValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_NumberRange_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.NumberRange*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_NumberRange_System_Decimal_System_Decimal_System_Boolean_System_Func_System_String_System_String_System_Nullable_System_Decimal__System_Nullable_System_Decimal__System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(System.Decimal,System.Decimal,System.Boolean,System.Func{System.String,System.String,System.Nullable{System.Decimal},System.Nullable{System.Decimal},System.String})">
+  NumberRange(decimal, decimal, bool, Func&lt;string, string, decimal?, decimal?, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the number range of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberValidator&gt; NumberRange(decimal min, decimal max, bool allowedThousands = false, Func&lt;string, string, decimal?, decimal?, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a>?, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberValidator.html">NumberValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_NumberRange_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.NumberRange*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_NumberRange_System_Decimal_System_Decimal_System_Boolean_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(System.Decimal,System.Decimal,System.Boolean,System.String)">
+  NumberRange(decimal, decimal, bool, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L203"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation constrains the number range of a value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, NumberValidator&gt; NumberRange(decimal min, decimal max, bool allowedThousands, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>min</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The minimum.</p>
+</dd>
+    <dt><code>max</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.decimal">decimal</a></dt>
+    <dd><p>The maximum.</p>
+</dd>
+    <dt><code>allowedThousands</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd><p>if set to <code>true</code> [allowed thousands].</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.NumberValidator.html">NumberValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Regex_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Regex*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Regex_System_String_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Regex(System.String,System.Func{System.String,System.String,System.String})">
+  Regex(string, Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L397"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Regex validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, RegexValidator&gt; Regex(string pattern, Func&lt;string, string, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pattern</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The pattern.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.RegexValidator.html">RegexValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Regex_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Regex*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Regex_System_String_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Regex(System.String,System.String)">
+  Regex(string, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L387"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Regex validation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, RegexValidator&gt; Regex(string pattern, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>pattern</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The pattern.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.RegexValidator.html">RegexValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Required_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Required*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Required_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Required(System.Func{System.String,System.String,System.String})">
+  Required(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L23"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is required.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, RequiredValidator&gt; Required(Func&lt;string, string, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.RequiredValidator.html">RequiredValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Required_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Required*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Required_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Required(System.String)">
+  Required(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is required.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, RequiredValidator&gt; Required(string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.RequiredValidator.html">RequiredValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Url_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Url*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Url_System_UriKind_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind,System.Func{System.String,System.String,System.String})">
+  Url(UriKind, Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L618"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is URL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, UrlValidator&gt; Url(UriKind kind = UriKind.Absolute, Func&lt;string, string, string&gt; customErrorMessageAccessor = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>kind</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.urikind">UriKind</a></dt>
+    <dd><p>The kind.</p>
+</dd>
+    <dt><code>customErrorMessageAccessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The custom error message accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.UrlValidator.html">UrlValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ValidationProvider_Url_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Url*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ValidationProvider_Url_System_UriKind_System_String_" data-uid="CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind,System.String)">
+  Url(UriKind, string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L606"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Validation indicate that a value is URL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Func&lt;string, string, UrlValidator&gt; Url(UriKind kind, string customErrorMessageFormat)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>kind</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.urikind">UriKind</a></dt>
+    <dd><p>The kind.</p>
+</dd>
+    <dt><code>customErrorMessageFormat</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The custom error message format. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.UrlValidator.html">UrlValidator</a>&gt;</dt>
+    <dd><p>The validator creator.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ValidationProvider.cs/#L8" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

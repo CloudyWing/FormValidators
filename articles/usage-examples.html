@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>使用範例 | FormValidators Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="使用範例 | FormValidators Docs ">
+      
+      <meta name="description" content="FormValidators 的實際應用範例">
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CloudyWing/FormValidators/blob/main/docs/articles/usage-examples.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="FormValidators Docs">
+            FormValidators Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+
+<p>本文提供 FormValidators 的各種使用情境範例。</p>
+<h2 id="範例-1驗證全部項目並取得全部驗證的錯誤訊息">範例 1：驗證全部項目，並取得全部驗證的錯誤訊息</h2>
+<p><strong>情境</strong>：您需要驗證表單中的所有欄位，並在驗證失敗時顯示所有錯誤訊息。</p>
+<pre><code class="lang-csharp">// 建立容器，並將 Validator 加入 Bulk 裡
+BulkValidator validators = new();
+
+// 驗證是否有值
+validators.Add(new RequiredValidator(&quot;欄位一&quot;, &quot;值一&quot;));
+
+// 驗證基本原則，當值為 Null、空格和空字串由 RequiredValidator 驗證
+// 其他驗證遇到上述情況都回傳 true
+validators.Add(new IntegerValidator(&quot;欄位一&quot;, &quot;值一&quot;));
+
+// 一些特別情況可以使用 TrueAssertValidator 判斷第一個參數為 true 來表示驗證通過
+// 也可用 FalseAssertValidator 判斷 false 為通過
+validators.Add(new TrueAssertValidator(condition, &quot;錯誤訊息&quot;));
+
+// 進行資料驗證
+if (!validators.Validate()) {
+    // 驗證失敗使用 validators.ErrorMessage 取得錯誤訊息
+    // 多個錯誤訊息使用 &lt;br /&gt; 隔開
+    // ErrorMessageWithBR 等同於 ErrorMessage
+    
+    // 您也可以使用其他格式：
+    // ErrorMessageWithLF：使用 \n 隔開
+    // ErrorMessageWithNewLine：使用 Environment.NewLine 隔開
+    
+    string errorMessage = validators.ErrorMessage;
+}
+</code></pre>
+<p><strong>輸出範例</strong>：</p>
+<pre><code class="lang-text">欄位一為必填。&lt;br /&gt;欄位一必須為整數。&lt;br /&gt;錯誤訊息
+</code></pre>
+<h2 id="範例-2驗證失敗後停止驗證後續項目只取得第一個錯誤訊息">範例 2：驗證失敗後，停止驗證後續項目，只取得第一個錯誤訊息</h2>
+<p><strong>情境</strong>：您希望在遇到第一個錯誤時立即停止驗證，提升效能並簡化錯誤訊息。</p>
+<pre><code class="lang-csharp">// 建立容器，並將 Validator 加入批量裡
+// 第一個參數設為 true，表示遇到錯誤即停止
+BulkValidator validators = new(true);
+
+// TrueAssert 遇到 true，驗證成功
+validators.Add(new TrueAssertValidator(true, &quot;錯誤訊息一&quot;));
+
+// TrueAssert 遇到 false，驗證失敗（會在這裡停止）
+validators.Add(new TrueAssertValidator(false, &quot;錯誤訊息二&quot;));
+
+// 這個驗證不會執行
+validators.Add(new TrueAssertValidator(false, &quot;錯誤訊息三&quot;));
+
+if (!validators.Validate()) {
+    // 驗證失敗使用 validators.ErrorMessage 取得錯誤訊息
+    // 錯誤訊息為「錯誤訊息二」
+    string errorMessage = validators.ErrorMessage;
+}
+</code></pre>
+<p><strong>輸出範例</strong>：</p>
+<pre><code class="lang-text">錯誤訊息二
+</code></pre>
+<h2 id="範例-3混合使用批量驗證">範例 3：混合使用批量驗證</h2>
+<p><strong>情境</strong>：您需要對某些欄位群組進行「遇錯即停」驗證，但整體表單仍要收集所有錯誤。</p>
+<pre><code class="lang-csharp">BulkValidator validators = new() {
+    // 這個內層 Bulk 設定為 true（遇錯即停）
+    new BulkValidator(true) {
+        new TrueAssertValidator(true, &quot;錯誤訊息一&quot;),
+        new TrueAssertValidator(false, &quot;錯誤訊息二&quot;),  // 在這裡停止
+        new TrueAssertValidator(false, &quot;錯誤訊息三&quot;)   // 不會執行
+    },
+    // 外層繼續執行其他驗證
+    new TrueAssertValidator(true, &quot;錯誤訊息四&quot;),
+    new TrueAssertValidator(false, &quot;錯誤訊息五&quot;),
+    new TrueAssertValidator(false, &quot;錯誤訊息六&quot;)
+};
+
+if (!validators.Validate()) {
+    // validators.ErrorMessage 為 &quot;錯誤訊息二&lt;br /&gt;錯誤訊息五&lt;br /&gt;錯誤訊息六&quot;
+    string errorMessage = validators.ErrorMessage;
+}
+</code></pre>
+<p><strong>輸出範例</strong>：</p>
+<pre><code class="lang-text">錯誤訊息二&lt;br /&gt;錯誤訊息五&lt;br /&gt;錯誤訊息六
+</code></pre>
+<h2 id="範例-4使用-validationprovider-簡化建立程式碼">範例 4：使用 ValidationProvider 簡化建立程式碼</h2>
+<p><strong>情境</strong>：使用 Fluent API 語法，讓程式碼更簡潔易讀。</p>
+<pre><code class="lang-csharp">BulkValidator validators = new(cfg =&gt; {
+    // 增加一個驗證
+    cfg.Add(&quot;欄位一&quot;, &quot;值一&quot;,
+        opt =&gt; opt.Required()
+    );
+    
+    // 增加多個驗證
+    cfg.Add(&quot;欄位二&quot;, &quot;值二&quot;, 
+        opt =&gt; opt.Required(), 
+        opt =&gt; opt.DateTime()
+    );
+    
+    // 條件式驗證：只有當 condition 為 true 時，才會驗證
+    cfg.AddIf(
+        condition, &quot;欄位三&quot;, &quot;值三&quot;, 
+        opt =&gt; opt.Required(), 
+        opt =&gt; opt.DateTime()
+    );
+    
+    // 直接加入斷言驗證
+    cfg.AddTrueAssert(true, &quot;錯誤訊息&quot;);
+    
+    // 巢狀 Bulk 驗證
+    cfg.AddBulk(_cfg =&gt; {
+        _cfg.Add(&quot;欄位四&quot;, &quot;值四&quot;,
+            opt =&gt; opt.Required()
+        );
+    });
+});
+
+if (!validators.Validate()) {
+    Console.WriteLine(validators.ErrorMessage);
+}
+</code></pre>
+<h2 id="範例-5實際表單驗證範例">範例 5：實際表單驗證範例</h2>
+<p><strong>情境</strong>：驗證使用者註冊表單。</p>
+<pre><code class="lang-csharp">public class RegisterForm {
+    public string UserName { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
+    public string ConfirmPassword { get; set; }
+    public string Age { get; set; }
+    public string PhoneNumber { get; set; }
+
+    public bool Validate(out string errorMessage) {
+        BulkValidator validators = new(cfg =&gt; {
+            // 使用者名稱：必填，長度 3-20
+            cfg.Add(&quot;使用者名稱&quot;, UserName,
+                opt =&gt; opt.Required(),
+                opt =&gt; opt.ValueLength(3, 20)
+            );
+
+            // Email：必填，格式驗證
+            cfg.Add(&quot;Email&quot;, Email,
+                opt =&gt; opt.Required(),
+                opt =&gt; opt.Email()
+            );
+
+            // 密碼：必填，長度至少 8
+            cfg.Add(&quot;密碼&quot;, Password,
+                opt =&gt; opt.Required(),
+                opt =&gt; opt.ValueLength(8)
+            );
+
+            // 確認密碼：必填，與密碼相同
+            cfg.Add(&quot;確認密碼&quot;, ConfirmPassword,
+                opt =&gt; opt.Required(),
+                opt =&gt; opt.Compare(Password, &quot;密碼&quot;)
+            );
+
+            // 年齡：必填，整數，範圍 18-100
+            cfg.Add(&quot;年齡&quot;, Age,
+                opt =&gt; opt.Required(),
+                opt =&gt; opt.Integer(18, 100)
+            );
+
+            // 手機號碼：非必填，但有值時需符合格式
+            cfg.Add(&quot;手機號碼&quot;, PhoneNumber,
+                opt =&gt; opt.MobilePhone()
+            );
+        });
+
+        bool isValid = validators.Validate();
+        errorMessage = validators.ErrorMessage;
+        return isValid;
+    }
+}
+</code></pre>
+<p><strong>使用方式</strong>：</p>
+<pre><code class="lang-csharp">RegisterForm form = new() {
+    UserName = &quot;john_doe&quot;,
+    Email = &quot;john@example.com&quot;,
+    Password = &quot;password123&quot;,
+    ConfirmPassword = &quot;password123&quot;,
+    Age = &quot;25&quot;,
+    PhoneNumber = &quot;0912345678&quot;
+};
+
+if (!form.Validate(out string errorMessage)) {
+    Console.WriteLine(&quot;驗證失敗：&quot;);
+    Console.WriteLine(errorMessage);
+} else {
+    Console.WriteLine(&quot;驗證通過！&quot;);
+    // 繼續處理註冊邏輯...
+}
+</code></pre>
+<h2 id="進階技巧">進階技巧</h2>
+<h3 id="動態條件驗證">動態條件驗證</h3>
+<p>使用 <code>AddIf</code> 根據條件決定是否進行驗證：</p>
+<pre><code class="lang-csharp">bool isCorporateAccount = true;
+
+BulkValidator validators = new(cfg =&gt; {
+    cfg.Add(&quot;公司名稱&quot;, companyName,
+        opt =&gt; opt.Required()
+    );
+    
+    // 只有企業帳號需要驗證統一編號
+    cfg.AddIf(
+        isCorporateAccount, &quot;統一編號&quot;, taxId,
+        opt =&gt; opt.Required(),
+        opt =&gt; opt.ValueLength(8, 8)
+    );
+});
+</code></pre>
+<h3 id="延遲執行驗證">延遲執行驗證</h3>
+<p>使用 <code>Func&lt;bool&gt;</code> 延遲條件判斷：</p>
+<pre><code class="lang-csharp">cfg.AddTrueAssert(() =&gt; {
+    // 這個條件會在 Validate() 時才執行
+    return DateTime.Now.Hour &gt;= 9 &amp;&amp; DateTime.Now.Hour &lt; 17;
+}, &quot;服務時間為 09:00 - 17:00&quot;);
+</code></pre>
+<h2 id="相關資源">相關資源</h2>
+<ul>
+<li><a href="validators.html">驗證器介紹</a> - 了解所有可用的驗證器</li>
+<li><a href="customization.html">客製化驗證</a> - 建立自訂驗證器</li>
+<li><a href="error-messages.html">錯誤訊息設定</a> - 自訂錯誤訊息</li>
+<li><a href="../api/index.html">API 參考</a> - 完整 API 文檔</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CloudyWing/FormValidators/blob/main/docs/articles/usage-examples.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

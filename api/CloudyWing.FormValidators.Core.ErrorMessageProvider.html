@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ErrorMessageProvider | FormValidators Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ErrorMessageProvider | FormValidators Docs ">
+      
+      <meta name="description" content="The error message provider.">
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CloudyWing/FormValidators/new/main/apiSpec/new?filename=CloudyWing_FormValidators_Core_ErrorMessageProvider.md&amp;value=---%0Auid%3A%20CloudyWing.FormValidators.Core.ErrorMessageProvider%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="FormValidators Docs">
+            FormValidators Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider">
+
+
+
+  <h1 id="CloudyWing_FormValidators_Core_ErrorMessageProvider" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider" class="text-break">
+Class ErrorMessageProvider  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L9"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="CloudyWing.html">CloudyWing</a>.<a class="xref" href="CloudyWing.FormValidators.html">FormValidators</a>.<a class="xref" href="CloudyWing.FormValidators.Core.html">Core</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>CloudyWing.FormValidators.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>The error message provider.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class ErrorMessageProvider</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">ErrorMessageProvider</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueCompareAnotherColumnValueAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueCompareAnotherColumnValueAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor">
+  ValueCompareAnotherColumnValueAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value compare another column value accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string, string, string&gt; ValueCompareAnotherColumnValueAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value compare another column value accessor. The arguments are column, value, comparison column, comparison value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueGreaterOrEqualAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueGreaterOrEqualAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueGreaterOrEqualAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueGreaterOrEqualAccessor">
+  ValueGreaterOrEqualAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value greater or equal accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, object, string&gt; ValueGreaterOrEqualAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value greater or equal accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueInRangeAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueInRangeAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueInRangeAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueInRangeAccessor">
+  ValueInRangeAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value in range accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, object, object, string&gt; ValueInRangeAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value in range accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsCreditCardAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsCreditCardAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsCreditCardAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsCreditCardAccessor">
+  ValueIsCreditCardAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L325"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is credit card accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string&gt; ValueIsCreditCardAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is credit card accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsDateTimeAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsDateTimeAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsDateTimeAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsDateTimeAccessor">
+  ValueIsDateTimeAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is date time accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string&gt; ValueIsDateTimeAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is date time accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsEmailAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsEmailAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsEmailAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsEmailAccessor">
+  ValueIsEmailAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L98"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is email accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string&gt; ValueIsEmailAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is email accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsIPAddressAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsIPAddressAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsIPAddressAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsIPAddressAccessor">
+  ValueIsIPAddressAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L310"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is IP address accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, IPAddressTypes, string&gt; ValueIsIPAddressAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IPAddressTypes.html">IPAddressTypes</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is IP address accessor. The arguments are column, value, IP address types.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsIdCardAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsIdCardAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsIdCardAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsIdCardAccessor">
+  ValueIsIdCardAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is identification card accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, IdCardTypes, string&gt; ValueIsIdCardAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IdCardTypes.html">IdCardTypes</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is identification card accessor. The arguments are column, value, identification card types.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsIntegerAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsIntegerAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsIntegerAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsIntegerAccessor">
+  ValueIsIntegerAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L56"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is integer accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string&gt; ValueIsIntegerAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is integer accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsMobilePhoneAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsMobilePhoneAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsMobilePhoneAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsMobilePhoneAccessor">
+  ValueIsMobilePhoneAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L104"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is mobile phone accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, MobilePhoneFormats, string&gt; ValueIsMobilePhoneAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.MobilePhoneFormats.html">MobilePhoneFormats</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is mobile phone accessor. The arguments are column, value, mobile phone formats.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsNumberAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsNumberAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsNumberAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsNumberAccessor">
+  ValueIsNumberAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L62"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is number accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string&gt; ValueIsNumberAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is number accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsRequiredAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsRequiredAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsRequiredAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsRequiredAccessor">
+  ValueIsRequiredAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is required accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string&gt; ValueIsRequiredAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is required accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsUrlAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsUrlAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueIsUrlAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsUrlAccessor">
+  ValueIsUrlAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L295"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value is URL accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string&gt; ValueIsUrlAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value is URL accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLengthGreaterOrEqualAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLengthGreaterOrEqualAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLengthGreaterOrEqualAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLengthGreaterOrEqualAccessor">
+  ValueLengthGreaterOrEqualAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L74"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value length greater or equal accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, long, string&gt; ValueLengthGreaterOrEqualAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value length greater or equal accessor. The arguments are column, value, min.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLengthInRangeAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLengthInRangeAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLengthInRangeAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLengthInRangeAccessor">
+  ValueLengthInRangeAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L86"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value length in range accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, long, long, string&gt; ValueLengthInRangeAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value length in range accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLengthLessOrEqualAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLengthLessOrEqualAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLengthLessOrEqualAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLengthLessOrEqualAccessor">
+  ValueLengthLessOrEqualAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value length less or equal accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, long, string&gt; ValueLengthLessOrEqualAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value length less or equal accessor. The arguments are column, value, max.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLessOrEqualAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLessOrEqualAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLessOrEqualAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLessOrEqualAccessor">
+  ValueLessOrEqualAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L32"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value less or equal accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, object, string&gt; ValueLessOrEqualAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value less or equal accessor. The arguments are column, value, max.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLessThanAnotherColumnValueAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueLessThanAnotherColumnValueAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor">
+  ValueLessThanAnotherColumnValueAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L145"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value less than another column value accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string, string, bool, string&gt; ValueLessThanAnotherColumnValueAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-6">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value less than another column value accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueMatchRegexAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueMatchRegexAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_ValueMatchRegexAccessor" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueMatchRegexAccessor">
+  ValueMatchRegexAccessor
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L92"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the value match regex accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Func&lt;string, string, string&gt; ValueMatchRegexAccessor { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The value match regex accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueCompareAnotherColumnValueAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueCompareAnotherColumnValueAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueCompareAnotherColumnValueAccessor_System_Func_System_String_System_String_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueCompareAnotherColumnValueAccessor(System.Func{System.String,System.String,System.String,System.String,System.String})">
+  SetValueCompareAnotherColumnValueAccessor(Func&lt;string, string, string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L278"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value compare another column value accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueCompareAnotherColumnValueAccessor(Func&lt;string, string, string, string, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, comparison column, comparison value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueGreaterOrEqualAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueGreaterOrEqualAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueGreaterOrEqualAccessor_System_Func_System_String_System_String_System_Object_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueGreaterOrEqualAccessor(System.Func{System.String,System.String,System.Object,System.String})">
+  SetValueGreaterOrEqualAccessor(Func&lt;string, string, object, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value greater or equal accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueGreaterOrEqualAccessor(Func&lt;string, string, object, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, min.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueInRangeAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueInRangeAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueInRangeAccessor_System_Func_System_String_System_String_System_Object_System_Object_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueInRangeAccessor(System.Func{System.String,System.String,System.Object,System.Object,System.String})">
+  SetValueInRangeAccessor(Func&lt;string, string, object, object, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L179"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value in range accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueInRangeAccessor(Func&lt;string, string, object, object, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsCreditCardAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsCreditCardAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsCreditCardAccessor_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsCreditCardAccessor(System.Func{System.String,System.String,System.String})">
+  SetValueIsCreditCardAccessor(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L332"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is credit card accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsCreditCardAccessor(Func&lt;string, string, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsDateTimeAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsDateTimeAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsDateTimeAccessor_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsDateTimeAccessor(System.Func{System.String,System.String,System.String})">
+  SetValueIsDateTimeAccessor(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L206"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is date time accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsDateTimeAccessor(Func&lt;string, string, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsEmailAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsEmailAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsEmailAccessor_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsEmailAccessor(System.Func{System.String,System.String,System.String})">
+  SetValueIsEmailAccessor(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L251"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is email accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsEmailAccessor(Func&lt;string, string, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsIPAddressAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsIPAddressAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsIPAddressAccessor_System_Func_System_String_System_String_CloudyWing_FormValidators_IPAddressTypes_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsIPAddressAccessor(System.Func{System.String,System.String,CloudyWing.FormValidators.IPAddressTypes,System.String})">
+  SetValueIsIPAddressAccessor(Func&lt;string, string, IPAddressTypes, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L317"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is IP address accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsIPAddressAccessor(Func&lt;string, string, IPAddressTypes, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IPAddressTypes.html">IPAddressTypes</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, IP address types.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsIdCardAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsIdCardAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsIdCardAccessor_System_Func_System_String_System_String_CloudyWing_FormValidators_IdCardTypes_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsIdCardAccessor(System.Func{System.String,System.String,CloudyWing.FormValidators.IdCardTypes,System.String})">
+  SetValueIsIdCardAccessor(Func&lt;string, string, IdCardTypes, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L269"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is identification card accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsIdCardAccessor(Func&lt;string, string, IdCardTypes, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.IdCardTypes.html">IdCardTypes</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, identification card types.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsIntegerAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsIntegerAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsIntegerAccessor_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsIntegerAccessor(System.Func{System.String,System.String,System.String})">
+  SetValueIsIntegerAccessor(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L188"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is integer accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsIntegerAccessor(Func&lt;string, string, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsMobilePhoneAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsMobilePhoneAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsMobilePhoneAccessor_System_Func_System_String_System_String_CloudyWing_FormValidators_MobilePhoneFormats_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsMobilePhoneAccessor(System.Func{System.String,System.String,CloudyWing.FormValidators.MobilePhoneFormats,System.String})">
+  SetValueIsMobilePhoneAccessor(Func&lt;string, string, MobilePhoneFormats, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L260"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is mobile phone accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsMobilePhoneAccessor(Func&lt;string, string, MobilePhoneFormats, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="CloudyWing.FormValidators.MobilePhoneFormats.html">MobilePhoneFormats</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, mobile phone formats.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsNumberAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsNumberAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsNumberAccessor_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsNumberAccessor(System.Func{System.String,System.String,System.String})">
+  SetValueIsNumberAccessor(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L197"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is number accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsNumberAccessor(Func&lt;string, string, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsRequiredAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsRequiredAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsRequiredAccessor_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsRequiredAccessor(System.Func{System.String,System.String,System.String})">
+  SetValueIsRequiredAccessor(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is required accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsRequiredAccessor(Func&lt;string, string, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsUrlAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsUrlAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueIsUrlAccessor_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsUrlAccessor(System.Func{System.String,System.String,System.String})">
+  SetValueIsUrlAccessor(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L302"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value is URL accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueIsUrlAccessor(Func&lt;string, string, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLengthGreaterOrEqualAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLengthGreaterOrEqualAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLengthGreaterOrEqualAccessor_System_Func_System_String_System_String_System_Int64_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLengthGreaterOrEqualAccessor(System.Func{System.String,System.String,System.Int64,System.String})">
+  SetValueLengthGreaterOrEqualAccessor(Func&lt;string, string, long, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L215"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value length greater or equal accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueLengthGreaterOrEqualAccessor(Func&lt;string, string, long, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, min.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLengthInRangeAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLengthInRangeAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLengthInRangeAccessor_System_Func_System_String_System_String_System_Int64_System_Int64_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLengthInRangeAccessor(System.Func{System.String,System.String,System.Int64,System.Int64,System.String})">
+  SetValueLengthInRangeAccessor(Func&lt;string, string, long, long, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L233"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value length in range accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueLengthInRangeAccessor(Func&lt;string, string, long, long, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-5">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, min, max.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLengthLessOrEqualAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLengthLessOrEqualAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLengthLessOrEqualAccessor_System_Func_System_String_System_String_System_Int64_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLengthLessOrEqualAccessor(System.Func{System.String,System.String,System.Int64,System.String})">
+  SetValueLengthLessOrEqualAccessor(Func&lt;string, string, long, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L224"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value length less or equal accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueLengthLessOrEqualAccessor(Func&lt;string, string, long, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int64">long</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, max.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLessOrEqualAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLessOrEqualAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLessOrEqualAccessor_System_Func_System_String_System_String_System_Object_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLessOrEqualAccessor(System.Func{System.String,System.String,System.Object,System.String})">
+  SetValueLessOrEqualAccessor(Func&lt;string, string, object, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value less or equal accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueLessOrEqualAccessor(Func&lt;string, string, object, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-4">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, max.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLessThanAnotherColumnValueAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLessThanAnotherColumnValueAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueLessThanAnotherColumnValueAccessor_System_Func_System_String_System_String_System_String_System_String_System_Boolean_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueLessThanAnotherColumnValueAccessor(System.Func{System.String,System.String,System.String,System.String,System.Boolean,System.String})">
+  SetValueLessThanAnotherColumnValueAccessor(Func&lt;string, string, string, string, bool, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L287"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value less than another column value accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueLessThanAnotherColumnValueAccessor(Func&lt;string, string, string, string, bool, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-6">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+  <a id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueMatchRegexAccessor_" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueMatchRegexAccessor*"></a>
+
+  <h3 id="CloudyWing_FormValidators_Core_ErrorMessageProvider_SetValueMatchRegexAccessor_System_Func_System_String_System_String_System_String__" data-uid="CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueMatchRegexAccessor(System.Func{System.String,System.String,System.String})">
+  SetValueMatchRegexAccessor(Func&lt;string, string, string&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L242"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sets the value match regex accessor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void SetValueMatchRegexAccessor(Func&lt;string, string, string&gt; accessor)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>accessor</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-3">Func</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd><p>The accessor. The arguments are column, value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>accessor</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CloudyWing/FormValidators/blob/main/src/FormValidators/Core/ErrorMessageProvider.cs/#L9" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

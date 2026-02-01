@@ -1,0 +1,596 @@
+{
+  "source_base_path": "D:/a/FormValidators/FormValidators/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": ".nojekyll",
+      "output": {
+        "resource": {
+          "relative_path": ".nojekyll"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.BulkValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.BulkValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.BulkValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.BulkValidator.yml\" sourcestartlinenumber=\"1\">The bulk validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.CompareValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.CompareValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.CompareValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.CompareValidator.yml\" sourcestartlinenumber=\"1\">Compare the value of one column with the value of another column.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.Core.BasicFormValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.Core.BasicFormValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.Core.BasicFormValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.Core.BasicFormValidator.yml\" sourcestartlinenumber=\"1\">The basic form validator abstract class.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.Core.ComparableTypeValidator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.Core.ComparableTypeValidator-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.Core.ComparableTypeValidator<T>",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.Core.ComparableTypeValidator-1.yml\" sourcestartlinenumber=\"1\">The comparable type validator abstract class.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.Core.ErrorMessageProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.Core.ErrorMessageProvider.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.Core.ErrorMessageProvider",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.Core.ErrorMessageProvider.yml\" sourcestartlinenumber=\"1\">The error message provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.Core.FormValidatorBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.Core.FormValidatorBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.Core.FormValidatorBase",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.Core.FormValidatorBase.yml\" sourcestartlinenumber=\"1\">The form validator base abstract class.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.Core.LessThanValidator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.Core.LessThanValidator-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.Core.LessThanValidator<T>",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.Core.LessThanValidator-1.yml\" sourcestartlinenumber=\"1\">The less than other column value validator abstract class.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.Core.ValidationProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.Core.ValidationProvider.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.Core.ValidationProvider",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.Core.ValidationProvider.yml\" sourcestartlinenumber=\"1\">The validation provider.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.Core.ValidatorConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.Core.ValidatorConfiguration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.Core.ValidatorConfiguration",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.Core.ValidatorConfiguration.yml\" sourcestartlinenumber=\"1\">The validator configuration.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.Core.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.Core.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.Core",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.CreditCardValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.CreditCardValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.CreditCardValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.CreditCardValidator.yml\" sourcestartlinenumber=\"1\">The credit card validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.DateTimeLessThanValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.DateTimeLessThanValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.DateTimeLessThanValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.DateTimeLessThanValidator.yml\" sourcestartlinenumber=\"1\">Validate that an date time value is less than another column value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.DateTimeValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.DateTimeValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.DateTimeValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.DateTimeValidator.yml\" sourcestartlinenumber=\"1\">Validation constrains the date time format of a value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.EmailValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.EmailValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.EmailValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.EmailValidator.yml\" sourcestartlinenumber=\"1\">The email validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.FalseAssertValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.FalseAssertValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.FalseAssertValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.FalseAssertValidator.yml\" sourcestartlinenumber=\"1\">The false assert validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.IFormValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.IFormValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.IFormValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.IFormValidator.yml\" sourcestartlinenumber=\"1\">The form validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.IPAddressTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.IPAddressTypes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.IPAddressTypes",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.IPAddressTypes.yml\" sourcestartlinenumber=\"1\">The IP address types.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.IPAddressValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.IPAddressValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.IPAddressValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.IPAddressValidator.yml\" sourcestartlinenumber=\"1\">The IP address validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.IdCardTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.IdCardTypes.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.IdCardTypes",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.IdCardTypes.yml\" sourcestartlinenumber=\"1\">The identity card type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.IdCardValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.IdCardValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.IdCardValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.IdCardValidator.yml\" sourcestartlinenumber=\"1\">The identity card validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.IntegerLessThanValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.IntegerLessThanValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.IntegerLessThanValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.IntegerLessThanValidator.yml\" sourcestartlinenumber=\"1\">Validate that an integer value is less than another column value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.IntegerValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.IntegerValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.IntegerValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.IntegerValidator.yml\" sourcestartlinenumber=\"1\">Validation constrains the integer format of a value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.MobilePhoneFormats.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.MobilePhoneFormats.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.MobilePhoneFormats",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.MobilePhoneFormats.yml\" sourcestartlinenumber=\"1\">The mobile phone formats.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.MobilePhoneValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.MobilePhoneValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.MobilePhoneValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.MobilePhoneValidator.yml\" sourcestartlinenumber=\"1\">The mobile phone validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.NumberLessThanValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.NumberLessThanValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.NumberLessThanValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.NumberLessThanValidator.yml\" sourcestartlinenumber=\"1\">Validate that an number value is less than another column value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.NumberValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.NumberValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.NumberValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.NumberValidator.yml\" sourcestartlinenumber=\"1\">Validation constrains the number format of a value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.RegexValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.RegexValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.RegexValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.RegexValidator.yml\" sourcestartlinenumber=\"1\">The regex validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.RequiredValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.RequiredValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.RequiredValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.RequiredValidator.yml\" sourcestartlinenumber=\"1\">Validation indicate that a value is required.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.TrueAssertValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.TrueAssertValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.TrueAssertValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.TrueAssertValidator.yml\" sourcestartlinenumber=\"1\">The true assert validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.UrlValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.UrlValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.UrlValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.UrlValidator.yml\" sourcestartlinenumber=\"1\">The URL validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.ValueLengthValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.ValueLengthValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators.ValueLengthValidator",
+      "Summary": "<p sourcefile=\"api/CloudyWing.FormValidators.ValueLengthValidator.yml\" sourcestartlinenumber=\"1\">Validation constraints a value does not exceed the length range.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CloudyWing.FormValidators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CloudyWing.FormValidators.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "CloudyWing.FormValidators",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/customization.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/customization.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/error-messages.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/error-messages.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "articles/toc.html"
+        },
+        ".json": {
+          "relative_path": "articles/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/usage-examples.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/usage-examples.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/validators.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/validators.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

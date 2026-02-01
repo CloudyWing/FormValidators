@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>錯誤訊息設定 | FormValidators Docs </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="錯誤訊息設定 | FormValidators Docs ">
+      
+      <meta name="description" content="了解如何自訂驗證器的預設錯誤訊息">
+      <link rel="icon" href="../images/logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/CloudyWing/FormValidators/blob/main/docs/articles/error-messages.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/logo.png" alt="FormValidators Docs">
+            FormValidators Docs
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+
+
+<p>FormValidators 允許您自訂每個驗證器的預設錯誤訊息，讓錯誤提示更符合您的應用需求。</p>
+<h2 id="概述">概述</h2>
+<p>使用 <a class="xref" href="../api/CloudyWing.FormValidators.Core.ErrorMessageProvider.html">ErrorMessageProvider</a> 類別中的各個 <code>SetAccessor</code> 方法來設定驗證器的預設錯誤訊息。</p>
+<h2 id="基本用法">基本用法</h2>
+<pre><code class="lang-csharp">using CloudyWing.FormValidators.Core;
+
+// 設定必填欄位的預設錯誤訊息
+ErrorMessageProvider.SetValueIsRequiredAccessor((column, value) =&gt; $&quot;{column} is required.&quot;);
+
+// 設定整數驗證的預設錯誤訊息
+ErrorMessageProvider.SetValueIsIntegerAccessor((column, value) =&gt; $&quot;{column} must be a valid integer.&quot;);
+</code></pre>
+<div class="TIP">
+<h5>Tip</h5>
+<p>建議在應用程式啟動時（如 <code>Program.cs</code> 或 <code>Startup.cs</code>）統一設定錯誤訊息，確保全域一致性。</p>
+</div>
+<h2 id="validator-與-accessor-對應關係">Validator 與 Accessor 對應關係</h2>
+<h3 id="requiredvalidator">RequiredValidator</h3>
+<ul>
+<li><strong>SetValueIsRequiredAccessor</strong>：欄位為必填時的錯誤訊息</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueIsRequiredAccessor((column, value) =&gt; 
+    $&quot;{column}為必填。&quot;);
+</code></pre>
+<h3 id="integervalidator">IntegerValidator</h3>
+<ul>
+<li><strong>SetValueIsIntegerAccessor</strong>：值不是有效整數</li>
+<li><strong>SetValueGreaterOrEqualAccessor</strong>：值小於最小值</li>
+<li><strong>SetValueLessOrEqualAccessor</strong>：值大於最大值</li>
+<li><strong>SetValueInRangeAccessor</strong>：值不在指定範圍內</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)
+    =&gt; $&quot;{column}必須為整數。&quot;);
+
+ErrorMessageProvider.SetValueGreaterOrEqualAccessor((column, value, min)
+    =&gt; $&quot;{column}不得小於 {min}。&quot;);
+
+ErrorMessageProvider.SetValueLessOrEqualAccessor((column, value, max)
+    =&gt; $&quot;{column}不得大於 {max}。&quot;);
+
+ErrorMessageProvider.SetValueInRangeAccessor((column, value, min, max)
+    =&gt; $&quot;{column}必須介於 {min} 與 {max} 之間。&quot;);
+</code></pre>
+<h3 id="numbervalidator">NumberValidator</h3>
+<ul>
+<li><strong>SetValueIsNumberAccessor</strong>：值不是有效數值</li>
+<li><strong>SetValueGreaterOrEqualAccessor</strong>：值小於最小值</li>
+<li><strong>SetValueLessOrEqualAccessor</strong>：值大於最大值</li>
+<li><strong>SetValueInRangeAccessor</strong>：值不在指定範圍內</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueIsNumberAccessor((column, value) =&gt; 
+    $&quot;{column}必須為數值。&quot;);
+</code></pre>
+<h3 id="datetimevalidator">DateTimeValidator</h3>
+<ul>
+<li><strong>SetValueIsDateTimeAccessor</strong>：值不是有效日期</li>
+<li><strong>SetValueGreaterOrEqualAccessor</strong>：日期早於最小日期</li>
+<li><strong>SetValueLessOrEqualAccessor</strong>：日期晚於最大日期</li>
+<li><strong>SetValueInRangeAccessor</strong>：日期不在指定範圍內</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueIsDateTimeAccessor((column, value) =&gt; 
+    $&quot;{column}必須為有效日期。&quot;);
+</code></pre>
+<h3 id="valuelengthvalidator">ValueLengthValidator</h3>
+<ul>
+<li><strong>SetValueLengthGreaterOrEqualAccessor</strong>：長度小於最小長度</li>
+<li><strong>SetValueLengthLessOrEqualAccessor</strong>：長度大於最大長度</li>
+<li><strong>SetValueLengthInRangeAccessor</strong>：長度不在指定範圍內</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueLengthGreaterOrEqualAccessor((column, value, minLength)
+    =&gt; $&quot;{column}長度不得少於 {minLength} 個字元。&quot;);
+
+ErrorMessageProvider.SetValueLengthLessOrEqualAccessor((column, value, maxLength)
+    =&gt; $&quot;{column}長度不得超過 {maxLength} 個字元。&quot;);
+
+ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, minLength, maxLength)
+    =&gt; $&quot;{column}長度必須介於 {minLength} 與 {maxLength} 個字元之間。&quot;);
+</code></pre>
+<h3 id="regexvalidator">RegexValidator</h3>
+<ul>
+<li><strong>SetValueMatchRegexAccessor</strong>：值不符合正規表示式</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueMatchRegexAccessor((column, value, pattern)
+    =&gt; $&quot;{column}格式不正確。&quot;);
+</code></pre>
+<h3 id="emailvalidator">EmailValidator</h3>
+<ul>
+<li><strong>SetValueIsEmailAccessor</strong>：值不是有效的 Email 格式</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
+    =&gt; $&quot;{column}必須為有效的 Email 地址。&quot;);
+</code></pre>
+<h3 id="mobilephonevalidator">MobilePhoneValidator</h3>
+<ul>
+<li><strong>SetValueIsMobilePhoneAccessor</strong>：值不是有效的手機號碼</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value)
+    =&gt; $&quot;{column}必須為有效的手機號碼。&quot;);
+</code></pre>
+<h3 id="idcardvalidator">IdCardValidator</h3>
+<ul>
+<li><strong>SetValueIsIdCardAccessor</strong>：值不是有效的身分證字號</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueIsIdCardAccessor((column, value)
+    =&gt; $&quot;{column}必須為有效的身分證字號。&quot;);
+</code></pre>
+<h3 id="comparevalidator">CompareValidator</h3>
+<ul>
+<li><strong>SetValueCompareAnotherColumnValueAccessor</strong>：兩個欄位的值不相等</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueCompareAnotherColumnValueAccessor(
+    (column, value, compareColumn, compareValue)
+    =&gt; $&quot;{column}必須與{compareColumn}相同。&quot;);
+</code></pre>
+<h3 id="integerlessthanvalidator">IntegerLessThanValidator</h3>
+<ul>
+<li><strong>SetValueLessThanAnotherColumnValueAccessor</strong>：整數值不小於比較值</li>
+</ul>
+<pre><code class="lang-csharp">ErrorMessageProvider.SetValueLessThanAnotherColumnValueAccessor(
+    (column, value, compareColumn, compareValue, allowedEqual)
+    =&gt; allowedEqual 
+        ? $&quot;{column}必須小於或等於{compareColumn}。&quot;
+        : $&quot;{column}必須小於{compareColumn}。&quot;);
+</code></pre>
+<h3 id="numberlessthanvalidator">NumberLessThanValidator</h3>
+<ul>
+<li><strong>SetValueLessThanAnotherColumnValueAccessor</strong>：數值不小於比較值</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>與 <code>IntegerLessThanValidator</code> 共用相同的 Accessor。</p>
+</div>
+<h3 id="datetimelessthanvalidator">DateTimeLessThanValidator</h3>
+<ul>
+<li><strong>SetValueLessThanAnotherColumnValueAccessor</strong>：日期不早於比較日期</li>
+</ul>
+<div class="NOTE">
+<h5>Note</h5>
+<p>與 <code>IntegerLessThanValidator</code> 共用相同的 Accessor。</p>
+</div>
+<h2 id="完整範例">完整範例</h2>
+<p>以下範例展示如何在應用程式啟動時設定所有錯誤訊息：</p>
+<pre><code class="lang-csharp">using CloudyWing.FormValidators.Core;
+
+public class Program {
+    public static void Main(string[] args) {
+        // 設定錯誤訊息
+        ConfigureErrorMessages();
+
+        // 您的應用程式邏輯...
+    }
+
+    private static void ConfigureErrorMessages() {
+        // 基本驗證
+        ErrorMessageProvider.SetValueIsRequiredAccessor((column, value)
+            =&gt; $&quot;{column}為必填欄位。&quot;);
+
+        // 型別驗證
+        ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)
+            =&gt; $&quot;{column}必須為整數。&quot;);
+        
+        ErrorMessageProvider.SetValueIsNumberAccessor((column, value)
+            =&gt; $&quot;{column}必須為數值。&quot;);
+        
+        ErrorMessageProvider.SetValueIsDateTimeAccessor((column, value)
+            =&gt; $&quot;{column}必須為有效日期。&quot;);
+
+        // 範圍驗證
+        ErrorMessageProvider.SetValueInRangeAccessor((column, value, min, max)
+            =&gt; $&quot;{column}必須介於 {min} 與 {max} 之間。&quot;);
+
+        // 長度驗證
+        ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, minLength, maxLength)
+            =&gt; $&quot;{column}長度必須介於 {minLength} 與 {maxLength} 個字元之間。&quot;);
+
+        // 格式驗證
+        ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
+            =&gt; $&quot;請輸入有效的 Email 地址。&quot;);
+        
+        ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value)
+            =&gt; $&quot;請輸入有效的手機號碼。&quot;);
+
+        // 比較驗證
+        ErrorMessageProvider.SetValueCompareAnotherColumnValueAccessor(
+            (column, value, compareColumn, compareValue)
+            =&gt; $&quot;{column}必須與{compareColumn}相同。&quot;);
+    }
+}
+</code></pre>
+<h2 id="多語言支援">多語言支援</h2>
+<p>您可以根據使用者的語言偏好動態設定錯誤訊息：</p>
+<pre><code class="lang-csharp">public static void ConfigureErrorMessages(string language) {
+    switch (language) {
+        case &quot;en-US&quot;:
+            ErrorMessageProvider.SetValueIsRequiredAccessor((column, value)
+                =&gt; $&quot;{column} is required.&quot;);
+            ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
+                =&gt; $&quot;{column} must be a valid email address.&quot;);
+            break;
+
+        case &quot;zh-TW&quot;:
+            ErrorMessageProvider.SetValueIsRequiredAccessor((column, value)
+                =&gt; $&quot;{column}為必填欄位。&quot;);
+            ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
+                =&gt; $&quot;{column}必須為有效的 Email 地址。&quot;);
+            break;
+    }
+}
+</code></pre>
+<h2 id="最佳實踐">最佳實踐</h2>
+<h3 id="1-統一管理">1. 統一管理</h3>
+<p>將所有錯誤訊息設定集中在一個方法中，便於維護：</p>
+<pre><code class="lang-csharp">public static class ErrorMessageConfig {
+    public static void Configure() {
+        // 所有錯誤訊息設定...
+    }
+}
+</code></pre>
+<h3 id="2-提供詳細資訊">2. 提供詳細資訊</h3>
+<p>錯誤訊息應包含足夠的資訊，讓使用者了解如何修正：</p>
+<pre><code class="lang-csharp">// ✗ 不夠明確
+ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, min, max)
+    =&gt; $&quot;{column}長度錯誤。&quot;);
+
+// ✓ 明確且有幫助
+ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, min, max)
+    =&gt; $&quot;{column}長度必須介於 {min} 與 {max} 個字元之間（目前長度：{value?.Length ?? 0}）。&quot;);
+</code></pre>
+<h3 id="3-考慮使用者體驗">3. 考慮使用者體驗</h3>
+<p>使用友善的語氣，避免過於技術性的用語：</p>
+<pre><code class="lang-csharp">// ✗ 過於技術性
+ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)
+    =&gt; $&quot;{column}: Invalid integer format. Expected: [-]?[0-9]+);
+
+// ✓ 使用者友善
+ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)
+    =&gt; $&quot;{column}必須為整數（例如：123、-456）。&quot;);
+</code></pre>
+<h2 id="相關資源">相關資源</h2>
+<ul>
+<li><a href="validators.html">驗證器介紹</a> - 了解所有驗證器</li>
+<li><a href="usage-examples.html">使用範例</a> - 查看驗證器的實際應用</li>
+<li><a class="xref" href="../api/CloudyWing.FormValidators.Core.ErrorMessageProvider.html">ErrorMessageProvider</a> - ErrorMessageProvider API</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/CloudyWing/FormValidators/blob/main/docs/articles/error-messages.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -6,7 +6,7 @@ namespace CloudyWing.FormValidators;
 /// The false assert validator.
 /// </summary>
 public class FalseAssertValidator : IFormValidator {
-    private readonly string errorMessage = "";
+    private readonly string errorMessage;
     private readonly Func<bool> falsePredicate;
 
     /// <summary>

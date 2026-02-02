@@ -1,4 +1,4 @@
-using CloudyWing.FormValidators.Core;
+﻿using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;

@@ -19,6 +19,7 @@
 
     <PackageIcon>icon.png</PackageIcon>
     <MinVerTagPrefix>v</MinVerTagPrefix>
+    <Nullable>disable</Nullable>
     <LangVersion>14.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;

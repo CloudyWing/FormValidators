@@ -1,4 +1,4 @@
-# Changelog
+﻿# Changelog
 
 ## [v3.1.0] - 2026-02-01
 

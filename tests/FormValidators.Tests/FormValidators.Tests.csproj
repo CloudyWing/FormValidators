@@ -6,6 +6,7 @@
     <Authors>周尚緯</Authors>
     <AssemblyName>CloudyWing.FormValidators.Tests</AssemblyName>
     <RootNamespace>CloudyWing.FormValidators.Tests</RootNamespace>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="nunit" Version="4.4.0" />

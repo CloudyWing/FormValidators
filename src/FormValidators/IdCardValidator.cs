@@ -86,6 +86,10 @@ public sealed class IdCardValidator : FormValidatorBase {
             secondCharPattern += "89";
         }
 
+        if (string.IsNullOrEmpty(secondCharPattern)) {
+            return "(?!)";
+        }
+
         return $@"[A-Z][{secondCharPattern}][0-9]{{8}}";
     }
 

@@ -9,6 +9,9 @@ namespace CloudyWing.FormValidators;
 /// <summary>
 /// Validation constrains the date time format of a value.
 /// </summary>
+/// <remarks>
+/// The value is parsed with the current culture, such as the decimal separator and the date order, unless a format provider is specified.
+/// </remarks>
 public sealed class DateTimeValidator : ComparableTypeValidator<DateTime> {
     private static readonly ReadOnlyCollection<string> EmptyFormats = new([]);
     private readonly string[] exactFormats = [];

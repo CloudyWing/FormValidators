@@ -3,6 +3,11 @@
 /// <summary>
 /// The form validator base abstract class.
 /// </summary>
+/// <remarks>
+/// A validator instance stores the result of the last validation in <see cref="IsValid" /> and <see cref="ErrorMessage" />,
+/// and some validators also keep the default error message of the last validation. An instance is not thread-safe;
+/// create a validator for each validation instead of sharing it between threads.
+/// </remarks>
 /// <seealso cref="IFormValidator" />
 public abstract class FormValidatorBase : IFormValidator {
     /// <summary>

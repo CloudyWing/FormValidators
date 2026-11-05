@@ -10,6 +10,10 @@ namespace CloudyWing.FormValidators;
 /// <summary>
 /// The bulk validator.
 /// </summary>
+/// <remarks>
+/// The results of the last validation are stored in <see cref="IsValid" />, <see cref="ErrorMessages" /> and <see cref="Errors" />.
+/// An instance is not thread-safe; do not validate or modify the same instance from multiple threads at the same time.
+/// </remarks>
 public class BulkValidator : Collection<IFormValidator>, IFormValidator {
     private readonly List<string> errorMessages = [];
     private readonly ReadOnlyCollection<string> readOnlyErrorMessages;

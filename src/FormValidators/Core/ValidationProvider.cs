@@ -9,6 +9,12 @@ namespace CloudyWing.FormValidators.Core;
 /// <summary>
 /// The validation provider.
 /// </summary>
+/// <remarks>
+/// <see cref="Email(string)" /> returns a creator of <see cref="RegexValidator" /> while <see cref="Email(Func{string, string, string})" />
+/// returns a creator of <see cref="EmailValidator" />; both validate the same format. <see cref="LengthRange(int, int, Func{string, string, long, long, string})" />
+/// accepts <see cref="int" /> while <see cref="MinLength(long, Func{string, string, long, long, string})" /> and <see cref="MaxLength(long, Func{string, string, long, long, string})" />
+/// accept <see cref="long" />. These signatures are kept for compatibility.
+/// </remarks>
 public class ValidationProvider {
     /// <summary>
     /// Validation indicate that a value is required.

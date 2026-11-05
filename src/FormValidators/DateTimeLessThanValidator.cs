@@ -6,6 +6,9 @@ namespace CloudyWing.FormValidators;
 /// <summary>
 /// Validate that an date time value is less than another column value.
 /// </summary>
+/// <remarks>
+/// Both values are parsed with the current culture. When either value cannot be parsed, the comparison is skipped and the validation succeeds.
+/// </remarks>
 public sealed class DateTimeLessThanValidator : LessThanValidator<DateTime> {
     /// <summary>
     /// Initializes a new instance of the <see cref="DateTimeLessThanValidator" /> class.

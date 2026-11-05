@@ -7,6 +7,9 @@ namespace CloudyWing.FormValidators;
 /// <summary>
 /// Validation constrains the integer format of a value.
 /// </summary>
+/// <remarks>
+/// The value is parsed with the current culture, such as the decimal separator and the date order, unless a format provider is specified.
+/// </remarks>
 public sealed class IntegerValidator : ComparableTypeValidator<long> {
     /// <summary>
     /// Initializes a new instance of the <see cref="IntegerValidator" /> class.

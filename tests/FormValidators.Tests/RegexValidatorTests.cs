@@ -1,4 +1,6 @@
-﻿using CloudyWing.FormValidators.Core;
+﻿using System;
+using System.Text.RegularExpressions;
+using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
@@ -47,5 +49,19 @@ public class RegexValidatorTests {
         RegexValidator validator = new("", value, regex);
 
         Assert.That(validator.Validate(), Is.True);
+    }
+
+    [Test]
+    public void Constructor_NullPattern_ThrowsArgumentNullException() {
+        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new RegexValidator("", "", (string)null));
+
+        Assert.That(exception.ParamName, Is.EqualTo("pattern"));
+    }
+
+    [Test]
+    public void Constructor_NullRegex_ThrowsArgumentNullException() {
+        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new RegexValidator("", "", (Regex)null));
+
+        Assert.That(exception.ParamName, Is.EqualTo("regex"));
     }
 }

@@ -29,11 +29,16 @@ public sealed class CreditCardValidator : BasicFormValidator {
 
         string normalized = Value.Replace("-", "").Replace(" ", "");
 
-        if (!normalized.All(char.IsDigit) || normalized.Length < 13 || normalized.Length > 19) {
+        // char.IsDigit 會接受全形與其他 Unicode 數字，Luhn 計算只適用 ASCII 數字
+        if (!normalized.All(IsAsciiDigit) || normalized.Length < 13 || normalized.Length > 19) {
             return false;
         }
 
         return IsLuhnValid(normalized);
+    }
+
+    private static bool IsAsciiDigit(char c) {
+        return c >= '0' && c <= '9';
     }
 
     private static bool IsLuhnValid(string digits) {

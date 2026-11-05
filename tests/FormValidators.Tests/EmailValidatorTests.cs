@@ -41,4 +41,12 @@ public class EmailValidatorTests {
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
+
+    [TestCase("wing@gmail.com\n")]
+    [TestCase("wing@gmail.com\r\n")]
+    public void Validate_TrailingNewLine_ReturnsFalse(string value) {
+        EmailValidator validator = new("", value);
+
+        Assert.That(validator.Validate(), Is.False);
+    }
 }

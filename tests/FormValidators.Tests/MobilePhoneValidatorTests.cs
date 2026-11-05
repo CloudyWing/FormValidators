@@ -63,4 +63,22 @@ public class MobilePhoneValidatorTests {
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expexted));
     }
+
+    [TestCase("0912345678\n", MobilePhoneFormats.All)]
+    [TestCase("0912345678\n", MobilePhoneFormats.AllowWithoutDashes)]
+    [TestCase("0912-345-678\n", MobilePhoneFormats.AllowContainDashes)]
+    public void Validate_TrailingNewLine_ReturnsFalse(string value, MobilePhoneFormats formats) {
+        MobilePhoneValidator validator = new("", value, formats);
+
+        Assert.That(validator.Validate(), Is.False);
+    }
+
+    [TestCase("０９１２３４５６７８")]
+    [TestCase("09１２345678")]
+    [TestCase("09١٢345678")]
+    public void Validate_NonAsciiDigits_ReturnsFalse(string value) {
+        MobilePhoneValidator validator = new("", value);
+
+        Assert.That(validator.Validate(), Is.False);
+    }
 }

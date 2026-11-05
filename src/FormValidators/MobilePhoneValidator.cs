@@ -8,7 +8,7 @@ namespace CloudyWing.FormValidators;
 /// The mobile phone validator.
 /// </summary>
 public sealed class MobilePhoneValidator : FormValidatorBase {
-    private const string BasicPattern = @"^09\d{2}-?\d{3}-?\d{3}$";
+    private const string BasicPattern = @"^09[0-9]{2}-?[0-9]{3}-?[0-9]{3}\z";
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MobilePhoneValidator" /> class.

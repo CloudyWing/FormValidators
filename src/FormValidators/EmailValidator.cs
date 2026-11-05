@@ -15,7 +15,7 @@ public sealed class EmailValidator : RegexValidator {
     /// <param name="value">The value.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
     public EmailValidator(string column, string value, Func<string, string, string> customErrorMessageAccessor = null)
-        : base(column, value, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", customErrorMessageAccessor) {
+        : base(column, value, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*\z", customErrorMessageAccessor) {
     }
 
     /// <inheritdoc/>

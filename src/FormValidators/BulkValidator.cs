@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
@@ -10,13 +9,15 @@ namespace CloudyWing.FormValidators;
 /// The bulk validator.
 /// </summary>
 public class BulkValidator : Collection<IFormValidator>, IFormValidator {
-    private readonly IList<string> errorMessages = [];
+    private readonly List<string> errorMessages = [];
+    private readonly ReadOnlyCollection<string> readOnlyErrorMessages;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BulkValidator" /> class.
     /// </summary>
     /// <param name="isStoppedIfFail">if set to <c>true</c> [is stopped if fail].</param>
     public BulkValidator(bool isStoppedIfFail = false) {
+        readOnlyErrorMessages = new ReadOnlyCollection<string>(errorMessages);
         IsStoppedIfFail = isStoppedIfFail;
     }
 
@@ -31,6 +32,7 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
             throw new ArgumentNullException(nameof(configure));
         }
 
+        readOnlyErrorMessages = new ReadOnlyCollection<string>(errorMessages);
         IsStoppedIfFail = isStoppedIfFail;
         configure(new ValidatorConfiguration(this));
     }
@@ -63,7 +65,7 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
     /// Gets the error messages.
     /// </summary>
     /// <value>The error messages.</value>
-    public IReadOnlyCollection<string> ErrorMessages => new ReadOnlyCollection<string>(errorMessages);
+    public IReadOnlyCollection<string> ErrorMessages => readOnlyErrorMessages;
 
     /// <summary>
     /// Returns true if ... is valid.
@@ -86,9 +88,7 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
         foreach (IFormValidator item in Items) {
             if (!item.Validate()) {
                 if (item is BulkValidator innerItems) {
-                    foreach (var _message in innerItems.ErrorMessages) {
-                        errorMessages.Add(_message);
-                    }
+                    errorMessages.AddRange(innerItems.errorMessages);
                 } else {
                     errorMessages.Add(item.ErrorMessage);
                 }
@@ -97,7 +97,7 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
                 }
             }
         }
-        IsValid = !errorMessages.Any();
+        IsValid = errorMessages.Count == 0;
 
         return IsValid;
     }

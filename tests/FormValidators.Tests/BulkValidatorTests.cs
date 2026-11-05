@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
@@ -163,5 +164,58 @@ public class BulkValidatorTests {
         ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new BulkValidator((Action<ValidatorConfiguration>)null));
 
         Assert.That(exception.ParamName, Is.EqualTo("configure"));
+    }
+
+    [Test]
+    public void ErrorMessages_AfterRevalidate_ReflectsLatestResult() {
+        bool isValid = false;
+        BulkValidator validators = [
+            new TrueAssertValidator(() => isValid, "1")
+        ];
+        IReadOnlyCollection<string> messages = validators.ErrorMessages;
+
+        validators.Validate();
+        int failedCount = messages.Count;
+        isValid = true;
+        validators.Validate();
+
+        using (Assert.EnterMultipleScope()) {
+            Assert.That(failedCount, Is.EqualTo(1));
+            Assert.That(validators.ErrorMessages, Is.Empty);
+            Assert.That(validators.ErrorMessages, Is.SameAs(messages));
+        }
+    }
+
+    [Test]
+    public void ErrorMessages_WhenNestedBulkWithStoppedIfFail_CollectsInnerFirstErrorAndOuterErrors() {
+        BulkValidator validators = [
+            new BulkValidator(true) {
+                new TrueAssertValidator(true, "1"),
+                new TrueAssertValidator(false, "2"),
+                new TrueAssertValidator(false, "3")
+            },
+            new TrueAssertValidator(true, "4"),
+            new TrueAssertValidator(false, "5"),
+            new TrueAssertValidator(false, "6")
+        ];
+
+        validators.Validate();
+
+        Assert.That(validators.ErrorMessages, Is.EqualTo(new[] { "2", "5", "6" }));
+    }
+
+    [Test]
+    public void ErrorMessages_WhenOuterStoppedIfFailAndInnerBulkFails_StopsAfterInnerBulk() {
+        BulkValidator validators = new(true) {
+            new BulkValidator {
+                new TrueAssertValidator(false, "1"),
+                new TrueAssertValidator(false, "2")
+            },
+            new TrueAssertValidator(false, "3")
+        };
+
+        validators.Validate();
+
+        Assert.That(validators.ErrorMessages, Is.EqualTo(new[] { "1", "2" }));
     }
 }

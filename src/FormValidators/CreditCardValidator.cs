@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
@@ -27,26 +26,23 @@ public sealed class CreditCardValidator : BasicFormValidator {
             return true;
         }
 
-        string normalized = Value.Replace("-", "").Replace(" ", "");
-
-        // char.IsDigit 會接受全形與其他 Unicode 數字，Luhn 計算只適用 ASCII 數字
-        if (!normalized.All(IsAsciiDigit) || normalized.Length < 13 || normalized.Length > 19) {
-            return false;
-        }
-
-        return IsLuhnValid(normalized);
-    }
-
-    private static bool IsAsciiDigit(char c) {
-        return c >= '0' && c <= '9';
-    }
-
-    private static bool IsLuhnValid(string digits) {
         int sum = 0;
+        int digitCount = 0;
         bool isEven = false;
 
-        for (int i = digits.Length - 1; i >= 0; i--) {
-            int digit = digits[i] - '0';
+        // 由右往左單次走訪，略過「-」與空白；char.IsDigit 會接受全形與其他 Unicode 數字，Luhn 計算只適用 ASCII 數字
+        for (int i = Value.Length - 1; i >= 0; i--) {
+            char c = Value[i];
+
+            if (c == '-' || c == ' ') {
+                continue;
+            }
+
+            if (c < '0' || c > '9') {
+                return false;
+            }
+
+            int digit = c - '0';
 
             if (isEven) {
                 digit *= 2;
@@ -57,8 +53,9 @@ public sealed class CreditCardValidator : BasicFormValidator {
 
             sum += digit;
             isEven = !isEven;
+            digitCount++;
         }
 
-        return sum % 10 == 0;
+        return digitCount >= 13 && digitCount <= 19 && sum % 10 == 0;
     }
 }

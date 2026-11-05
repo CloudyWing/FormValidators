@@ -14,6 +14,7 @@ namespace CloudyWing.FormValidators.Core;
 /// </remarks>
 public static class ErrorMessageProvider {
     // 預設值欄位必須宣告在可變欄位之前，靜態欄位依宣告順序初始化
+    private static readonly string[] IdCardTypeNames = CreateIdCardTypeNames();
     private static readonly Func<string, string, string> DefaultValueIsRequiredAccessor = (column, value) => $"「{column}」欄位為必填。";
     private static readonly Func<string, string, object, string> DefaultValueGreaterOrEqualAccessor = (column, value, min) => {
         if (min is DateTime date) {
@@ -46,28 +47,10 @@ public static class ErrorMessageProvider {
     private static readonly Func<string, string, string> DefaultValueIsEmailAccessor = (column, value) => $"「{column}」必須為正確E-mail格式。";
     private static readonly Func<string, string, MobilePhoneFormats, string> DefaultValueIsMobilePhoneAccessor = (column, value, formats) => $"「{column}」必須為正確手機號碼格式。";
     private static readonly Func<string, string, IdCardTypes, string> DefaultValueIsIdCardAccessor = (column, value, types) => {
-        List<string> typeNames = [];
-        if (types.HasFlag(IdCardTypes.National)) {
-            typeNames.Add("國民身分證號");
-        }
+        int index = (int)types;
+        string typeNames = index >= 0 && index < IdCardTypeNames.Length ? IdCardTypeNames[index] : JoinIdCardTypeNames(types);
 
-        if (types.HasFlag(IdCardTypes.Resident)) {
-            typeNames.Add("臺灣地區居留證統一證號");
-        }
-
-        if (types.HasFlag(IdCardTypes.AlienResident)) {
-            typeNames.Add("外僑居留證統一證號");
-        }
-
-        if (types.HasFlag(IdCardTypes.Homeless)) {
-            typeNames.Add("遊民證號");
-        }
-
-        if (types.HasFlag(IdCardTypes.NewResident)) {
-            typeNames.Add("新式外來人口統一證號");
-        }
-
-        return $"「{column}」必須為正確的「{string.Join("或", typeNames)}」格式。";
+        return $"「{column}」必須為正確的「{typeNames}」格式。";
     };
     private static readonly Func<string, string, string, string, string> DefaultValueCompareAnotherColumnValueAccessor = (column, value, comparisonColumn, comparisonValue) => $"「{column}」和「{comparisonColumn}」輸入不一致。";
     private static readonly Func<string, string, string, string, bool, string> DefaultValueLessThanAnotherColumnValueAccessor = (column, value, comparisonColumn, comparisonValue, allowedEqual) => $"「{column}」必須要小於{(allowedEqual ? "等於" : "")}「{comparisonColumn}」。";
@@ -409,5 +392,41 @@ public static class ErrorMessageProvider {
         return value is DateTime date
             ? date.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture)
             : Convert.ToString(value, CultureInfo.CurrentCulture);
+    }
+
+    private static string[] CreateIdCardTypeNames() {
+        string[] names = new string[(int)IdCardTypes.All + 1];
+
+        for (int i = 0; i < names.Length; i++) {
+            names[i] = JoinIdCardTypeNames((IdCardTypes)i);
+        }
+
+        return names;
+    }
+
+    private static string JoinIdCardTypeNames(IdCardTypes types) {
+        List<string> typeNames = [];
+
+        if (types.HasFlag(IdCardTypes.National)) {
+            typeNames.Add("國民身分證號");
+        }
+
+        if (types.HasFlag(IdCardTypes.Resident)) {
+            typeNames.Add("臺灣地區居留證統一證號");
+        }
+
+        if (types.HasFlag(IdCardTypes.AlienResident)) {
+            typeNames.Add("外僑居留證統一證號");
+        }
+
+        if (types.HasFlag(IdCardTypes.Homeless)) {
+            typeNames.Add("遊民證號");
+        }
+
+        if (types.HasFlag(IdCardTypes.NewResident)) {
+            typeNames.Add("新式外來人口統一證號");
+        }
+
+        return string.Join("或", typeNames);
     }
 }

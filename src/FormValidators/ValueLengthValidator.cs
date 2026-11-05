@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
@@ -48,6 +49,35 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="ValueLengthValidator" /> class with the length unit.
+    /// </summary>
+    /// <param name="column">The column.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="min">The minimum. Less than or equal to 0 means unlimited.</param>
+    /// <param name="max">The maximum. Less than or equal to 0 means unlimited.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <exception cref="ArgumentException">Both <paramref name="min" /> and <paramref name="max" /> are greater than 0 and <paramref name="min" /> is greater than <paramref name="max" />.</exception>
+    public ValueLengthValidator(string column, string value, long min, long max, TextLengthUnit unit)
+        : this(column, value, min, max, unit, null) { }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValueLengthValidator" /> class with the length unit.
+    /// </summary>
+    /// <param name="column">The column.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="min">The minimum. Less than or equal to 0 means unlimited.</param>
+    /// <param name="max">The maximum. Less than or equal to 0 means unlimited.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <exception cref="ArgumentException">Both <paramref name="min" /> and <paramref name="max" /> are greater than 0 and <paramref name="min" /> is greater than <paramref name="max" />.</exception>
+    public ValueLengthValidator(
+        string column, string value, long min, long max, TextLengthUnit unit,
+        Func<string, string, long, long, string> customErrorMessageAccessor
+    ) : this(column, value, min, max, customErrorMessageAccessor) {
+        Unit = unit;
+    }
+
+    /// <summary>
     /// Gets the minimum length.
     /// </summary>
     /// <value>The minimum length.</value>
@@ -58,6 +88,12 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     /// </summary>
     /// <value>The maximum length.</value>
     public long MaxLength { get; }
+
+    /// <summary>
+    /// Gets the unit used to count the length.
+    /// </summary>
+    /// <value>The unit used to count the length. The default is <see cref="TextLengthUnit.Utf16CodeUnit" />.</value>
+    public TextLengthUnit Unit { get; } = TextLengthUnit.Utf16CodeUnit;
 
     /// <summary>
     /// Gets the custom range message format.
@@ -95,14 +131,38 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     }
 
     private bool ValidateRange() {
-        return Value.Length >= MinLength && Value.Length <= MaxLength;
+        long length = GetLength();
+        return length >= MinLength && length <= MaxLength;
     }
 
     private bool ValidateMinLength() {
-        return Value.Length >= MinLength;
+        return GetLength() >= MinLength;
     }
 
     private bool ValidateMaxLength() {
-        return Value.Length <= MaxLength;
+        return GetLength() <= MaxLength;
+    }
+
+    private long GetLength() {
+        return Unit switch {
+            TextLengthUnit.UnicodeScalar => CountUnicodeScalars(Value),
+            TextLengthUnit.TextElement => new StringInfo(Value).LengthInTextElements,
+            _ => Value.Length
+        };
+    }
+
+    private static long CountUnicodeScalars(string value) {
+        long count = 0;
+
+        for (int i = 0; i < value.Length; i++) {
+            // 成對的 surrogate 視為一個字元，落單的 surrogate 仍各算一個
+            if (char.IsHighSurrogate(value[i]) && i + 1 < value.Length && char.IsLowSurrogate(value[i + 1])) {
+                i++;
+            }
+
+            count++;
+        }
+
+        return count;
     }
 }

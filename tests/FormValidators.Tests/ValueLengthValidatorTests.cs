@@ -134,4 +134,62 @@ public class ValueLengthValidatorTests {
 
         Assert.Throws<ArgumentException>(() => creator("", "123"));
     }
+
+    [TestCase("😀😀", TextLengthUnit.Utf16CodeUnit, false)]
+    [TestCase("😀😀", TextLengthUnit.UnicodeScalar, true)]
+    [TestCase("😀😀", TextLengthUnit.TextElement, true)]
+    [TestCase("éé", TextLengthUnit.UnicodeScalar, false)]
+    [TestCase("éé", TextLengthUnit.TextElement, true)]
+    [TestCase("ab", TextLengthUnit.UnicodeScalar, true)]
+    public void Validate_WithMaxLengthAndUnit_CountsByUnit(string value, TextLengthUnit unit, bool isValid) {
+        ValueLengthValidator validator = new("", value, 0, 2, unit);
+
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
+
+    [Test]
+    public void Validate_WithUnicodeScalarAndLoneSurrogate_CountsSurrogateAsOne() {
+        ValueLengthValidator validator = new("", "a\ud800", 2, 2, TextLengthUnit.UnicodeScalar);
+
+        Assert.That(validator.Validate(), Is.True);
+    }
+
+    [Test]
+    public void Unit_WhenNotSpecified_IsUtf16CodeUnit() {
+        ValueLengthValidator validator = new("", "123", 0, 3);
+
+        Assert.That(validator.Unit, Is.EqualTo(TextLengthUnit.Utf16CodeUnit));
+    }
+
+    [Test]
+    public void ErrorMessage_WithUnitAndCustomAccessor_ReturnsCustomMessage() {
+        ValueLengthValidator validator = new("欄位", "😀😀😀", 0, 2, TextLengthUnit.UnicodeScalar, (c, v, min, max) => $"{c}:{min}-{max}");
+
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo("欄位:0-2"));
+    }
+
+    [Test]
+    public void ValidationProviderLengthMethods_WithUnit_CreateValidatorWithUnit() {
+        ValidationProvider provider = new();
+
+        ValueLengthValidator min = provider.MinLength(2, TextLengthUnit.UnicodeScalar)("", "😀");
+        ValueLengthValidator max = provider.MaxLength(1, TextLengthUnit.UnicodeScalar, "{0}")("欄位", "😀😀");
+        ValueLengthValidator range = provider.LengthRange(1, 2, TextLengthUnit.TextElement, (c, v, _min, _max) => c)("欄位", "😀😀😀");
+
+        using (Assert.EnterMultipleScope()) {
+            Assert.That(min.Validate(), Is.False);
+            Assert.That(min.MinLength, Is.EqualTo(2));
+            Assert.That(max.Validate(), Is.False);
+            Assert.That(max.ErrorMessage, Is.EqualTo("欄位"));
+            Assert.That(range.Validate(), Is.False);
+            Assert.That(range.Unit, Is.EqualTo(TextLengthUnit.TextElement));
+        }
+    }
+
+    [Test]
+    public void Constructor_WithUnitAndMinGreaterThanMax_ThrowsArgumentException() {
+        Assert.Throws<ArgumentException>(() => new ValueLengthValidator("", "123", 5, 3, TextLengthUnit.TextElement));
+    }
 }

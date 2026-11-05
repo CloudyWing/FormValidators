@@ -380,6 +380,111 @@ public class ValidationProvider {
     }
 
     /// <summary>
+    /// Validation to constrains a value does not exceed a minimum length counted by the specified unit.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, ValueLengthValidator> MinLength(long min, TextLengthUnit unit) {
+        return MinLength(min, unit, (Func<string, string, long, long, string>)null);
+    }
+
+    /// <summary>
+    /// Validation to constrains a value does not exceed a minimum length counted by the specified unit.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, ValueLengthValidator> MinLength(long min, TextLengthUnit unit, string customErrorMessageFormat) {
+        return MinLength(min, unit, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+    }
+
+    /// <summary>
+    /// Validation to constrains a value does not exceed a minimum length counted by the specified unit.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, ValueLengthValidator> MinLength(
+        long min, TextLengthUnit unit, Func<string, string, long, long, string> customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, 0, unit, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation to constrains a value does not exceed a maximum length counted by the specified unit.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, ValueLengthValidator> MaxLength(long max, TextLengthUnit unit) {
+        return MaxLength(max, unit, (Func<string, string, long, long, string>)null);
+    }
+
+    /// <summary>
+    /// Validation to constrains a value does not exceed a maximum length counted by the specified unit.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, ValueLengthValidator> MaxLength(long max, TextLengthUnit unit, string customErrorMessageFormat) {
+        return MaxLength(max, unit, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+    }
+
+    /// <summary>
+    /// Validation to constrains a value does not exceed a maximum length counted by the specified unit.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, ValueLengthValidator> MaxLength(
+        long max, TextLengthUnit unit, Func<string, string, long, long, string> customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, 0, max, unit, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constraints a value does not exceed the length range counted by the specified unit.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, ValueLengthValidator> LengthRange(int min, int max, TextLengthUnit unit) {
+        return LengthRange(min, max, unit, (Func<string, string, long, long, string>)null);
+    }
+
+    /// <summary>
+    /// Validation constraints a value does not exceed the length range counted by the specified unit.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, ValueLengthValidator> LengthRange(int min, int max, TextLengthUnit unit, string customErrorMessageFormat) {
+        return LengthRange(min, max, unit, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
+    }
+
+    /// <summary>
+    /// Validation constraints a value does not exceed the length range counted by the specified unit.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="unit">The unit used to count the length.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, ValueLengthValidator> LengthRange(
+        int min, int max, TextLengthUnit unit, Func<string, string, long, long, string> customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, max, unit, customErrorMessageAccessor);
+    }
+
+    /// <summary>
     /// Regex validation.
     /// </summary>
     /// <param name="pattern">The pattern.</param>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace CloudyWing.FormValidators.Core;
 
@@ -912,6 +913,84 @@ public class ValidationProvider {
         string pattern, Func<string, string?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, pattern, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Regex validation with the regex instance.
+    /// </summary>
+    /// <param name="regex">The regex. Its options and match timeout are used as is.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, RegexValidator> Regex(Regex regex, string customErrorMessageFormat) {
+        return Regex(regex, (_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Regex validation with the regex instance.
+    /// </summary>
+    /// <param name="regex">The regex. Its options and match timeout are used as is.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="regex" /> is <see langword="null" />.</exception>
+    public Func<string, string?, RegexValidator> Regex(
+        Regex regex, Func<string, string?, string>? customErrorMessageAccessor = null
+    ) {
+        if (regex is null) {
+            throw new ArgumentNullException(nameof(regex));
+        }
+
+        return (column, value) => new(column, value, regex, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Regex validation with the regex options and the match timeout.
+    /// </summary>
+    /// <param name="pattern">The pattern.</param>
+    /// <param name="options">The regex options.</param>
+    /// <param name="matchTimeout">The match timeout, or <see cref="System.Text.RegularExpressions.Regex.InfiniteMatchTimeout" />. When a match times out, the validation fails.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, RegexValidator> Regex(
+        string pattern, RegexOptions options, TimeSpan matchTimeout, string customErrorMessageFormat
+    ) {
+        return Regex(pattern, options, matchTimeout, (_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Regex validation with the regex options and the match timeout.
+    /// </summary>
+    /// <param name="pattern">The pattern.</param>
+    /// <param name="options">The regex options.</param>
+    /// <param name="matchTimeout">The match timeout, or <see cref="System.Text.RegularExpressions.Regex.InfiniteMatchTimeout" />. When a match times out, the validation fails.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, RegexValidator> Regex(string pattern, RegexOptions options, TimeSpan matchTimeout) {
+        return Regex(pattern, options, matchTimeout, (Func<string, string?, string>?)null);
+    }
+
+    /// <summary>
+    /// Regex validation with the regex options and the match timeout.
+    /// </summary>
+    /// <param name="pattern">The pattern.</param>
+    /// <param name="options">The regex options.</param>
+    /// <param name="matchTimeout">The match timeout, or <see cref="System.Text.RegularExpressions.Regex.InfiniteMatchTimeout" />. When a match times out, the validation fails.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="pattern" /> is <see langword="null" />.</exception>
+    /// <exception cref="ArgumentException"><paramref name="pattern" /> is not a valid regular expression.</exception>
+    /// <exception cref="ArgumentOutOfRangeException"><paramref name="matchTimeout" /> is zero, negative or too large, and is not <see cref="System.Text.RegularExpressions.Regex.InfiniteMatchTimeout" />.</exception>
+    public Func<string, string?, RegexValidator> Regex(
+        string pattern, RegexOptions options, TimeSpan matchTimeout, Func<string, string?, string>? customErrorMessageAccessor
+    ) {
+        if (pattern is null) {
+            throw new ArgumentNullException(nameof(pattern));
+        }
+
+        ValidatorDefaults.ValidateRegexTimeout(matchTimeout, nameof(matchTimeout));
+
+        // 建立一次 Regex 供所有由此 creator 產生的 validator 共用
+        Regex regex = new(pattern, options, matchTimeout);
+
+        return (column, value) => new(column, value, regex, customErrorMessageAccessor);
     }
 
     /// <summary>

@@ -40,9 +40,15 @@ CloudyWing.FormValidators.Core.ValidationProvider.Number(bool allowedThousands, 
 CloudyWing.FormValidators.Core.ValidationProvider.Number(bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, decimal?, decimal?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
 CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal min, decimal max, bool allowedThousands, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
 CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal min, decimal max, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, decimal?, decimal?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(System.Text.RegularExpressions.Regex! regex, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(System.Text.RegularExpressions.Regex! regex, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(string! pattern, System.Text.RegularExpressions.RegexOptions options, System.TimeSpan matchTimeout) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(string! pattern, System.Text.RegularExpressions.RegexOptions options, System.TimeSpan matchTimeout, System.Func<string!, string?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(string! pattern, System.Text.RegularExpressions.RegexOptions options, System.TimeSpan matchTimeout, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
 CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes) -> System.Func<string!, string?, CloudyWing.FormValidators.UrlValidator!>!
 CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes, System.Func<string!, string?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.UrlValidator!>!
 CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.UrlValidator!>!
+CloudyWing.FormValidators.Core.ValidatorDefaults
 CloudyWing.FormValidators.DateTimeValidator.DateTimeValidator(string! column, string? value, System.DateTime? min, System.DateTime? max, System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> void
 CloudyWing.FormValidators.DateTimeValidator.DateTimeValidator(string! column, string? value, System.DateTime? min, System.DateTime? max, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> void
 CloudyWing.FormValidators.DateTimeValidator.FormatProvider.get -> System.IFormatProvider?
@@ -51,6 +57,7 @@ CloudyWing.FormValidators.IntegerValidator.FormatProvider.get -> System.IFormatP
 CloudyWing.FormValidators.IntegerValidator.IntegerValidator(string! column, string? value, long? min, long? max, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, long?, long?, string!>? customErrorMessageAccessor) -> void
 CloudyWing.FormValidators.NumberValidator.FormatProvider.get -> System.IFormatProvider?
 CloudyWing.FormValidators.NumberValidator.NumberValidator(string! column, string? value, decimal? min, decimal? max, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, decimal?, decimal?, string!>? customErrorMessageAccessor) -> void
+CloudyWing.FormValidators.RegexValidator.RegexValidator(string! column, string? value, string! pattern, System.Text.RegularExpressions.RegexOptions options, System.TimeSpan matchTimeout, System.Func<string!, string?, string!>? customErrorMessageAccessor) -> void
 CloudyWing.FormValidators.TextLengthUnit
 CloudyWing.FormValidators.TextLengthUnit.TextElement = 2 -> CloudyWing.FormValidators.TextLengthUnit
 CloudyWing.FormValidators.TextLengthUnit.UnicodeScalar = 1 -> CloudyWing.FormValidators.TextLengthUnit
@@ -61,3 +68,5 @@ CloudyWing.FormValidators.UrlValidator.UrlValidator(string! column, string? valu
 CloudyWing.FormValidators.ValueLengthValidator.Unit.get -> CloudyWing.FormValidators.TextLengthUnit
 CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string! column, string? value, long min, long max, CloudyWing.FormValidators.TextLengthUnit unit) -> void
 CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string! column, string? value, long min, long max, CloudyWing.FormValidators.TextLengthUnit unit, System.Func<string!, string?, long, long, string!>? customErrorMessageAccessor) -> void
+static CloudyWing.FormValidators.Core.ValidatorDefaults.RegexTimeout.get -> System.TimeSpan
+static CloudyWing.FormValidators.Core.ValidatorDefaults.RegexTimeout.set -> void

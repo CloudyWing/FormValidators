@@ -1,0 +1,6 @@
+CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind kind, System.Collections.Generic.IEnumerable<string> allowedSchemes) -> System.Func<string, string, CloudyWing.FormValidators.UrlValidator>
+CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind kind, System.Collections.Generic.IEnumerable<string> allowedSchemes, System.Func<string, string, string> customErrorMessageAccessor) -> System.Func<string, string, CloudyWing.FormValidators.UrlValidator>
+CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind kind, System.Collections.Generic.IEnumerable<string> allowedSchemes, string customErrorMessageFormat) -> System.Func<string, string, CloudyWing.FormValidators.UrlValidator>
+CloudyWing.FormValidators.UrlValidator.AllowedSchemes.get -> System.Collections.Generic.IReadOnlyCollection<string>
+CloudyWing.FormValidators.UrlValidator.UrlValidator(string column, string value, System.UriKind kind, System.Collections.Generic.IEnumerable<string> allowedSchemes) -> void
+CloudyWing.FormValidators.UrlValidator.UrlValidator(string column, string value, System.UriKind kind, System.Collections.Generic.IEnumerable<string> allowedSchemes, System.Func<string, string, string> customErrorMessageAccessor) -> void

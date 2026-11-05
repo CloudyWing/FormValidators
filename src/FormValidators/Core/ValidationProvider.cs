@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CloudyWing.FormValidators.Core;
 
@@ -620,6 +621,42 @@ public class ValidationProvider {
         Func<string, string, string> customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, kind, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is URL with one of the allowed schemes.
+    /// </summary>
+    /// <param name="kind">The kind.</param>
+    /// <param name="allowedSchemes">The allowed schemes of an absolute URL, such as <c>http</c> and <c>https</c>. An empty collection allows any scheme.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, UrlValidator> Url(
+        UriKind kind, IEnumerable<string> allowedSchemes, string customErrorMessageFormat
+    ) {
+        return Url(kind, allowedSchemes, (_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is URL with one of the allowed schemes.
+    /// </summary>
+    /// <param name="kind">The kind.</param>
+    /// <param name="allowedSchemes">The allowed schemes of an absolute URL, such as <c>http</c> and <c>https</c>. An empty collection allows any scheme.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, UrlValidator> Url(UriKind kind, IEnumerable<string> allowedSchemes) {
+        return Url(kind, allowedSchemes, (Func<string, string, string>)null);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is URL with one of the allowed schemes.
+    /// </summary>
+    /// <param name="kind">The kind.</param>
+    /// <param name="allowedSchemes">The allowed schemes of an absolute URL, such as <c>http</c> and <c>https</c>. An empty collection allows any scheme.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string, UrlValidator> Url(
+        UriKind kind, IEnumerable<string> allowedSchemes, Func<string, string, string> customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, kind, allowedSchemes, customErrorMessageAccessor);
     }
 
     /// <summary>

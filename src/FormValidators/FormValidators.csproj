@@ -28,6 +28,8 @@
     <EnablePackageValidation>true</EnablePackageValidation>
     <PackageValidationBaselineVersion>3.1.0</PackageValidationBaselineVersion>
     <WarningsAsErrors>$(WarningsAsErrors);RS0016;RS0017</WarningsAsErrors>
+    <!-- RS0027：新增多載與既有含選擇性參數的多載參數型別不同，不會造成多載解析歧義 -->
+    <NoWarn>$(NoWarn);RS0027</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">

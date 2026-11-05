@@ -6,6 +6,9 @@ namespace CloudyWing.FormValidators;
 /// <summary>
 /// The URL validator.
 /// </summary>
+/// <remarks>
+/// Implicit file paths such as <c>/path</c> or <c>C:\path</c> are not treated as absolute URLs on any platform.
+/// </remarks>
 public sealed class UrlValidator : BasicFormValidator {
     /// <summary>
     /// Initializes a new instance of the <see cref="UrlValidator" /> class.
@@ -44,6 +47,15 @@ public sealed class UrlValidator : BasicFormValidator {
             return true;
         }
 
-        return Uri.TryCreate(Value, Kind, out _);
+        if (!Uri.TryCreate(Value, Kind, out Uri uri)) {
+            return false;
+        }
+
+        // Unix 的「/path」與 Windows 的「C:\path」會被 Uri 視為隱含的 file URI，不屬於使用者輸入的網址
+        if (uri.IsAbsoluteUri && !Value.TrimStart().StartsWith(uri.Scheme + ":", StringComparison.OrdinalIgnoreCase)) {
+            return Kind == UriKind.RelativeOrAbsolute && Uri.TryCreate(Value, UriKind.Relative, out _);
+        }
+
+        return true;
     }
 }

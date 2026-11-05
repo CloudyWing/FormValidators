@@ -46,4 +46,30 @@ public class UrlValidatorTests {
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
+
+    [TestCase("/path")]
+    [TestCase("/usr/local/bin")]
+    [TestCase(@"C:\path\file.txt")]
+    [TestCase(@"\\server\share")]
+    public void Validate_WhenAbsoluteUrlIsUsedWithImplicitFilePath_ReturnsFalse(string value) {
+        UrlValidator validator = new("Column", value);
+
+        Assert.That(validator.Validate(), Is.False);
+    }
+
+    [Test]
+    public void Validate_WhenRelativeOrAbsoluteUrlIsUsedWithUnixPath_ReturnsTrue() {
+        UrlValidator validator = new("Column", "/usr/local/bin", UriKind.RelativeOrAbsolute);
+
+        Assert.That(validator.Validate(), Is.True);
+    }
+
+    [TestCase("file:///etc/passwd")]
+    [TestCase("javascript:alert(1)")]
+    [TestCase("mailto:wing@example.com")]
+    public void Validate_WhenAbsoluteUrlIsUsedWithExplicitScheme_ReturnsTrue(string value) {
+        UrlValidator validator = new("Column", value);
+
+        Assert.That(validator.Validate(), Is.True);
+    }
 }

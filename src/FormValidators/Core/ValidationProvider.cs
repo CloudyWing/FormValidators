@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace CloudyWing.FormValidators.Core;
 
@@ -1422,5 +1424,32 @@ public class ValidationProvider {
         Func<string, string?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation with a custom asynchronous predicate. The predicate is not called for a <see langword="null" />, empty or white space value.
+    /// </summary>
+    /// <param name="predicate">The asynchronous predicate whose result is <see langword="true" /> when the value is valid.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, AsyncCustomValidator> CustomAsync(Func<string, CancellationToken, Task<bool>> predicate, string customErrorMessageFormat) {
+        return CustomAsync(predicate, (_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Validation with a custom asynchronous predicate. The predicate is not called for a <see langword="null" />, empty or white space value.
+    /// </summary>
+    /// <param name="predicate">The asynchronous predicate whose result is <see langword="true" /> when the value is valid.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="predicate" /> is <see langword="null" />.</exception>
+    public Func<string, string?, AsyncCustomValidator> CustomAsync(
+        Func<string, CancellationToken, Task<bool>> predicate, Func<string, string?, string>? customErrorMessageAccessor = null
+    ) {
+        if (predicate is null) {
+            throw new ArgumentNullException(nameof(predicate));
+        }
+
+        return (column, value) => new(column, value, predicate, customErrorMessageAccessor);
     }
 }

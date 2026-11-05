@@ -57,9 +57,21 @@ public abstract class FormValidatorBase : IFormValidator {
 
     /// <inheritdoc />
     public bool Validate() {
-        IsValid = ValidateValue();
-        ErrorMessage = IsValid ? "" : CreateErrorMessage();
-        return IsValid;
+        return SetValidationResult(ValidateValue());
+    }
+
+    /// <summary>
+    /// Sets <see cref="IsValid" /> and <see cref="ErrorMessage" /> by the validation result.
+    /// </summary>
+    /// <remarks>
+    /// Derived classes that validate outside <see cref="Validate" />, such as asynchronous validators, call this method to record the result.
+    /// </remarks>
+    /// <param name="isValid">If set to <see langword="true" />, the value is valid; otherwise, the error message is created.</param>
+    /// <returns>The validation result.</returns>
+    protected bool SetValidationResult(bool isValid) {
+        IsValid = isValid;
+        ErrorMessage = isValid ? "" : CreateErrorMessage();
+        return isValid;
     }
 
     /// <summary>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
+using System.Threading.Tasks;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
@@ -99,6 +101,30 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
 
         foreach (IFormValidator item in Items) {
             if (!item.Validate()) {
+                AddFailure(item);
+
+                if (IsStoppedIfFail) {
+                    break;
+                }
+            }
+        }
+
+        return CompleteResult();
+    }
+
+    internal async Task<bool> ValidateCoreAsync(CancellationToken cancellationToken) {
+        ClearResult();
+
+        foreach (IFormValidator item in Items) {
+            cancellationToken.ThrowIfCancellationRequested();
+
+            bool isValid = item switch {
+                BulkValidator innerItems => await innerItems.ValidateCoreAsync(cancellationToken).ConfigureAwait(false),
+                IAsyncFormValidator asyncItem => await asyncItem.ValidateAsync(cancellationToken).ConfigureAwait(false),
+                _ => item.Validate()
+            };
+
+            if (!isValid) {
                 AddFailure(item);
 
                 if (IsStoppedIfFail) {

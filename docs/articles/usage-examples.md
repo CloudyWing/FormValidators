@@ -224,6 +224,70 @@ if (!form.Validate(out string errorMessage)) {
 }
 ```
 
+## 範例 6：取得結構化的錯誤結果
+
+**情境**：前端需要依欄位顯示錯誤訊息，而不是整段字串。
+
+```csharp
+BulkValidator validators = new(cfg => {
+    cfg.Add("Email", email,
+        opt => opt.Required(),
+        opt => opt.Email()
+    );
+    cfg.Add("統一編號", taxId,
+        opt => opt.TaiwanUniformNumber()
+    );
+});
+
+if (!validators.Validate()) {
+    foreach (ValidationError error in validators.Errors) {
+        // Column 為欄位名稱，TrueAssertValidator 等沒有欄位的驗證器為 null
+        Console.WriteLine($"{error.Column}：{error.Message}（{error.ValidatorType.Name}）");
+    }
+}
+```
+
+## 範例 7：非同步驗證
+
+**情境**：帳號是否已被使用需要查詢資料庫。
+
+```csharp
+BulkValidator validators = new(cfg => {
+    cfg.Add("帳號", account,
+        opt => opt.Required(),
+        opt => opt.CustomAsync(
+            async (value, cancellationToken) => !await userRepository.ExistsAsync(value, cancellationToken),
+            "{0}「{1}」已被使用。"
+        )
+    );
+});
+
+if (!await validators.ValidateAsync(cancellationToken)) {
+    Console.WriteLine(validators.ErrorMessage);
+}
+```
+
+- `ValidateAsync` 依序執行驗證器，實作 @CloudyWing.FormValidators.IAsyncFormValidator 的驗證器以 `await` 執行，其他驗證器維持同步執行。
+- `isStoppedIfFail` 的行為與同步的 `Validate` 相同。
+- `AsyncCustomValidator` 只能透過 `ValidateAsync` 執行，呼叫同步的 `Validate` 會拋出 `NotSupportedException`。
+
+## 範例 8：固定解析格式
+
+**情境**：API 傳入的數值與日期固定使用不受文化特性影響的格式。
+
+```csharp
+BulkValidator validators = new(cfg => {
+    cfg.Add("金額", amount,
+        opt => opt.NumberRange(0m, 10000m, false, CultureInfo.InvariantCulture)
+    );
+    cfg.Add("日期", date,
+        opt => opt.DateTime(["yyyy-MM-dd"], CultureInfo.InvariantCulture)
+    );
+});
+```
+
+未指定 `formatProvider` 時，會使用目前的文化特性解析，適合 Web Form 等由使用者直接輸入的情境。
+
 ## 進階技巧
 
 ### 動態條件驗證
@@ -242,7 +306,7 @@ BulkValidator validators = new(cfg => {
     cfg.AddIf(
         isCorporateAccount, "統一編號", taxId,
         opt => opt.Required(),
-        opt => opt.LengthRange(8, 8)
+        opt => opt.TaiwanUniformNumber()
     );
 });
 ```

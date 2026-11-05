@@ -5,6 +5,18 @@ description: 學習如何建立自訂的驗證器
 
 當內建的驗證器無法滿足您的需求時，您可以建立自訂的驗證器。
 
+## 方法 0：使用內建的自訂驗證
+
+簡單的判斷可以直接使用 `opt.Custom(...)`，需要查詢資料庫等非同步作業時使用 `opt.CustomAsync(...)`，不需要另外撰寫類別。
+
+```csharp
+BulkValidator validators = new(cfg => {
+    cfg.Add("文章網址", articleSlug,
+        opt => opt.Custom(x => x.All(c => char.IsLower(c) || char.IsDigit(c) || c == '-'), "{0}格式錯誤。")
+    );
+});
+```
+
 ## 方法 1：撰寫新的 FormValidator
 
 實作 @CloudyWing.FormValidators.IFormValidator 介面來建立自訂驗證器。
@@ -74,7 +86,7 @@ if (!validators.Validate()) {
 using CloudyWing.FormValidators.Core;
 
 public static class ValidationProviderExtensions {
-    public static Func<string, string, CustomFormValidator> Custom(this ValidationProvider provider)
+    public static Func<string, string, CustomFormValidator> CustomRule(this ValidationProvider provider)
         => (column, value) => new CustomFormValidator(column, value);
 }
 ```
@@ -85,12 +97,50 @@ public static class ValidationProviderExtensions {
 BulkValidator validators = new(cfg => {
     cfg.Add("欄位名稱", "欄位值", 
         opt => opt.Required(),
-        opt => opt.Custom()
+        opt => opt.CustomRule()
     ); // 使用自訂驗證器
 });
 
 if (!validators.Validate()) {
     Console.WriteLine(validators.ErrorMessage);
+}
+```
+
+> [!NOTE]
+> 擴充方法的名稱請避開 `ValidationProvider` 已有的方法名稱，例如 `Custom`、`In`、`Phone`，以免呼叫到內建方法。
+
+## 非同步驗證器
+
+實作 @CloudyWing.FormValidators.IAsyncFormValidator 的驗證器，可以透過 `BulkValidator` 的 `ValidateAsync` 擴充方法以 `await` 執行。`IAsyncFormValidator` 繼承 `IFormValidator`，仍需實作同步的 `Validate`；無法同步驗證時，可拋出 `NotSupportedException`。
+
+```csharp
+public class AccountUnusedValidator : IAsyncFormValidator {
+    private readonly IUserRepository repository;
+
+    public AccountUnusedValidator(string column, string value, IUserRepository repository) {
+        Column = column;
+        Value = value;
+        this.repository = repository;
+    }
+
+    public string Column { get; }
+
+    public string Value { get; }
+
+    public string ErrorMessage { get; private set; } = "";
+
+    public bool IsValid { get; private set; }
+
+    public bool Validate() {
+        throw new NotSupportedException("請使用 ValidateAsync。");
+    }
+
+    public async Task<bool> ValidateAsync(CancellationToken cancellationToken = default) {
+        IsValid = string.IsNullOrWhiteSpace(Value)
+            || !await repository.ExistsAsync(Value, cancellationToken).ConfigureAwait(false);
+        ErrorMessage = IsValid ? "" : $"{Column}已被使用。";
+        return IsValid;
+    }
 }
 ```
 

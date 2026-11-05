@@ -24,6 +24,8 @@ ErrorMessageProvider.SetValueIsIntegerAccessor((column, value) => $"{column} mus
 > [!TIP]
 > 建議在應用程式啟動時（如 `Program.cs` 或 `Startup.cs`）統一設定錯誤訊息，確保全域一致性。
 
+`SetAccessor` 方法修改的是整個應用程式共用的設定。單一 accessor 的替換是原子操作，設定後其他執行緒會立即讀到新的 accessor，但同時替換多個 accessor 不是一個交易。需要依請求或使用者語系切換訊息時，請改用 [限定範圍的訊息覆寫](#限定範圍的訊息覆寫)。
+
 ## Validator 與 Accessor 對應關係
 
 ### RequiredValidator
@@ -155,6 +157,51 @@ ErrorMessageProvider.SetValueLessThanAnotherColumnValueAccessor(
         : $"{column}必須小於{compareColumn}。");
 ```
 
+### GuidValidator
+
+- **SetValueIsGuidAccessor**：值不是有效的 GUID
+
+```csharp
+ErrorMessageProvider.SetValueIsGuidAccessor((column, value)
+    => $"{column}必須為有效的 GUID。");
+```
+
+### TaiwanUniformNumberValidator
+
+- **SetValueIsTaiwanUniformNumberAccessor**：值不是有效的統一編號
+
+```csharp
+ErrorMessageProvider.SetValueIsTaiwanUniformNumberAccessor((column, value)
+    => $"{column}必須為有效的統一編號。");
+```
+
+### PhoneValidator
+
+- **SetValueIsPhoneAccessor**：值不是有效的台灣市話號碼
+
+```csharp
+ErrorMessageProvider.SetValueIsPhoneAccessor((column, value)
+    => $"{column}必須為有效的市話號碼。");
+```
+
+### AllowedValuesValidator
+
+- **SetValueIsInAllowedValuesAccessor**：值不在允許的清單內，第三個參數為允許值清單
+
+```csharp
+ErrorMessageProvider.SetValueIsInAllowedValuesAccessor((column, value, allowedValues)
+    => $"{column}只能是 {string.Join("、", allowedValues)}。");
+```
+
+### CustomValidator 與 AsyncCustomValidator
+
+- **SetValueMatchCustomRuleAccessor**：自訂判斷式回傳 `false`
+
+```csharp
+ErrorMessageProvider.SetValueMatchCustomRuleAccessor((column, value)
+    => $"{column}不符合規則。");
+```
+
 ### NumberLessThanValidator
 
 - **SetValueLessThanAnotherColumnValueAccessor**：數值不小於比較值
@@ -222,9 +269,30 @@ public class Program {
 }
 ```
 
+## 限定範圍的訊息覆寫
+
+`ErrorMessageProvider.BeginScope` 可以在一段範圍內覆寫部分 accessor，不會修改全域設定。範圍隨執行內容流動，`await` 之後的程式碼與在範圍內啟動的非同步作業都會套用，不會影響其他請求或執行緒。
+
+```csharp
+using (ErrorMessageProvider.BeginScope(new ErrorMessageOverrides {
+    ValueIsRequiredAccessor = (column, value) => $"{column} is required.",
+    ValueIsEmailAccessor = (column, value) => $"{column} must be a valid email address."
+})) {
+    if (!validators.Validate()) {
+        Console.WriteLine(validators.ErrorMessage);
+    }
+}
+```
+
+- `ErrorMessageOverrides` 中未設定的 accessor，沿用外層範圍或全域設定。
+- 開始範圍時會複製 `ErrorMessageOverrides` 的內容，之後再修改該物件不會影響範圍。
+- 巢狀範圍結束後，會還原外層範圍的設定。
+- 錯誤訊息在呼叫 `Validate` 時產生，請在範圍內執行驗證。
+- .NET Framework 4.5 以 logical call context 保存範圍，其他目標框架以 `AsyncLocal<T>` 保存。
+
 ## 多語言支援
 
-您可以根據使用者的語言偏好動態設定錯誤訊息：
+您可以根據使用者的語言偏好動態設定錯誤訊息。以下範例在應用程式啟動時依單一語系設定全域訊息；同一個應用程式需要同時服務多種語系時，請改用 `BeginScope`：
 
 ```csharp
 public static void ConfigureErrorMessages(string language) {

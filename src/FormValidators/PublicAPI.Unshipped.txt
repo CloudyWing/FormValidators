@@ -1,4 +1,5 @@
 #nullable enable
+CloudyWing.FormValidators.BulkValidator.Errors.get -> System.Collections.Generic.IReadOnlyList<CloudyWing.FormValidators.ValidationError!>!
 CloudyWing.FormValidators.Core.ValidationProvider.DateTime(System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
 CloudyWing.FormValidators.Core.ValidationProvider.DateTime(System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
 CloudyWing.FormValidators.Core.ValidationProvider.DateTime(System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
@@ -65,6 +66,12 @@ CloudyWing.FormValidators.TextLengthUnit.Utf16CodeUnit = 0 -> CloudyWing.FormVal
 CloudyWing.FormValidators.UrlValidator.AllowedSchemes.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
 CloudyWing.FormValidators.UrlValidator.UrlValidator(string! column, string? value, System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes) -> void
 CloudyWing.FormValidators.UrlValidator.UrlValidator(string! column, string? value, System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes, System.Func<string!, string?, string!>? customErrorMessageAccessor) -> void
+CloudyWing.FormValidators.ValidationError
+CloudyWing.FormValidators.ValidationError.Column.get -> string?
+CloudyWing.FormValidators.ValidationError.Message.get -> string!
+CloudyWing.FormValidators.ValidationError.ValidationError(string? column, string! message, CloudyWing.FormValidators.IFormValidator! validator) -> void
+CloudyWing.FormValidators.ValidationError.Validator.get -> CloudyWing.FormValidators.IFormValidator!
+CloudyWing.FormValidators.ValidationError.ValidatorType.get -> System.Type!
 CloudyWing.FormValidators.ValueLengthValidator.Unit.get -> CloudyWing.FormValidators.TextLengthUnit
 CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string! column, string? value, long min, long max, CloudyWing.FormValidators.TextLengthUnit unit) -> void
 CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string! column, string? value, long min, long max, CloudyWing.FormValidators.TextLengthUnit unit, System.Func<string!, string?, long, long, string!>? customErrorMessageAccessor) -> void

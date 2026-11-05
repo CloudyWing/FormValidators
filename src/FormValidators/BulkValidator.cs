@@ -11,6 +11,8 @@ namespace CloudyWing.FormValidators;
 public class BulkValidator : Collection<IFormValidator>, IFormValidator {
     private readonly List<string> errorMessages = [];
     private readonly ReadOnlyCollection<string> readOnlyErrorMessages;
+    private readonly List<ValidationError> errors = [];
+    private readonly ReadOnlyCollection<ValidationError> readOnlyErrors;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="BulkValidator" /> class.
@@ -18,6 +20,7 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
     /// <param name="isStoppedIfFail">if set to <c>true</c> [is stopped if fail].</param>
     public BulkValidator(bool isStoppedIfFail = false) {
         readOnlyErrorMessages = new ReadOnlyCollection<string>(errorMessages);
+        readOnlyErrors = new ReadOnlyCollection<ValidationError>(errors);
         IsStoppedIfFail = isStoppedIfFail;
     }
 
@@ -33,6 +36,7 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
         }
 
         readOnlyErrorMessages = new ReadOnlyCollection<string>(errorMessages);
+        readOnlyErrors = new ReadOnlyCollection<ValidationError>(errors);
         IsStoppedIfFail = isStoppedIfFail;
         configure(new ValidatorConfiguration(this));
     }
@@ -68,6 +72,14 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
     public IReadOnlyCollection<string> ErrorMessages => readOnlyErrorMessages;
 
     /// <summary>
+    /// Gets the structured errors of the last validation.
+    /// </summary>
+    /// <value>
+    /// The errors in the same order as <see cref="ErrorMessages" />. Errors of a nested <see cref="BulkValidator" /> are flattened.
+    /// </value>
+    public IReadOnlyList<ValidationError> Errors => readOnlyErrors;
+
+    /// <summary>
     /// Returns true if ... is valid.
     /// </summary>
     /// <value>
@@ -83,20 +95,39 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
 
     /// <inheritdoc/>
     public bool Validate() {
-        errorMessages.Clear();
+        ClearResult();
 
         foreach (IFormValidator item in Items) {
             if (!item.Validate()) {
-                if (item is BulkValidator innerItems) {
-                    errorMessages.AddRange(innerItems.errorMessages);
-                } else {
-                    errorMessages.Add(item.ErrorMessage);
-                }
+                AddFailure(item);
+
                 if (IsStoppedIfFail) {
                     break;
                 }
             }
         }
+
+        return CompleteResult();
+    }
+
+    private void ClearResult() {
+        errorMessages.Clear();
+        errors.Clear();
+    }
+
+    private void AddFailure(IFormValidator item) {
+        if (item is BulkValidator innerItems) {
+            errorMessages.AddRange(innerItems.errorMessages);
+            errors.AddRange(innerItems.errors);
+        } else {
+            errorMessages.Add(item.ErrorMessage);
+
+            // 自訂 IFormValidator 可能在未啟用 NRT 的專案回傳 null，結構化結果以空字串保存
+            errors.Add(new ValidationError((item as FormValidatorBase)?.Column, item.ErrorMessage ?? "", item));
+        }
+    }
+
+    private bool CompleteResult() {
         IsValid = errorMessages.Count == 0;
 
         return IsValid;

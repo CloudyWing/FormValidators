@@ -35,12 +35,11 @@ public class LessThanValidatorTests {
         string comparisonColumn = "比較欄位";
         string comparisonValue = "10";
         bool allowedEqual = true;
-        string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, comparisonColumn, value, comparisonValue, allowedEqual);
 
         TestLessThanValidator validator = new(column, value, comparisonColumn, comparisonValue, allowedEqual, null);
         validator.Validate();
 
-        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+        Assert.That(validator.ErrorMessage, Is.EqualTo("「欄位」必須要小於等於「比較欄位」。"));
     }
 
     [Test]
@@ -59,5 +58,28 @@ public class LessThanValidatorTests {
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void ErrorMessage_WhenNotAllowedEqualAndFails_ReturnsDefaultMessageWithoutEqual() {
+        TestLessThanValidator validator = new("欄位", "10", "比較欄位", "10", false, null);
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo("「欄位」必須要小於「比較欄位」。"));
+    }
+
+    [Test]
+    public void ErrorMessage_WhenGlobalAccessorIsSet_ReceivesDocumentedArgumentOrder() {
+        string actual = null;
+        ErrorMessageProvider.SetValueLessThanAnotherColumnValueAccessor((c, v, cc, cv, b) => actual = $"{c}|{v}|{cc}|{cv}|{b}");
+
+        try {
+            TestLessThanValidator validator = new("欄位", "15", "比較欄位", "10", true, null);
+            validator.Validate();
+        } finally {
+            ErrorMessageProvider.ResetToDefaults();
+        }
+
+        Assert.That(actual, Is.EqualTo("欄位|15|比較欄位|10|True"));
     }
 }

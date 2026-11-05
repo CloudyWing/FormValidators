@@ -1,5 +1,4 @@
-﻿using CloudyWing.FormValidators.Core;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
 
@@ -25,7 +24,7 @@ public class IntegerLessThanValidatorTests {
         string comparisonColumn = "比較欄位";
         string comparisonValue = "0";
         bool allowedEqual = false;
-        string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, comparisonColumn, value, comparisonValue, allowedEqual);
+        string expected = "「欄位」必須要小於「比較欄位」。";
 
         IntegerLessThanValidator validator = new(column, value, comparisonColumn, comparisonValue, allowedEqual);
         validator.Validate();

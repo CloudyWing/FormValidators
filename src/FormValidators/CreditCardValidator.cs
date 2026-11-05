@@ -13,16 +13,16 @@ public sealed class CreditCardValidator : BasicFormValidator {
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
-    public CreditCardValidator(string column, string value, Func<string, string, string> customErrorMessageAccessor = null)
+    public CreditCardValidator(string column, string? value, Func<string, string?, string>? customErrorMessageAccessor = null)
         : base(column, value, customErrorMessageAccessor) {
     }
 
     /// <inheritdoc/>
-    protected override Func<string, string, string> DefaultErrorMessageAccessor => ErrorMessageProvider.ValueIsCreditCardAccessor;
+    protected override Func<string, string?, string> DefaultErrorMessageAccessor => ErrorMessageProvider.ValueIsCreditCardAccessor;
 
     /// <inheritdoc/>
     protected override bool ValidateValue() {
-        if (string.IsNullOrWhiteSpace(Value)) {
+        if (StringUtils.IsNullOrWhiteSpace(Value)) {
             return true;
         }
 

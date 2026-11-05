@@ -14,10 +14,10 @@ public sealed class EmailValidator : RegexValidator {
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
-    public EmailValidator(string column, string value, Func<string, string, string> customErrorMessageAccessor = null)
+    public EmailValidator(string column, string? value, Func<string, string?, string>? customErrorMessageAccessor = null)
         : base(column, value, BuiltInRegexes.Email, customErrorMessageAccessor) {
     }
 
     /// <inheritdoc/>
-    protected override Func<string, string, string> DefaultErrorMessageAccessor => ErrorMessageProvider.ValueIsEmailAccessor;
+    protected override Func<string, string?, string> DefaultErrorMessageAccessor => ErrorMessageProvider.ValueIsEmailAccessor;
 }

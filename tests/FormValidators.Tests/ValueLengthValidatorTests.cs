@@ -115,9 +115,9 @@ public class ValueLengthValidatorTests {
 
     [Test]
     public void Constructor_MinGreaterThanMax_ThrowsArgumentException() {
-        ArgumentException exception = Assert.Throws<ArgumentException>(() => new ValueLengthValidator("", "123", 5, 3));
+        ArgumentException? exception = Assert.Throws<ArgumentException>(() => new ValueLengthValidator("", "123", 5, 3));
 
-        Assert.That(exception.ParamName, Is.EqualTo("min"));
+        Assert.That(exception?.ParamName, Is.EqualTo("min"));
     }
 
     [TestCase(5, 0)]
@@ -130,7 +130,7 @@ public class ValueLengthValidatorTests {
     [Test]
     public void ValidationProviderLengthRange_MinGreaterThanMax_ThrowsArgumentExceptionWhenCreated() {
         ValidationProvider provider = new();
-        Func<string, string, ValueLengthValidator> creator = provider.LengthRange(5, 3);
+        Func<string, string?, ValueLengthValidator> creator = provider.LengthRange(5, 3);
 
         Assert.Throws<ArgumentException>(() => creator("", "123"));
     }

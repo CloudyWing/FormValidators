@@ -9,7 +9,7 @@ namespace CloudyWing.FormValidators;
 /// </summary>
 /// <seealso cref="FormValidatorBase" />
 public sealed class ValueLengthValidator : FormValidatorBase {
-    private string defaultErrorMessage;
+    private string defaultErrorMessage = "";
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ValueLengthValidator" /> class.
@@ -19,8 +19,8 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     public ValueLengthValidator(
-        string column, string value, long max,
-        Func<string, string, long, long, string> customErrorMessageAccessor = null
+        string column, string? value, long max,
+        Func<string, string?, long, long, string>? customErrorMessageAccessor = null
     ) : this(column, value, 0, max, customErrorMessageAccessor) { }
 
     /// <summary>
@@ -33,9 +33,9 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <exception cref="ArgumentException">Both <paramref name="min" /> and <paramref name="max" /> are greater than 0 and <paramref name="min" /> is greater than <paramref name="max" />.</exception>
     public ValueLengthValidator(
-        string column, string value,
+        string column, string? value,
         long min, long max,
-        Func<string, string, long, long, string> customErrorMessageAccessor = null
+        Func<string, string?, long, long, string>? customErrorMessageAccessor = null
     ) : base(column, value) {
         MinLength = min < 0 ? 0 : min;
         MaxLength = max < 0 ? 0 : max;
@@ -57,7 +57,7 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     /// <param name="max">The maximum. Less than or equal to 0 means unlimited.</param>
     /// <param name="unit">The unit used to count the length.</param>
     /// <exception cref="ArgumentException">Both <paramref name="min" /> and <paramref name="max" /> are greater than 0 and <paramref name="min" /> is greater than <paramref name="max" />.</exception>
-    public ValueLengthValidator(string column, string value, long min, long max, TextLengthUnit unit)
+    public ValueLengthValidator(string column, string? value, long min, long max, TextLengthUnit unit)
         : this(column, value, min, max, unit, null) { }
 
     /// <summary>
@@ -71,8 +71,8 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <exception cref="ArgumentException">Both <paramref name="min" /> and <paramref name="max" /> are greater than 0 and <paramref name="min" /> is greater than <paramref name="max" />.</exception>
     public ValueLengthValidator(
-        string column, string value, long min, long max, TextLengthUnit unit,
-        Func<string, string, long, long, string> customErrorMessageAccessor
+        string column, string? value, long min, long max, TextLengthUnit unit,
+        Func<string, string?, long, long, string>? customErrorMessageAccessor
     ) : this(column, value, min, max, customErrorMessageAccessor) {
         Unit = unit;
     }
@@ -99,13 +99,13 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     /// Gets the custom range message format.
     /// </summary>
     /// <value>The custom range message format.</value>
-    public Func<string, string, long, long, string> CustomErrorMessageAccessor { get; set; }
+    public Func<string, string?, long, long, string>? CustomErrorMessageAccessor { get; set; }
 
     /// <inheritdoc/>
     protected override string DefaultErrorMessage => defaultErrorMessage;
 
     /// <inheritdoc/>
-    protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, MinLength, MaxLength);
+    protected override string CustomErrorMessage => CustomErrorMessageAccessor!(Column, Value, MinLength, MaxLength);
 
     /// <inheritdoc/>
     protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
@@ -114,40 +114,31 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     protected override bool ValidateValue() {
         defaultErrorMessage = "";
 
-        if (string.IsNullOrWhiteSpace(Value)) {
+        if (StringUtils.IsNullOrWhiteSpace(Value)) {
             return true;
         } else if (MinLength > 0 && MaxLength > 0) {
             defaultErrorMessage = ErrorMessageProvider.ValueLengthInRangeAccessor(Column, Value, MinLength, MaxLength);
-            return ValidateRange();
+            return ValidateRange(GetLength(Value));
         } else if (MinLength > 0) {
             defaultErrorMessage = ErrorMessageProvider.ValueLengthGreaterOrEqualAccessor(Column, Value, MinLength);
-            return ValidateMinLength();
+            return GetLength(Value) >= MinLength;
         } else if (MaxLength > 0) {
             defaultErrorMessage = ErrorMessageProvider.ValueLengthLessOrEqualAccessor(Column, Value, MaxLength);
-            return ValidateMaxLength();
+            return GetLength(Value) <= MaxLength;
         } else {
             return true;
         }
     }
 
-    private bool ValidateRange() {
-        long length = GetLength();
+    private bool ValidateRange(long length) {
         return length >= MinLength && length <= MaxLength;
     }
 
-    private bool ValidateMinLength() {
-        return GetLength() >= MinLength;
-    }
-
-    private bool ValidateMaxLength() {
-        return GetLength() <= MaxLength;
-    }
-
-    private long GetLength() {
+    private long GetLength(string value) {
         return Unit switch {
-            TextLengthUnit.UnicodeScalar => CountUnicodeScalars(Value),
-            TextLengthUnit.TextElement => new StringInfo(Value).LengthInTextElements,
-            _ => Value.Length
+            TextLengthUnit.UnicodeScalar => CountUnicodeScalars(value),
+            TextLengthUnit.TextElement => new StringInfo(value).LengthInTextElements,
+            _ => value.Length
         };
     }
 

@@ -15,7 +15,7 @@ public sealed class IntegerValidator : ComparableTypeValidator<long> {
     /// <param name="value">The value.</param>
     /// <param name="allowedThousands"></param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
-    public IntegerValidator(string column, string value, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null)
+    public IntegerValidator(string column, string? value, bool allowedThousands = false, Func<string, string?, long?, long?, string>? customErrorMessageAccessor = null)
         : this(column, value, null, null, allowedThousands, customErrorMessageAccessor) { }
 
     /// <summary>
@@ -27,7 +27,7 @@ public sealed class IntegerValidator : ComparableTypeValidator<long> {
     /// <param name="max">The maximum.</param>
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor.</param>
-    public IntegerValidator(string column, string value, long? min, long? max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null)
+    public IntegerValidator(string column, string? value, long? min, long? max, bool allowedThousands = false, Func<string, string?, long?, long?, string>? customErrorMessageAccessor = null)
         : base(column, value, min, max, customErrorMessageAccessor) {
         AllowedThousands = allowedThousands;
     }
@@ -40,7 +40,7 @@ public sealed class IntegerValidator : ComparableTypeValidator<long> {
     public bool AllowedThousands { get; }
 
     /// <inheritdoc/>
-    protected override Func<string, string, string> CastErrorMessageAccessor => ErrorMessageProvider.ValueIsIntegerAccessor;
+    protected override Func<string, string?, string> CastErrorMessageAccessor => ErrorMessageProvider.ValueIsIntegerAccessor;
 
     /// <inheritdoc/>
     protected override bool TryParse(string value, out long result) {

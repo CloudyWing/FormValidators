@@ -14,7 +14,7 @@ public sealed class MobilePhoneValidator : FormValidatorBase {
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, mobile phone formats.</param>
-    public MobilePhoneValidator(string column, string value, Func<string, string, MobilePhoneFormats, string> customErrorMessageAccessor = null)
+    public MobilePhoneValidator(string column, string? value, Func<string, string?, MobilePhoneFormats, string>? customErrorMessageAccessor = null)
         : this(column, value, MobilePhoneFormats.All, customErrorMessageAccessor) { }
 
     /// <summary>
@@ -24,7 +24,7 @@ public sealed class MobilePhoneValidator : FormValidatorBase {
     /// <param name="value">The value.</param>
     /// <param name="formats">The formats.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, mobile phone formats.</param>
-    public MobilePhoneValidator(string column, string value, MobilePhoneFormats formats, Func<string, string, MobilePhoneFormats, string> customErrorMessageAccessor = null)
+    public MobilePhoneValidator(string column, string? value, MobilePhoneFormats formats, Func<string, string?, MobilePhoneFormats, string>? customErrorMessageAccessor = null)
         : base(column, value) {
         Formats = formats;
         CustomErrorMessageAccessor = customErrorMessageAccessor;
@@ -46,13 +46,13 @@ public sealed class MobilePhoneValidator : FormValidatorBase {
     /// Gets or sets the custom error message accessor.
     /// </summary>
     /// <value>The custom error message accessor.</value>
-    public Func<string, string, MobilePhoneFormats, string> CustomErrorMessageAccessor { get; set; }
+    public Func<string, string?, MobilePhoneFormats, string>? CustomErrorMessageAccessor { get; set; }
 
     /// <inheritdoc />
     protected override string DefaultErrorMessage => ErrorMessageProvider.ValueIsMobilePhoneAccessor(Column, Value, Formats);
 
     /// <inheritdoc />
-    protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, Formats);
+    protected override string CustomErrorMessage => CustomErrorMessageAccessor!(Column, Value, Formats);
 
     /// <inheritdoc />
     protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
@@ -60,7 +60,7 @@ public sealed class MobilePhoneValidator : FormValidatorBase {
     /// <inheritdoc />
     protected override bool ValidateValue() {
         // 是否有填資料由RequiredValidator驗證，所以沒填就不驗證
-        if (string.IsNullOrWhiteSpace(Value)) {
+        if (StringUtils.IsNullOrWhiteSpace(Value)) {
             return true;
         }
 

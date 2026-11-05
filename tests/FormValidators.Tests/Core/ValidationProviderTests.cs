@@ -6,7 +6,7 @@ namespace CloudyWing.FormValidators.Tests.Core;
 
 [TestFixture()]
 public class ValidationProviderTests {
-    private ValidationProvider provider;
+    private ValidationProvider provider = new();
 
     [SetUp]
     public void Setup() {

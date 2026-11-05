@@ -53,16 +53,16 @@ public class RegexValidatorTests {
 
     [Test]
     public void Constructor_NullPattern_ThrowsArgumentNullException() {
-        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new RegexValidator("", "", (string)null));
+        ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => new RegexValidator("", "", (string)null!));
 
-        Assert.That(exception.ParamName, Is.EqualTo("pattern"));
+        Assert.That(exception?.ParamName, Is.EqualTo("pattern"));
     }
 
     [Test]
     public void Constructor_NullRegex_ThrowsArgumentNullException() {
-        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new RegexValidator("", "", (Regex)null));
+        ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => new RegexValidator("", "", (Regex)null!));
 
-        Assert.That(exception.ParamName, Is.EqualTo("regex"));
+        Assert.That(exception?.ParamName, Is.EqualTo("regex"));
     }
 
     [Test]

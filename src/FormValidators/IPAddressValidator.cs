@@ -15,7 +15,7 @@ public sealed class IPAddressValidator : FormValidatorBase {
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, IP address types.</param>
-    public IPAddressValidator(string column, string value, Func<string, string, IPAddressTypes, string> customErrorMessageAccessor = null)
+    public IPAddressValidator(string column, string? value, Func<string, string?, IPAddressTypes, string>? customErrorMessageAccessor = null)
         : this(column, value, IPAddressTypes.All, customErrorMessageAccessor) {
     }
 
@@ -26,7 +26,7 @@ public sealed class IPAddressValidator : FormValidatorBase {
     /// <param name="value">The value.</param>
     /// <param name="types">The types.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, IP address types.</param>
-    public IPAddressValidator(string column, string value, IPAddressTypes types, Func<string, string, IPAddressTypes, string> customErrorMessageAccessor = null)
+    public IPAddressValidator(string column, string? value, IPAddressTypes types, Func<string, string?, IPAddressTypes, string>? customErrorMessageAccessor = null)
         : base(column, value) {
         Types = types;
         CustomErrorMessageAccessor = customErrorMessageAccessor;
@@ -42,20 +42,20 @@ public sealed class IPAddressValidator : FormValidatorBase {
     /// Gets or sets the custom error message accessor.
     /// </summary>
     /// <value>The custom error message accessor.</value>
-    public Func<string, string, IPAddressTypes, string> CustomErrorMessageAccessor { get; }
+    public Func<string, string?, IPAddressTypes, string>? CustomErrorMessageAccessor { get; }
 
     /// <inheritdoc/>
     protected override string DefaultErrorMessage => ErrorMessageProvider.ValueIsIPAddressAccessor(Column, Value, Types);
 
     /// <inheritdoc/>
-    protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, Types);
+    protected override string CustomErrorMessage => CustomErrorMessageAccessor!(Column, Value, Types);
 
     /// <inheritdoc/>
     protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
 
     /// <inheritdoc/>
     protected override bool ValidateValue() {
-        if (string.IsNullOrWhiteSpace(Value)) {
+        if (StringUtils.IsNullOrWhiteSpace(Value)) {
             return true;
         }
 
@@ -65,8 +65,8 @@ public sealed class IPAddressValidator : FormValidatorBase {
         }
 
         return Types.HasFlag(IPAddressTypes.IPv6)
-            && IPAddress.TryParse(Value, out IPAddress ip)
-            && ip.AddressFamily == AddressFamily.InterNetworkV6;
+            && IPAddress.TryParse(Value, out IPAddress? ip)
+            && ip?.AddressFamily == AddressFamily.InterNetworkV6;
     }
 
     private static bool IsDottedDecimalIPv4(string value) {

@@ -14,8 +14,8 @@ public sealed class IdCardValidator : FormValidatorBase {
     /// <param name="value">The value.</param>
     /// <param name="idCardType">Type of the identification card.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, identification card types.</param>
-    public IdCardValidator(string column, string value,
-        IdCardTypes idCardType = IdCardTypes.All, Func<string, string, IdCardTypes, string> customErrorMessageAccessor = null)
+    public IdCardValidator(string column, string? value,
+        IdCardTypes idCardType = IdCardTypes.All, Func<string, string?, IdCardTypes, string>? customErrorMessageAccessor = null)
         : base(column, value) {
         IdCardType = idCardType;
         CustomErrorMessageAccessor = customErrorMessageAccessor;
@@ -34,20 +34,20 @@ public sealed class IdCardValidator : FormValidatorBase {
     /// Gets or sets the custom error message accessor.
     /// </summary>
     /// <value>The custom error message accessor.</value>
-    public Func<string, string, IdCardTypes, string> CustomErrorMessageAccessor { get; }
+    public Func<string, string?, IdCardTypes, string>? CustomErrorMessageAccessor { get; }
 
     /// <inheritdoc/>
     protected override string DefaultErrorMessage => ErrorMessageProvider.ValueIsIdCardAccessor(Column, Value, IdCardType);
 
     /// <inheritdoc/>
-    protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, IdCardType);
+    protected override string CustomErrorMessage => CustomErrorMessageAccessor!(Column, Value, IdCardType);
 
     /// <inheritdoc/>
     protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
 
     /// <inheritdoc/>
     protected override bool ValidateValue() {
-        if (string.IsNullOrWhiteSpace(Value)) {
+        if (StringUtils.IsNullOrWhiteSpace(Value)) {
             return true;
         }
 
@@ -65,7 +65,7 @@ public sealed class IdCardValidator : FormValidatorBase {
             }
         }
 
-        return ValidateCheckCode();
+        return ValidateCheckCode(Value);
     }
 
     private static bool IsAsciiLetter(char c) {
@@ -83,18 +83,18 @@ public sealed class IdCardValidator : FormValidatorBase {
         };
     }
 
-    private bool ValidateCheckCode() {
+    private static bool ValidateCheckCode(string value) {
         int sum = 0;
 
-        int firstCharVal = ConvertToNumber(Value[0]);
+        int firstCharVal = ConvertToNumber(value[0]);
         sum += firstCharVal / 10 * Weights[0];
         sum += firstCharVal % 10 * Weights[1];
 
-        int secondCharVal = ConvertToNumber(Value[1]);
+        int secondCharVal = ConvertToNumber(value[1]);
         sum += secondCharVal % 10 * Weights[2];
 
         for (int i = 2; i < 10; i++) {
-            sum += (Value[i] - '0') * Weights[i + 1];
+            sum += (value[i] - '0') * Weights[i + 1];
         }
 
         return sum % 10 == 0;

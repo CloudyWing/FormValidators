@@ -12,7 +12,7 @@ public class ValidationProvider {
     /// </summary>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, RequiredValidator> Required(string customErrorMessageFormat) {
+    public Func<string, string?, RequiredValidator> Required(string customErrorMessageFormat) {
         return Required((_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
     }
 
@@ -21,8 +21,8 @@ public class ValidationProvider {
     /// </summary>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, RequiredValidator> Required(
-        Func<string, string, string> customErrorMessageAccessor = null
+    public Func<string, string?, RequiredValidator> Required(
+        Func<string, string?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, customErrorMessageAccessor);
     }
@@ -33,7 +33,7 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerValidator> Integer(bool allowedThousands, string customErrorMessageFormat) {
+    public Func<string, string?, IntegerValidator> Integer(bool allowedThousands, string customErrorMessageFormat) {
         return Integer(allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -43,8 +43,8 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerValidator> Integer(
-        bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+    public Func<string, string?, IntegerValidator> Integer(
+        bool allowedThousands = false, Func<string, string?, long?, long?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, allowedThousands, customErrorMessageAccessor);
     }
@@ -56,7 +56,7 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerValidator> MinInt(long min, bool allowedThousands, string customErrorMessageFormat) {
+    public Func<string, string?, IntegerValidator> MinInt(long min, bool allowedThousands, string customErrorMessageFormat) {
         return MinInt(min, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -67,8 +67,8 @@ public class ValidationProvider {
     /// <param name="allowedThousands"></param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerValidator> MinInt(
-        long min, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+    public Func<string, string?, IntegerValidator> MinInt(
+        long min, bool allowedThousands = false, Func<string, string?, long?, long?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, min, null, allowedThousands, customErrorMessageAccessor);
     }
@@ -80,7 +80,7 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerValidator> MaxInt(long max, bool allowedThousands, string customErrorMessageFormat) {
+    public Func<string, string?, IntegerValidator> MaxInt(long max, bool allowedThousands, string customErrorMessageFormat) {
         return MaxInt(max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -91,8 +91,8 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerValidator> MaxInt(
-        long max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+    public Func<string, string?, IntegerValidator> MaxInt(
+        long max, bool allowedThousands = false, Func<string, string?, long?, long?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, null, max, allowedThousands, customErrorMessageAccessor);
     }
@@ -105,7 +105,7 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerValidator> IntRange(long min, long max, bool allowedThousands, string customErrorMessageFormat) {
+    public Func<string, string?, IntegerValidator> IntRange(long min, long max, bool allowedThousands, string customErrorMessageFormat) {
         return IntRange(min, max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -117,8 +117,8 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerValidator> IntRange(
-        long min, long max, bool allowedThousands = false, Func<string, string, long?, long?, string> customErrorMessageAccessor = null
+    public Func<string, string?, IntegerValidator> IntRange(
+        long min, long max, bool allowedThousands = false, Func<string, string?, long?, long?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, min, max, allowedThousands, customErrorMessageAccessor);
     }
@@ -129,7 +129,7 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberValidator> Number(bool allowedThousands, string customErrorMessageFormat) {
+    public Func<string, string?, NumberValidator> Number(bool allowedThousands, string customErrorMessageFormat) {
         return Number(allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -139,8 +139,8 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberValidator> Number(
-        bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+    public Func<string, string?, NumberValidator> Number(
+        bool allowedThousands = false, Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, allowedThousands, customErrorMessageAccessor);
     }
@@ -152,7 +152,7 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberValidator> MinNumber(decimal min, bool allowedThousands, string customErrorMessageFormat) {
+    public Func<string, string?, NumberValidator> MinNumber(decimal min, bool allowedThousands, string customErrorMessageFormat) {
         return MinNumber(min, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -163,8 +163,8 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberValidator> MinNumber(
-        decimal min, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+    public Func<string, string?, NumberValidator> MinNumber(
+        decimal min, bool allowedThousands = false, Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, min, null, allowedThousands, customErrorMessageAccessor);
     }
@@ -176,7 +176,7 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberValidator> MaxNumber(decimal max, bool allowedThousands, string customErrorMessageFormat) {
+    public Func<string, string?, NumberValidator> MaxNumber(decimal max, bool allowedThousands, string customErrorMessageFormat) {
         return MaxNumber(max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -187,8 +187,8 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberValidator> MaxNumber(
-        decimal max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+    public Func<string, string?, NumberValidator> MaxNumber(
+        decimal max, bool allowedThousands = false, Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, null, max, allowedThousands, customErrorMessageAccessor);
     }
@@ -201,7 +201,7 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberValidator> NumberRange(decimal min, decimal max, bool allowedThousands, string customErrorMessageFormat) {
+    public Func<string, string?, NumberValidator> NumberRange(decimal min, decimal max, bool allowedThousands, string customErrorMessageFormat) {
         return NumberRange(min, max, allowedThousands, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -213,8 +213,8 @@ public class ValidationProvider {
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberValidator> NumberRange(
-        decimal min, decimal max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null
+    public Func<string, string?, NumberValidator> NumberRange(
+        decimal min, decimal max, bool allowedThousands = false, Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, min, max, allowedThousands, customErrorMessageAccessor);
     }
@@ -224,7 +224,7 @@ public class ValidationProvider {
     /// </summary>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeValidator> DateTime(string customErrorMessageFormat) {
+    public Func<string, string?, DateTimeValidator> DateTime(string customErrorMessageFormat) {
         return DateTime((_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -233,8 +233,8 @@ public class ValidationProvider {
     /// </summary>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeValidator> DateTime(
-        Func<string, string, DateTime?, DateTime?, string> customErrorMessageAccessor = null
+    public Func<string, string?, DateTimeValidator> DateTime(
+        Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, customErrorMessageAccessor);
     }
@@ -245,7 +245,7 @@ public class ValidationProvider {
     /// <param name="min">The minimum.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeValidator> MinDateTime(DateTime min, string customErrorMessageFormat) {
+    public Func<string, string?, DateTimeValidator> MinDateTime(DateTime min, string customErrorMessageFormat) {
         return MinDateTime(min, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -255,8 +255,8 @@ public class ValidationProvider {
     /// <param name="min">The minimum.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeValidator> MinDateTime(
-        DateTime min, Func<string, string, DateTime?, DateTime?, string> customErrorMessageAccessor = null
+    public Func<string, string?, DateTimeValidator> MinDateTime(
+        DateTime min, Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, min, null, customErrorMessageAccessor);
     }
@@ -267,7 +267,7 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeValidator> MaxDateTime(DateTime max, string customErrorMessageFormat) {
+    public Func<string, string?, DateTimeValidator> MaxDateTime(DateTime max, string customErrorMessageFormat) {
         return MaxDateTime(max, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -277,8 +277,8 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeValidator> MaxDateTime(
-        DateTime max, Func<string, string, DateTime?, DateTime?, string> customErrorMessageAccessor = null
+    public Func<string, string?, DateTimeValidator> MaxDateTime(
+        DateTime max, Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, null, max, customErrorMessageAccessor);
     }
@@ -290,7 +290,7 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeValidator> DateTimeRange(
+    public Func<string, string?, DateTimeValidator> DateTimeRange(
         DateTime min, DateTime max, string customErrorMessageFormat
     ) {
         return DateTimeRange(min, max, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
@@ -303,8 +303,8 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeValidator> DateTimeRange(
-        DateTime min, DateTime max, Func<string, string, DateTime?, DateTime?, string> customErrorMessageAccessor = null
+    public Func<string, string?, DateTimeValidator> DateTimeRange(
+        DateTime min, DateTime max, Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, min, max, customErrorMessageAccessor);
     }
@@ -315,7 +315,7 @@ public class ValidationProvider {
     /// <param name="min">The minimum.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MinLength(long min, string customErrorMessageFormat) {
+    public Func<string, string?, ValueLengthValidator> MinLength(long min, string customErrorMessageFormat) {
         return MinLength(min, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -325,8 +325,8 @@ public class ValidationProvider {
     /// <param name="min">The minimum.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MinLength(
-        long min, Func<string, string, long, long, string> customErrorMessageAccessor = null
+    public Func<string, string?, ValueLengthValidator> MinLength(
+        long min, Func<string, string?, long, long, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, min, 0, customErrorMessageAccessor);
     }
@@ -337,7 +337,7 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MaxLength(long max, string customErrorMessageFormat) {
+    public Func<string, string?, ValueLengthValidator> MaxLength(long max, string customErrorMessageFormat) {
         return MaxLength(max, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -347,8 +347,8 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MaxLength(
-        long max, Func<string, string, long, long, string> customErrorMessageAccessor = null
+    public Func<string, string?, ValueLengthValidator> MaxLength(
+        long max, Func<string, string?, long, long, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, 0, max, customErrorMessageAccessor);
     }
@@ -360,7 +360,7 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> LengthRange(
+    public Func<string, string?, ValueLengthValidator> LengthRange(
         int min, int max, string customErrorMessageFormat
     ) {
         return LengthRange(min, max, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
@@ -373,8 +373,8 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> LengthRange(
-        int min, int max, Func<string, string, long, long, string> customErrorMessageAccessor = null
+    public Func<string, string?, ValueLengthValidator> LengthRange(
+        int min, int max, Func<string, string?, long, long, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, min, max, customErrorMessageAccessor);
     }
@@ -385,8 +385,8 @@ public class ValidationProvider {
     /// <param name="min">The minimum.</param>
     /// <param name="unit">The unit used to count the length.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MinLength(long min, TextLengthUnit unit) {
-        return MinLength(min, unit, (Func<string, string, long, long, string>)null);
+    public Func<string, string?, ValueLengthValidator> MinLength(long min, TextLengthUnit unit) {
+        return MinLength(min, unit, (Func<string, string?, long, long, string>?)null);
     }
 
     /// <summary>
@@ -396,7 +396,7 @@ public class ValidationProvider {
     /// <param name="unit">The unit used to count the length.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MinLength(long min, TextLengthUnit unit, string customErrorMessageFormat) {
+    public Func<string, string?, ValueLengthValidator> MinLength(long min, TextLengthUnit unit, string customErrorMessageFormat) {
         return MinLength(min, unit, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -407,8 +407,8 @@ public class ValidationProvider {
     /// <param name="unit">The unit used to count the length.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MinLength(
-        long min, TextLengthUnit unit, Func<string, string, long, long, string> customErrorMessageAccessor
+    public Func<string, string?, ValueLengthValidator> MinLength(
+        long min, TextLengthUnit unit, Func<string, string?, long, long, string>? customErrorMessageAccessor
     ) {
         return (column, value) => new(column, value, min, 0, unit, customErrorMessageAccessor);
     }
@@ -419,8 +419,8 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="unit">The unit used to count the length.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MaxLength(long max, TextLengthUnit unit) {
-        return MaxLength(max, unit, (Func<string, string, long, long, string>)null);
+    public Func<string, string?, ValueLengthValidator> MaxLength(long max, TextLengthUnit unit) {
+        return MaxLength(max, unit, (Func<string, string?, long, long, string>?)null);
     }
 
     /// <summary>
@@ -430,7 +430,7 @@ public class ValidationProvider {
     /// <param name="unit">The unit used to count the length.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MaxLength(long max, TextLengthUnit unit, string customErrorMessageFormat) {
+    public Func<string, string?, ValueLengthValidator> MaxLength(long max, TextLengthUnit unit, string customErrorMessageFormat) {
         return MaxLength(max, unit, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -441,8 +441,8 @@ public class ValidationProvider {
     /// <param name="unit">The unit used to count the length.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> MaxLength(
-        long max, TextLengthUnit unit, Func<string, string, long, long, string> customErrorMessageAccessor
+    public Func<string, string?, ValueLengthValidator> MaxLength(
+        long max, TextLengthUnit unit, Func<string, string?, long, long, string>? customErrorMessageAccessor
     ) {
         return (column, value) => new(column, value, 0, max, unit, customErrorMessageAccessor);
     }
@@ -454,8 +454,8 @@ public class ValidationProvider {
     /// <param name="max">The maximum.</param>
     /// <param name="unit">The unit used to count the length.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> LengthRange(int min, int max, TextLengthUnit unit) {
-        return LengthRange(min, max, unit, (Func<string, string, long, long, string>)null);
+    public Func<string, string?, ValueLengthValidator> LengthRange(int min, int max, TextLengthUnit unit) {
+        return LengthRange(min, max, unit, (Func<string, string?, long, long, string>?)null);
     }
 
     /// <summary>
@@ -466,7 +466,7 @@ public class ValidationProvider {
     /// <param name="unit">The unit used to count the length.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> LengthRange(int min, int max, TextLengthUnit unit, string customErrorMessageFormat) {
+    public Func<string, string?, ValueLengthValidator> LengthRange(int min, int max, TextLengthUnit unit, string customErrorMessageFormat) {
         return LengthRange(min, max, unit, (_column, _value, _min, _max) => string.Format(customErrorMessageFormat, _column, _value, _min, _max));
     }
 
@@ -478,8 +478,8 @@ public class ValidationProvider {
     /// <param name="unit">The unit used to count the length.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, ValueLengthValidator> LengthRange(
-        int min, int max, TextLengthUnit unit, Func<string, string, long, long, string> customErrorMessageAccessor
+    public Func<string, string?, ValueLengthValidator> LengthRange(
+        int min, int max, TextLengthUnit unit, Func<string, string?, long, long, string>? customErrorMessageAccessor
     ) {
         return (column, value) => new(column, value, min, max, unit, customErrorMessageAccessor);
     }
@@ -490,7 +490,7 @@ public class ValidationProvider {
     /// <param name="pattern">The pattern.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, RegexValidator> Regex(string pattern, string customErrorMessageFormat) {
+    public Func<string, string?, RegexValidator> Regex(string pattern, string customErrorMessageFormat) {
         return Regex(pattern, (_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
     }
 
@@ -500,8 +500,8 @@ public class ValidationProvider {
     /// <param name="pattern">The pattern.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, RegexValidator> Regex(
-        string pattern, Func<string, string, string> customErrorMessageAccessor = null
+    public Func<string, string?, RegexValidator> Regex(
+        string pattern, Func<string, string?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, pattern, customErrorMessageAccessor);
     }
@@ -511,7 +511,7 @@ public class ValidationProvider {
     /// </summary>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, RegexValidator> Email(string customErrorMessageFormat) {
+    public Func<string, string?, RegexValidator> Email(string customErrorMessageFormat) {
         return Email((_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
     }
 
@@ -520,8 +520,8 @@ public class ValidationProvider {
     /// </summary>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, EmailValidator> Email(
-        Func<string, string, string> customErrorMessageAccessor = null
+    public Func<string, string?, EmailValidator> Email(
+        Func<string, string?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, customErrorMessageAccessor);
     }
@@ -532,7 +532,7 @@ public class ValidationProvider {
     /// <param name="formats">The formats.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, The mobile phone formats.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, MobilePhoneValidator> MobilePhone(
+    public Func<string, string?, MobilePhoneValidator> MobilePhone(
         MobilePhoneFormats formats, string customErrorMessageFormat
     ) {
         return MobilePhone(formats, (_column, _value, _formats) => string.Format(customErrorMessageFormat, _column, _value, _formats));
@@ -544,9 +544,9 @@ public class ValidationProvider {
     /// <param name="formats">The formats.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, The mobile phone formats.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, MobilePhoneValidator> MobilePhone(
+    public Func<string, string?, MobilePhoneValidator> MobilePhone(
         MobilePhoneFormats formats = MobilePhoneFormats.All,
-        Func<string, string, MobilePhoneFormats, string> customErrorMessageAccessor = null
+        Func<string, string?, MobilePhoneFormats, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, formats, customErrorMessageAccessor);
     }
@@ -557,7 +557,7 @@ public class ValidationProvider {
     /// <param name="idTypes">The Identification types.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, The identification card types.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IdCardValidator> IdCard(IdCardTypes idTypes, string customErrorMessageFormat) {
+    public Func<string, string?, IdCardValidator> IdCard(IdCardTypes idTypes, string customErrorMessageFormat) {
         return IdCard(idTypes, (_column, _value, _idTypes) => string.Format(customErrorMessageFormat, _column, _value, _idTypes));
     }
 
@@ -567,9 +567,9 @@ public class ValidationProvider {
     /// <param name="idTypes">The Identification types.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, The identification card types.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IdCardValidator> IdCard(
+    public Func<string, string?, IdCardValidator> IdCard(
         IdCardTypes idTypes = IdCardTypes.All,
-        Func<string, string, IdCardTypes, string> customErrorMessageAccessor = null
+        Func<string, string?, IdCardTypes, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, idTypes, customErrorMessageAccessor);
     }
@@ -581,8 +581,8 @@ public class ValidationProvider {
     /// <param name="comparisonValue">The comparison value.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, comparison column, comparison value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, CompareValidator> Compare(
-        string comparisonColumn, string comparisonValue, string customErrorMessageFormat
+    public Func<string, string?, CompareValidator> Compare(
+        string comparisonColumn, string? comparisonValue, string customErrorMessageFormat
     ) {
         return Compare(
             comparisonColumn, comparisonValue,
@@ -598,9 +598,9 @@ public class ValidationProvider {
     /// <param name="comparisonValue">The comparison value.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, comparison column, comparison value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, CompareValidator> Compare(
-        string comparisonColumn, string comparisonValue,
-        Func<string, string, string, string, string> customErrorMessageAccessor = null
+    public Func<string, string?, CompareValidator> Compare(
+        string comparisonColumn, string? comparisonValue,
+        Func<string, string?, string, string?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, comparisonColumn, comparisonValue, customErrorMessageAccessor);
     }
@@ -613,8 +613,8 @@ public class ValidationProvider {
     /// <param name="allowedEqual">if set to <c>true</c> [allowed equal].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerLessThanValidator> IntegerLessThan(
-        string comparisonColumn, string comparisonValue, bool allowedEqual, string customErrorMessageFormat
+    public Func<string, string?, IntegerLessThanValidator> IntegerLessThan(
+        string comparisonColumn, string? comparisonValue, bool allowedEqual, string customErrorMessageFormat
     ) {
         return IntegerLessThan(
             comparisonColumn, comparisonValue, allowedEqual,
@@ -631,9 +631,9 @@ public class ValidationProvider {
     /// <param name="allowedEqual">if set to <c>true</c> [allowed equal].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IntegerLessThanValidator> IntegerLessThan(
-        string comparisonColumn, string comparisonValue, bool allowedEqual = true,
-        Func<string, string, string, string, bool, string> customErrorMessageAccessor = null
+    public Func<string, string?, IntegerLessThanValidator> IntegerLessThan(
+        string comparisonColumn, string? comparisonValue, bool allowedEqual = true,
+        Func<string, string?, string, string?, bool, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
     }
@@ -646,8 +646,8 @@ public class ValidationProvider {
     /// <param name="allowedEqual">if set to <c>true</c> [allowed equal].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberLessThanValidator> NumberLessThan(
-        string comparisonColumn, string comparisonValue, bool allowedEqual, string customErrorMessageFormat
+    public Func<string, string?, NumberLessThanValidator> NumberLessThan(
+        string comparisonColumn, string? comparisonValue, bool allowedEqual, string customErrorMessageFormat
     ) {
         return NumberLessThan(
             comparisonColumn, comparisonValue, allowedEqual,
@@ -664,9 +664,9 @@ public class ValidationProvider {
     /// <param name="allowedEqual">if set to <c>true</c> [allowed equal].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, NumberLessThanValidator> NumberLessThan(
-        string comparisonColumn, string comparisonValue, bool allowedEqual = true,
-        Func<string, string, string, string, bool, string> customErrorMessageAccessor = null
+    public Func<string, string?, NumberLessThanValidator> NumberLessThan(
+        string comparisonColumn, string? comparisonValue, bool allowedEqual = true,
+        Func<string, string?, string, string?, bool, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
     }
@@ -679,8 +679,8 @@ public class ValidationProvider {
     /// <param name="allowedEqual">if set to <c>true</c> [allowed equal].</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeLessThanValidator> DateTimeLessThan(
-        string comparisonColumn, string comparisonValue, bool allowedEqual, string customErrorMessageFormat
+    public Func<string, string?, DateTimeLessThanValidator> DateTimeLessThan(
+        string comparisonColumn, string? comparisonValue, bool allowedEqual, string customErrorMessageFormat
     ) {
         return DateTimeLessThan(
             comparisonColumn, comparisonValue, allowedEqual,
@@ -697,9 +697,9 @@ public class ValidationProvider {
     /// <param name="allowedEqual">if set to <c>true</c> [allowed equal].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, DateTimeLessThanValidator> DateTimeLessThan(
-        string comparisonColumn, string comparisonValue, bool allowedEqual = true,
-        Func<string, string, string, string, bool, string> customErrorMessageAccessor = null
+    public Func<string, string?, DateTimeLessThanValidator> DateTimeLessThan(
+        string comparisonColumn, string? comparisonValue, bool allowedEqual = true,
+        Func<string, string?, string, string?, bool, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor);
     }
@@ -709,7 +709,7 @@ public class ValidationProvider {
     /// <param name="kind">The kind.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, UrlValidator> Url(
+    public Func<string, string?, UrlValidator> Url(
         UriKind kind, string customErrorMessageFormat
     ) {
         return Url(kind, (_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
@@ -721,9 +721,9 @@ public class ValidationProvider {
     /// <param name="kind">The kind.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, UrlValidator> Url(
+    public Func<string, string?, UrlValidator> Url(
         UriKind kind = UriKind.Absolute,
-        Func<string, string, string> customErrorMessageAccessor = null
+        Func<string, string?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, kind, customErrorMessageAccessor);
     }
@@ -735,7 +735,7 @@ public class ValidationProvider {
     /// <param name="allowedSchemes">The allowed schemes of an absolute URL, such as <c>http</c> and <c>https</c>. An empty collection allows any scheme.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, UrlValidator> Url(
+    public Func<string, string?, UrlValidator> Url(
         UriKind kind, IEnumerable<string> allowedSchemes, string customErrorMessageFormat
     ) {
         return Url(kind, allowedSchemes, (_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
@@ -747,8 +747,8 @@ public class ValidationProvider {
     /// <param name="kind">The kind.</param>
     /// <param name="allowedSchemes">The allowed schemes of an absolute URL, such as <c>http</c> and <c>https</c>. An empty collection allows any scheme.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, UrlValidator> Url(UriKind kind, IEnumerable<string> allowedSchemes) {
-        return Url(kind, allowedSchemes, (Func<string, string, string>)null);
+    public Func<string, string?, UrlValidator> Url(UriKind kind, IEnumerable<string> allowedSchemes) {
+        return Url(kind, allowedSchemes, (Func<string, string?, string>?)null);
     }
 
     /// <summary>
@@ -758,8 +758,8 @@ public class ValidationProvider {
     /// <param name="allowedSchemes">The allowed schemes of an absolute URL, such as <c>http</c> and <c>https</c>. An empty collection allows any scheme.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, UrlValidator> Url(
-        UriKind kind, IEnumerable<string> allowedSchemes, Func<string, string, string> customErrorMessageAccessor
+    public Func<string, string?, UrlValidator> Url(
+        UriKind kind, IEnumerable<string> allowedSchemes, Func<string, string?, string>? customErrorMessageAccessor
     ) {
         return (column, value) => new(column, value, kind, allowedSchemes, customErrorMessageAccessor);
     }
@@ -770,7 +770,7 @@ public class ValidationProvider {
     /// <param name="types">The types.</param>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, The IP address types.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IPAddressValidator> IPAddress(
+    public Func<string, string?, IPAddressValidator> IPAddress(
         IPAddressTypes types, string customErrorMessageFormat
     ) {
         return IPAddress(types, (_column, _value, _types) => string.Format(customErrorMessageFormat, _column, _value, _types));
@@ -782,9 +782,9 @@ public class ValidationProvider {
     /// <param name="types">The types.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, The IP address types.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, IPAddressValidator> IPAddress(
+    public Func<string, string?, IPAddressValidator> IPAddress(
         IPAddressTypes types = IPAddressTypes.All,
-        Func<string, string, IPAddressTypes, string> customErrorMessageAccessor = null
+        Func<string, string?, IPAddressTypes, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, types, customErrorMessageAccessor);
     }
@@ -794,7 +794,7 @@ public class ValidationProvider {
     /// </summary>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, CreditCardValidator> CreditCard(string customErrorMessageFormat) {
+    public Func<string, string?, CreditCardValidator> CreditCard(string customErrorMessageFormat) {
         return CreditCard((_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
     }
 
@@ -803,8 +803,8 @@ public class ValidationProvider {
     /// </summary>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
     /// <returns>The validator creator.</returns>
-    public Func<string, string, CreditCardValidator> CreditCard(
-        Func<string, string, string> customErrorMessageAccessor = null
+    public Func<string, string?, CreditCardValidator> CreditCard(
+        Func<string, string?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, customErrorMessageAccessor);
     }

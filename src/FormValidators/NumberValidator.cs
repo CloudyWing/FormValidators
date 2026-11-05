@@ -15,7 +15,7 @@ public sealed class NumberValidator : ComparableTypeValidator<decimal> {
     /// <param name="value">The value.</param>
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
-    public NumberValidator(string column, string value, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null)
+    public NumberValidator(string column, string? value, bool allowedThousands = false, Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor = null)
         : this(column, value, null, null, allowedThousands, customErrorMessageAccessor) { }
 
     /// <summary>
@@ -27,7 +27,7 @@ public sealed class NumberValidator : ComparableTypeValidator<decimal> {
     /// <param name="max">The maximum.</param>
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor.</param>
-    public NumberValidator(string column, string value, decimal? min, decimal? max, bool allowedThousands = false, Func<string, string, decimal?, decimal?, string> customErrorMessageAccessor = null)
+    public NumberValidator(string column, string? value, decimal? min, decimal? max, bool allowedThousands = false, Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor = null)
         : base(column, value, min, max, customErrorMessageAccessor) {
         AllowedThousands = allowedThousands;
     }
@@ -40,7 +40,7 @@ public sealed class NumberValidator : ComparableTypeValidator<decimal> {
     public bool AllowedThousands { get; }
 
     /// <inheritdoc/>
-    protected override Func<string, string, string> CastErrorMessageAccessor => ErrorMessageProvider.ValueIsNumberAccessor;
+    protected override Func<string, string?, string> CastErrorMessageAccessor => ErrorMessageProvider.ValueIsNumberAccessor;
 
     /// <inheritdoc/>
     protected override bool TryParse(string value, out decimal result) {

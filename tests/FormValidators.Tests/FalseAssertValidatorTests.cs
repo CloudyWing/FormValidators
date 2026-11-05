@@ -36,8 +36,8 @@ public class FalseAssertValidatorTests {
 
     [Test]
     public void Constructor_NullPredicate_ThrowsArgumentNullException() {
-        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new FalseAssertValidator((Func<bool>)null, "錯誤"));
+        ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => new FalseAssertValidator((Func<bool>)null!, "錯誤"));
 
-        Assert.That(exception.ParamName, Is.EqualTo("falsePredicate"));
+        Assert.That(exception?.ParamName, Is.EqualTo("falsePredicate"));
     }
 }

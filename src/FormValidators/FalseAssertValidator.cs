@@ -28,7 +28,7 @@ public class FalseAssertValidator : IFormValidator {
     }
 
     /// <inheritdoc/>
-    public string ErrorMessage { get; private set; }
+    public string ErrorMessage { get; private set; } = "";
 
     /// <inheritdoc/>
     public bool IsValid { get; private set; }

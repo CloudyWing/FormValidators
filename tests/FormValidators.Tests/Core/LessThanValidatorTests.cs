@@ -8,11 +8,11 @@ namespace CloudyWing.FormValidators.Tests.Core;
 public class LessThanValidatorTests {
     private class TestLessThanValidator : LessThanValidator<int> {
         public TestLessThanValidator(
-            string column, string value, string comparisonColumn, string comparisonValue,
-            bool allowedEqual, Func<string, string, string, string, bool, string> customErrorMessageAccessor
+            string column, string? value, string comparisonColumn, string? comparisonValue,
+            bool allowedEqual, Func<string, string?, string, string?, bool, string>? customErrorMessageAccessor
         ) : base(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor) { }
 
-        protected override bool TryParse(string value, out int result) {
+        protected override bool TryParse(string? value, out int result) {
             return int.TryParse(value, out result);
         }
     }
@@ -70,7 +70,7 @@ public class LessThanValidatorTests {
 
     [Test]
     public void ErrorMessage_WhenGlobalAccessorIsSet_ReceivesDocumentedArgumentOrder() {
-        string actual = null;
+        string? actual = null;
         ErrorMessageProvider.SetValueLessThanAnotherColumnValueAccessor((c, v, cc, cv, b) => actual = $"{c}|{v}|{cc}|{cv}|{b}");
 
         try {

@@ -95,7 +95,7 @@ public class UrlValidatorTests {
 
     [Test]
     public void Constructor_NullAllowedSchemes_ThrowsArgumentNullException() {
-        Assert.Throws<ArgumentNullException>(() => new UrlValidator("Column", "", UriKind.Absolute, (string[])null));
+        Assert.Throws<ArgumentNullException>(() => new UrlValidator("Column", "", UriKind.Absolute, (string[])null!));
     }
 
     [Test]

@@ -35,8 +35,8 @@ public class TrueAssertValidatorTests {
 
     [Test]
     public void Constructor_NullPredicate_ThrowsArgumentNullException() {
-        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new TrueAssertValidator((Func<bool>)null, "錯誤"));
+        ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => new TrueAssertValidator((Func<bool>)null!, "錯誤"));
 
-        Assert.That(exception.ParamName, Is.EqualTo("truePredicate"));
+        Assert.That(exception?.ParamName, Is.EqualTo("truePredicate"));
     }
 }

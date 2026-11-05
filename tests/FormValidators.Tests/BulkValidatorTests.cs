@@ -161,9 +161,9 @@ public class BulkValidatorTests {
 
     [Test]
     public void Constructor_NullConfigure_ThrowsArgumentNullException() {
-        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new BulkValidator((Action<ValidatorConfiguration>)null));
+        ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => new BulkValidator((Action<ValidatorConfiguration>)null!));
 
-        Assert.That(exception.ParamName, Is.EqualTo("configure"));
+        Assert.That(exception?.ParamName, Is.EqualTo("configure"));
     }
 
     [Test]

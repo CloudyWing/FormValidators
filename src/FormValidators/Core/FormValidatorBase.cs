@@ -10,7 +10,7 @@ public abstract class FormValidatorBase : IFormValidator {
     /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
-    public FormValidatorBase(string column, string value) {
+    public FormValidatorBase(string column, string? value) {
         Column = column;
         Value = value;
     }
@@ -25,10 +25,10 @@ public abstract class FormValidatorBase : IFormValidator {
     /// Gets or sets the value.
     /// </summary>
     /// <value>The value.</value>
-    public string Value { get; }
+    public string? Value { get; }
 
     /// <inheritdoc />
-    public string ErrorMessage { get; private set; }
+    public string ErrorMessage { get; private set; } = "";
 
     /// <inheritdoc />
     public bool IsValid { get; private set; }
@@ -42,6 +42,9 @@ public abstract class FormValidatorBase : IFormValidator {
     /// <summary>
     /// Gets the custom error message.
     /// </summary>
+    /// <remarks>
+    /// Only evaluated when <see cref="HasCustomErrorMessage" /> is <see langword="true" />.
+    /// </remarks>
     /// <value>The custom error message.</value>
     protected abstract string CustomErrorMessage { get; }
 

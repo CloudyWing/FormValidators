@@ -25,8 +25,8 @@ public class ValidatorConfiguration {
     /// <param name="value">The value.</param>
     /// <param name="validatorCreators">The validator creators.</param>
     public void Add(
-        string column, string value,
-        params Func<ValidationProvider, Func<string, string, IFormValidator>>[] validatorCreators
+        string column, string? value,
+        params Func<ValidationProvider, Func<string, string?, IFormValidator>>[] validatorCreators
     ) {
         AddIf(true, column, value, validatorCreators);
     }
@@ -38,8 +38,8 @@ public class ValidatorConfiguration {
     /// <param name="value">The value.</param>
     /// <param name="validatorCreators">The validator creators.</param>
     public void Add(
-        string column, string value,
-        IEnumerable<Func<ValidationProvider, Func<string, string, IFormValidator>>> validatorCreators
+        string column, string? value,
+        IEnumerable<Func<ValidationProvider, Func<string, string?, IFormValidator>>> validatorCreators
     ) {
         AddIf(true, column, value, validatorCreators);
     }
@@ -52,11 +52,11 @@ public class ValidatorConfiguration {
     /// <param name="value">The value.</param>
     /// <param name="validatorCreators">The validator creators.</param>
     public void AddIf(
-       bool condition, string column, string value,
-       params Func<ValidationProvider, Func<string, string, IFormValidator>>[] validatorCreators
+       bool condition, string column, string? value,
+       params Func<ValidationProvider, Func<string, string?, IFormValidator>>[] validatorCreators
    ) {
         AddIf(condition, column, value,
-            validatorCreators as IEnumerable<Func<ValidationProvider, Func<string, string, IFormValidator>>>
+            validatorCreators as IEnumerable<Func<ValidationProvider, Func<string, string?, IFormValidator>>>
         );
     }
 
@@ -68,8 +68,8 @@ public class ValidatorConfiguration {
     /// <param name="value"></param>
     /// <param name="validatorCreators"></param>
     public void AddIf(
-        bool condition, string column, string value,
-        IEnumerable<Func<ValidationProvider, Func<string, string, IFormValidator>>> validatorCreators
+        bool condition, string column, string? value,
+        IEnumerable<Func<ValidationProvider, Func<string, string?, IFormValidator>>> validatorCreators
     ) {
         if (condition) {
             foreach (var function in validatorCreators) {

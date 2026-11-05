@@ -23,7 +23,7 @@ public sealed class UrlValidator : BasicFormValidator {
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
-    public UrlValidator(string column, string value, Func<string, string, string> customErrorMessageAccessor = null)
+    public UrlValidator(string column, string? value, Func<string, string?, string>? customErrorMessageAccessor = null)
         : this(column, value, UriKind.Absolute, customErrorMessageAccessor) {
     }
 
@@ -34,7 +34,7 @@ public sealed class UrlValidator : BasicFormValidator {
     /// <param name="value">The value.</param>
     /// <param name="kind">The kind.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
-    public UrlValidator(string column, string value, UriKind kind, Func<string, string, string> customErrorMessageAccessor = null)
+    public UrlValidator(string column, string? value, UriKind kind, Func<string, string?, string>? customErrorMessageAccessor = null)
         : this(column, value, kind, [], customErrorMessageAccessor) {
     }
 
@@ -50,7 +50,7 @@ public sealed class UrlValidator : BasicFormValidator {
     /// </param>
     /// <exception cref="ArgumentNullException"><paramref name="allowedSchemes" /> is <see langword="null" />.</exception>
     /// <exception cref="ArgumentException"><paramref name="allowedSchemes" /> contains a <see langword="null" /> or empty scheme.</exception>
-    public UrlValidator(string column, string value, UriKind kind, IEnumerable<string> allowedSchemes)
+    public UrlValidator(string column, string? value, UriKind kind, IEnumerable<string> allowedSchemes)
         : this(column, value, kind, allowedSchemes, null) {
     }
 
@@ -68,8 +68,8 @@ public sealed class UrlValidator : BasicFormValidator {
     /// <exception cref="ArgumentNullException"><paramref name="allowedSchemes" /> is <see langword="null" />.</exception>
     /// <exception cref="ArgumentException"><paramref name="allowedSchemes" /> contains a <see langword="null" /> or empty scheme.</exception>
     public UrlValidator(
-        string column, string value, UriKind kind, IEnumerable<string> allowedSchemes,
-        Func<string, string, string> customErrorMessageAccessor
+        string column, string? value, UriKind kind, IEnumerable<string> allowedSchemes,
+        Func<string, string?, string>? customErrorMessageAccessor
     ) : base(column, value, customErrorMessageAccessor) {
         if (allowedSchemes is null) {
             throw new ArgumentNullException(nameof(allowedSchemes));
@@ -103,15 +103,15 @@ public sealed class UrlValidator : BasicFormValidator {
     public IReadOnlyCollection<string> AllowedSchemes { get; }
 
     /// <inheritdoc/>
-    protected override Func<string, string, string> DefaultErrorMessageAccessor => ErrorMessageProvider.ValueIsUrlAccessor;
+    protected override Func<string, string?, string> DefaultErrorMessageAccessor => ErrorMessageProvider.ValueIsUrlAccessor;
 
     /// <inheritdoc/>
     protected override bool ValidateValue() {
-        if (string.IsNullOrWhiteSpace(Value)) {
+        if (StringUtils.IsNullOrWhiteSpace(Value)) {
             return true;
         }
 
-        if (!Uri.TryCreate(Value, Kind, out Uri uri)) {
+        if (!Uri.TryCreate(Value, Kind, out Uri? uri)) {
             return false;
         }
 

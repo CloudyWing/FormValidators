@@ -21,8 +21,9 @@ public class TrueAssertValidator : IFormValidator {
     /// </summary>
     /// <param name="truePredicate">The true predicate.</param>
     /// <param name="errorMessage">The error message.</param>
+    /// <exception cref="ArgumentNullException"><paramref name="truePredicate" /> is <see langword="null" />.</exception>
     public TrueAssertValidator(Func<bool> truePredicate, string errorMessage) {
-        this.truePredicate = truePredicate;
+        this.truePredicate = truePredicate ?? throw new ArgumentNullException(nameof(truePredicate));
         this.errorMessage = errorMessage;
     }
 

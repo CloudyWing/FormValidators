@@ -25,7 +25,12 @@ public class BulkValidator : Collection<IFormValidator>, IFormValidator {
     /// </summary>
     /// <param name="configure">The configure.</param>
     /// <param name="isStoppedIfFail">if set to <c>true</c> [is stopped if fail].</param>
+    /// <exception cref="ArgumentNullException"><paramref name="configure" /> is <see langword="null" />.</exception>
     public BulkValidator(Action<ValidatorConfiguration> configure, bool isStoppedIfFail = false) {
+        if (configure is null) {
+            throw new ArgumentNullException(nameof(configure));
+        }
+
         IsStoppedIfFail = isStoppedIfFail;
         configure(new ValidatorConfiguration(this));
     }

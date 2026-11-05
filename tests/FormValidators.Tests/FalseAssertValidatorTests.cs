@@ -33,4 +33,11 @@ public class FalseAssertValidatorTests {
 
         Assert.Throws<DivideByZeroException>(() => new FalseAssertValidator(() => (division / dividend) == 0, "").Validate());
     }
+
+    [Test]
+    public void Constructor_NullPredicate_ThrowsArgumentNullException() {
+        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new FalseAssertValidator((Func<bool>)null, "錯誤"));
+
+        Assert.That(exception.ParamName, Is.EqualTo("falsePredicate"));
+    }
 }

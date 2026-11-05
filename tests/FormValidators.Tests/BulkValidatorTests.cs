@@ -1,4 +1,5 @@
 ﻿using System;
+using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
@@ -155,5 +156,12 @@ public class BulkValidatorTests {
         validators.Validate();
 
         Assert.That(validators.ErrorMessage, Is.EqualTo(validate1.ErrorMessage));
+    }
+
+    [Test]
+    public void Constructor_NullConfigure_ThrowsArgumentNullException() {
+        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new BulkValidator((Action<ValidatorConfiguration>)null));
+
+        Assert.That(exception.ParamName, Is.EqualTo("configure"));
     }
 }

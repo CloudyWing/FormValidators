@@ -21,8 +21,9 @@ public class FalseAssertValidator : IFormValidator {
     /// </summary>
     /// <param name="falsePredicate">The false predicate.</param>
     /// <param name="errorMessage">The error message.</param>
+    /// <exception cref="ArgumentNullException"><paramref name="falsePredicate" /> is <see langword="null" />.</exception>
     public FalseAssertValidator(Func<bool> falsePredicate, string errorMessage) {
-        this.falsePredicate = falsePredicate;
+        this.falsePredicate = falsePredicate ?? throw new ArgumentNullException(nameof(falsePredicate));
         this.errorMessage = errorMessage;
     }
 

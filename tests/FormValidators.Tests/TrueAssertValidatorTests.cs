@@ -32,4 +32,11 @@ public class TrueAssertValidatorTests {
 
         Assert.Throws<DivideByZeroException>(() => new TrueAssertValidator(() => (division / dividend) == 0, "").Validate());
     }
+
+    [Test]
+    public void Constructor_NullPredicate_ThrowsArgumentNullException() {
+        ArgumentNullException exception = Assert.Throws<ArgumentNullException>(() => new TrueAssertValidator((Func<bool>)null, "錯誤"));
+
+        Assert.That(exception.ParamName, Is.EqualTo("truePredicate"));
+    }
 }

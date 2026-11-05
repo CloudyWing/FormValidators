@@ -4,6 +4,7 @@ using NUnit.Framework;
 namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
+[SetCulture("zh-TW")]
 public class NumberValidatorTests {
     [TestCase(null, true, true)]
     [TestCase("", true, true)]

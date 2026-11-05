@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Globalization;
 using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
+[SetCulture("zh-TW")]
 public class DateTimeValidatorTests {
     [TestCase(null, true)]
     [TestCase("", true)]
@@ -153,5 +155,57 @@ public class DateTimeValidatorTests {
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void ErrorMessage_WhenMinConstraintFails_ReturnsFixedDateFormat() {
+        DateTimeValidator validator = new("測試欄位", "1912/03/04", new DateTime(1912, 3, 5), null);
+
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo("「測試欄位」必須大於等於「1912/03/05」。"));
+    }
+
+    [Test]
+    public void ErrorMessage_WhenRangeConstraintFails_ReturnsFixedDateFormat() {
+        DateTimeValidator validator = new("測試欄位", "1912/03/01", new DateTime(1912, 3, 2), new DateTime(1912, 3, 4));
+
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo("「測試欄位」必須介於「1912/03/02」和「1912/03/04」之間。"));
+    }
+
+    [TestCase("de-DE")]
+    [TestCase("th-TH")]
+    [TestCase("ar-SA")]
+    [TestCase("en-US")]
+    public void ValueLessOrEqualAccessor_WithDifferentCulture_ReturnsGregorianDateWithSlash(string cultureName) {
+        CultureInfo original = CultureInfo.CurrentCulture;
+        CultureInfo.CurrentCulture = new CultureInfo(cultureName);
+
+        string message;
+        try {
+            message = ErrorMessageProvider.ValueLessOrEqualAccessor("欄位", "", new DateTime(2024, 1, 31));
+        } finally {
+            CultureInfo.CurrentCulture = original;
+        }
+
+        Assert.That(message, Is.EqualTo("「欄位」必須小於等於「2024/01/31」。"));
+    }
+
+    [Test]
+    [SetCulture("en-US")]
+    public void Validate_WithEnUsCulture_ParsesMonthFirst() {
+        DateTimeValidator validator = new("", "03/04/1912", new DateTime(1912, 3, 4), new DateTime(1912, 3, 4));
+
+        Assert.That(validator.Validate(), Is.True);
+    }
+
+    [Test]
+    [SetCulture("en-GB")]
+    public void Validate_WithEnGbCulture_ParsesDayFirst() {
+        DateTimeValidator validator = new("", "03/04/1912", new DateTime(1912, 4, 3), new DateTime(1912, 4, 3));
+
+        Assert.That(validator.Validate(), Is.True);
     }
 }

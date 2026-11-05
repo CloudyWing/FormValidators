@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 
 namespace CloudyWing.FormValidators.Core;
 
@@ -16,21 +17,21 @@ public static class ErrorMessageProvider {
     private static readonly Func<string, string, string> DefaultValueIsRequiredAccessor = (column, value) => $"「{column}」欄位為必填。";
     private static readonly Func<string, string, object, string> DefaultValueGreaterOrEqualAccessor = (column, value, min) => {
         if (min is DateTime date) {
-            return $"「{column}」必須大於等於「{min:yyyy/MM/dd}」。";
+            return $"「{column}」必須大於等於「{FormatDate(date)}」。";
         } else {
             return $"「{column}」必須大於等於「{min}」。";
         }
     };
     private static readonly Func<string, string, object, string> DefaultValueLessOrEqualAccessor = (column, value, max) => {
         if (max is DateTime date) {
-            return $"「{column}」必須小於等於「{max:yyyy/MM/dd}」。";
+            return $"「{column}」必須小於等於「{FormatDate(date)}」。";
         } else {
             return $"「{column}」必須小於等於「{max}」。";
         }
     };
     private static readonly Func<string, string, object, object, string> DefaultValueInRangeAccessor = (column, value, min, max) => {
         if (max is DateTime date) {
-            return $"「{column}」必須介於「{min:yyyy/MM/dd}」和「{max:yyyy/MM/dd}」之間。";
+            return $"「{column}」必須介於「{FormatDate(min)}」和「{FormatDate(date)}」之間。";
         } else {
             return $"「{column}」必須介於「{min}」和「{max}」之間。";
         }
@@ -401,5 +402,12 @@ public static class ErrorMessageProvider {
         valueIsUrlAccessor = DefaultValueIsUrlAccessor;
         valueIsIPAddressAccessor = DefaultValueIsIPAddressAccessor;
         valueIsCreditCardAccessor = DefaultValueIsCreditCardAccessor;
+    }
+
+    // 以 InvariantCulture 格式化，避免「/」被替換成文化特性的日期分隔符號或改用非西曆年份
+    private static string FormatDate(object value) {
+        return value is DateTime date
+            ? date.ToString("yyyy/MM/dd", CultureInfo.InvariantCulture)
+            : Convert.ToString(value, CultureInfo.CurrentCulture);
     }
 }

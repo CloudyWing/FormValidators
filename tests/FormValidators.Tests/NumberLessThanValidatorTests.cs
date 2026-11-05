@@ -3,6 +3,7 @@
 namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
+[SetCulture("zh-TW")]
 public class NumberLessThanValidatorTests {
     [TestCase("0.1", "0.1", true, true)]
     [TestCase("0.1", "0.1", false, false)]

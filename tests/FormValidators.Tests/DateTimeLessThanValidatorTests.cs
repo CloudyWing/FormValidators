@@ -3,6 +3,7 @@
 namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
+[SetCulture("zh-TW")]
 public class DateTimeLessThanValidatorTests {
     [TestCase("2020/01/01", "2020/01/01", true, true)]
     [TestCase("2020/01/01", "2020/01/01", false, false)]

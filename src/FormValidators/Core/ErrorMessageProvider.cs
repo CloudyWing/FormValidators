@@ -91,97 +91,97 @@ public static class ErrorMessageProvider {
     /// Gets the value is required accessor.
     /// </summary>
     /// <value>The value is required accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsRequiredAccessor => valueIsRequiredAccessor;
+    public static Func<string, string?, string> ValueIsRequiredAccessor => ErrorMessageScope.Current?.ValueIsRequiredAccessor ?? valueIsRequiredAccessor;
 
     /// <summary>
     /// Gets the value greater or equal accessor.
     /// </summary>
     /// <value>The value greater or equal accessor. The arguments are column, value, min, max.</value>
-    public static Func<string, string?, object, string> ValueGreaterOrEqualAccessor => valueGreaterOrEqualAccessor;
+    public static Func<string, string?, object, string> ValueGreaterOrEqualAccessor => ErrorMessageScope.Current?.ValueGreaterOrEqualAccessor ?? valueGreaterOrEqualAccessor;
 
     /// <summary>
     /// Gets the value less or equal accessor.
     /// </summary>
     /// <value>The value less or equal accessor. The arguments are column, value, max.</value>
-    public static Func<string, string?, object, string> ValueLessOrEqualAccessor => valueLessOrEqualAccessor;
+    public static Func<string, string?, object, string> ValueLessOrEqualAccessor => ErrorMessageScope.Current?.ValueLessOrEqualAccessor ?? valueLessOrEqualAccessor;
 
     /// <summary>
     /// Gets the value in range accessor.
     /// </summary>
     /// <value>The value in range accessor. The arguments are column, value, min, max.</value>
-    public static Func<string, string?, object, object, string> ValueInRangeAccessor => valueInRangeAccessor;
+    public static Func<string, string?, object, object, string> ValueInRangeAccessor => ErrorMessageScope.Current?.ValueInRangeAccessor ?? valueInRangeAccessor;
 
     /// <summary>
     /// Gets the value is integer accessor.
     /// </summary>
     /// <value>The value is integer accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsIntegerAccessor => valueIsIntegerAccessor;
+    public static Func<string, string?, string> ValueIsIntegerAccessor => ErrorMessageScope.Current?.ValueIsIntegerAccessor ?? valueIsIntegerAccessor;
 
     /// <summary>
     /// Gets the value is number accessor.
     /// </summary>
     /// <value>The value is number accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsNumberAccessor => valueIsNumberAccessor;
+    public static Func<string, string?, string> ValueIsNumberAccessor => ErrorMessageScope.Current?.ValueIsNumberAccessor ?? valueIsNumberAccessor;
 
     /// <summary>
     /// Gets the value is date time accessor.
     /// </summary>
     /// <value>The value is date time accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsDateTimeAccessor => valueIsDateTimeAccessor;
+    public static Func<string, string?, string> ValueIsDateTimeAccessor => ErrorMessageScope.Current?.ValueIsDateTimeAccessor ?? valueIsDateTimeAccessor;
 
     /// <summary>
     /// Gets the value length greater or equal accessor.
     /// </summary>
     /// <value>The value length greater or equal accessor. The arguments are column, value, min.</value>
-    public static Func<string, string?, long, string> ValueLengthGreaterOrEqualAccessor => valueLengthGreaterOrEqualAccessor;
+    public static Func<string, string?, long, string> ValueLengthGreaterOrEqualAccessor => ErrorMessageScope.Current?.ValueLengthGreaterOrEqualAccessor ?? valueLengthGreaterOrEqualAccessor;
 
     /// <summary>
     /// Gets the value length less or equal accessor.
     /// </summary>
     /// <value>The value length less or equal accessor. The arguments are column, value, max.</value>
-    public static Func<string, string?, long, string> ValueLengthLessOrEqualAccessor => valueLengthLessOrEqualAccessor;
+    public static Func<string, string?, long, string> ValueLengthLessOrEqualAccessor => ErrorMessageScope.Current?.ValueLengthLessOrEqualAccessor ?? valueLengthLessOrEqualAccessor;
 
     /// <summary>
     /// Gets the value length in range accessor.
     /// </summary>
     /// <value>The value length in range accessor. The arguments are column, value, min, max.</value>
-    public static Func<string, string?, long, long, string> ValueLengthInRangeAccessor => valueLengthInRangeAccessor;
+    public static Func<string, string?, long, long, string> ValueLengthInRangeAccessor => ErrorMessageScope.Current?.ValueLengthInRangeAccessor ?? valueLengthInRangeAccessor;
 
     /// <summary>
     /// Gets the value match regex accessor.
     /// </summary>
     /// <value>The value match regex accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueMatchRegexAccessor => valueMatchRegexAccessor;
+    public static Func<string, string?, string> ValueMatchRegexAccessor => ErrorMessageScope.Current?.ValueMatchRegexAccessor ?? valueMatchRegexAccessor;
 
     /// <summary>
     /// Gets the value is email accessor.
     /// </summary>
     /// <value>The value is email accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsEmailAccessor => valueIsEmailAccessor;
+    public static Func<string, string?, string> ValueIsEmailAccessor => ErrorMessageScope.Current?.ValueIsEmailAccessor ?? valueIsEmailAccessor;
 
     /// <summary>
     /// Gets the value is mobile phone accessor.
     /// </summary>
     /// <value>The value is mobile phone accessor. The arguments are column, value, mobile phone formats.</value>
-    public static Func<string, string?, MobilePhoneFormats, string> ValueIsMobilePhoneAccessor => valueIsMobilePhoneAccessor;
+    public static Func<string, string?, MobilePhoneFormats, string> ValueIsMobilePhoneAccessor => ErrorMessageScope.Current?.ValueIsMobilePhoneAccessor ?? valueIsMobilePhoneAccessor;
 
     /// <summary>
     /// Gets the value is identification card accessor.
     /// </summary>
     /// <value>The value is identification card accessor. The arguments are column, value, identification card types.</value>
-    public static Func<string, string?, IdCardTypes, string> ValueIsIdCardAccessor => valueIsIdCardAccessor;
+    public static Func<string, string?, IdCardTypes, string> ValueIsIdCardAccessor => ErrorMessageScope.Current?.ValueIsIdCardAccessor ?? valueIsIdCardAccessor;
 
     /// <summary>
     /// Gets the value compare another column value accessor.
     /// </summary>
     /// <value>The value compare another column value accessor. The arguments are column, value, comparison column, comparison value.</value>
-    public static Func<string, string?, string, string?, string> ValueCompareAnotherColumnValueAccessor => valueCompareAnotherColumnValueAccessor;
+    public static Func<string, string?, string, string?, string> ValueCompareAnotherColumnValueAccessor => ErrorMessageScope.Current?.ValueCompareAnotherColumnValueAccessor ?? valueCompareAnotherColumnValueAccessor;
 
     /// <summary>
     /// Gets the value less than another column value accessor.
     /// </summary>
     /// <value>The value less than another column value accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</value>
-    public static Func<string, string?, string, string?, bool, string> ValueLessThanAnotherColumnValueAccessor => valueLessThanAnotherColumnValueAccessor;
+    public static Func<string, string?, string, string?, bool, string> ValueLessThanAnotherColumnValueAccessor => ErrorMessageScope.Current?.ValueLessThanAnotherColumnValueAccessor ?? valueLessThanAnotherColumnValueAccessor;
 
     /// <summary>
     /// Sets the value is required accessor.
@@ -331,7 +331,7 @@ public static class ErrorMessageProvider {
     /// Gets the value is URL accessor.
     /// </summary>
     /// <value>The value is URL accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsUrlAccessor => valueIsUrlAccessor;
+    public static Func<string, string?, string> ValueIsUrlAccessor => ErrorMessageScope.Current?.ValueIsUrlAccessor ?? valueIsUrlAccessor;
 
     /// <summary>
     /// Sets the value is URL accessor.
@@ -346,7 +346,7 @@ public static class ErrorMessageProvider {
     /// Gets the value is IP address accessor.
     /// </summary>
     /// <value>The value is IP address accessor. The arguments are column, value, IP address types.</value>
-    public static Func<string, string?, IPAddressTypes, string> ValueIsIPAddressAccessor => valueIsIPAddressAccessor;
+    public static Func<string, string?, IPAddressTypes, string> ValueIsIPAddressAccessor => ErrorMessageScope.Current?.ValueIsIPAddressAccessor ?? valueIsIPAddressAccessor;
 
     /// <summary>
     /// Sets the value is IP address accessor.
@@ -361,7 +361,7 @@ public static class ErrorMessageProvider {
     /// Gets the value is credit card accessor.
     /// </summary>
     /// <value>The value is credit card accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsCreditCardAccessor => valueIsCreditCardAccessor;
+    public static Func<string, string?, string> ValueIsCreditCardAccessor => ErrorMessageScope.Current?.ValueIsCreditCardAccessor ?? valueIsCreditCardAccessor;
 
     /// <summary>
     /// Sets the value is credit card accessor.
@@ -376,7 +376,7 @@ public static class ErrorMessageProvider {
     /// Gets the value match custom rule accessor.
     /// </summary>
     /// <value>The value match custom rule accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueMatchCustomRuleAccessor => valueMatchCustomRuleAccessor;
+    public static Func<string, string?, string> ValueMatchCustomRuleAccessor => ErrorMessageScope.Current?.ValueMatchCustomRuleAccessor ?? valueMatchCustomRuleAccessor;
 
     /// <summary>
     /// Sets the value match custom rule accessor.
@@ -391,7 +391,7 @@ public static class ErrorMessageProvider {
     /// Gets the value is in allowed values accessor.
     /// </summary>
     /// <value>The value is in allowed values accessor. The arguments are column, value, allowed values.</value>
-    public static Func<string, string?, IReadOnlyList<string>, string> ValueIsInAllowedValuesAccessor => valueIsInAllowedValuesAccessor;
+    public static Func<string, string?, IReadOnlyList<string>, string> ValueIsInAllowedValuesAccessor => ErrorMessageScope.Current?.ValueIsInAllowedValuesAccessor ?? valueIsInAllowedValuesAccessor;
 
     /// <summary>
     /// Sets the value is in allowed values accessor.
@@ -406,7 +406,7 @@ public static class ErrorMessageProvider {
     /// Gets the value is guid accessor.
     /// </summary>
     /// <value>The value is guid accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsGuidAccessor => valueIsGuidAccessor;
+    public static Func<string, string?, string> ValueIsGuidAccessor => ErrorMessageScope.Current?.ValueIsGuidAccessor ?? valueIsGuidAccessor;
 
     /// <summary>
     /// Sets the value is guid accessor.
@@ -421,7 +421,7 @@ public static class ErrorMessageProvider {
     /// Gets the value is taiwan uniform number accessor.
     /// </summary>
     /// <value>The value is taiwan uniform number accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsTaiwanUniformNumberAccessor => valueIsTaiwanUniformNumberAccessor;
+    public static Func<string, string?, string> ValueIsTaiwanUniformNumberAccessor => ErrorMessageScope.Current?.ValueIsTaiwanUniformNumberAccessor ?? valueIsTaiwanUniformNumberAccessor;
 
     /// <summary>
     /// Sets the value is taiwan uniform number accessor.
@@ -436,7 +436,7 @@ public static class ErrorMessageProvider {
     /// Gets the value is phone accessor.
     /// </summary>
     /// <value>The value is phone accessor. The arguments are column, value.</value>
-    public static Func<string, string?, string> ValueIsPhoneAccessor => valueIsPhoneAccessor;
+    public static Func<string, string?, string> ValueIsPhoneAccessor => ErrorMessageScope.Current?.ValueIsPhoneAccessor ?? valueIsPhoneAccessor;
 
     /// <summary>
     /// Sets the value is phone accessor.
@@ -445,6 +445,43 @@ public static class ErrorMessageProvider {
     /// <exception cref="ArgumentNullException">accessor</exception>
     public static void SetValueIsPhoneAccessor(Func<string, string?, string> accessor) {
         valueIsPhoneAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+    }
+
+    /// <summary>
+    /// Begins a scope in which the accessors set in <paramref name="overrides" /> take precedence over the global accessors.
+    /// </summary>
+    /// <remarks>
+    /// <para>
+    /// The scope flows with the current execution context, so it applies to the current thread and to the asynchronous operations started within it,
+    /// and does not affect other requests or threads. The global accessors set by the <c>Set*Accessor</c> methods are not changed.
+    /// </para>
+    /// <para>
+    /// The overrides are copied when the scope begins; changing <paramref name="overrides" /> afterwards does not affect the scope.
+    /// Nested scopes inherit the accessors of the outer scope that they do not override.
+    /// Dispose the returned object, usually with a <see langword="using" /> statement, to end the scope.
+    /// </para>
+    /// <para>
+    /// On .NET Framework 4.5 the scope is stored in the logical call context; on the other target frameworks it is stored in <c>AsyncLocal&lt;T&gt;</c>.
+    /// </para>
+    /// </remarks>
+    /// <example>
+    /// <code language="csharp">
+    /// using (ErrorMessageProvider.BeginScope(new ErrorMessageOverrides {
+    ///     ValueIsRequiredAccessor = (column, value) => $"{column} is required."
+    /// })) {
+    ///     validators.Validate();
+    /// }
+    /// </code>
+    /// </example>
+    /// <param name="overrides">The accessors to use in the scope. Accessors left <see langword="null" /> fall back to the outer scope or the global accessors.</param>
+    /// <returns>The object that ends the scope when disposed.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="overrides" /> is <see langword="null" />.</exception>
+    public static IDisposable BeginScope(ErrorMessageOverrides overrides) {
+        if (overrides is null) {
+            throw new ArgumentNullException(nameof(overrides));
+        }
+
+        return ErrorMessageScope.Begin(overrides);
     }
 
     /// <summary>

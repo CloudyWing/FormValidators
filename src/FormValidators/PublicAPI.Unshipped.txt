@@ -9,6 +9,56 @@ CloudyWing.FormValidators.AsyncCustomValidator.AsyncCustomValidator(string! colu
 CloudyWing.FormValidators.AsyncCustomValidator.ValidateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
 CloudyWing.FormValidators.BulkValidator.Errors.get -> System.Collections.Generic.IReadOnlyList<CloudyWing.FormValidators.ValidationError!>!
 CloudyWing.FormValidators.BulkValidatorExtensions
+CloudyWing.FormValidators.Core.ErrorMessageOverrides
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ErrorMessageOverrides() -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueCompareAnotherColumnValueAccessor.get -> System.Func<string!, string?, string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueCompareAnotherColumnValueAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueGreaterOrEqualAccessor.get -> System.Func<string!, string?, object!, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueGreaterOrEqualAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueInRangeAccessor.get -> System.Func<string!, string?, object!, object!, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueInRangeAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsCreditCardAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsCreditCardAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsDateTimeAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsDateTimeAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsEmailAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsEmailAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsGuidAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsGuidAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIPAddressAccessor.get -> System.Func<string!, string?, CloudyWing.FormValidators.IPAddressTypes, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIPAddressAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIdCardAccessor.get -> System.Func<string!, string?, CloudyWing.FormValidators.IdCardTypes, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIdCardAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsInAllowedValuesAccessor.get -> System.Func<string!, string?, System.Collections.Generic.IReadOnlyList<string!>!, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsInAllowedValuesAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIntegerAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIntegerAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsMobilePhoneAccessor.get -> System.Func<string!, string?, CloudyWing.FormValidators.MobilePhoneFormats, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsMobilePhoneAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsNumberAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsNumberAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsPhoneAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsPhoneAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsRequiredAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsRequiredAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsTaiwanUniformNumberAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsTaiwanUniformNumberAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsUrlAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsUrlAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthGreaterOrEqualAccessor.get -> System.Func<string!, string?, long, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthGreaterOrEqualAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthInRangeAccessor.get -> System.Func<string!, string?, long, long, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthInRangeAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthLessOrEqualAccessor.get -> System.Func<string!, string?, long, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthLessOrEqualAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLessOrEqualAccessor.get -> System.Func<string!, string?, object!, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLessOrEqualAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLessThanAnotherColumnValueAccessor.get -> System.Func<string!, string?, string!, string?, bool, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLessThanAnotherColumnValueAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueMatchCustomRuleAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueMatchCustomRuleAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueMatchRegexAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueMatchRegexAccessor.set -> void
 CloudyWing.FormValidators.Core.FormValidatorBase.SetValidationResult(bool isValid) -> bool
 CloudyWing.FormValidators.Core.ValidationProvider.Custom(System.Func<string!, bool>! predicate, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> System.Func<string!, string?, CloudyWing.FormValidators.CustomValidator!>!
 CloudyWing.FormValidators.Core.ValidationProvider.Custom(System.Func<string!, bool>! predicate, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.CustomValidator!>!
@@ -109,6 +159,7 @@ CloudyWing.FormValidators.ValueLengthValidator.Unit.get -> CloudyWing.FormValida
 CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string! column, string? value, long min, long max, CloudyWing.FormValidators.TextLengthUnit unit) -> void
 CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string! column, string? value, long min, long max, CloudyWing.FormValidators.TextLengthUnit unit, System.Func<string!, string?, long, long, string!>? customErrorMessageAccessor) -> void
 static CloudyWing.FormValidators.BulkValidatorExtensions.ValidateAsync(this CloudyWing.FormValidators.BulkValidator! validators, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.BeginScope(CloudyWing.FormValidators.Core.ErrorMessageOverrides! overrides) -> System.IDisposable!
 static CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsGuidAccessor(System.Func<string!, string?, string!>! accessor) -> void
 static CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsInAllowedValuesAccessor(System.Func<string!, string?, System.Collections.Generic.IReadOnlyList<string!>!, string!>! accessor) -> void
 static CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsPhoneAccessor(System.Func<string!, string?, string!>! accessor) -> void

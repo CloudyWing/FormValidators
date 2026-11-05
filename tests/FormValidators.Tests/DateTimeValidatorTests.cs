@@ -208,4 +208,60 @@ public class DateTimeValidatorTests {
 
         Assert.That(validator.Validate(), Is.True);
     }
+
+    [TestCase("2024/01/31", true)]
+    [TestCase("2024/1/31", false)]
+    [TestCase("01/31/2024", false)]
+    [TestCase("2024-01-31", false)]
+    public void Validate_WithExactFormats_AcceptsOnlyListedFormats(string value, bool isValid) {
+        DateTimeValidator validator = new("", value, null, null, ["yyyy/MM/dd"], CultureInfo.InvariantCulture, null);
+
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
+
+    [Test]
+    [SetCulture("en-US")]
+    public void Validate_WithFormatProvider_IgnoresCurrentCulture() {
+        DateTimeValidator validator = new("", "03/04/1912", new DateTime(1912, 4, 3), new DateTime(1912, 4, 3), new CultureInfo("en-GB"), null);
+
+        Assert.That(validator.Validate(), Is.True);
+    }
+
+    [Test]
+    public void Constructor_NullFormats_ThrowsArgumentNullException() {
+        Assert.Throws<ArgumentNullException>(() => new DateTimeValidator("", "", null, null, null!, null, null));
+    }
+
+    [Test]
+    public void Formats_WhenNotSpecified_IsEmpty() {
+        DateTimeValidator validator = new("", "2024/01/31");
+
+        using (Assert.EnterMultipleScope()) {
+            Assert.That(validator.Formats, Is.Empty);
+            Assert.That(validator.FormatProvider, Is.Null);
+        }
+    }
+
+    [Test]
+    public void ValidationProviderDateTimeMethods_WithFormatProvider_CreateValidatorWithFormatProvider() {
+        ValidationProvider provider = new();
+        CultureInfo culture = CultureInfo.InvariantCulture;
+        string[] formats = ["yyyyMMdd"];
+
+        DateTimeValidator any = provider.DateTime(culture)("", "2024-01-31");
+        DateTimeValidator exact = provider.DateTime(formats, culture)("", "2024-01-31");
+        DateTimeValidator min = provider.MinDateTime(new DateTime(2024, 2, 1), formats, culture)("", "20240131");
+        DateTimeValidator max = provider.MaxDateTime(new DateTime(2024, 1, 1), culture)("", "2024-01-31");
+        DateTimeValidator range = provider.DateTimeRange(new DateTime(2024, 1, 1), new DateTime(2024, 12, 31), formats, culture, (c, v, _min, _max) => c)("欄位", "20250101");
+
+        using (Assert.EnterMultipleScope()) {
+            Assert.That(any.Validate(), Is.True);
+            Assert.That(exact.Validate(), Is.False);
+            Assert.That(exact.Formats, Is.EqualTo(formats));
+            Assert.That(min.Validate(), Is.False);
+            Assert.That(max.Validate(), Is.False);
+            Assert.That(range.Validate(), Is.False);
+            Assert.That(range.ErrorMessage, Is.EqualTo("欄位"));
+        }
+    }
 }

@@ -33,11 +33,34 @@ public sealed class IntegerValidator : ComparableTypeValidator<long> {
     }
 
     /// <summary>
+    /// Initializes a new instance of the <see cref="IntegerValidator" /> class with the format provider used to parse the value.
+    /// </summary>
+    /// <param name="column">The column.</param>
+    /// <param name="value">The value.</param>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    public IntegerValidator(
+        string column, string? value, long? min, long? max, bool allowedThousands, IFormatProvider? formatProvider,
+        Func<string, string?, long?, long?, string>? customErrorMessageAccessor
+    ) : this(column, value, min, max, allowedThousands, customErrorMessageAccessor) {
+        FormatProvider = formatProvider;
+    }
+
+    /// <summary>
     /// Gets a value indicating whether [allowed thousands].
     /// </summary>
     /// <value>
     ///   <c>true</c> if [allowed thousands]; otherwise, <c>false</c>.</value>
     public bool AllowedThousands { get; }
+
+    /// <summary>
+    /// Gets the format provider used to parse the value.
+    /// </summary>
+    /// <value>The format provider. <see langword="null" /> means the current culture.</value>
+    public IFormatProvider? FormatProvider { get; }
 
     /// <inheritdoc/>
     protected override Func<string, string?, string> CastErrorMessageAccessor => ErrorMessageProvider.ValueIsIntegerAccessor;
@@ -50,6 +73,6 @@ public sealed class IntegerValidator : ComparableTypeValidator<long> {
             styles |= NumberStyles.AllowThousands;
         }
 
-        return long.TryParse(value, styles, null, out result);
+        return long.TryParse(value, styles, FormatProvider, out result);
     }
 }

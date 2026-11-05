@@ -124,6 +124,110 @@ public class ValidationProvider {
     }
 
     /// <summary>
+    /// Validation indicate that a value is integer parsed with the format provider.
+    /// </summary>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, IntegerValidator> Integer(bool allowedThousands, IFormatProvider? formatProvider) {
+        return Integer(allowedThousands, formatProvider, (Func<string, string?, long?, long?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is integer parsed with the format provider.
+    /// </summary>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, IntegerValidator> Integer(
+        bool allowedThousands, IFormatProvider? formatProvider,
+        Func<string, string?, long?, long?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, null, null, allowedThousands, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the minimum integer of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, IntegerValidator> MinInt(long min, bool allowedThousands, IFormatProvider? formatProvider) {
+        return MinInt(min, allowedThousands, formatProvider, (Func<string, string?, long?, long?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the minimum integer of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, IntegerValidator> MinInt(
+        long min, bool allowedThousands, IFormatProvider? formatProvider,
+        Func<string, string?, long?, long?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, null, allowedThousands, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the maximum integer of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, IntegerValidator> MaxInt(long max, bool allowedThousands, IFormatProvider? formatProvider) {
+        return MaxInt(max, allowedThousands, formatProvider, (Func<string, string?, long?, long?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the maximum integer of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, IntegerValidator> MaxInt(
+        long max, bool allowedThousands, IFormatProvider? formatProvider,
+        Func<string, string?, long?, long?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, null, max, allowedThousands, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the integer range of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, IntegerValidator> IntRange(long min, long max, bool allowedThousands, IFormatProvider? formatProvider) {
+        return IntRange(min, max, allowedThousands, formatProvider, (Func<string, string?, long?, long?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the integer range of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, IntegerValidator> IntRange(
+        long min, long max, bool allowedThousands, IFormatProvider? formatProvider,
+        Func<string, string?, long?, long?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, max, allowedThousands, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
     /// Validation indicate that a value is number.
     /// </summary>
     /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
@@ -220,6 +324,110 @@ public class ValidationProvider {
     }
 
     /// <summary>
+    /// Validation indicate that a value is number parsed with the format provider.
+    /// </summary>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, NumberValidator> Number(bool allowedThousands, IFormatProvider? formatProvider) {
+        return Number(allowedThousands, formatProvider, (Func<string, string?, decimal?, decimal?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is number parsed with the format provider.
+    /// </summary>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, NumberValidator> Number(
+        bool allowedThousands, IFormatProvider? formatProvider,
+        Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, null, null, allowedThousands, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the minimum number of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, NumberValidator> MinNumber(decimal min, bool allowedThousands, IFormatProvider? formatProvider) {
+        return MinNumber(min, allowedThousands, formatProvider, (Func<string, string?, decimal?, decimal?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the minimum number of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, NumberValidator> MinNumber(
+        decimal min, bool allowedThousands, IFormatProvider? formatProvider,
+        Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, null, allowedThousands, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the maximum number of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, NumberValidator> MaxNumber(decimal max, bool allowedThousands, IFormatProvider? formatProvider) {
+        return MaxNumber(max, allowedThousands, formatProvider, (Func<string, string?, decimal?, decimal?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the maximum number of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, NumberValidator> MaxNumber(
+        decimal max, bool allowedThousands, IFormatProvider? formatProvider,
+        Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, null, max, allowedThousands, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the number range of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, NumberValidator> NumberRange(decimal min, decimal max, bool allowedThousands, IFormatProvider? formatProvider) {
+        return NumberRange(min, max, allowedThousands, formatProvider, (Func<string, string?, decimal?, decimal?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the number range of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="allowedThousands">if set to <c>true</c> [allowed thousands].</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, NumberValidator> NumberRange(
+        decimal min, decimal max, bool allowedThousands, IFormatProvider? formatProvider,
+        Func<string, string?, decimal?, decimal?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, max, allowedThousands, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
     /// Validation indicate that a value is date time.
     /// </summary>
     /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value, min, max.</param>
@@ -307,6 +515,206 @@ public class ValidationProvider {
         DateTime min, DateTime max, Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor = null
     ) {
         return (column, value) => new(column, value, min, max, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is date time parsed with the format provider.
+    /// </summary>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> DateTime(IFormatProvider? formatProvider) {
+        return DateTime(formatProvider, (Func<string, string?, DateTime?, DateTime?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is date time parsed with the format provider.
+    /// </summary>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> DateTime(
+        IFormatProvider? formatProvider,
+        Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, null, null, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is date time parsed with the exact formats and the format provider.
+    /// </summary>
+    /// <param name="formats">The allowed exact formats, such as <c>yyyy/MM/dd</c>. An empty collection allows any format recognized by the format provider.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> DateTime(IEnumerable<string> formats, IFormatProvider? formatProvider) {
+        return DateTime(formats, formatProvider, (Func<string, string?, DateTime?, DateTime?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is date time parsed with the exact formats and the format provider.
+    /// </summary>
+    /// <param name="formats">The allowed exact formats, such as <c>yyyy/MM/dd</c>. An empty collection allows any format recognized by the format provider.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> DateTime(
+        IEnumerable<string> formats, IFormatProvider? formatProvider,
+        Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, null, null, formats, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the minimum date time of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> MinDateTime(DateTime min, IFormatProvider? formatProvider) {
+        return MinDateTime(min, formatProvider, (Func<string, string?, DateTime?, DateTime?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the minimum date time of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> MinDateTime(
+        DateTime min, IFormatProvider? formatProvider,
+        Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, null, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the minimum date time of a value parsed with the exact formats and the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="formats">The allowed exact formats, such as <c>yyyy/MM/dd</c>. An empty collection allows any format recognized by the format provider.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> MinDateTime(DateTime min, IEnumerable<string> formats, IFormatProvider? formatProvider) {
+        return MinDateTime(min, formats, formatProvider, (Func<string, string?, DateTime?, DateTime?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the minimum date time of a value parsed with the exact formats and the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="formats">The allowed exact formats, such as <c>yyyy/MM/dd</c>. An empty collection allows any format recognized by the format provider.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> MinDateTime(
+        DateTime min, IEnumerable<string> formats, IFormatProvider? formatProvider,
+        Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, null, formats, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the maximum date time of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> MaxDateTime(DateTime max, IFormatProvider? formatProvider) {
+        return MaxDateTime(max, formatProvider, (Func<string, string?, DateTime?, DateTime?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the maximum date time of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> MaxDateTime(
+        DateTime max, IFormatProvider? formatProvider,
+        Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, null, max, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the maximum date time of a value parsed with the exact formats and the format provider.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="formats">The allowed exact formats, such as <c>yyyy/MM/dd</c>. An empty collection allows any format recognized by the format provider.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> MaxDateTime(DateTime max, IEnumerable<string> formats, IFormatProvider? formatProvider) {
+        return MaxDateTime(max, formats, formatProvider, (Func<string, string?, DateTime?, DateTime?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the maximum date time of a value parsed with the exact formats and the format provider.
+    /// </summary>
+    /// <param name="max">The maximum.</param>
+    /// <param name="formats">The allowed exact formats, such as <c>yyyy/MM/dd</c>. An empty collection allows any format recognized by the format provider.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> MaxDateTime(
+        DateTime max, IEnumerable<string> formats, IFormatProvider? formatProvider,
+        Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, null, max, formats, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the date time range of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> DateTimeRange(DateTime min, DateTime max, IFormatProvider? formatProvider) {
+        return DateTimeRange(min, max, formatProvider, (Func<string, string?, DateTime?, DateTime?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the date time range of a value parsed with the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> DateTimeRange(
+        DateTime min, DateTime max, IFormatProvider? formatProvider,
+        Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, max, formatProvider, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation constrains the date time range of a value parsed with the exact formats and the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="formats">The allowed exact formats, such as <c>yyyy/MM/dd</c>. An empty collection allows any format recognized by the format provider.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> DateTimeRange(DateTime min, DateTime max, IEnumerable<string> formats, IFormatProvider? formatProvider) {
+        return DateTimeRange(min, max, formats, formatProvider, (Func<string, string?, DateTime?, DateTime?, string>?)null);
+    }
+
+    /// <summary>
+    /// Validation constrains the date time range of a value parsed with the exact formats and the format provider.
+    /// </summary>
+    /// <param name="min">The minimum.</param>
+    /// <param name="max">The maximum.</param>
+    /// <param name="formats">The allowed exact formats, such as <c>yyyy/MM/dd</c>. An empty collection allows any format recognized by the format provider.</param>
+    /// <param name="formatProvider">The format provider used to parse the value, such as <see cref="System.Globalization.CultureInfo.InvariantCulture" />. <see langword="null" /> uses the current culture.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, DateTimeValidator> DateTimeRange(
+        DateTime min, DateTime max, IEnumerable<string> formats, IFormatProvider? formatProvider,
+        Func<string, string?, DateTime?, DateTime?, string>? customErrorMessageAccessor
+    ) {
+        return (column, value) => new(column, value, min, max, formats, formatProvider, customErrorMessageAccessor);
     }
 
     /// <summary>

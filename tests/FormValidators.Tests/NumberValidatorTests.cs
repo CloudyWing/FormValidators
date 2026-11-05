@@ -1,3 +1,4 @@
+using System.Globalization;
 using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
@@ -152,5 +153,49 @@ public class NumberValidatorTests {
         );
         validator.Validate();
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
+
+    [Test]
+    [SetCulture("de-DE")]
+    public void Validate_WithoutFormatProvider_UsesCurrentCulture() {
+        NumberValidator validator = new("", "1.5");
+
+        Assert.That(validator.Validate(), Is.False);
+    }
+
+    [TestCase("1.5", true)]
+    [TestCase("1,5", false)]
+    [SetCulture("de-DE")]
+    public void Validate_WithInvariantFormatProvider_IgnoresCurrentCulture(string value, bool isValid) {
+        NumberValidator validator = new("", value, null, null, false, CultureInfo.InvariantCulture, null);
+
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
+
+    [Test]
+    public void Validate_WithGermanFormatProviderAndRange_ParsesCommaAsDecimalSeparator() {
+        NumberValidator validator = new("", "1,5", 1m, 2m, false, new CultureInfo("de-DE"), null);
+
+        Assert.That(validator.Validate(), Is.True);
+    }
+
+    [Test]
+    public void ValidationProviderNumberMethods_WithFormatProvider_CreateValidatorWithFormatProvider() {
+        ValidationProvider provider = new();
+        CultureInfo culture = CultureInfo.InvariantCulture;
+
+        NumberValidator number = provider.Number(false, culture)("", "1.5");
+        NumberValidator min = provider.MinNumber(2m, false, culture)("", "1.5");
+        NumberValidator max = provider.MaxNumber(1m, false, culture, (c, v, _min, _max) => $"{c}:{_max}")("欄位", "1.5");
+        NumberValidator range = provider.NumberRange(1m, 2m, true, culture)("", "1,000.5");
+
+        using (Assert.EnterMultipleScope()) {
+            Assert.That(number.FormatProvider, Is.SameAs(culture));
+            Assert.That(number.Validate(), Is.True);
+            Assert.That(min.Validate(), Is.False);
+            Assert.That(max.Validate(), Is.False);
+            Assert.That(max.ErrorMessage, Is.EqualTo("欄位:1"));
+            Assert.That(range.Validate(), Is.False);
+        }
     }
 }

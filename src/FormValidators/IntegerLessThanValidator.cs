@@ -24,6 +24,7 @@ public sealed class IntegerLessThanValidator : LessThanValidator<long> {
 
     /// <inheritdoc/>
     protected override bool TryParse(string value, out long result) {
-        return long.TryParse(value, NumberStyles.Any, null, out result);
+        // 與 IntegerValidator 一致只接受整數格式，保留千分位以免既有含千分位的輸入失去比較
+        return long.TryParse(value, NumberStyles.Integer | NumberStyles.AllowThousands, null, out result);
     }
 }

@@ -48,4 +48,23 @@ public class IntegerLessThanValidatorTests {
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
+
+    [TestCase("2,000", "1,000", false)]
+    [TestCase("-2", "1", true)]
+    [TestCase(" 2 ", "1", false)]
+    public void Validate_WithIntegerFormat_ComparesValues(string value, string comparisonValue, bool isValid) {
+        IntegerLessThanValidator validator = new("", value, "", comparisonValue, false);
+
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
+
+    [TestCase("2.0", "1")]
+    [TestCase("1e3", "2")]
+    [TestCase("$5", "1")]
+    [TestCase("(5)", "1")]
+    public void Validate_WithNonIntegerFormat_SkipsComparison(string value, string comparisonValue) {
+        IntegerLessThanValidator validator = new("", value, "", comparisonValue, false);
+
+        Assert.That(validator.Validate(), Is.True);
+    }
 }

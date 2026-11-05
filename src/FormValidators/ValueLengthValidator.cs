@@ -30,6 +30,7 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     /// <param name="min">The minimum. Less than or equal to 0 means unlimited.</param>
     /// <param name="max">The maximum. Less than or equal to 0 means unlimited.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
+    /// <exception cref="ArgumentException">Both <paramref name="min" /> and <paramref name="max" /> are greater than 0 and <paramref name="min" /> is greater than <paramref name="max" />.</exception>
     public ValueLengthValidator(
         string column, string value,
         long min, long max,
@@ -37,6 +38,12 @@ public sealed class ValueLengthValidator : FormValidatorBase {
     ) : base(column, value) {
         MinLength = min < 0 ? 0 : min;
         MaxLength = max < 0 ? 0 : max;
+
+        // min 大於 max 時任何非空值都無法通過，屬設定錯誤
+        if (MinLength > 0 && MaxLength > 0 && MinLength > MaxLength) {
+            throw new ArgumentException($"The minimum length {min} cannot be greater than the maximum length {max}.", nameof(min));
+        }
+
         CustomErrorMessageAccessor = customErrorMessageAccessor;
     }
 

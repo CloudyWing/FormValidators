@@ -1,4 +1,5 @@
-﻿using CloudyWing.FormValidators.Core;
+﻿using System;
+using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
@@ -110,5 +111,27 @@ public class ValueLengthValidatorTests {
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void Constructor_MinGreaterThanMax_ThrowsArgumentException() {
+        ArgumentException exception = Assert.Throws<ArgumentException>(() => new ValueLengthValidator("", "123", 5, 3));
+
+        Assert.That(exception.ParamName, Is.EqualTo("min"));
+    }
+
+    [TestCase(5, 0)]
+    [TestCase(5, -1)]
+    [TestCase(3, 3)]
+    public void Constructor_MaxIsUnlimitedOrEqual_DoesNotThrow(long min, long max) {
+        Assert.DoesNotThrow(() => new ValueLengthValidator("", "123", min, max));
+    }
+
+    [Test]
+    public void ValidationProviderLengthRange_MinGreaterThanMax_ThrowsArgumentExceptionWhenCreated() {
+        ValidationProvider provider = new();
+        Func<string, string, ValueLengthValidator> creator = provider.LengthRange(5, 3);
+
+        Assert.Throws<ArgumentException>(() => creator("", "123"));
     }
 }

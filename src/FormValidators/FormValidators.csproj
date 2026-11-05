@@ -45,9 +45,9 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="..\..\README.md">
+    <None Include="..\..\build\package-readme.md">
       <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
+      <PackagePath>\README.md</PackagePath>
     </None>
   </ItemGroup>
   <ItemGroup>

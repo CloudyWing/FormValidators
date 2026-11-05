@@ -68,7 +68,7 @@ public static class ErrorMessageProvider {
 
         return $"「{column}」必須為正確的「{string.Join("或", typeNames)}」格式。";
     };
-    private static readonly Func<string, string, string, string, string> DefaultValueCompareAnotherColumnValueAccessor = (column, comparisonColumn, value, comparisonValue) => $"「{column}」和「{comparisonColumn}」輸入不一致。";
+    private static readonly Func<string, string, string, string, string> DefaultValueCompareAnotherColumnValueAccessor = (column, value, comparisonColumn, comparisonValue) => $"「{column}」和「{comparisonColumn}」輸入不一致。";
     private static readonly Func<string, string, string, string, bool, string> DefaultValueLessThanAnotherColumnValueAccessor = (column, comparisonColumn, value, comparisonValue, allowedEqual) => $"「{column}」必須要小於{(allowedEqual ? "等於" : "")}「{comparisonColumn}」。";
     private static readonly Func<string, string, string> DefaultValueIsUrlAccessor = (column, value) => $"「{column}」必須為正確的網址格式。";
     private static readonly Func<string, string, IPAddressTypes, string> DefaultValueIsIPAddressAccessor = (column, value, types) => $"「{column}」必須為正確的IP位址格式。";

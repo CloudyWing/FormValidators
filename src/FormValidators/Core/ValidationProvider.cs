@@ -1295,4 +1295,132 @@ public class ValidationProvider {
     ) {
         return (column, value) => new(column, value, customErrorMessageAccessor);
     }
+
+    /// <summary>
+    /// Validation with a custom predicate. The predicate is not called for a <see langword="null" />, empty or white space value.
+    /// </summary>
+    /// <param name="predicate">The predicate that returns <see langword="true" /> when the value is valid.</param>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, CustomValidator> Custom(Func<string, bool> predicate, string customErrorMessageFormat) {
+        return Custom(predicate, (_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Validation with a custom predicate. The predicate is not called for a <see langword="null" />, empty or white space value.
+    /// </summary>
+    /// <param name="predicate">The predicate that returns <see langword="true" /> when the value is valid.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="predicate" /> is <see langword="null" />.</exception>
+    public Func<string, string?, CustomValidator> Custom(
+        Func<string, bool> predicate, Func<string, string?, string>? customErrorMessageAccessor = null
+    ) {
+        if (predicate is null) {
+            throw new ArgumentNullException(nameof(predicate));
+        }
+
+        return (column, value) => new(column, value, predicate, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is one of the allowed values, compared by <see cref="StringComparison.Ordinal" /> (case-sensitive).
+    /// </summary>
+    /// <param name="allowedValues">The allowed values.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, AllowedValuesValidator> In(params string[] allowedValues) {
+        return In(allowedValues, StringComparison.Ordinal, null);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is one of the allowed values.
+    /// </summary>
+    /// <param name="allowedValues">The allowed values.</param>
+    /// <param name="comparisonType">The rule used to compare the value with the allowed values, such as <see cref="StringComparison.OrdinalIgnoreCase" />.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, AllowedValuesValidator> In(IEnumerable<string> allowedValues, StringComparison comparisonType) {
+        return In(allowedValues, comparisonType, null);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is one of the allowed values.
+    /// </summary>
+    /// <param name="allowedValues">The allowed values.</param>
+    /// <param name="comparisonType">The rule used to compare the value with the allowed values, such as <see cref="StringComparison.OrdinalIgnoreCase" />.</param>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, allowed values.</param>
+    /// <returns>The validator creator.</returns>
+    /// <exception cref="ArgumentNullException"><paramref name="allowedValues" /> is <see langword="null" />.</exception>
+    public Func<string, string?, AllowedValuesValidator> In(
+        IEnumerable<string> allowedValues, StringComparison comparisonType,
+        Func<string, string?, IReadOnlyList<string>, string>? customErrorMessageAccessor
+    ) {
+        if (allowedValues is null) {
+            throw new ArgumentNullException(nameof(allowedValues));
+        }
+
+        // 先複製一份，避免呼叫端之後修改來源集合影響已建立的 creator
+        string[] values = [.. allowedValues];
+
+        return (column, value) => new(column, value, values, comparisonType, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is GUID.
+    /// </summary>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, GuidValidator> Guid(string customErrorMessageFormat) {
+        return Guid((_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is GUID.
+    /// </summary>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, GuidValidator> Guid(
+        Func<string, string?, string>? customErrorMessageAccessor = null
+    ) {
+        return (column, value) => new(column, value, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is Taiwan business uniform number (統一編號).
+    /// </summary>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, TaiwanUniformNumberValidator> TaiwanUniformNumber(string customErrorMessageFormat) {
+        return TaiwanUniformNumber((_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is Taiwan business uniform number (統一編號).
+    /// </summary>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, TaiwanUniformNumberValidator> TaiwanUniformNumber(
+        Func<string, string?, string>? customErrorMessageAccessor = null
+    ) {
+        return (column, value) => new(column, value, customErrorMessageAccessor);
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is Taiwan landline phone number (市話).
+    /// </summary>
+    /// <param name="customErrorMessageFormat">The custom error message format. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, PhoneValidator> Phone(string customErrorMessageFormat) {
+        return Phone((_column, _value) => string.Format(customErrorMessageFormat, _column, _value));
+    }
+
+    /// <summary>
+    /// Validation indicate that a value is Taiwan landline phone number (市話).
+    /// </summary>
+    /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
+    /// <returns>The validator creator.</returns>
+    public Func<string, string?, PhoneValidator> Phone(
+        Func<string, string?, string>? customErrorMessageAccessor = null
+    ) {
+        return (column, value) => new(column, value, customErrorMessageAccessor);
+    }
 }

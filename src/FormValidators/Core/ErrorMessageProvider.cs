@@ -57,6 +57,11 @@ public static class ErrorMessageProvider {
     private static readonly Func<string, string?, string> DefaultValueIsUrlAccessor = (column, value) => $"「{column}」必須為正確的網址格式。";
     private static readonly Func<string, string?, IPAddressTypes, string> DefaultValueIsIPAddressAccessor = (column, value, types) => $"「{column}」必須為正確的IP位址格式。";
     private static readonly Func<string, string?, string> DefaultValueIsCreditCardAccessor = (column, value) => $"「{column}」必須為正確的信用卡號碼。";
+    private static readonly Func<string, string?, string> DefaultValueMatchCustomRuleAccessor = (column, value) => $"「{column}」不符合規則。";
+    private static readonly Func<string, string?, IReadOnlyList<string>, string> DefaultValueIsInAllowedValuesAccessor = (column, value, allowedValues) => $"「{column}」必須為{JoinAllowedValues(allowedValues)}其中之一。";
+    private static readonly Func<string, string?, string> DefaultValueIsGuidAccessor = (column, value) => $"「{column}」必須為正確的GUID格式。";
+    private static readonly Func<string, string?, string> DefaultValueIsTaiwanUniformNumberAccessor = (column, value) => $"「{column}」必須為正確的統一編號。";
+    private static readonly Func<string, string?, string> DefaultValueIsPhoneAccessor = (column, value) => $"「{column}」必須為正確市話號碼格式。";
     private static volatile Func<string, string?, string> valueIsRequiredAccessor = DefaultValueIsRequiredAccessor;
     private static volatile Func<string, string?, object, string> valueGreaterOrEqualAccessor = DefaultValueGreaterOrEqualAccessor;
     private static volatile Func<string, string?, object, string> valueLessOrEqualAccessor = DefaultValueLessOrEqualAccessor;
@@ -76,6 +81,11 @@ public static class ErrorMessageProvider {
     private static volatile Func<string, string?, string> valueIsUrlAccessor = DefaultValueIsUrlAccessor;
     private static volatile Func<string, string?, IPAddressTypes, string> valueIsIPAddressAccessor = DefaultValueIsIPAddressAccessor;
     private static volatile Func<string, string?, string> valueIsCreditCardAccessor = DefaultValueIsCreditCardAccessor;
+    private static volatile Func<string, string?, string> valueMatchCustomRuleAccessor = DefaultValueMatchCustomRuleAccessor;
+    private static volatile Func<string, string?, IReadOnlyList<string>, string> valueIsInAllowedValuesAccessor = DefaultValueIsInAllowedValuesAccessor;
+    private static volatile Func<string, string?, string> valueIsGuidAccessor = DefaultValueIsGuidAccessor;
+    private static volatile Func<string, string?, string> valueIsTaiwanUniformNumberAccessor = DefaultValueIsTaiwanUniformNumberAccessor;
+    private static volatile Func<string, string?, string> valueIsPhoneAccessor = DefaultValueIsPhoneAccessor;
 
     /// <summary>
     /// Gets the value is required accessor.
@@ -363,6 +373,81 @@ public static class ErrorMessageProvider {
     }
 
     /// <summary>
+    /// Gets the value match custom rule accessor.
+    /// </summary>
+    /// <value>The value match custom rule accessor. The arguments are column, value.</value>
+    public static Func<string, string?, string> ValueMatchCustomRuleAccessor => valueMatchCustomRuleAccessor;
+
+    /// <summary>
+    /// Sets the value match custom rule accessor.
+    /// </summary>
+    /// <param name="accessor">The accessor. The arguments are column, value.</param>
+    /// <exception cref="ArgumentNullException">accessor</exception>
+    public static void SetValueMatchCustomRuleAccessor(Func<string, string?, string> accessor) {
+        valueMatchCustomRuleAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+    }
+
+    /// <summary>
+    /// Gets the value is in allowed values accessor.
+    /// </summary>
+    /// <value>The value is in allowed values accessor. The arguments are column, value, allowed values.</value>
+    public static Func<string, string?, IReadOnlyList<string>, string> ValueIsInAllowedValuesAccessor => valueIsInAllowedValuesAccessor;
+
+    /// <summary>
+    /// Sets the value is in allowed values accessor.
+    /// </summary>
+    /// <param name="accessor">The accessor. The arguments are column, value, allowed values.</param>
+    /// <exception cref="ArgumentNullException">accessor</exception>
+    public static void SetValueIsInAllowedValuesAccessor(Func<string, string?, IReadOnlyList<string>, string> accessor) {
+        valueIsInAllowedValuesAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+    }
+
+    /// <summary>
+    /// Gets the value is guid accessor.
+    /// </summary>
+    /// <value>The value is guid accessor. The arguments are column, value.</value>
+    public static Func<string, string?, string> ValueIsGuidAccessor => valueIsGuidAccessor;
+
+    /// <summary>
+    /// Sets the value is guid accessor.
+    /// </summary>
+    /// <param name="accessor">The accessor. The arguments are column, value.</param>
+    /// <exception cref="ArgumentNullException">accessor</exception>
+    public static void SetValueIsGuidAccessor(Func<string, string?, string> accessor) {
+        valueIsGuidAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+    }
+
+    /// <summary>
+    /// Gets the value is taiwan uniform number accessor.
+    /// </summary>
+    /// <value>The value is taiwan uniform number accessor. The arguments are column, value.</value>
+    public static Func<string, string?, string> ValueIsTaiwanUniformNumberAccessor => valueIsTaiwanUniformNumberAccessor;
+
+    /// <summary>
+    /// Sets the value is taiwan uniform number accessor.
+    /// </summary>
+    /// <param name="accessor">The accessor. The arguments are column, value.</param>
+    /// <exception cref="ArgumentNullException">accessor</exception>
+    public static void SetValueIsTaiwanUniformNumberAccessor(Func<string, string?, string> accessor) {
+        valueIsTaiwanUniformNumberAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+    }
+
+    /// <summary>
+    /// Gets the value is phone accessor.
+    /// </summary>
+    /// <value>The value is phone accessor. The arguments are column, value.</value>
+    public static Func<string, string?, string> ValueIsPhoneAccessor => valueIsPhoneAccessor;
+
+    /// <summary>
+    /// Sets the value is phone accessor.
+    /// </summary>
+    /// <param name="accessor">The accessor. The arguments are column, value.</param>
+    /// <exception cref="ArgumentNullException">accessor</exception>
+    public static void SetValueIsPhoneAccessor(Func<string, string?, string> accessor) {
+        valueIsPhoneAccessor = accessor ?? throw new ArgumentNullException(nameof(accessor));
+    }
+
+    /// <summary>
     /// Resets all accessors to their default values.
     /// </summary>
     internal static void ResetToDefaults() {
@@ -385,6 +470,11 @@ public static class ErrorMessageProvider {
         valueIsUrlAccessor = DefaultValueIsUrlAccessor;
         valueIsIPAddressAccessor = DefaultValueIsIPAddressAccessor;
         valueIsCreditCardAccessor = DefaultValueIsCreditCardAccessor;
+        valueMatchCustomRuleAccessor = DefaultValueMatchCustomRuleAccessor;
+        valueIsInAllowedValuesAccessor = DefaultValueIsInAllowedValuesAccessor;
+        valueIsGuidAccessor = DefaultValueIsGuidAccessor;
+        valueIsTaiwanUniformNumberAccessor = DefaultValueIsTaiwanUniformNumberAccessor;
+        valueIsPhoneAccessor = DefaultValueIsPhoneAccessor;
     }
 
     // 以 InvariantCulture 格式化，避免「/」被替換成文化特性的日期分隔符號或改用非西曆年份
@@ -428,5 +518,15 @@ public static class ErrorMessageProvider {
         }
 
         return string.Join("或", typeNames);
+    }
+
+    private static string JoinAllowedValues(IReadOnlyList<string> allowedValues) {
+        string[] quoted = new string[allowedValues.Count];
+
+        for (int i = 0; i < quoted.Length; i++) {
+            quoted[i] = $"「{allowedValues[i]}」";
+        }
+
+        return string.Join("、", quoted);
     }
 }

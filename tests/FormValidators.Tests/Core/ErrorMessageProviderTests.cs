@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
@@ -25,7 +26,12 @@ public class ErrorMessageProviderTests {
         new TestCaseData(new Action(() => ErrorMessageProvider.SetValueLessThanAnotherColumnValueAccessor(null!))).SetName("SetValueLessThanAnotherColumnValueAccessor_NullAccessor_ThrowsArgumentNullException"),
         new TestCaseData(new Action(() => ErrorMessageProvider.SetValueIsUrlAccessor(null!))).SetName("SetValueIsUrlAccessor_NullAccessor_ThrowsArgumentNullException"),
         new TestCaseData(new Action(() => ErrorMessageProvider.SetValueIsIPAddressAccessor(null!))).SetName("SetValueIsIPAddressAccessor_NullAccessor_ThrowsArgumentNullException"),
-        new TestCaseData(new Action(() => ErrorMessageProvider.SetValueIsCreditCardAccessor(null!))).SetName("SetValueIsCreditCardAccessor_NullAccessor_ThrowsArgumentNullException")
+        new TestCaseData(new Action(() => ErrorMessageProvider.SetValueIsCreditCardAccessor(null!))).SetName("SetValueIsCreditCardAccessor_NullAccessor_ThrowsArgumentNullException"),
+        new TestCaseData(new Action(() => ErrorMessageProvider.SetValueMatchCustomRuleAccessor(null!))).SetName("SetValueMatchCustomRuleAccessor_NullAccessor_ThrowsArgumentNullException"),
+        new TestCaseData(new Action(() => ErrorMessageProvider.SetValueIsInAllowedValuesAccessor(null!))).SetName("SetValueIsInAllowedValuesAccessor_NullAccessor_ThrowsArgumentNullException"),
+        new TestCaseData(new Action(() => ErrorMessageProvider.SetValueIsGuidAccessor(null!))).SetName("SetValueIsGuidAccessor_NullAccessor_ThrowsArgumentNullException"),
+        new TestCaseData(new Action(() => ErrorMessageProvider.SetValueIsTaiwanUniformNumberAccessor(null!))).SetName("SetValueIsTaiwanUniformNumberAccessor_NullAccessor_ThrowsArgumentNullException"),
+        new TestCaseData(new Action(() => ErrorMessageProvider.SetValueIsPhoneAccessor(null!))).SetName("SetValueIsPhoneAccessor_NullAccessor_ThrowsArgumentNullException")
     ];
 
     [TearDown]
@@ -176,5 +182,24 @@ public class ErrorMessageProviderTests {
         ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => setter());
 
         Assert.That(exception?.ParamName, Is.EqualTo("accessor"));
+    }
+
+    [Test]
+    public void SetValueIsPhoneAccessor_ValidAccessor_ReplacesAccessorUsedByValidator() {
+        ErrorMessageProvider.SetValueIsPhoneAccessor((c, v) => $"{c}:{v}");
+        PhoneValidator validator = new("電話", "123");
+
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo("電話:123"));
+    }
+
+    [Test]
+    public void SetValueIsInAllowedValuesAccessor_ValidAccessor_ReplacesAccessor() {
+        Func<string, string?, IReadOnlyList<string>, string> expected = (c, v, values) => c;
+
+        ErrorMessageProvider.SetValueIsInAllowedValuesAccessor(expected);
+
+        Assert.That(ErrorMessageProvider.ValueIsInAllowedValuesAccessor, Is.SameAs(expected));
     }
 }

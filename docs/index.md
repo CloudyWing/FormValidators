@@ -36,7 +36,7 @@ BulkValidator validators = new(cfg => {
         opt => opt.Email()
     );
     cfg.Add("年齡", age,
-        opt => opt.Integer(18, 100)
+        opt => opt.IntRange(18, 100)
     );
 });
 
@@ -63,4 +63,4 @@ if (!validators.Validate()) {
 
 ## 授權
 
-本專案採用 [MIT 授權](https://github.com/CloudyWing/FormValidators/blob/master/LICENSE.md)。
+本專案採用 [MIT 授權](https://github.com/CloudyWing/FormValidators/blob/main/LICENSE.md)。

@@ -38,10 +38,10 @@ if (!validators.Validate()) {
 }
 ```
 
-**輸出範例**：
+**輸出範例**（`condition` 為 `false` 時）：
 
 ```text
-欄位一為必填。<br />欄位一必須為整數。<br />錯誤訊息
+「欄位一」必須為整數。<br />錯誤訊息
 ```
 
 ## 範例 2：驗證失敗後，停止驗證後續項目，只取得第一個錯誤訊息
@@ -163,7 +163,7 @@ public class RegisterForm {
             // 使用者名稱：必填，長度 3-20
             cfg.Add("使用者名稱", UserName,
                 opt => opt.Required(),
-                opt => opt.ValueLength(3, 20)
+                opt => opt.LengthRange(3, 20)
             );
 
             // Email：必填，格式驗證
@@ -175,19 +175,19 @@ public class RegisterForm {
             // 密碼：必填，長度至少 8
             cfg.Add("密碼", Password,
                 opt => opt.Required(),
-                opt => opt.ValueLength(8)
+                opt => opt.MinLength(8)
             );
 
             // 確認密碼：必填，與密碼相同
             cfg.Add("確認密碼", ConfirmPassword,
                 opt => opt.Required(),
-                opt => opt.Compare(Password, "密碼")
+                opt => opt.Compare("密碼", Password)
             );
 
             // 年齡：必填，整數，範圍 18-100
             cfg.Add("年齡", Age,
                 opt => opt.Required(),
-                opt => opt.Integer(18, 100)
+                opt => opt.IntRange(18, 100)
             );
 
             // 手機號碼：非必填，但有值時需符合格式
@@ -242,7 +242,7 @@ BulkValidator validators = new(cfg => {
     cfg.AddIf(
         isCorporateAccount, "統一編號", taxId,
         opt => opt.Required(),
-        opt => opt.ValueLength(8, 8)
+        opt => opt.LengthRange(8, 8)
     );
 });
 ```

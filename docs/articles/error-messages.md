@@ -102,7 +102,7 @@ ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, minLength, ma
 - **SetValueMatchRegexAccessor**：值不符合正規表示式
 
 ```csharp
-ErrorMessageProvider.SetValueMatchRegexAccessor((column, value, pattern)
+ErrorMessageProvider.SetValueMatchRegexAccessor((column, value)
     => $"{column}格式不正確。");
 ```
 
@@ -120,7 +120,7 @@ ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
 - **SetValueIsMobilePhoneAccessor**：值不是有效的手機號碼
 
 ```csharp
-ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value)
+ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value, formats)
     => $"{column}必須為有效的手機號碼。");
 ```
 
@@ -129,7 +129,7 @@ ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value)
 - **SetValueIsIdCardAccessor**：值不是有效的身分證字號
 
 ```csharp
-ErrorMessageProvider.SetValueIsIdCardAccessor((column, value)
+ErrorMessageProvider.SetValueIsIdCardAccessor((column, value, types)
     => $"{column}必須為有效的身分證字號。");
 ```
 
@@ -211,7 +211,7 @@ public class Program {
         ErrorMessageProvider.SetValueIsEmailAccessor((column, value)
             => $"請輸入有效的 Email 地址。");
         
-        ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value)
+        ErrorMessageProvider.SetValueIsMobilePhoneAccessor((column, value, formats)
             => $"請輸入有效的手機號碼。");
 
         // 比較驗證
@@ -281,7 +281,7 @@ ErrorMessageProvider.SetValueLengthInRangeAccessor((column, value, min, max)
 ```csharp
 // ✗ 過於技術性
 ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)
-    => $"{column}: Invalid integer format. Expected: [-]?[0-9]+);
+    => $"{column}: Invalid integer format. Expected: [-]?[0-9]+");
 
 // ✓ 使用者友善
 ErrorMessageProvider.SetValueIsIntegerAccessor((column, value)

@@ -8,8 +8,6 @@ namespace CloudyWing.FormValidators;
 /// The mobile phone validator.
 /// </summary>
 public sealed class MobilePhoneValidator : FormValidatorBase {
-    private const string BasicPattern = @"^09[0-9]{2}-?[0-9]{3}-?[0-9]{3}\z";
-
     /// <summary>
     /// Initializes a new instance of the <see cref="MobilePhoneValidator" /> class.
     /// </summary>
@@ -42,17 +40,7 @@ public sealed class MobilePhoneValidator : FormValidatorBase {
     /// Gets the regex pattern.
     /// </summary>
     /// <value>The regex pattern.</value>
-    public string Pattern {
-        get {
-            if (Formats.HasFlag(MobilePhoneFormats.AllowContainDashes) && !Formats.HasFlag(MobilePhoneFormats.AllowWithoutDashes)) {
-                return BasicPattern.Replace("-?", "-");
-            } else if (!Formats.HasFlag(MobilePhoneFormats.AllowContainDashes) && Formats.HasFlag(MobilePhoneFormats.AllowWithoutDashes)) {
-                return BasicPattern.Replace("-?", "");
-            } else {
-                return BasicPattern;
-            }
-        }
-    }
+    public string Pattern => GetRegex().ToString();
 
     /// <summary>
     /// Gets or sets the custom error message accessor.
@@ -72,6 +60,24 @@ public sealed class MobilePhoneValidator : FormValidatorBase {
     /// <inheritdoc />
     protected override bool ValidateValue() {
         // 是否有填資料由RequiredValidator驗證，所以沒填就不驗證
-        return string.IsNullOrWhiteSpace(Value) || Regex.IsMatch(Value, Pattern);
+        if (string.IsNullOrWhiteSpace(Value)) {
+            return true;
+        }
+
+        try {
+            return GetRegex().IsMatch(Value);
+        } catch (RegexMatchTimeoutException) {
+            return false;
+        }
+    }
+
+    private Regex GetRegex() {
+        if (Formats.HasFlag(MobilePhoneFormats.AllowContainDashes) && !Formats.HasFlag(MobilePhoneFormats.AllowWithoutDashes)) {
+            return BuiltInRegexes.MobilePhoneWithDashes;
+        } else if (!Formats.HasFlag(MobilePhoneFormats.AllowContainDashes) && Formats.HasFlag(MobilePhoneFormats.AllowWithoutDashes)) {
+            return BuiltInRegexes.MobilePhoneWithoutDashes;
+        } else {
+            return BuiltInRegexes.MobilePhone;
+        }
     }
 }

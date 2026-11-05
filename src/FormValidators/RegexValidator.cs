@@ -57,8 +57,13 @@ public class RegexValidator : BasicFormValidator {
             return true;
         }
 
-        return RegexInstance is null
-            ? Regex.IsMatch(Value, Pattern)
-            : RegexInstance.IsMatch(Value);
+        // 逾時代表輸入無法在時限內判定，視為驗證失敗而非拋出例外
+        try {
+            return RegexInstance is null
+                ? Regex.IsMatch(Value, Pattern)
+                : RegexInstance.IsMatch(Value);
+        } catch (RegexMatchTimeoutException) {
+            return false;
+        }
     }
 }

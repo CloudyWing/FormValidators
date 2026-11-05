@@ -64,4 +64,14 @@ public class RegexValidatorTests {
 
         Assert.That(exception.ParamName, Is.EqualTo("regex"));
     }
+
+    [Test]
+    public void Validate_RegexMatchTimesOut_ReturnsFalse() {
+        Regex regex = new(@"^(a+)+$", RegexOptions.None, TimeSpan.FromMilliseconds(1));
+        RegexValidator validator = new("", new string('a', 64) + "!", regex);
+
+        bool isValid = validator.Validate();
+
+        Assert.That(isValid, Is.False);
+    }
 }

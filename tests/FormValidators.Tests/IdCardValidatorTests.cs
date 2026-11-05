@@ -140,4 +140,14 @@ public class IdCardValidatorTests {
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
+
+    [TestCase("a188222138", true)]
+    [TestCase("aa00036116", true)]
+    [TestCase("A18822213８", false)]
+    [TestCase("1188222138", false)]
+    public void Validate_WhenAllTypesAreUsed_HandlesCaseAndAsciiDigits(string id, bool expected) {
+        IdCardValidator validator = new("", id);
+
+        Assert.That(validator.Validate(), Is.EqualTo(expected));
+    }
 }

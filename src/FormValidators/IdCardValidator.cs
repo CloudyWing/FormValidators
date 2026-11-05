@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
@@ -56,37 +55,32 @@ public sealed class IdCardValidator : FormValidatorBase {
             return false;
         }
 
-        if (!Regex.IsMatch(Value, GetIdRegexPattern(), RegexOptions.IgnoreCase)) {
+        if (!IsAsciiLetter(Value[0]) || !IsAllowedSecondChar(ToUpper(Value[1]))) {
             return false;
+        }
+
+        for (int i = 2; i < Value.Length; i++) {
+            if (Value[i] < '0' || Value[i] > '9') {
+                return false;
+            }
         }
 
         return ValidateCheckCode();
     }
 
-    private string GetIdRegexPattern() {
-        string secondCharPattern = "";
+    private static bool IsAsciiLetter(char c) {
+        return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
+    }
 
-        if (IdCardType.HasFlag(IdCardTypes.National)) {
-            secondCharPattern += "12";
-        }
-
-        if (IdCardType.HasFlag(IdCardTypes.Resident)) {
-            secondCharPattern += "AB";
-        }
-
-        if (IdCardType.HasFlag(IdCardTypes.AlienResident)) {
-            secondCharPattern += "CD";
-        }
-
-        if (IdCardType.HasFlag(IdCardTypes.Homeless)) {
-            secondCharPattern += "YX";
-        }
-
-        if (IdCardType.HasFlag(IdCardTypes.NewResident)) {
-            secondCharPattern += "89";
-        }
-
-        return $@"[A-Z][{secondCharPattern}][0-9]{{8}}";
+    private bool IsAllowedSecondChar(char c) {
+        return c switch {
+            '1' or '2' => IdCardType.HasFlag(IdCardTypes.National),
+            'A' or 'B' => IdCardType.HasFlag(IdCardTypes.Resident),
+            'C' or 'D' => IdCardType.HasFlag(IdCardTypes.AlienResident),
+            'Y' or 'X' => IdCardType.HasFlag(IdCardTypes.Homeless),
+            '8' or '9' => IdCardType.HasFlag(IdCardTypes.NewResident),
+            _ => false
+        };
     }
 
     private bool ValidateCheckCode() {

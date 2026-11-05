@@ -1,4 +1,6 @@
-﻿using CloudyWing.FormValidators.Core;
+﻿using System.Diagnostics;
+using System.Linq;
+using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
@@ -48,5 +50,36 @@ public class EmailValidatorTests {
         EmailValidator validator = new("", value);
 
         Assert.That(validator.Validate(), Is.False);
+    }
+
+    [TestCase("a.b@c.d", true)]
+    [TestCase("a-b@c-d.e", true)]
+    [TestCase("a@b-c.d.e", true)]
+    [TestCase("a'b+c@x.y", true)]
+    [TestCase("_a@_b._c", true)]
+    [TestCase("a@.b", false)]
+    [TestCase("a@b..c", false)]
+    [TestCase("a@b-.c", false)]
+    [TestCase("a@b.c.", false)]
+    [TestCase("a.@b.c", false)]
+    public void Validate_WithVariousFormats_ReturnsExpectedResult(string value, bool isValid) {
+        EmailValidator validator = new("", value);
+
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
+
+    [Test]
+    public void Validate_LongInputWithoutTopLevelDomain_CompletesWithinTimeLimit() {
+        string value = "a@" + string.Concat(Enumerable.Repeat("a-a.", 8000)) + "-";
+        EmailValidator validator = new("", value);
+        Stopwatch stopwatch = Stopwatch.StartNew();
+
+        bool isValid = validator.Validate();
+        stopwatch.Stop();
+
+        using (Assert.EnterMultipleScope()) {
+            Assert.That(isValid, Is.False);
+            Assert.That(stopwatch.ElapsedMilliseconds, Is.LessThan(500));
+        }
     }
 }

@@ -27,16 +27,16 @@ BulkValidator validators = new(cfg => {
 using CloudyWing.FormValidators;
 
 public class CustomFormValidator : IFormValidator {
-    public CustomFormValidator(string column, string value) {
+    public CustomFormValidator(string column, string? value) {
         Column = column;
         Value = value;
     }
 
     public string Column { get; }
 
-    public string Value { get; }
+    public string? Value { get; }
 
-    public string ErrorMessage { get; private set; }
+    public string ErrorMessage { get; private set; } = "";
 
     public bool IsValid { get; private set; }
 
@@ -65,6 +65,9 @@ public class CustomFormValidator : IFormValidator {
 }
 ```
 
+> [!NOTE]
+> 函式庫已啟用 Nullable Reference Types，公開簽章中的輸入值為 `string?`。啟用 Nullable 的專案實作 `IFormValidator` 時，建議比照範例將 `Value` 宣告為 `string?`，並為不可為 `null` 的 `ErrorMessage` 指定初始值 `""`，否則編譯器會出現 CS8618（結束建構函式時，不可為 Null 的屬性未包含非 Null 值）等警告。擴充方法回傳的委派若仍使用 `Func<string, string, ...>`，也會出現 CS8619（可 Null 性與目標型別不符）。這些都是編譯警告，不影響執行行為。
+
 ### 使用自訂驗證器
 
 ```csharp
@@ -86,10 +89,12 @@ if (!validators.Validate()) {
 using CloudyWing.FormValidators.Core;
 
 public static class ValidationProviderExtensions {
-    public static Func<string, string, CustomFormValidator> CustomRule(this ValidationProvider provider)
+    public static Func<string, string?, CustomFormValidator> CustomRule(this ValidationProvider provider)
         => (column, value) => new CustomFormValidator(column, value);
 }
 ```
+
+擴充方法回傳的委派，第二個參數（`value`）請宣告為 `string?`，才能對應 `cfg.Add` 接受的 `Func<string, string?, IFormValidator>`。
 
 ### 使用擴充方法
 
@@ -117,7 +122,7 @@ if (!validators.Validate()) {
 public class AccountUnusedValidator : IAsyncFormValidator {
     private readonly IUserRepository repository;
 
-    public AccountUnusedValidator(string column, string value, IUserRepository repository) {
+    public AccountUnusedValidator(string column, string? value, IUserRepository repository) {
         Column = column;
         Value = value;
         this.repository = repository;
@@ -125,7 +130,7 @@ public class AccountUnusedValidator : IAsyncFormValidator {
 
     public string Column { get; }
 
-    public string Value { get; }
+    public string? Value { get; }
 
     public string ErrorMessage { get; private set; } = "";
 
@@ -140,6 +145,46 @@ public class AccountUnusedValidator : IAsyncFormValidator {
             || !await repository.ExistsAsync(Value, cancellationToken).ConfigureAwait(false);
         ErrorMessage = IsValid ? "" : $"{Column}已被使用。";
         return IsValid;
+    }
+}
+```
+
+範例中的 `IUserRepository` 與 `ExistsAsync` 不屬於 FormValidators，需由應用程式自行提供，最小的宣告如下：
+
+```csharp
+public interface IUserRepository {
+    Task<bool> ExistsAsync(string account, CancellationToken cancellationToken);
+}
+```
+
+### 繼承 FormValidatorBase
+
+繼承 @CloudyWing.FormValidators.Core.FormValidatorBase 時，`IsValid` 與 `ErrorMessage` 的 setter 為 `private`，在 `ValidateAsync` 內無法直接賦值。請改呼叫基底類別的 `protected` 方法 `SetValidationResult(bool isValid)`，它會同時更新 `IsValid` 與 `ErrorMessage`，並回傳驗證結果。驗證失敗時的錯誤訊息，來自覆寫的 `CustomErrorMessage` 或 `DefaultErrorMessage`，由 `HasCustomErrorMessage` 決定採用哪一個。
+
+```csharp
+public class AccountUnusedValidator : FormValidatorBase, IAsyncFormValidator {
+    private readonly IUserRepository repository;
+
+    public AccountUnusedValidator(string column, string? value, IUserRepository repository)
+        : base(column, value) {
+        this.repository = repository;
+    }
+
+    protected override string DefaultErrorMessage => $"{Column}已被使用。";
+
+    protected override string CustomErrorMessage => DefaultErrorMessage;
+
+    protected override bool HasCustomErrorMessage => false;
+
+    public async Task<bool> ValidateAsync(CancellationToken cancellationToken = default) {
+        bool isValid = string.IsNullOrWhiteSpace(Value)
+            || !await repository.ExistsAsync(Value, cancellationToken).ConfigureAwait(false);
+
+        return SetValidationResult(isValid);
+    }
+
+    protected override bool ValidateValue() {
+        throw new NotSupportedException("請使用 ValidateAsync。");
     }
 }
 ```
@@ -160,16 +205,16 @@ public class UrlSlugValidator : IFormValidator {
         RegexOptions.Compiled
     );
 
-    public UrlSlugValidator(string column, string value) {
+    public UrlSlugValidator(string column, string? value) {
         Column = column;
         Value = value;
     }
 
     public string Column { get; }
 
-    public string Value { get; }
+    public string? Value { get; }
 
-    public string ErrorMessage { get; private set; }
+    public string ErrorMessage { get; private set; } = "";
 
     public bool IsValid { get; private set; }
 
@@ -197,7 +242,7 @@ public class UrlSlugValidator : IFormValidator {
 using CloudyWing.FormValidators.Core;
 
 public static class CustomValidationProviderExtensions {
-    public static Func<string, string, UrlSlugValidator> UrlSlug(this ValidationProvider provider)
+    public static Func<string, string?, UrlSlugValidator> UrlSlug(this ValidationProvider provider)
         => (column, value) => new UrlSlugValidator(column, value);
 }
 ```
@@ -268,7 +313,7 @@ public class RangeValidator : IFormValidator {
     private readonly int min;
     private readonly int max;
 
-    public RangeValidator(string column, string value, int min, int max) {
+    public RangeValidator(string column, string? value, int min, int max) {
         Column = column;
         Value = value;
         this.min = min;

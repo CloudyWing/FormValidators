@@ -39,6 +39,8 @@ cfg.Add("暱稱", nickName,
 
 包含非同步驗證器時，改用 `ValidateAsync` 擴充方法，用法見 [使用範例](usage-examples.md)。
 
+傳入建構子的設定委派 `configure` 為 `null` 時，建構時就會拋出 `ArgumentNullException`。
+
 **相關 API**：@CloudyWing.FormValidators.BulkValidator、@CloudyWing.FormValidators.BulkValidatorExtensions
 
 ## 型別驗證
@@ -94,11 +96,11 @@ cfg.Add("生日", birthday,
 
 ### IntegerLessThanValidator
 
-整數欄位比較，`Value` 必須小於比較的值。只接受整數與千分位格式，與 `IntegerValidator` 一致；任一值無法解析時略過比較。
+整數欄位比較，`Value` 必須小於比較的值。只接受整數格式，不接受小數點、指數與貨幣符號。千分位符號一律允許，與 `IntegerValidator` 的 `allowedThousands` 預設為 `false` 不同。任一值無法解析時略過比較，視為驗證通過。
 
 **參數**：
 
-- `allowedEqual`：設為 `true` 時，可以等於比較值
+- `allowedEqual`：預設為 `true`，`Value` 可以等於比較值；需要嚴格小於時設為 `false`
 
 **相關 API**：@CloudyWing.FormValidators.IntegerLessThanValidator
 
@@ -108,7 +110,7 @@ cfg.Add("生日", birthday,
 
 **參數**：
 
-- `allowedEqual`：設為 `true` 時，可以等於比較值
+- `allowedEqual`：預設為 `true`，`Value` 可以等於比較值；需要嚴格小於時設為 `false`
 
 **相關 API**：@CloudyWing.FormValidators.NumberLessThanValidator
 
@@ -118,7 +120,7 @@ cfg.Add("生日", birthday,
 
 **參數**：
 
-- `allowedEqual`：設為 `true` 時，可以等於比較值
+- `allowedEqual`：預設為 `true`，`Value` 可以等於比較值；需要嚴格小於時設為 `false`
 
 **相關 API**：@CloudyWing.FormValidators.DateTimeLessThanValidator
 
@@ -131,6 +133,7 @@ cfg.Add("生日", birthday,
 - 可傳入 `Regex` 執行個體，或指定 `RegexOptions` 與 match timeout。
 - 只傳入 pattern 字串時，使用 @CloudyWing.FormValidators.Core.ValidatorDefaults 的 `RegexTimeout`，預設為 `Regex.InfiniteMatchTimeout`。
 - 比對逾時一律視為驗證失敗，不會拋出 `RegexMatchTimeoutException`。
+- pattern 字串或 `Regex` 執行個體為 `null` 時，建構時會拋出 `ArgumentNullException`。
 
 ```csharp
 // 使用者輸入的 pattern 建議設定 timeout
@@ -145,7 +148,7 @@ cfg.Add("代碼", code,
 
 ### EmailValidator
 
-Email 格式驗證。內建 pattern 不會因長字串產生大量回溯，且不接受結尾的換行字元。
+Email 格式驗證。內建 pattern 不會因長字串產生大量回溯，且不接受結尾的換行字元。內建 Regex 的比對 timeout 為 1 秒，逾時視為驗證失敗，不會拋出 `RegexMatchTimeoutException`。這個 timeout 固定，不受 `ValidatorDefaults.RegexTimeout` 影響。
 
 **相關 API**：@CloudyWing.FormValidators.EmailValidator
 
@@ -178,7 +181,7 @@ Email 格式驗證。內建 pattern 不會因長字串產生大量回溯，且�
 
 ### CreditCardValidator
 
-信用卡號碼驗證，以 Luhn 演算法檢查 13 到 19 碼的 ASCII 數字，可包含 `-` 與空白。
+信用卡號碼驗證，以 Luhn 演算法檢查 13 到 19 碼的 ASCII 數字。分隔符號只接受 `-` 與半形空白，其他字元（包含全形數字與結尾的換行字元）一律視為驗證失敗。
 
 **相關 API**：@CloudyWing.FormValidators.CreditCardValidator
 
@@ -186,12 +189,22 @@ Email 格式驗證。內建 pattern 不會因長字串產生大量回溯，且�
 
 URL 格式驗證，預設為 `UriKind.Absolute`。
 
-- 預設接受任何 scheme，包含 `ftp:`、`mailto:`、`javascript:` 與 `file:`。網址會輸出成連結或由伺服器請求時，建議以 `allowedSchemes` 限定為 `http`、`https`。
+> [!WARNING]
+> 為了相容舊版，3.x 的 `UrlValidator` 預設不限制 scheme，任何格式正確的絕對網址都會驗證通過，包含 `javascript:`、`file:`、`ftp:` 與 `mailto:`。驗證通過不代表可以安全地輸出成連結（`href`）或由伺服器發出請求。
+>
+> 驗證使用者輸入的連結時，請傳入 `allowedSchemes`（型別為 `IEnumerable<string>`）限定為 `http` 與 `https`。`allowedSchemes` 不分大小寫，傳入空集合代表接受任何 scheme，只限制絕對網址，相對網址不受影響。
+
 - `/path`、`C:\path` 與 UNC 路徑等未明確寫出 scheme 的檔案路徑，在各平台都不視為絕對網址。
 
 ```csharp
+// 使用者輸入的連結：只接受 http 與 https，javascript:alert(1) 等會驗證失敗
 cfg.Add("網站", website,
     opt => opt.Url(UriKind.Absolute, ["http", "https"])
+);
+
+// 未指定 allowedSchemes：javascript:alert(1) 也會驗證通過
+cfg.Add("網站", website,
+    opt => opt.Url()
 );
 ```
 
@@ -272,7 +285,7 @@ cfg.Add("密碼", password,
 
 當條件為 `true` 時，驗證通過。
 
-**特色**：參數可使用 `Func<bool>` 將條件式延後到 `Validate()` 時執行。
+**特色**：參數可使用 `Func<bool>` 將條件式延後到 `Validate()` 時執行。傳入的 `Func<bool>` 為 `null` 時，建構時就會拋出 `ArgumentNullException`，不會等到驗證時才出錯。
 
 **相關 API**：@CloudyWing.FormValidators.TrueAssertValidator
 
@@ -280,7 +293,7 @@ cfg.Add("密碼", password,
 
 當條件為 `false` 時，驗證通過。
 
-**特色**：參數可使用 `Func<bool>` 將條件式延後到 `Validate()` 時執行。
+**特色**：參數可使用 `Func<bool>` 將條件式延後到 `Validate()` 時執行。傳入的 `Func<bool>` 為 `null` 時，建構時就會拋出 `ArgumentNullException`，不會等到驗證時才出錯。
 
 **相關 API**：@CloudyWing.FormValidators.FalseAssertValidator
 

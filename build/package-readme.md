@@ -51,6 +51,7 @@ if (!validators.Validate()) {
 - 整數、數值與日期預設以目前的文化特性解析，需要固定格式時請傳入 `IFormatProvider` 或日期格式。
 - 驗證器執行個體會保存最後一次驗證的結果，不是執行緒安全的型別，請不要跨執行緒共用。
 - `ErrorMessageProvider` 與 `ValidatorDefaults` 是整個應用程式共用的設定，請在應用程式啟動時設定。
+- `UrlValidator` 為了相容舊版，預設接受任何 scheme，包含 `javascript:` 與 `file:`。驗證使用者輸入的連結時，請傳入 `allowedSchemes` 限定為 `http` 與 `https`，例如 `opt.Url(UriKind.Absolute, ["http", "https"])`，詳見[驗證器介紹](https://github.com/CloudyWing/FormValidators/blob/main/docs/articles/validators.md#urlvalidator)。
 
 ## Documentation
 

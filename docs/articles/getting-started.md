@@ -74,6 +74,11 @@ if (!validators.Validate()) {
 }
 ```
 
+## 升級注意事項
+
+- 公開 API 已啟用 Nullable Reference Types，驗證器的輸入值與錯誤訊息 accessor 的 `value` 參數為 `string?`。啟用 Nullable 的專案升級後，自訂驗證器、擴充方法或傳入的 accessor 若仍使用不可為 `null` 的型別，可能出現新的編譯警告，調整方式見 [客製化驗證](customization.md)。
+- `UrlValidator` 預設仍接受任何 scheme，包含 `javascript:`。驗證使用者輸入的連結時，請傳入 `allowedSchemes` 限定為 `http` 與 `https`，見 [驗證器介紹](validators.md#urlvalidator)。
+
 ## 下一步
 
 - [驗證器介紹](validators.md) - 了解所有可用的驗證器

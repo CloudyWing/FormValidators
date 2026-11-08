@@ -24,6 +24,8 @@ ErrorMessageProvider.SetValueIsIntegerAccessor((column, value) => $"{column} mus
 > [!TIP]
 > 建議在應用程式啟動時（如 `Program.cs` 或 `Startup.cs`）統一設定錯誤訊息，確保全域一致性。
 
+傳入 `null` 的 accessor 時，所有 `SetAccessor` 方法都會立即拋出 `ArgumentNullException`，既有的設定維持不變。
+
 `SetAccessor` 方法修改的是整個應用程式共用的設定。單一 accessor 的替換是原子操作，設定後其他執行緒會立即讀到新的 accessor，但同時替換多個 accessor 不是一個交易。需要依請求或使用者語系切換訊息時，請改用 [限定範圍的訊息覆寫](#限定範圍的訊息覆寫)。
 
 ## Validator 與 Accessor 對應關係
@@ -138,6 +140,8 @@ ErrorMessageProvider.SetValueIsIdCardAccessor((column, value, types)
 ### CompareValidator
 
 - **SetValueCompareAnotherColumnValueAccessor**：兩個欄位的值不相等
+
+預設訊息為「{欄位名稱}」和「{比較欄位名稱}」輸入不一致，第二個名稱是比較欄位的名稱，不是比較欄位的值。
 
 ```csharp
 ErrorMessageProvider.SetValueCompareAnotherColumnValueAccessor(

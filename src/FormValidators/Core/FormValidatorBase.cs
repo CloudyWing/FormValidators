@@ -3,6 +3,11 @@
 /// <summary>
 /// The form validator base abstract class.
 /// </summary>
+/// <remarks>
+/// A validator instance stores the result of the last validation in <see cref="IsValid" /> and <see cref="ErrorMessage" />,
+/// and some validators also keep the default error message of the last validation. An instance is not thread-safe;
+/// create a validator for each validation instead of sharing it between threads.
+/// </remarks>
 /// <seealso cref="IFormValidator" />
 public abstract class FormValidatorBase : IFormValidator {
     /// <summary>
@@ -10,7 +15,7 @@ public abstract class FormValidatorBase : IFormValidator {
     /// </summary>
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
-    public FormValidatorBase(string column, string value) {
+    public FormValidatorBase(string column, string? value) {
         Column = column;
         Value = value;
     }
@@ -25,10 +30,10 @@ public abstract class FormValidatorBase : IFormValidator {
     /// Gets or sets the value.
     /// </summary>
     /// <value>The value.</value>
-    public string Value { get; }
+    public string? Value { get; }
 
     /// <inheritdoc />
-    public string ErrorMessage { get; private set; }
+    public string ErrorMessage { get; private set; } = "";
 
     /// <inheritdoc />
     public bool IsValid { get; private set; }
@@ -42,6 +47,9 @@ public abstract class FormValidatorBase : IFormValidator {
     /// <summary>
     /// Gets the custom error message.
     /// </summary>
+    /// <remarks>
+    /// Only evaluated when <see cref="HasCustomErrorMessage" /> is <see langword="true" />.
+    /// </remarks>
     /// <value>The custom error message.</value>
     protected abstract string CustomErrorMessage { get; }
 
@@ -54,9 +62,21 @@ public abstract class FormValidatorBase : IFormValidator {
 
     /// <inheritdoc />
     public bool Validate() {
-        IsValid = ValidateValue();
-        ErrorMessage = IsValid ? "" : CreateErrorMessage();
-        return IsValid;
+        return SetValidationResult(ValidateValue());
+    }
+
+    /// <summary>
+    /// Sets <see cref="IsValid" /> and <see cref="ErrorMessage" /> by the validation result.
+    /// </summary>
+    /// <remarks>
+    /// Derived classes that validate outside <see cref="Validate" />, such as asynchronous validators, call this method to record the result.
+    /// </remarks>
+    /// <param name="isValid">If set to <see langword="true" />, the value is valid; otherwise, the error message is created.</param>
+    /// <returns>The validation result.</returns>
+    protected bool SetValidationResult(bool isValid) {
+        IsValid = isValid;
+        ErrorMessage = isValid ? "" : CreateErrorMessage();
+        return isValid;
     }
 
     /// <summary>

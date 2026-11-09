@@ -1,9 +1,9 @@
-﻿using CloudyWing.FormValidators.Core;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
+[SetCulture("zh-TW")]
 public class DateTimeLessThanValidatorTests {
     [TestCase("2020/01/01", "2020/01/01", true, true)]
     [TestCase("2020/01/01", "2020/01/01", false, false)]
@@ -24,7 +24,7 @@ public class DateTimeLessThanValidatorTests {
         string comparisonColumn = "比較欄位";
         string comparisonValue = "2020/01/01";
         bool allowedEqual = false;
-        string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, comparisonColumn, value, comparisonValue, allowedEqual);
+        string expected = "「欄位」必須要小於「比較欄位」。";
 
         DateTimeLessThanValidator validator = new(column, value, comparisonColumn, comparisonValue, allowedEqual);
         validator.Validate();

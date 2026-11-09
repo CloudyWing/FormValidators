@@ -17,8 +17,8 @@ public class CompareValidator : FormValidatorBase {
     /// <param name="comparisonValue">The comparison value.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The agrumts are column, value, comparison column, comparison value.</param>
     public CompareValidator(
-        string column, string value, string comparisonColumn, string comparisonValue,
-        Func<string, string, string, string, string> customErrorMessageAccessor = null
+        string column, string? value, string comparisonColumn, string? comparisonValue,
+        Func<string, string?, string, string?, string>? customErrorMessageAccessor = null
     ) : base(column, value) {
         ComparisonColumn = comparisonColumn;
         ComparisonValue = comparisonValue;
@@ -35,19 +35,19 @@ public class CompareValidator : FormValidatorBase {
     /// Gets the comparison value.
     /// </summary>
     /// <value>The comparison value.</value>
-    public string ComparisonValue { get; }
+    public string? ComparisonValue { get; }
 
     /// <summary>
     /// Gets the custom range message format.
     /// </summary>
     /// <value>The custom range message format.</value>
-    public Func<string, string, string, string, string> CustomErrorMessageAccessor { get; set; }
+    public Func<string, string?, string, string?, string>? CustomErrorMessageAccessor { get; set; }
 
     /// <inheritdoc/>
     protected override string DefaultErrorMessage => ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor(Column, Value, ComparisonColumn, ComparisonValue);
 
     /// <inheritdoc/>
-    protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, ComparisonColumn, ComparisonValue);
+    protected override string CustomErrorMessage => CustomErrorMessageAccessor!(Column, Value, ComparisonColumn, ComparisonValue);
 
     /// <inheritdoc/>
     protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
@@ -55,6 +55,6 @@ public class CompareValidator : FormValidatorBase {
     /// <inheritdoc/>
     protected override bool ValidateValue() {
         // 是否有填資料由 RequiredValidator 驗證，所以沒填就不驗證
-        return string.IsNullOrWhiteSpace(Value) || Value == ComparisonValue;
+        return StringUtils.IsNullOrWhiteSpace(Value) || Value == ComparisonValue;
     }
 }

@@ -33,4 +33,13 @@ public class CreditCardValidatorTests {
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
+
+    [TestCase("４１１１１１１１１１１１１１１１")]
+    [TestCase("٤١١١١١١١١١١١١١١١")]
+    [TestCase("4111１111-1111-1111")]
+    public void Validate_NonAsciiDigits_ReturnsFalse(string value) {
+        CreditCardValidator validator = new("", value);
+
+        Assert.That(validator.Validate(), Is.False);
+    }
 }

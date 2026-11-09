@@ -7,6 +7,9 @@ namespace CloudyWing.FormValidators;
 /// <summary>
 /// Validate that an number value is less than another column value.
 /// </summary>
+/// <remarks>
+/// Both values are parsed with the current culture. When either value cannot be parsed, the comparison is skipped and the validation succeeds.
+/// </remarks>
 public sealed class NumberLessThanValidator : LessThanValidator<decimal> {
     /// <summary>
     /// Initializes a new instance of the <see cref="NumberLessThanValidator" /> class.
@@ -17,12 +20,12 @@ public sealed class NumberLessThanValidator : LessThanValidator<decimal> {
     /// <param name="comparisonValue">The comparison value.</param>
     /// <param name="allowedEqual">if set to <c>true</c> [allowed equal].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
-    public NumberLessThanValidator(string column, string value, string comparisonColumn, string comparisonValue,
-        bool allowedEqual = true, Func<string, string, string, string, bool, string> customErrorMessageAccessor = null
+    public NumberLessThanValidator(string column, string? value, string comparisonColumn, string? comparisonValue,
+        bool allowedEqual = true, Func<string, string?, string, string?, bool, string>? customErrorMessageAccessor = null
     ) : base(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor) { }
 
     /// <inheritdoc/>
-    protected override bool TryParse(string value, out decimal result) {
+    protected override bool TryParse(string? value, out decimal result) {
         return decimal.TryParse(value, NumberStyles.Any, null, out result);
     }
 }

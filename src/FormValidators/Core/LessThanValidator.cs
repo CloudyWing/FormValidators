@@ -18,8 +18,8 @@ public abstract class LessThanValidator<T> : FormValidatorBase
     /// <param name="allowedEqual">if set to <c>true</c> [allowed equal].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
     protected LessThanValidator(
-        string column, string value, string comparisonColumn, string comparisonValue,
-        bool allowedEqual = true, Func<string, string, string, string, bool, string> customErrorMessageAccessor = null
+        string column, string? value, string comparisonColumn, string? comparisonValue,
+        bool allowedEqual = true, Func<string, string?, string, string?, bool, string>? customErrorMessageAccessor = null
     ) : base(column, value) {
         ComparisonColumn = comparisonColumn;
         ComparisonValue = comparisonValue;
@@ -37,7 +37,7 @@ public abstract class LessThanValidator<T> : FormValidatorBase
     /// Gets or sets the comparison value.
     /// </summary>
     /// <value>The comparison value.</value>
-    public string ComparisonValue { get; }
+    public string? ComparisonValue { get; }
 
     /// <summary>
     /// Gets or sets a value indicating whether [allowed equal].
@@ -50,13 +50,13 @@ public abstract class LessThanValidator<T> : FormValidatorBase
     /// Gets the custom range message format.
     /// </summary>
     /// <value>The custom range message format.</value>
-    public Func<string, string, string, string, bool, string> CustomErrorMessageAccessor { get; set; }
+    public Func<string, string?, string, string?, bool, string>? CustomErrorMessageAccessor { get; set; }
 
     /// <inheritdoc/>
-    protected override string DefaultErrorMessage => ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(Column, ComparisonColumn, Value, ComparisonValue, AllowedEqual);
+    protected override string DefaultErrorMessage => ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(Column, Value, ComparisonColumn, ComparisonValue, AllowedEqual);
 
     /// <inheritdoc/>
-    protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, ComparisonColumn, ComparisonValue, AllowedEqual);
+    protected override string CustomErrorMessage => CustomErrorMessageAccessor!(Column, Value, ComparisonColumn, ComparisonValue, AllowedEqual);
 
     /// <inheritdoc/>
     protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
@@ -80,5 +80,5 @@ public abstract class LessThanValidator<T> : FormValidatorBase
     /// <param name="value">The value.</param>
     /// <param name="result">The result.</param>
     /// <returns>Parse value to type <c>T</c> result.</returns>
-    protected abstract bool TryParse(string value, out T result);
+    protected abstract bool TryParse(string? value, out T result);
 }

@@ -1,9 +1,9 @@
-﻿using CloudyWing.FormValidators.Core;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
+[SetCulture("zh-TW")]
 public class NumberLessThanValidatorTests {
     [TestCase("0.1", "0.1", true, true)]
     [TestCase("0.1", "0.1", false, false)]
@@ -24,7 +24,7 @@ public class NumberLessThanValidatorTests {
         string comparisonColumn = "比較欄位";
         string comparisonValue = "0.1";
         bool allowedEqual = false;
-        string expected = ErrorMessageProvider.ValueLessThanAnotherColumnValueAccessor(column, comparisonColumn, value, comparisonValue, allowedEqual);
+        string expected = "「欄位」必須要小於「比較欄位」。";
 
         NumberLessThanValidator validator = new(column, value, comparisonColumn, comparisonValue, allowedEqual);
         validator.Validate();

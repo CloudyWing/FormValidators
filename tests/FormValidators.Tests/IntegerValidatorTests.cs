@@ -1,9 +1,11 @@
-﻿using CloudyWing.FormValidators.Core;
+﻿using System.Globalization;
+using CloudyWing.FormValidators.Core;
 using NUnit.Framework;
 
 namespace CloudyWing.FormValidators.Tests;
 
 [TestFixture]
+[SetCulture("zh-TW")]
 public class IntegerValidatorTests {
     [TestCase(null, true, true)]
     [TestCase("", true, true)]
@@ -157,5 +159,33 @@ public class IntegerValidatorTests {
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
+
+    [TestCase("1.000", true)]
+    [TestCase("1,000", false)]
+    public void Validate_WithGermanFormatProviderAndThousands_UsesProviderGroupSeparator(string value, bool isValid) {
+        IntegerValidator validator = new("", value, null, null, true, new CultureInfo("de-DE"), null);
+
+        Assert.That(validator.Validate(), Is.EqualTo(isValid));
+    }
+
+    [Test]
+    public void ValidationProviderIntegerMethods_WithFormatProvider_CreateValidatorWithFormatProvider() {
+        ValidationProvider provider = new();
+        CultureInfo culture = new("de-DE");
+
+        IntegerValidator integer = provider.Integer(true, culture)("", "1.000");
+        IntegerValidator min = provider.MinInt(2000, true, culture)("", "1.000");
+        IntegerValidator max = provider.MaxInt(500, true, culture, (c, v, _min, _max) => $"{c}:{_max}")("欄位", "1.000");
+        IntegerValidator range = provider.IntRange(1, 2000, true, culture)("", "1.000");
+
+        using (Assert.EnterMultipleScope()) {
+            Assert.That(integer.FormatProvider, Is.SameAs(culture));
+            Assert.That(integer.Validate(), Is.True);
+            Assert.That(min.Validate(), Is.False);
+            Assert.That(max.Validate(), Is.False);
+            Assert.That(max.ErrorMessage, Is.EqualTo("欄位:500"));
+            Assert.That(range.Validate(), Is.True);
+        }
     }
 }

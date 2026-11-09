@@ -19,7 +19,7 @@ public class RequiredValidatorTests {
     [Test]
     public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
         string column = "測試欄位";
-        string value = null;
+        string? value = null;
         string expected = ErrorMessageProvider.ValueIsRequiredAccessor(column, value);
 
         RequiredValidator validator = new(column, value);
@@ -31,7 +31,7 @@ public class RequiredValidatorTests {
     [Test]
     public void ErrorMessage_WhenValidationFails_ReturnsCustomMessage() {
         string column = "測試欄位";
-        string value = null;
+        string? value = null;
         string expected = column + value;
 
         RequiredValidator validator = new(column, null, (c, v) => c + v);

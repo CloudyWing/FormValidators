@@ -16,4 +16,11 @@ public class FormValidatorBaseTests {
 
         Assert.That(validator.IsValid, Is.EqualTo(isValid));
     }
+
+    [Test]
+    public void ErrorMessage_BeforeValidate_IsEmpty() {
+        RequiredValidator validator = new("欄位", null);
+
+        Assert.That(validator.ErrorMessage, Is.Empty);
+    }
 }

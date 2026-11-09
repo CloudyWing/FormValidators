@@ -140,4 +140,25 @@ public class IdCardValidatorTests {
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
     }
+
+    [TestCase("a188222138", true)]
+    [TestCase("aa00036116", true)]
+    [TestCase("A18822213８", false)]
+    [TestCase("1188222138", false)]
+    public void Validate_WhenAllTypesAreUsed_HandlesCaseAndAsciiDigits(string id, bool expected) {
+        IdCardValidator validator = new("", id);
+
+        Assert.That(validator.Validate(), Is.EqualTo(expected));
+    }
+
+    [TestCase(IdCardTypes.National, "「欄位」必須為正確的「國民身分證號」格式。")]
+    [TestCase(IdCardTypes.Resident | IdCardTypes.NewResident, "「欄位」必須為正確的「臺灣地區居留證統一證號或新式外來人口統一證號」格式。")]
+    [TestCase(IdCardTypes.All, "「欄位」必須為正確的「國民身分證號或臺灣地區居留證統一證號或外僑居留證統一證號或遊民證號或新式外來人口統一證號」格式。")]
+    public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessageWithTypeNames(IdCardTypes types, string expected) {
+        IdCardValidator validator = new("欄位", "error", types);
+
+        validator.Validate();
+
+        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
 }

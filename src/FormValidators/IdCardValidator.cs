@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using CloudyWing.FormValidators.Core;
 
 namespace CloudyWing.FormValidators;
@@ -15,8 +14,8 @@ public sealed class IdCardValidator : FormValidatorBase {
     /// <param name="value">The value.</param>
     /// <param name="idCardType">Type of the identification card.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, identification card types.</param>
-    public IdCardValidator(string column, string value,
-        IdCardTypes idCardType = IdCardTypes.All, Func<string, string, IdCardTypes, string> customErrorMessageAccessor = null)
+    public IdCardValidator(string column, string? value,
+        IdCardTypes idCardType = IdCardTypes.All, Func<string, string?, IdCardTypes, string>? customErrorMessageAccessor = null)
         : base(column, value) {
         IdCardType = idCardType;
         CustomErrorMessageAccessor = customErrorMessageAccessor;
@@ -35,20 +34,20 @@ public sealed class IdCardValidator : FormValidatorBase {
     /// Gets or sets the custom error message accessor.
     /// </summary>
     /// <value>The custom error message accessor.</value>
-    public Func<string, string, IdCardTypes, string> CustomErrorMessageAccessor { get; }
+    public Func<string, string?, IdCardTypes, string>? CustomErrorMessageAccessor { get; }
 
     /// <inheritdoc/>
     protected override string DefaultErrorMessage => ErrorMessageProvider.ValueIsIdCardAccessor(Column, Value, IdCardType);
 
     /// <inheritdoc/>
-    protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, IdCardType);
+    protected override string CustomErrorMessage => CustomErrorMessageAccessor!(Column, Value, IdCardType);
 
     /// <inheritdoc/>
     protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
 
     /// <inheritdoc/>
     protected override bool ValidateValue() {
-        if (string.IsNullOrWhiteSpace(Value)) {
+        if (StringUtils.IsNullOrWhiteSpace(Value)) {
             return true;
         }
 
@@ -56,51 +55,46 @@ public sealed class IdCardValidator : FormValidatorBase {
             return false;
         }
 
-        if (!Regex.IsMatch(Value, GetIdRegexPattern(), RegexOptions.IgnoreCase)) {
+        if (!IsAsciiLetter(Value[0]) || !IsAllowedSecondChar(ToUpper(Value[1]))) {
             return false;
         }
 
-        return ValidateCheckCode();
+        for (int i = 2; i < Value.Length; i++) {
+            if (Value[i] < '0' || Value[i] > '9') {
+                return false;
+            }
+        }
+
+        return ValidateCheckCode(Value);
     }
 
-    private string GetIdRegexPattern() {
-        string secondCharPattern = "";
-
-        if (IdCardType.HasFlag(IdCardTypes.National)) {
-            secondCharPattern += "12";
-        }
-
-        if (IdCardType.HasFlag(IdCardTypes.Resident)) {
-            secondCharPattern += "AB";
-        }
-
-        if (IdCardType.HasFlag(IdCardTypes.AlienResident)) {
-            secondCharPattern += "CD";
-        }
-
-        if (IdCardType.HasFlag(IdCardTypes.Homeless)) {
-            secondCharPattern += "YX";
-        }
-
-        if (IdCardType.HasFlag(IdCardTypes.NewResident)) {
-            secondCharPattern += "89";
-        }
-
-        return $@"[A-Z][{secondCharPattern}][0-9]{{8}}";
+    private static bool IsAsciiLetter(char c) {
+        return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
     }
 
-    private bool ValidateCheckCode() {
+    private bool IsAllowedSecondChar(char c) {
+        return c switch {
+            '1' or '2' => IdCardType.HasFlag(IdCardTypes.National),
+            'A' or 'B' => IdCardType.HasFlag(IdCardTypes.Resident),
+            'C' or 'D' => IdCardType.HasFlag(IdCardTypes.AlienResident),
+            'Y' or 'X' => IdCardType.HasFlag(IdCardTypes.Homeless),
+            '8' or '9' => IdCardType.HasFlag(IdCardTypes.NewResident),
+            _ => false
+        };
+    }
+
+    private static bool ValidateCheckCode(string value) {
         int sum = 0;
 
-        int firstCharVal = ConvertToNumber(Value[0]);
+        int firstCharVal = ConvertToNumber(value[0]);
         sum += firstCharVal / 10 * Weights[0];
         sum += firstCharVal % 10 * Weights[1];
 
-        int secondCharVal = ConvertToNumber(Value[1]);
+        int secondCharVal = ConvertToNumber(value[1]);
         sum += secondCharVal % 10 * Weights[2];
 
         for (int i = 2; i < 10; i++) {
-            sum += (Value[i] - '0') * Weights[i + 1];
+            sum += (value[i] - '0') * Weights[i + 1];
         }
 
         return sum % 10 == 0;

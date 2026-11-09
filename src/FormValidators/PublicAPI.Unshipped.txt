@@ -1,0 +1,174 @@
+#nullable enable
+CloudyWing.FormValidators.AllowedValuesValidator
+CloudyWing.FormValidators.AllowedValuesValidator.AllowedValues.get -> System.Collections.Generic.IReadOnlyList<string!>!
+CloudyWing.FormValidators.AllowedValuesValidator.AllowedValuesValidator(string! column, string? value, System.Collections.Generic.IEnumerable<string!>! allowedValues, System.StringComparison comparisonType = System.StringComparison.Ordinal, System.Func<string!, string?, System.Collections.Generic.IReadOnlyList<string!>!, string!>? customErrorMessageAccessor = null) -> void
+CloudyWing.FormValidators.AllowedValuesValidator.ComparisonType.get -> System.StringComparison
+CloudyWing.FormValidators.AllowedValuesValidator.CustomErrorMessageAccessor.get -> System.Func<string!, string?, System.Collections.Generic.IReadOnlyList<string!>!, string!>?
+CloudyWing.FormValidators.AsyncCustomValidator
+CloudyWing.FormValidators.AsyncCustomValidator.AsyncCustomValidator(string! column, string? value, System.Func<string!, System.Threading.CancellationToken, System.Threading.Tasks.Task<bool>!>! predicate, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> void
+CloudyWing.FormValidators.AsyncCustomValidator.ValidateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
+CloudyWing.FormValidators.BulkValidator.Errors.get -> System.Collections.Generic.IReadOnlyList<CloudyWing.FormValidators.ValidationError!>!
+CloudyWing.FormValidators.BulkValidatorExtensions
+CloudyWing.FormValidators.Core.ErrorMessageOverrides
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ErrorMessageOverrides() -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueCompareAnotherColumnValueAccessor.get -> System.Func<string!, string?, string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueCompareAnotherColumnValueAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueGreaterOrEqualAccessor.get -> System.Func<string!, string?, object!, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueGreaterOrEqualAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueInRangeAccessor.get -> System.Func<string!, string?, object!, object!, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueInRangeAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsCreditCardAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsCreditCardAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsDateTimeAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsDateTimeAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsEmailAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsEmailAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsGuidAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsGuidAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIPAddressAccessor.get -> System.Func<string!, string?, CloudyWing.FormValidators.IPAddressTypes, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIPAddressAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIdCardAccessor.get -> System.Func<string!, string?, CloudyWing.FormValidators.IdCardTypes, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIdCardAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsInAllowedValuesAccessor.get -> System.Func<string!, string?, System.Collections.Generic.IReadOnlyList<string!>!, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsInAllowedValuesAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIntegerAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsIntegerAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsMobilePhoneAccessor.get -> System.Func<string!, string?, CloudyWing.FormValidators.MobilePhoneFormats, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsMobilePhoneAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsNumberAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsNumberAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsPhoneAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsPhoneAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsRequiredAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsRequiredAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsTaiwanUniformNumberAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsTaiwanUniformNumberAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsUrlAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueIsUrlAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthGreaterOrEqualAccessor.get -> System.Func<string!, string?, long, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthGreaterOrEqualAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthInRangeAccessor.get -> System.Func<string!, string?, long, long, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthInRangeAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthLessOrEqualAccessor.get -> System.Func<string!, string?, long, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLengthLessOrEqualAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLessOrEqualAccessor.get -> System.Func<string!, string?, object!, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLessOrEqualAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLessThanAnotherColumnValueAccessor.get -> System.Func<string!, string?, string!, string?, bool, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueLessThanAnotherColumnValueAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueMatchCustomRuleAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueMatchCustomRuleAccessor.set -> void
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueMatchRegexAccessor.get -> System.Func<string!, string?, string!>?
+CloudyWing.FormValidators.Core.ErrorMessageOverrides.ValueMatchRegexAccessor.set -> void
+CloudyWing.FormValidators.Core.FormValidatorBase.SetValidationResult(bool isValid) -> bool
+CloudyWing.FormValidators.Core.ValidationProvider.Custom(System.Func<string!, bool>! predicate, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> System.Func<string!, string?, CloudyWing.FormValidators.CustomValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Custom(System.Func<string!, bool>! predicate, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.CustomValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.CustomAsync(System.Func<string!, System.Threading.CancellationToken, System.Threading.Tasks.Task<bool>!>! predicate, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> System.Func<string!, string?, CloudyWing.FormValidators.AsyncCustomValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.CustomAsync(System.Func<string!, System.Threading.CancellationToken, System.Threading.Tasks.Task<bool>!>! predicate, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.AsyncCustomValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.DateTime(System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.DateTime(System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.DateTime(System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.DateTime(System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.DateTimeRange(System.DateTime min, System.DateTime max, System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.DateTimeRange(System.DateTime min, System.DateTime max, System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.DateTimeRange(System.DateTime min, System.DateTime max, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.DateTimeRange(System.DateTime min, System.DateTime max, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Guid(System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> System.Func<string!, string?, CloudyWing.FormValidators.GuidValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Guid(string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.GuidValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.In(System.Collections.Generic.IEnumerable<string!>! allowedValues, System.StringComparison comparisonType) -> System.Func<string!, string?, CloudyWing.FormValidators.AllowedValuesValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.In(System.Collections.Generic.IEnumerable<string!>! allowedValues, System.StringComparison comparisonType, System.Func<string!, string?, System.Collections.Generic.IReadOnlyList<string!>!, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.AllowedValuesValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.In(params string![]! allowedValues) -> System.Func<string!, string?, CloudyWing.FormValidators.AllowedValuesValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long min, long max, bool allowedThousands, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.IntegerValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.IntRange(long min, long max, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, long?, long?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.IntegerValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Integer(bool allowedThousands, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.IntegerValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Integer(bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, long?, long?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.IntegerValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.LengthRange(int min, int max, CloudyWing.FormValidators.TextLengthUnit unit) -> System.Func<string!, string?, CloudyWing.FormValidators.ValueLengthValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.LengthRange(int min, int max, CloudyWing.FormValidators.TextLengthUnit unit, System.Func<string!, string?, long, long, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.ValueLengthValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.LengthRange(int min, int max, CloudyWing.FormValidators.TextLengthUnit unit, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.ValueLengthValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxDateTime(System.DateTime max, System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxDateTime(System.DateTime max, System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxDateTime(System.DateTime max, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxDateTime(System.DateTime max, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long max, bool allowedThousands, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.IntegerValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxInt(long max, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, long?, long?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.IntegerValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(long max, CloudyWing.FormValidators.TextLengthUnit unit) -> System.Func<string!, string?, CloudyWing.FormValidators.ValueLengthValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(long max, CloudyWing.FormValidators.TextLengthUnit unit, System.Func<string!, string?, long, long, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.ValueLengthValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxLength(long max, CloudyWing.FormValidators.TextLengthUnit unit, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.ValueLengthValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal max, bool allowedThousands, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MaxNumber(decimal max, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, decimal?, decimal?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinDateTime(System.DateTime min, System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinDateTime(System.DateTime min, System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinDateTime(System.DateTime min, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinDateTime(System.DateTime min, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.DateTimeValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long min, bool allowedThousands, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.IntegerValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinInt(long min, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, long?, long?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.IntegerValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinLength(long min, CloudyWing.FormValidators.TextLengthUnit unit) -> System.Func<string!, string?, CloudyWing.FormValidators.ValueLengthValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinLength(long min, CloudyWing.FormValidators.TextLengthUnit unit, System.Func<string!, string?, long, long, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.ValueLengthValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinLength(long min, CloudyWing.FormValidators.TextLengthUnit unit, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.ValueLengthValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal min, bool allowedThousands, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.MinNumber(decimal min, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, decimal?, decimal?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Number(bool allowedThousands, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Number(bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, decimal?, decimal?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal min, decimal max, bool allowedThousands, System.IFormatProvider? formatProvider) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.NumberRange(decimal min, decimal max, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, decimal?, decimal?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.NumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Phone(System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> System.Func<string!, string?, CloudyWing.FormValidators.PhoneValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Phone(string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.PhoneValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(System.Text.RegularExpressions.Regex! regex, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(System.Text.RegularExpressions.Regex! regex, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(string! pattern, System.Text.RegularExpressions.RegexOptions options, System.TimeSpan matchTimeout) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(string! pattern, System.Text.RegularExpressions.RegexOptions options, System.TimeSpan matchTimeout, System.Func<string!, string?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Regex(string! pattern, System.Text.RegularExpressions.RegexOptions options, System.TimeSpan matchTimeout, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.RegexValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.TaiwanUniformNumber(System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> System.Func<string!, string?, CloudyWing.FormValidators.TaiwanUniformNumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.TaiwanUniformNumber(string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.TaiwanUniformNumberValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes) -> System.Func<string!, string?, CloudyWing.FormValidators.UrlValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes, System.Func<string!, string?, string!>? customErrorMessageAccessor) -> System.Func<string!, string?, CloudyWing.FormValidators.UrlValidator!>!
+CloudyWing.FormValidators.Core.ValidationProvider.Url(System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes, string! customErrorMessageFormat) -> System.Func<string!, string?, CloudyWing.FormValidators.UrlValidator!>!
+CloudyWing.FormValidators.Core.ValidatorDefaults
+CloudyWing.FormValidators.CustomValidator
+CloudyWing.FormValidators.CustomValidator.CustomValidator(string! column, string? value, System.Func<string!, bool>! predicate, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> void
+CloudyWing.FormValidators.DateTimeValidator.DateTimeValidator(string! column, string? value, System.DateTime? min, System.DateTime? max, System.Collections.Generic.IEnumerable<string!>! formats, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> void
+CloudyWing.FormValidators.DateTimeValidator.DateTimeValidator(string! column, string? value, System.DateTime? min, System.DateTime? max, System.IFormatProvider? formatProvider, System.Func<string!, string?, System.DateTime?, System.DateTime?, string!>? customErrorMessageAccessor) -> void
+CloudyWing.FormValidators.DateTimeValidator.FormatProvider.get -> System.IFormatProvider?
+CloudyWing.FormValidators.DateTimeValidator.Formats.get -> System.Collections.Generic.IReadOnlyList<string!>!
+CloudyWing.FormValidators.GuidValidator
+CloudyWing.FormValidators.GuidValidator.GuidValidator(string! column, string? value, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> void
+CloudyWing.FormValidators.IAsyncFormValidator
+CloudyWing.FormValidators.IAsyncFormValidator.ValidateAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
+CloudyWing.FormValidators.IntegerValidator.FormatProvider.get -> System.IFormatProvider?
+CloudyWing.FormValidators.IntegerValidator.IntegerValidator(string! column, string? value, long? min, long? max, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, long?, long?, string!>? customErrorMessageAccessor) -> void
+CloudyWing.FormValidators.NumberValidator.FormatProvider.get -> System.IFormatProvider?
+CloudyWing.FormValidators.NumberValidator.NumberValidator(string! column, string? value, decimal? min, decimal? max, bool allowedThousands, System.IFormatProvider? formatProvider, System.Func<string!, string?, decimal?, decimal?, string!>? customErrorMessageAccessor) -> void
+CloudyWing.FormValidators.PhoneValidator
+CloudyWing.FormValidators.PhoneValidator.PhoneValidator(string! column, string? value, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> void
+CloudyWing.FormValidators.RegexValidator.RegexValidator(string! column, string? value, string! pattern, System.Text.RegularExpressions.RegexOptions options, System.TimeSpan matchTimeout, System.Func<string!, string?, string!>? customErrorMessageAccessor) -> void
+CloudyWing.FormValidators.TaiwanUniformNumberValidator
+CloudyWing.FormValidators.TaiwanUniformNumberValidator.TaiwanUniformNumberValidator(string! column, string? value, System.Func<string!, string?, string!>? customErrorMessageAccessor = null) -> void
+CloudyWing.FormValidators.TextLengthUnit
+CloudyWing.FormValidators.TextLengthUnit.TextElement = 2 -> CloudyWing.FormValidators.TextLengthUnit
+CloudyWing.FormValidators.TextLengthUnit.UnicodeScalar = 1 -> CloudyWing.FormValidators.TextLengthUnit
+CloudyWing.FormValidators.TextLengthUnit.Utf16CodeUnit = 0 -> CloudyWing.FormValidators.TextLengthUnit
+CloudyWing.FormValidators.UrlValidator.AllowedSchemes.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
+CloudyWing.FormValidators.UrlValidator.UrlValidator(string! column, string? value, System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes) -> void
+CloudyWing.FormValidators.UrlValidator.UrlValidator(string! column, string? value, System.UriKind kind, System.Collections.Generic.IEnumerable<string!>! allowedSchemes, System.Func<string!, string?, string!>? customErrorMessageAccessor) -> void
+CloudyWing.FormValidators.ValidationError
+CloudyWing.FormValidators.ValidationError.Column.get -> string?
+CloudyWing.FormValidators.ValidationError.Message.get -> string!
+CloudyWing.FormValidators.ValidationError.ValidationError(string? column, string! message, CloudyWing.FormValidators.IFormValidator! validator) -> void
+CloudyWing.FormValidators.ValidationError.Validator.get -> CloudyWing.FormValidators.IFormValidator!
+CloudyWing.FormValidators.ValidationError.ValidatorType.get -> System.Type!
+CloudyWing.FormValidators.ValueLengthValidator.Unit.get -> CloudyWing.FormValidators.TextLengthUnit
+CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string! column, string? value, long min, long max, CloudyWing.FormValidators.TextLengthUnit unit) -> void
+CloudyWing.FormValidators.ValueLengthValidator.ValueLengthValidator(string! column, string? value, long min, long max, CloudyWing.FormValidators.TextLengthUnit unit, System.Func<string!, string?, long, long, string!>? customErrorMessageAccessor) -> void
+static CloudyWing.FormValidators.BulkValidatorExtensions.ValidateAsync(this CloudyWing.FormValidators.BulkValidator! validators, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.BeginScope(CloudyWing.FormValidators.Core.ErrorMessageOverrides! overrides) -> System.IDisposable!
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsGuidAccessor(System.Func<string!, string?, string!>! accessor) -> void
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsInAllowedValuesAccessor(System.Func<string!, string?, System.Collections.Generic.IReadOnlyList<string!>!, string!>! accessor) -> void
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsPhoneAccessor(System.Func<string!, string?, string!>! accessor) -> void
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueIsTaiwanUniformNumberAccessor(System.Func<string!, string?, string!>! accessor) -> void
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.SetValueMatchCustomRuleAccessor(System.Func<string!, string?, string!>! accessor) -> void
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsGuidAccessor.get -> System.Func<string!, string?, string!>!
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsInAllowedValuesAccessor.get -> System.Func<string!, string?, System.Collections.Generic.IReadOnlyList<string!>!, string!>!
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsPhoneAccessor.get -> System.Func<string!, string?, string!>!
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueIsTaiwanUniformNumberAccessor.get -> System.Func<string!, string?, string!>!
+static CloudyWing.FormValidators.Core.ErrorMessageProvider.ValueMatchCustomRuleAccessor.get -> System.Func<string!, string?, string!>!
+static CloudyWing.FormValidators.Core.ValidatorDefaults.RegexTimeout.get -> System.TimeSpan
+static CloudyWing.FormValidators.Core.ValidatorDefaults.RegexTimeout.set -> void

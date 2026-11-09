@@ -10,6 +10,11 @@ public class ValidatorConfigurationTests {
     private BulkValidator validators;
     private ValidatorConfiguration config;
 
+    public ValidatorConfigurationTests() {
+        validators = new BulkValidator();
+        config = new ValidatorConfiguration(validators);
+    }
+
     [SetUp]
     public void SetUp() {
         validators = new BulkValidator();
@@ -30,7 +35,7 @@ public class ValidatorConfigurationTests {
         config.Add("Column1", "Value1", opt => opt.Required(), opt => opt.DateTime());
         config.Add("Column2", "Value2", opt => opt.Required());
 
-        var funcs = new List<Func<ValidationProvider, Func<string, string, IFormValidator>>> {
+        var funcs = new List<Func<ValidationProvider, Func<string, string?, IFormValidator>>> {
             opt => opt.Required(),
             opt => opt.DateTime()
         };

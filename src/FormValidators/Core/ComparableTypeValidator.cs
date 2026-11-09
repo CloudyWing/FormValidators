@@ -9,7 +9,7 @@ namespace CloudyWing.FormValidators.Core;
 /// <seealso cref="FormValidatorBase" />
 public abstract class ComparableTypeValidator<T> : FormValidatorBase
     where T : struct, IConvertible, IComparable<T>, IEquatable<T> {
-    private string defaultErrorMessage = null;
+    private string defaultErrorMessage = "";
 
     /// <summary>
     /// Initializes a new instance of the <see cref="ComparableTypeValidator{T}" /> class.
@@ -20,7 +20,7 @@ public abstract class ComparableTypeValidator<T> : FormValidatorBase
     /// <param name="max">The maximum.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, min, max.</param>
     protected ComparableTypeValidator(
-        string column, string value, T? min, T? max, Func<string, string, T?, T?, string> customErrorMessageAccessor
+        string column, string? value, T? min, T? max, Func<string, string?, T?, T?, string>? customErrorMessageAccessor
     ) : base(column, value) {
         MinValue = min;
         MaxValue = max;
@@ -43,19 +43,19 @@ public abstract class ComparableTypeValidator<T> : FormValidatorBase
     /// Gets the cast error message accessor.
     /// </summary>
     /// <value>The cast error message accessor.</value>
-    protected abstract Func<string, string, string> CastErrorMessageAccessor { get; }
+    protected abstract Func<string, string?, string> CastErrorMessageAccessor { get; }
 
     /// <summary>
     /// Gets the custom range message format.
     /// </summary>
     /// <value>The custom range message format.</value>
-    public Func<string, string, T?, T?, string> CustomErrorMessageAccessor { get; }
+    public Func<string, string?, T?, T?, string>? CustomErrorMessageAccessor { get; }
 
     /// <inheritdoc/>
     protected override string DefaultErrorMessage => defaultErrorMessage;
 
     /// <inheritdoc/>
-    protected override string CustomErrorMessage => CustomErrorMessageAccessor(Column, Value, MinValue, MaxValue);
+    protected override string CustomErrorMessage => CustomErrorMessageAccessor!(Column, Value, MinValue, MaxValue);
 
     /// <inheritdoc/>
     protected override bool HasCustomErrorMessage => CustomErrorMessageAccessor != null;
@@ -64,18 +64,18 @@ public abstract class ComparableTypeValidator<T> : FormValidatorBase
     protected override bool ValidateValue() {
         defaultErrorMessage = "";
 
-        if (string.IsNullOrWhiteSpace(Value)) {
+        if (StringUtils.IsNullOrWhiteSpace(Value)) {
             return true;
         } else if (TryParse(Value, out T value)) {
-            if (MinValue.HasValue && MaxValue.HasValue) {
-                defaultErrorMessage = ErrorMessageProvider.ValueInRangeAccessor(Column, Value, MinValue.Value, MaxValue.Value);
-                return ValidateRange(value);
-            } else if (MinValue.HasValue) {
-                defaultErrorMessage = ErrorMessageProvider.ValueGreaterOrEqualAccessor(Column, Value, MinValue.Value);
-                return ValidateMinValue(value);
-            } else if (MaxValue.HasValue) {
-                defaultErrorMessage = ErrorMessageProvider.ValueLessOrEqualAccessor(Column, Value, MaxValue.Value);
-                return ValidateMaxValue(value);
+            if (MinValue is T min && MaxValue is T max) {
+                defaultErrorMessage = ErrorMessageProvider.ValueInRangeAccessor(Column, Value, min, max);
+                return value.CompareTo(min) >= 0 && value.CompareTo(max) <= 0;
+            } else if (MinValue is T minOnly) {
+                defaultErrorMessage = ErrorMessageProvider.ValueGreaterOrEqualAccessor(Column, Value, minOnly);
+                return value.CompareTo(minOnly) >= 0;
+            } else if (MaxValue is T maxOnly) {
+                defaultErrorMessage = ErrorMessageProvider.ValueLessOrEqualAccessor(Column, Value, maxOnly);
+                return value.CompareTo(maxOnly) <= 0;
             } else {
                 return true;
             }
@@ -92,16 +92,4 @@ public abstract class ComparableTypeValidator<T> : FormValidatorBase
     /// <param name="result">The result.</param>
     /// <returns>Parse value to type <c>T</c> result.</returns>
     protected abstract bool TryParse(string value, out T result);
-
-    private bool ValidateRange(T value) {
-        return value.CompareTo(MinValue.Value) >= 0 && value.CompareTo(MaxValue.Value) <= 0;
-    }
-
-    private bool ValidateMinValue(T value) {
-        return value.CompareTo(MinValue.Value) >= 0;
-    }
-
-    private bool ValidateMaxValue(T value) {
-        return value.CompareTo(MaxValue.Value) <= 0;
-    }
 }

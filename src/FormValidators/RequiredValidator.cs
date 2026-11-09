@@ -13,14 +13,14 @@ public sealed class RequiredValidator : BasicFormValidator {
     /// <param name="column">The column.</param>
     /// <param name="value">The value.</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value.</param>
-    public RequiredValidator(string column, string value, Func<string, string, string> customErrorMessageAccessor = null)
+    public RequiredValidator(string column, string? value, Func<string, string?, string>? customErrorMessageAccessor = null)
         : base(column, value, customErrorMessageAccessor) { }
 
     /// <inheritdoc/>
-    protected override Func<string, string, string> DefaultErrorMessageAccessor => ErrorMessageProvider.ValueIsRequiredAccessor;
+    protected override Func<string, string?, string> DefaultErrorMessageAccessor => ErrorMessageProvider.ValueIsRequiredAccessor;
 
     /// <inheritdoc/>
     protected override bool ValidateValue() {
-        return !string.IsNullOrWhiteSpace(Value);
+        return !StringUtils.IsNullOrWhiteSpace(Value);
     }
 }

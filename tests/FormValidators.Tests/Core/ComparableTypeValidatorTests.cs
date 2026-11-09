@@ -8,11 +8,11 @@ namespace CloudyWing.FormValidators.Tests.Core;
 public class ComparableTypeValidatorTests {
     private class TestComparableValidator : ComparableTypeValidator<int> {
         public TestComparableValidator(
-            string column, string value, int? min, int? max,
-            Func<string, string, int?, int?, string> customErrorMessageAccessor
+            string column, string? value, int? min, int? max,
+            Func<string, string?, int?, int?, string>? customErrorMessageAccessor
         ) : base(column, value, min, max, customErrorMessageAccessor) { }
 
-        protected override Func<string, string, string> CastErrorMessageAccessor =>
+        protected override Func<string, string?, string> CastErrorMessageAccessor =>
             (col, val) => $"{col} must be int.";
 
         protected override bool TryParse(string value, out int result) {

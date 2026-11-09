@@ -6,6 +6,9 @@ namespace CloudyWing.FormValidators;
 /// <summary>
 /// Validate that an date time value is less than another column value.
 /// </summary>
+/// <remarks>
+/// Both values are parsed with the current culture. When either value cannot be parsed, the comparison is skipped and the validation succeeds.
+/// </remarks>
 public sealed class DateTimeLessThanValidator : LessThanValidator<DateTime> {
     /// <summary>
     /// Initializes a new instance of the <see cref="DateTimeLessThanValidator" /> class.
@@ -17,12 +20,12 @@ public sealed class DateTimeLessThanValidator : LessThanValidator<DateTime> {
     /// <param name="allowedEqual">if set to <c>true</c> [allowed equal].</param>
     /// <param name="customErrorMessageAccessor">The custom error message accessor. The arguments are column, value, comparison column, comparison value, allowed equal.</param>
     public DateTimeLessThanValidator(
-        string column, string value, string comparisonColumn, string comparisonValue,
-        bool allowedEqual = true, Func<string, string, string, string, bool, string> customErrorMessageAccessor = null)
+        string column, string? value, string comparisonColumn, string? comparisonValue,
+        bool allowedEqual = true, Func<string, string?, string, string?, bool, string>? customErrorMessageAccessor = null)
         : base(column, value, comparisonColumn, comparisonValue, allowedEqual, customErrorMessageAccessor) { }
 
     /// <inheritdoc/>
-    protected override bool TryParse(string value, out DateTime result) {
+    protected override bool TryParse(string? value, out DateTime result) {
         return DateTime.TryParse(value, out result);
     }
 }

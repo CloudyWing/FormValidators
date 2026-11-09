@@ -18,16 +18,10 @@ public class CompareValidatorTests {
 
     [Test]
     public void ErrorMessage_WhenValidationFails_ReturnsDefaultMessage() {
-        const string column = "測試欄位";
-        const string value = "123";
-        const string comparisonColumn = "比較欄位";
-        const string comparisonValue = "456";
-        string expected = ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor(column, value, comparisonColumn, comparisonValue);
-
-        CompareValidator validator = new(column, "123", comparisonColumn, "456");
+        CompareValidator validator = new("測試欄位", "123", "比較欄位", "456");
         validator.Validate();
 
-        Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+        Assert.That(validator.ErrorMessage, Is.EqualTo("「測試欄位」和「比較欄位」輸入不一致。"));
     }
 
     [Test]
@@ -42,5 +36,12 @@ public class CompareValidatorTests {
         validator.Validate();
 
         Assert.That(validator.ErrorMessage, Is.EqualTo(expected));
+    }
+
+    [Test]
+    public void ValueCompareAnotherColumnValueAccessor_DocumentedArgumentOrder_UsesComparisonColumnName() {
+        string message = ErrorMessageProvider.ValueCompareAnotherColumnValueAccessor("密碼", "abc", "確認密碼", "abd");
+
+        Assert.That(message, Is.EqualTo("「密碼」和「確認密碼」輸入不一致。"));
     }
 }

@@ -19,7 +19,17 @@
 
     <PackageIcon>icon.png</PackageIcon>
     <MinVerTagPrefix>v</MinVerTagPrefix>
-    <LangVersion>14.0</LangVersion>
+    <Copyright>Copyright 2019-present Shang-Wei(Wing) Chou</Copyright>
+    <PackageTags>validation;validator;form;webforms;taiwan</PackageTags>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <PackageValidationBaselineVersion>3.1.0</PackageValidationBaselineVersion>
+    <WarningsAsErrors>$(WarningsAsErrors);RS0016;RS0017</WarningsAsErrors>
+    <!-- RS0027：新增多載與既有含選擇性參數的多載參數型別不同，不會造成多載解析歧義 -->
+    <NoWarn>$(NoWarn);RS0027</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
@@ -35,9 +45,9 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
-    <None Include="..\..\README.md">
+    <None Include="..\..\build\package-readme.md">
       <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
+      <PackagePath>\README.md</PackagePath>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -46,5 +56,17 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="4.14.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('PublicAPI/$(TargetFramework)')">
+    <AdditionalFiles Include="PublicAPI/$(TargetFramework)/PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="PublicAPI/$(TargetFramework)/PublicAPI.Unshipped.txt" />
   </ItemGroup>
 </Project>
